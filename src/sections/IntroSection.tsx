@@ -1,7 +1,7 @@
 import { TypingHeading } from "../components/TypingHeading";
 import styles from "./IntroSection.module.scss";
 
-import stars from "../assets/stars-background.png";
+import stars from "../assets/star-background.svg";
 import sheep from "../assets/sheep.png";
 import { useCallback, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
