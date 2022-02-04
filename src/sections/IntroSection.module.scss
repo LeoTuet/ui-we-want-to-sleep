@@ -11,6 +11,7 @@
 
   position: relative;
   overflow: hidden;
+  outline: none;
 }
 
 .innerSection {
@@ -55,4 +56,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.sheep {
+  width: 200px;
+
+  position: absolute;
+  bottom: 0px;
+  left: calc((100vw - 200px) / 2);
+
+  transition: bottom 0.2s ease-out, left 0.1s linear;
+}
+
+.jumped {
+  bottom: 200px;
+}
+
+.right {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
