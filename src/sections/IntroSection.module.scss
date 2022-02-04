@@ -1,0 +1,25 @@
+.introSection {
+  background-color: #190934;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    color: white;
+  }
+}
+
+.innerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 600px;
+  padding-top: 3rem; // For optical alignment
+}
+
+
+.description{
+    font-size: 1.2rem;
+}
