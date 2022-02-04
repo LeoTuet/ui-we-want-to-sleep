@@ -14,6 +14,15 @@
   outline: none;
 }
 
+.introSection::before {
+  content: "";
+  position: absolute;
+
+
+  background-size: cover;
+  background: url("../assets/star-background.svg") 0 0 repeat;
+}
+
 .innerSection {
   display: flex;
   align-items: center;
@@ -21,6 +30,7 @@
   flex-wrap: wrap;
   max-width: 600px;
   padding-top: 3rem; // For optical alignment
+  z-index: 10;
 }
 
 .description {
@@ -32,21 +42,21 @@
 }
 
 @media screen and (orientation: portrait) {
-  .starBackground {
-    height: 100vh;
+  .introSection::before {
+    height: 130vh;
+    height: 130vh;
   }
 }
 
 @media screen and (orientation: landscape) {
-  .starBackground {
-    height: 100vw;
+  .introSection::before {
+    height: 130vw;
+    width: 130vw;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .starBackground {
-    animation: star-background-spin infinite 150s linear;
-  }
+.introSection::before {
+  animation: star-background-spin infinite 150s linear;
 }
 
 @keyframes star-background-spin {

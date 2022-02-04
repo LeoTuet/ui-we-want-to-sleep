@@ -62,7 +62,7 @@ export const IntroSection = () => {
       tabIndex={0}
       ref={section}
     >
-      <img src={stars} className={styles.starBackground}></img>
+      {/* <img src={stars} className={styles.starBackground}></img> */}
       <div className={styles.innerSection}>
         <TypingHeading />
         <p className={styles.description}>
