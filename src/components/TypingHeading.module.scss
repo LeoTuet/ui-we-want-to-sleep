@@ -1,20 +1,21 @@
+@import "src/theme/mixin";
+
 .heading {
   margin: 0;
   color: white;
   font-size: 3rem;
- 
+  @include noSelect;
 }
 
-
-.coloredText{
-    color: #FFF153;
+.coloredText {
+  color: #FFF153;
 }
 
-.cursor{
-     transition: 0.1s;
+.cursor {
+  transition: 0.1s;
 }
 
-.hidden{
-    opacity: 0%;
-    
+.hidden {
+  opacity: 0%;
+
 }
