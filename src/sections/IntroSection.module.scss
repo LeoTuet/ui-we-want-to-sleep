@@ -8,6 +8,9 @@
   & > * {
     color: white;
   }
+
+  position: relative;
+  overflow: hidden;
 }
 
 .innerSection {
@@ -19,7 +22,37 @@
   padding-top: 3rem; // For optical alignment
 }
 
+.description {
+  font-size: 1.2rem;
+}
 
-.description{
-    font-size: 1.2rem;
+.starBackground {
+  position: fixed;
+}
+
+@media screen and (orientation: portrait) {
+  .starBackground {
+    height: 100vh;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .starBackground {
+    height: 100vw;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .starBackground {
+    animation: star-background-spin infinite 150s linear;
+  }
+}
+
+@keyframes star-background-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
