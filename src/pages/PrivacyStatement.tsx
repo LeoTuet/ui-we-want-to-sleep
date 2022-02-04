@@ -1,11 +1,9 @@
 import React from 'react';
 
-const PrivacyStatement = () => {
+export const PrivacyStatement = () => {
     return (
         <div>
             Datenschutz go brrrrr
         </div>
     );
 };
-
-export default PrivacyStatement;
