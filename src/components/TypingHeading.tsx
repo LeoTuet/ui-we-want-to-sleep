@@ -7,7 +7,7 @@ export const TypingHeading = () => {
   const [index, setIndex] = useState(1);
   const [timerID, setTimerID] = useState<NodeJS.Timeout>();
 
-  const [underscoreHiddeen, setUnderscoreHidden] = useState(false);
+  const [underscoreHidden, setUnderscoreHidden] = useState(false);
 
   useEffect(() => {
     setUnderscoreHidden(index % 14 < 7 && index > finalText.length);
@@ -37,7 +37,7 @@ export const TypingHeading = () => {
         {index >= 14 && finalText.substring(14, index)}
         <span
           className={classNames(styles.cursor, {
-            [styles.hidden]: underscoreHiddeen,
+            [styles.hidden]: underscoreHidden,
           })}
         >
           _

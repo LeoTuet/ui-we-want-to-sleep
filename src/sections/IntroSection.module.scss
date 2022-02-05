@@ -17,8 +17,6 @@
 .introSection::before {
   content: "";
   position: absolute;
-
-
   background-size: cover;
   background: url("../assets/star-background.svg") 0 0 repeat;
 }
