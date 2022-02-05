@@ -41,9 +41,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
+
       - name: executing remote ssh deployment
         uses: appleboy/ssh-action@master
         with:
