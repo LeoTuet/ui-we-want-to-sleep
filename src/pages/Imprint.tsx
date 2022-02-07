@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./Imprint.module.scss";
+import styles from "./ImprintAndPrivacy.module.scss";
 import HeaderSection from "../sections/HeaderSection";
 
 
@@ -7,7 +7,7 @@ export const Imprint = () => {
     return (
         <div>
             <HeaderSection/>
-            <div className={styles.imprint}>
+            <div className={styles.body}>
                 <h1 className={styles.header}>Impressum - Draft</h1><p>Angaben gemäß § 5 TMG</p><p>Max Muster <br/>
                 Musterweg<br/>
                 12345 Musterstadt <br/>
@@ -147,6 +147,10 @@ export const Imprint = () => {
                     und Weise
                     und zu dem zuvor benannten Zweck einverstanden.
                 </p>
+                <br/>
+                Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der <a
+                href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und
+                Familienrecht</a>
             </div>
         </div>
     );
