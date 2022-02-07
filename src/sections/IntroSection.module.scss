@@ -12,13 +12,13 @@
   position: relative;
   overflow: hidden;
   outline: none;
+
+  padding: 1.5rem;
 }
 
 .introSection::before {
   content: "";
   position: absolute;
-
-
   background-size: cover;
   background: url("../assets/star-background.svg") 0 0 repeat;
 }
@@ -34,7 +34,13 @@
 }
 
 .description {
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 576px) {
+  .description {
+    font-size: 1.2rem;
+  }
 }
 
 .starBackground {
@@ -44,7 +50,7 @@
 @media screen and (orientation: portrait) {
   .introSection::before {
     height: 130vh;
-    height: 130vh;
+    width: 130vh;
   }
 }
 
