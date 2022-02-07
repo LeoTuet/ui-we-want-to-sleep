@@ -1,18 +1,5 @@
-@import "src/theme/mixin";
-
 .title {
-  @include noSelect;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 600px;
-  z-index: 10;
-}
-
-.header {
-  min-height: 56px;
-  position: fixed;
-  top: 0;
-  width: 100%;
+  align-content: start;
+  padding: 10px
 }

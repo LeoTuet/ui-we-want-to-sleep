@@ -12,6 +12,14 @@ body {
     color: #190934;
 }
 
+a {
+    color: #FFF153;
+}
+
+a:visited {
+    color: #FFF153;
+}
+
 
 @font-face {
     font-family: "SpaceMono";
