@@ -3,12 +3,30 @@
 .heading {
   margin: 0;
   color: white;
-  font-size: 3rem;
+  font-size: 1.75rem;
   @include noSelect;
 }
 
+@media (min-width: 576px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .heading {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .heading {
+    font-size: 3rem;
+  }
+}
+
 .coloredText {
-  color: #FFF153;
+  color: #fff153;
 }
 
 .cursor {
@@ -17,5 +35,4 @@
 
 .hidden {
   opacity: 0%;
-
 }
