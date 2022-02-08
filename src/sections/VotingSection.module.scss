@@ -1,0 +1,32 @@
+.votingSection {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.buttonContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto auto;
+  row-gap: 0.5rem;
+}
+
+.voteButton {
+  background-color: #ffef3f;
+  border-radius: 12px;
+  font: inherit;
+  border: none;
+  outline: none;
+  padding: 1rem;
+}
+
+.captchaContainer {
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
