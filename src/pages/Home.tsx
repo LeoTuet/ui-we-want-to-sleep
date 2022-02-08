@@ -1,15 +1,22 @@
-import React from "react";
-import { ContentSection } from "../sections/ContentSection";
-import { IntroSection } from "../sections/IntroSection";
-import { VotingSection } from "../sections/VotingSection";
+import React, {useEffect, useState} from "react";
+import {ContentSection} from "../sections/ContentSection";
+import {IntroSection} from "../sections/IntroSection";
+import {VotingSection} from "../sections/VotingSection";
+
 
 export const Home = () => {
-  return (
-    <div>
-      <IntroSection />
-      <ContentSection />
-      <VotingSection />
-      <div style={{ height: "200vh" }}></div>
-    </div>
-  );
+    const [token, setToken] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        console.log(token)
+    }, [token])
+
+    return (
+        <div>
+            <IntroSection/>
+            <ContentSection/>
+            <VotingSection onTokenReceive={setToken}/>
+            <div style={{height: "200vh"}}></div>
+        </div>
+    );
 };
