@@ -1,9 +1,16 @@
-.body {
-  margin: 100px 20vw;
-  text-align: left;
+.container {
+  background-color: #190934;
+  color: white;
 }
 
-.header {
+.innerContainer {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.title {
   font-size: 50px
 }
 
