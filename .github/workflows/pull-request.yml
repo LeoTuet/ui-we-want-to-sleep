@@ -1,0 +1,15 @@
+name: Pull Request build verification
+on:
+  pull_request:
+    types: [ opened, reopened, edited, synchronize ]
+
+env:
+  PR_NUMBER: $(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag wwts-ui-pr:${{env.PR_NUMBER}} --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }}

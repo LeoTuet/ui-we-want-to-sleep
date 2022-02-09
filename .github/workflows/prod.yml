@@ -1,4 +1,4 @@
-name: Build image and upload it to registry
+name: Production CI/CD
 on:
   push:
     branches: [ main ]
@@ -42,6 +42,10 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push-image
+    steps:
       - name: executing remote ssh deployment
         uses: appleboy/ssh-action@master
         with:
