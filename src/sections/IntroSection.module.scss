@@ -1,3 +1,5 @@
+@import "src/theme/mixin";
+
 .introSection {
   background-color: #190934;
   min-height: 92vh;
@@ -75,6 +77,7 @@
 }
 
 .sheep {
+  @include noSelect;
   width: 200px;
 
   position: absolute;
