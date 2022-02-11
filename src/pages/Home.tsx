@@ -11,7 +11,6 @@ import { BallotError, NoVotingSection } from "../sections/NoVotingSection";
 export const Home = () => {
   const [token, setToken] = useState<string | undefined>(undefined);
   const ballot = useSelector(selectBallot);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export const Home = () => {
     <div>
       <IntroSection />
       <ContentSection />
-      {!ballot.ballotError && (
+      {ballot.ballot && !ballot.ballotError && (
         <VotingSection onTokenReceive={setToken} ballot={ballot} />
       )}
       {ballot.ballotError && <NoVotingSection error={(ballot.ballotError.message ?? "") as BallotError} />}

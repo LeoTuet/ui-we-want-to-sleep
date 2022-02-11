@@ -20,13 +20,17 @@ export const NoVotingSection = ({
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.textContainer}>
-        <h4>Lehn’ dich zurück!</h4>
-        <p>{getErrorText(error)}</p>
-      </div>
+    <div className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.textContainer}>
+          <h4>Lehn’ dich zurück!</h4>
+          <p>{getErrorText(error)}</p>
+        </div>
 
-      <img src={sofa} className={styles.sofa} />
+        <div className={styles.sofaContainer}>
+          <img src={sofa} className={styles.sofa} />
+        </div>
+      </div>
     </div>
   );
 };
