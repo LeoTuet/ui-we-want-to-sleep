@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/:token" element={<Home />} />
         <Route path="datenschutz" element={<PrivacyStatement />} />
         <Route path="impressum" element={<Imprint />} />
         <Route path="*" element={<Home />} />
