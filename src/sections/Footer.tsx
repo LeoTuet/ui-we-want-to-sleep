@@ -93,7 +93,7 @@ export const Footer = () => {
           <a href="/impressum" className={styles.link}>
             Impressum
           </a>
-          {" & "}
+          <p>{" & "}</p>
           <a href="/impressum" className={styles.link}>
             Datenschutz
           </a>

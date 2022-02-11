@@ -45,4 +45,9 @@
   margin-top: 3rem;
 
   display: block;
+
+  & p {
+    display: inline;
+    font: inherit;
+  }
 }

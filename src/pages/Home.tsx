@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Ballot } from "../models";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -7,28 +7,56 @@ import { IntroSection } from "../sections/IntroSection";
 import { VotingSection } from "../sections/VotingSection";
 import { fetchRunningBallot, selectBallot } from "../stores/ballot";
 import { BallotError, NoVotingSection } from "../sections/NoVotingSection";
+import { recordVote } from "../stores/vote";
+import { actions } from "../stores/token";
+import { useParams } from "react-router-dom";
 
 export const Home = () => {
-  const [token, setToken] = useState<string | undefined>(undefined);
   const ballot = useSelector(selectBallot);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
+  let { token } = useParams();
 
   useEffect(() => {
     dispatch(fetchRunningBallot());
   }, []);
+
+  const handleVote = useCallback(
+    (identifier: string) => {
+      dispatch(recordVote(identifier));
+    },
+    [dispatch, recordVote]
+  );
+
+  const handleCaptchaTokenReceive = useCallback(
+    (token: string) => {
+      dispatch(actions.saveCaptchaToken(token));
+    },
+    [dispatch, recordVote]
+  );
+
+  useEffect(() => {
+    if (token) {
+      dispatch(actions.saveToken(token));
+    }
+  }, [token]);
 
   return (
     <div>
       <IntroSection />
       <ContentSection />
       {ballot.ballot && !ballot.ballotError && (
-        <VotingSection onTokenReceive={setToken} ballot={ballot} />
+        <VotingSection
+          onTokenReceive={handleCaptchaTokenReceive}
+          ballot={ballot}
+          onVote={handleVote}
+        />
       )}
-      {ballot.ballotError && <NoVotingSection error={(ballot.ballotError.message ?? "") as BallotError} />}
+      {ballot.ballotError && (
+        <NoVotingSection
+          error={(ballot.ballotError.message ?? "") as BallotError}
+        />
+      )}
     </div>
   );
 };
