@@ -7,8 +7,18 @@ import {
   initialState as ballotState,
 } from "./ballot";
 
+import {
+  tokenSlice,
+  TokenState,
+  initialState as tokenState,
+} from "./token";
+
+import { voteSlice, VoteState, initialState as voteState } from "./vote";
+
 export type RootState = {
   ballot: BallotState;
+  token: TokenState;
+  vote: VoteState;
 };
 
 export type ThunkExtra = {
@@ -21,6 +31,8 @@ export const createStore = (api: Api) =>
   configureStore({
     reducer: {
       ballot: ballotSlice.reducer,
+      token: tokenSlice.reducer,
+      vote: voteSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -34,4 +46,6 @@ export const createStore = (api: Api) =>
 
 export const initialRootState: RootState = {
   ballot: ballotState,
+  token: tokenState,
+  vote: voteState,
 };

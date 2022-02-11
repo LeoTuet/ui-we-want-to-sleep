@@ -1,3 +1,9 @@
+@import "src/theme/mixin";
+
+.container {
+  padding: 0 1.5rem;
+}
+
 .votingSection {
   max-width: 600px;
   margin: 0 auto;
@@ -15,13 +21,21 @@
 }
 
 .voteButton {
+  @include noSelect;
   background-color: #ffef3f;
+  color: black;
   border-radius: 12px;
   font: inherit;
+  font-weight: bold;
   border: none;
   outline: none;
   padding: 1rem;
   cursor: pointer;
+  transition: 0.2s ease-out;
+
+  &:active {
+    transform: scale(0.97);
+  }
 }
 
 .captchaContainer {
