@@ -20,7 +20,6 @@ export const IntroSection = () => {
 
     const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
         const timer = setTimeout(() => {
-            console.log(e.key);
             switch (e.key) {
                 case "ArrowLeft":
                 case "a":
@@ -39,8 +38,6 @@ export const IntroSection = () => {
     }, []);
 
     useEffect(() => {
-        console.log(horizontalOffset);
-
         if (horizontalOffset < -30) {
             setHorizontalOffset(horizontalOffset + 100);
         } else if (horizontalOffset > 82) {

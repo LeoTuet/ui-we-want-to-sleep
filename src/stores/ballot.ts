@@ -40,7 +40,6 @@ export const ballotSlice = createSlice({
     builder.addCase(fetchRunningBallot.fulfilled, (state, action) => {
       if (action.payload) {
         state.runningBallot = action.payload;
-        console.log({ runningBallot: state.runningBallot });
       }
       state.ballotLoading = false;
     });
