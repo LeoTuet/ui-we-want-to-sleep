@@ -1,0 +1,48 @@
+.footer {
+  background-color: #f4f4f4;
+  text-align: left;
+  padding: 3rem 1.5rem;
+}
+
+.innerFooter {
+  max-width: 600px;
+  margin: 0 auto;
+  list-style-type: none;
+
+  & ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  & h4 {
+    margin-bottom: 4px;
+  }
+
+  & p {
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.captionHeading {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  margin: 2rem 0 0.5rem 0;
+}
+
+.link {
+  color: black;
+}
+
+.link:visited {
+  color: black;
+}
+
+.legalTexts {
+  margin: 0 auto;
+  width: max-content;
+  margin-top: 3rem;
+
+  display: block;
+}

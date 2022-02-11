@@ -14,7 +14,10 @@ interface VotingSectionProps {
   };
 }
 
-export const VotingSection = ({ onTokenReceive, ballot}: VotingSectionProps) => {
+export const VotingSection = ({
+  onTokenReceive,
+  ballot,
+}: VotingSectionProps) => {
   const [captchaSaved, setCaptchaSaved] = useState(false);
 
   const handleTokenReceive = useCallback(
@@ -30,8 +33,10 @@ export const VotingSection = ({ onTokenReceive, ballot}: VotingSectionProps) => 
 
   return (
     <div className={styles.votingSection}>
-      <h4>Welchen Unterrichtsbeginn wünscht du dir?</h4>
-      <p>
+      <h4 className={styles.question}>
+        Welchen Unterrichtsbeginn wünscht du dir?
+      </h4>
+      <p className={styles.description}>
         Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle
         weise.
       </p>
@@ -49,8 +54,11 @@ export const VotingSection = ({ onTokenReceive, ballot}: VotingSectionProps) => 
 
       {captchaSaved && (
         <div className={styles.buttonContainer}>
-          <button className={styles.voteButton}>07:30 Uhr</button>
-          <button className={styles.voteButton}>08:15 Uhr</button>
+          {ballot.ballot?.options.map((option) => (
+            <button key={option.identifier} className={styles.voteButton}>
+              {option.label}
+            </button>
+          ))}
         </div>
       )}
       {ballot.ballotError && <p>Das hier ist ein Error</p>}

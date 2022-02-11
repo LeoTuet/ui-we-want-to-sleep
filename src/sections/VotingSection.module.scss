@@ -4,6 +4,7 @@
   font-size: 18px;
   text-align: left;
   margin-top: 1.5rem;
+  padding-bottom: 3rem;
 }
 
 .buttonContainer {
@@ -20,6 +21,7 @@
   border: none;
   outline: none;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .captchaContainer {
@@ -29,4 +31,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.question {
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
 }

@@ -2,6 +2,7 @@
 
 .introSection {
   background-color: #100522;
+  z-index: -11;
   min-height: 92vh;
   display: flex;
   align-items: center;
@@ -20,9 +21,10 @@
 
 .introSection::before {
   content: "";
-  position: absolute;
+  position: fixed;
+  z-index: -10;
   background-size: cover;
-  background: url("../assets/star-background.svg") 0 0 repeat;
+  background: url("../assets/star-background.svg");
 }
 
 .innerSection {

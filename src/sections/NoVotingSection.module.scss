@@ -1,11 +1,16 @@
 @import "src/theme/mixin";
 
+.section {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
 .container {
   background-color: #100522;
   margin: 0 auto;
   max-width: 602px; // + 2px for optical things
   border-radius: 12px;
   color: white;
+  perspective-origin: center;
 }
 
 .textContainer {
@@ -27,4 +32,19 @@
   @include noSelect;
   max-height: 105px;
   margin-bottom: -6px; // Optical hack
+  transition: 0.15s ease-out;
+  transform-origin: center center;
+}
+
+@media (hover: hover) {
+  .sofaContainer {
+    transition: 0.15s ease-out;
+    &:hover {
+      transform: translateY(-14px);
+
+      .sofa {
+        transform: rotate(-2deg);
+      }
+    }
+  }
 }
