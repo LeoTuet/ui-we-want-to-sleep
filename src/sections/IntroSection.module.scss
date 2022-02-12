@@ -15,7 +15,7 @@
   position: relative;
   overflow: hidden;
   outline: none;
-
+  box-sizing: border-box;
   padding: 1.5rem;
 }
 
@@ -78,22 +78,8 @@
   }
 }
 
-.sheep {
-  @include noSelect;
-  width: 200px;
-
+.sheepCanvas {
   position: absolute;
-  bottom: 0px;
-  left: calc((100vw - 200px) / 2);
-
-  transition: bottom 0.2s ease-out, left 0.1s linear;
-}
-
-.jumped {
-  bottom: 200px;
-}
-
-.right {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+  z-index: -11;
+  top: 0;
 }
