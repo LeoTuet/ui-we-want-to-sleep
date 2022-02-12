@@ -8,32 +8,32 @@ const baseGRAV = 3;
 const imageHeight = 130;
 const imageWidth = 198;
 
-export const Sheep = ({ className }: { className?: string }) => {
+export const Sheep = ({
+  className,
+  height,
+}: {
+  className?: string;
+  height: number;
+}) => {
   const [image, setImage] = useState<p5Types.Image | undefined>(undefined);
 
   let xPos = 200;
-  let yPos = 0;
+  let yJumpOffset = 0;
   let speed = 0;
   let gravity = baseGRAV;
 
-  let mouseOffsetX = 0;
-  let mouseOffsetY = 0;
-
-  let containerHeight: number = 0;
-
   const setup = (p5: p5Types, canvasParentRef: Element) => {
-    containerHeight = p5.windowHeight * 0.92;
-    p5.createCanvas(p5.windowWidth, containerHeight).parent(canvasParentRef);
+    p5.createCanvas(p5.windowWidth, height).parent(canvasParentRef);
     p5.loadImage(sheep, (img) => {
       setImage(img);
     });
-    yPos = containerHeight - imageHeight;
   };
 
   let orientation: "LEFT" | "RIGHT";
 
   const draw = (p5: p5Types) => {
-    containerHeight = p5.windowHeight * 0.92;
+    p5.translate(0, -imageHeight);
+
     p5.background(p5.color("#100522"));
 
     if (xPos < -imageWidth) {
@@ -52,47 +52,39 @@ export const Sheep = ({ className }: { className?: string }) => {
       orientation = "LEFT";
     }
 
-    if (orientation == "RIGHT") {
-      // Change image based on orientation
-      if (image) {
-        p5.image(image, xPos, yPos, imageWidth, imageHeight);
-      }
-    } else {
-      if (image) {
-        p5.image(image, xPos, yPos, imageWidth, imageHeight);
-      }
+    if (image) {
+      p5.image(image, xPos, height + yJumpOffset, imageWidth, imageHeight);
     }
 
-    yPos = yPos + speed;
+    yJumpOffset = yJumpOffset + speed;
     speed = speed + gravity;
 
-    if (yPos > containerHeight - imageHeight) {
+    if (yJumpOffset > 0) {
       speed = 0;
       gravity = 0;
-      yPos = containerHeight - imageHeight;
-    } else if (yPos < containerHeight - imageHeight - 150) {
+      yJumpOffset = 0;
+    } else if (yJumpOffset > -150) {
       gravity = baseGRAV;
     }
   };
 
   /* Setup Methode */
   const mouseClicked = (p5: p5Types) => {
-    console.log(p5.mouseX, p5.mouseY);
+    console.log(height, yJumpOffset, p5.mouseY);
 
     if (
       p5.mouseX > xPos &&
       p5.mouseX < xPos + imageWidth &&
-      p5.mouseY > yPos &&
-      p5.mouseY < yPos + imageHeight
+      p5.mouseY > height + yJumpOffset - imageHeight &&
+      p5.mouseY < height + yJumpOffset
     ) {
-      speed = -35 * (yPos / containerHeight);
+      speed = -35;
       gravity = baseGRAV;
     }
   };
 
   const windowResized = (p5: p5Types) => {
-    containerHeight = p5.windowHeight * 0.92;
-    p5.resizeCanvas(p5.windowWidth, containerHeight);
+    p5.resizeCanvas(p5.windowWidth, height);
     if (p5.windowWidth < xPos + imageWidth) {
       const newPos = p5.windowWidth - imageWidth;
       if (newPos > 0) {
@@ -102,8 +94,8 @@ export const Sheep = ({ className }: { className?: string }) => {
   };
 
   const keyPressed = (p5: p5Types) => {
-    if (p5.keyIsDown(p5.UP_ARROW)) {
-      speed = -50 * (yPos / containerHeight);
+    if (p5.keyIsDown(p5.UP_ARROW) || p5.key === "w") {
+      speed = -40;
       gravity = baseGRAV;
     }
   };
