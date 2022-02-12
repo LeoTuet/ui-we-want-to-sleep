@@ -1,10 +1,9 @@
+import { useState } from "react";
 import Sketch from "react-p5";
 import p5Types from "p5"; //Typen von p5
 
 import sheep from "../assets/sheep.png";
-import { useState } from "react";
 
-const baseGRAV = 3;
 const imageHeight = 130;
 const imageWidth = 198;
 
@@ -20,7 +19,7 @@ export const Sheep = ({
   let xPos = 200;
   let yJumpOffset = 0;
   let speed = 0;
-  let gravity = baseGRAV;
+  let gravity = 3;
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(p5.windowWidth, height).parent(canvasParentRef);
@@ -42,36 +41,34 @@ export const Sheep = ({
       xPos = -imageWidth; // To jump back to the left
     }
 
-    if (p5.keyIsDown(p5.RIGHT_ARROW)) {
-      // To move right
+    if (p5.keyIsDown(p5.RIGHT_ARROW) || (p5.key === "d" && p5.keyIsDown)) {
       xPos += 10;
       orientation = "RIGHT";
-    } else if (p5.keyIsDown(p5.LEFT_ARROW)) {
-      // To move left
+    } else if (
+      p5.keyIsDown(p5.LEFT_ARROW) ||
+      (p5.key === "a" && p5.keyIsDown)
+    ) {
       xPos -= 10;
       orientation = "LEFT";
+    }
+
+    if (speed !== 0) {
+      if (yJumpOffset + speed + gravity <= 0) {
+        speed += gravity;
+        yJumpOffset += speed;
+      } else {
+        yJumpOffset = 0;
+        speed = 0;
+      }
     }
 
     if (image) {
       p5.image(image, xPos, height + yJumpOffset, imageWidth, imageHeight);
     }
-
-    yJumpOffset = yJumpOffset + speed;
-    speed = speed + gravity;
-
-    if (yJumpOffset > 0) {
-      speed = 0;
-      gravity = 0;
-      yJumpOffset = 0;
-    } else if (yJumpOffset > -150) {
-      gravity = baseGRAV;
-    }
   };
 
   /* Setup Methode */
   const mouseClicked = (p5: p5Types) => {
-    console.log(height, yJumpOffset, p5.mouseY);
-
     if (
       p5.mouseX > xPos &&
       p5.mouseX < xPos + imageWidth &&
@@ -79,7 +76,6 @@ export const Sheep = ({
       p5.mouseY < height + yJumpOffset
     ) {
       speed = -35;
-      gravity = baseGRAV;
     }
   };
 
@@ -96,7 +92,6 @@ export const Sheep = ({
   const keyPressed = (p5: p5Types) => {
     if (p5.keyIsDown(p5.UP_ARROW) || p5.key === "w") {
       speed = -40;
-      gravity = baseGRAV;
     }
   };
 
