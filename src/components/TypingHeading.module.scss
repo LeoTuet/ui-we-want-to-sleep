@@ -2,7 +2,7 @@
 
 .heading {
   margin: 0;
-  color: white;
+  color: var(--header-color);
   font-size: 1.75rem;
   @include noSelect;
 
@@ -49,5 +49,5 @@
 }
 
 .coloredText {
-  color: #fff153;
+  color: var(--theme-color);
 }

@@ -1,7 +1,11 @@
 @import "src/theme/mixin";
 
 .container {
-  padding: 0 1.5rem;
+  margin: 0;
+  // 1px padding is required because otherwise stars are visible
+  // behind the heading margin in the dark color scheme.
+  padding: 1px 1.5rem;
+  background-color: var(--background);
 }
 
 .votingSection {
@@ -22,8 +26,8 @@
 
 .voteButton {
   @include noSelect;
-  background-color: #ffef3f;
-  color: black;
+  background-color: var(--vote-button-background);
+  color: var(--vote-button-color);
   border-radius: 12px;
   font: inherit;
   font-weight: bold;
@@ -39,7 +43,7 @@
 }
 
 .captchaContainer {
-  background-color: #f4f4f4;
+  background-color: var(--captcha-background);
   border-radius: 12px;
   padding: 1.5rem;
   display: flex;
