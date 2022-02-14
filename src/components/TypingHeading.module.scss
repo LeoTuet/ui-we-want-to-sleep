@@ -6,8 +6,10 @@
   font-size: 1.75rem;
   @include noSelect;
 
-  &.blinkingCaret::after {
+  &::after {
     content: "_";
+  }
+  &.blinkingCaret::after {
     animation: blinks 1.4s infinite;
   }
 }
