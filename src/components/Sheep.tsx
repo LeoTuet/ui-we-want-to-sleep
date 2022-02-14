@@ -20,6 +20,7 @@ export const Sheep = ({
   let yJumpOffset = 0;
   let speed = 0;
   let gravity = 3;
+  let orientation: "LEFT" | "RIGHT" = "RIGHT";
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(p5.windowWidth, height).parent(canvasParentRef);
@@ -27,8 +28,6 @@ export const Sheep = ({
       setImage(img);
     });
   };
-
-  let orientation: "LEFT" | "RIGHT";
 
   const draw = (p5: p5Types) => {
     p5.translate(0, -imageHeight);
@@ -63,7 +62,20 @@ export const Sheep = ({
     }
 
     if (image) {
-      p5.image(image, xPos, height + yJumpOffset, imageWidth, imageHeight);
+      p5.translate(xPos, 0);
+
+      if (orientation === "RIGHT") {
+        // rotates the sheep image
+        p5.scale(-1, 1);
+      }
+
+      p5.image(
+        image,
+        -imageWidth / 2,
+        height + yJumpOffset,
+        imageWidth,
+        imageHeight
+      );
     }
   };
 
