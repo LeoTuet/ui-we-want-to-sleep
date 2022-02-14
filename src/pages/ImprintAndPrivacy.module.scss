@@ -1,6 +1,7 @@
 .container {
   background-color: var(--theme-background);
   color: var(--header-color);
+  padding: 0 1.5rem;
 }
 
 a {
@@ -14,10 +15,18 @@ a {
   padding-bottom: 20px;
 }
 
-.title {
+h1 {
   font-size: 50px;
 }
 
-.subHeader {
-  font-size: 20px;
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4 {
+  font-size: 1.2rem;
 }

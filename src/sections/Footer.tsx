@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ExternalLink } from "../components/ExternalLink";
 import { PointedTable } from "../components/PointedTable";
 import styles from "./Footer.module.scss";
 
@@ -63,27 +64,21 @@ export const Footer = () => {
             {
               title: "Frontend",
               detail: (
-                <a
+                <ExternalLink
                   href="https://github.com/LeoTuet/ui-we-want-to-sleep"
-                  target="_blank"
-                  rel="noreferrer"
                   className={styles.link}
-                >
-                  Github
-                </a>
+                  text="GitHub"
+                />
               ),
             },
             {
               title: "Backend",
               detail: (
-                <a
+                <ExternalLink
                   href="https://github.com/LeoTuet/backend-we-want-to-sleep"
-                  target="_blank"
-                  rel="noreferrer"
                   className={styles.link}
-                >
-                  Github
-                </a>
+                  text="GitHub"
+                />
               ),
             },
             {
