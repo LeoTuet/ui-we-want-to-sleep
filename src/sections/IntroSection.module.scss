@@ -2,7 +2,7 @@
 
 .introSection {
   background-color: var(--theme-background);
-  z-index: -11;
+  z-index: 0;
   min-height: 92vh;
   display: flex;
   align-items: center;
@@ -19,10 +19,15 @@
   padding: 1.5rem;
 }
 
+.introSection ~ * {
+  position: relative;
+  z-index: 1;
+}
+
 .introSection::before {
   content: "";
   position: fixed;
-  z-index: -10;
+  z-index: -1;
   background-size: cover;
   background: url("../assets/star-background.svg");
 }
@@ -34,7 +39,7 @@
   flex-wrap: wrap;
   max-width: 600px;
   padding-top: 3rem; // For optical alignment
-  z-index: 10;
+  z-index: 1;
 }
 
 .description {
