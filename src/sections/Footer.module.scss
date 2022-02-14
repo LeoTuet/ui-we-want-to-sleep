@@ -1,5 +1,6 @@
 .footer {
-  background-color: #f4f4f4;
+  background-color: var(--footer-background);
+  color: var(--footer-color);
   text-align: left;
   padding: 3rem 1.5rem;
 }
@@ -32,11 +33,11 @@
 }
 
 .link {
-  color: black;
+  color: var(--footer-link);
 }
 
 .link:visited {
-  color: black;
+  color: var(--footer-link);
 }
 
 .legalTexts {

@@ -1,8 +1,8 @@
 import styles from "./ContentSection.module.scss";
 
-export const ContentSection = () =>{
+export const ContentSection = () => {
     return (
-      <div>
+      <div className={styles.contentSection}>
         <p className={styles.content}>
           Gerade Schüler:innen mit langer Anfahrt beschweren sich immer wieder
           darüber, dass sie absurd früh aufstehen müssen. Selbst, wenn man in

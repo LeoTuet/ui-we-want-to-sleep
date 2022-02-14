@@ -1,4 +1,3 @@
-import "./App.css";
 import { Home } from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { PrivacyStatement } from "./pages/PrivacyStatement";
