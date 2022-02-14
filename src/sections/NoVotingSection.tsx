@@ -28,7 +28,7 @@ export const NoVotingSection = ({
         </div>
 
         <div className={styles.sofaContainer}>
-          <img src={sofa} className={styles.sofa} />
+          <img src={sofa} className={styles.sofa} alt="" />
         </div>
       </div>
     </div>

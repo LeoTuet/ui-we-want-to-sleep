@@ -1,5 +1,10 @@
 .title {
   display: flex;
   align-content: start;
-  padding: 10px
+  padding: 10px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
