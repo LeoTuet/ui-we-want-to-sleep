@@ -5,11 +5,11 @@
 }
 
 .container {
-  background-color: #100522;
+  background-color: var(--theme-background);
   margin: 0 auto;
   max-width: 602px; // + 2px for optical things
   border-radius: 12px;
-  color: white;
+  color: var(--header-color);
   perspective-origin: center;
 }
 

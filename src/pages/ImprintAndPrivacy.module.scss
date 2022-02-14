@@ -1,6 +1,10 @@
 .container {
-  background-color: #100522;
-  color: white;
+  background-color: var(--theme-background);
+  color: var(--header-color);
+}
+
+a {
+  color: var(--theme-color);
 }
 
 .innerContainer {
@@ -11,9 +15,9 @@
 }
 
 .title {
-  font-size: 50px
+  font-size: 50px;
 }
 
 .subHeader {
-  font-size: 20px
+  font-size: 20px;
 }
