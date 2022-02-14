@@ -10,14 +10,14 @@ export const TypingHeading = () => {
   const hlEnd = 14;
 
   const [index, setIndex] = useState(1);
-  const [caretShown, setCaretShown] = useState(false);
+  const [caretBlinking, setCaretBlinking] = useState(false);
 
   useEffect(() => {
     const countdownID = setInterval(() => {
       setIndex((prev) => {
         if (prev === finalText.length) {
           clearInterval(countdownID);
-          setCaretShown(true);
+          setCaretBlinking(true);
         }
         return prev + 1;
       });
@@ -29,7 +29,7 @@ export const TypingHeading = () => {
   return (
     <h1
       className={classNames(styles.heading, {
-        [styles.blinkingCaret]: caretShown,
+        [styles.blinkingCaret]: caretBlinking,
       })}
     >
       {finalText.substring(0, Math.min(index, hlStart))}
