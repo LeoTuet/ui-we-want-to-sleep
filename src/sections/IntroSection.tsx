@@ -1,8 +1,19 @@
 import { TypingHeading } from "../components/TypingHeading";
 import { Sheep } from "../components/Sheep";
 import styles from "./IntroSection.module.scss";
+import { useEffect, useRef, useState } from "react";
+import { Size, useWindowSize } from "../hooks/useWindowSize";
 
 export const IntroSection = () => {
+  const sheep = useRef<HTMLDivElement | null>(null);
+  const size: Size = useWindowSize();
+
+  const [sheepContainerHeight, setSheepContainerHeight] = useState<number>(0);
+
+  useEffect(() => {
+    setSheepContainerHeight(sheep.current?.clientHeight ?? 0);
+  }, [size, sheep.current]);
+
   return (
     <div className={styles.introSection} tabIndex={0}>
       <div className={styles.innerSection}>
@@ -13,7 +24,9 @@ export const IntroSection = () => {
           geht besser.
         </p>
       </div>
-      <Sheep className={styles.sheepCanvas} />
+      <div className={styles.sheepContainer} ref={sheep}>
+        <Sheep className={styles.sheepCanvas} height={sheepContainerHeight} />
+      </div>
     </div>
   );
 };
