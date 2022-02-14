@@ -5,6 +5,29 @@
   color: var(--header-color);
   font-size: 1.75rem;
   @include noSelect;
+
+  &.blinkingCaret::after {
+    content: "_";
+    animation: blinks 1.4s infinite;
+  }
+}
+
+@keyframes blinks {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @media (min-width: 576px) {
@@ -27,12 +50,4 @@
 
 .coloredText {
   color: var(--theme-color);
-}
-
-.cursor {
-  transition: 0.1s;
-}
-
-.hidden {
-  opacity: 0%;
 }
