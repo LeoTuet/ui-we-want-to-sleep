@@ -51,10 +51,6 @@ export const Footer = () => {
               title: "Deployment",
               detail: "Docker Swarm",
             },
-            {
-              title: "Captcha",
-              detail: "hCaptcha",
-            },
           ]}
         />
 
