@@ -1,48 +1,44 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./TypingHeading.module.scss";
 
 export const TypingHeading = () => {
   const finalText = "we.wantToSleep()";
+  // index of first highlighted character
+  const hlStart = 3;
+  // index of first non-highlighted character
+  const hlEnd = 14;
+
   const [index, setIndex] = useState(1);
-  const [timerID, setTimerID] = useState<NodeJS.Timeout>();
-
-  const [underscoreHidden, setUnderscoreHidden] = useState(false);
+  const [caretShown, setCaretShown] = useState(false);
 
   useEffect(() => {
-    setUnderscoreHidden(index % 14 < 7 && index > finalText.length);
-  }, [index]);
+    const countdownID = setInterval(() => {
+      setIndex((prev) => {
+        if (prev === finalText.length) {
+          clearInterval(countdownID);
+          setCaretShown(true);
+        }
+        return prev + 1;
+      });
+    }, 100);
 
-  //   useEffect(() => {
-  //     if (index > finalText.length && timerID) {
-  //       clearInterval(timerID);
-  //     }
-  //   }, [index]);
-
-  useEffect(() => {
-    const countdownID = setInterval(() => setIndex((prev) => prev + 1), 100);
-    setTimerID(countdownID.ref);
-    return () => {
-      clearInterval(countdownID);
-    };
+    return () => clearInterval(countdownID);
   }, []);
 
+  const h1ClassNames = classNames(
+    styles.heading,
+    caretShown && styles.blinkingCaret
+  );
+
   return (
-    <div>
-      <h1 className={styles.heading}>
-        {finalText.substring(0, index < 3 ? index : 3)}
-        <span className={styles.coloredText}>
-          {index >= 3 && finalText.substring(3, index < 14 ? index : 14)}
-        </span>
-        {index >= 14 && finalText.substring(14, index)}
-        <span
-          className={classNames(styles.cursor, {
-            [styles.hidden]: underscoreHidden,
-          })}
-        >
-          _
-        </span>
-      </h1>
-    </div>
+    <h1 className={h1ClassNames}>
+      {finalText.substring(0, Math.min(index, hlStart))}
+      <span className={styles.coloredText}>
+        {index >= hlStart &&
+          finalText.substring(hlStart, Math.min(index, hlEnd))}
+      </span>
+      {index >= hlEnd && finalText.substring(hlEnd, index)}
+    </h1>
   );
 };
