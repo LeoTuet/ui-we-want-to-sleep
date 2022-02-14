@@ -26,13 +26,12 @@ export const TypingHeading = () => {
     return () => clearInterval(countdownID);
   }, []);
 
-  const h1ClassNames = classNames(
-    styles.heading,
-    caretShown && styles.blinkingCaret
-  );
-
   return (
-    <h1 className={h1ClassNames}>
+    <h1
+      className={classNames(styles.heading, {
+        [styles.blinkingCaret]: caretShown,
+      })}
+    >
       {finalText.substring(0, Math.min(index, hlStart))}
       <span className={styles.coloredText}>
         {index >= hlStart &&
