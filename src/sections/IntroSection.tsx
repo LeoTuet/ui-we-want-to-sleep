@@ -8,11 +8,16 @@ export const IntroSection = () => {
   const sheep = useRef<HTMLDivElement | null>(null);
   const size: Size = useWindowSize();
 
-  const [sheepContainerHeight, setSheepContainerHeight] = useState<number>(0);
+  const [sheepContainerSize, setSheepContainerSize] = useState({
+    width: 0,
+    height: 0,
+  });
 
   useEffect(() => {
-    setSheepContainerHeight(sheep.current?.clientHeight ?? 0);
-  }, [size, sheep.current]);
+    if (sheep.current != null) {
+      setSheepContainerSize(sheep.current.getBoundingClientRect());
+    }
+  }, [size]);
 
   return (
     <div className={styles.introSection} tabIndex={0}>
@@ -25,7 +30,7 @@ export const IntroSection = () => {
         </p>
       </div>
       <div className={styles.sheepContainer} ref={sheep}>
-        <Sheep className={styles.sheepCanvas} height={sheepContainerHeight} />
+        <Sheep className={styles.sheepCanvas} size={sheepContainerSize} />
       </div>
     </div>
   );
