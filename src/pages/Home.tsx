@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Ballot } from "../models";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ContentSection } from "../sections/ContentSection";
@@ -25,14 +24,14 @@ export const Home = () => {
     (identifier: string) => {
       dispatch(recordVote(identifier));
     },
-    [dispatch, recordVote]
+    [dispatch]
   );
 
   const handleCaptchaTokenReceive = useCallback(
     (token: string) => {
       dispatch(actions.saveCaptchaToken(token));
     },
-    [dispatch, recordVote]
+    [dispatch]
   );
 
   useEffect(() => {

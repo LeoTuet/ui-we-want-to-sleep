@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PointedTable } from "../components/PointedTable";
 import styles from "./Footer.module.scss";
 
@@ -65,6 +66,7 @@ export const Footer = () => {
                 <a
                   href="https://github.com/LeoTuet/ui-we-want-to-sleep"
                   target="_blank"
+                  rel="noreferrer"
                   className={styles.link}
                 >
                   Github
@@ -77,6 +79,7 @@ export const Footer = () => {
                 <a
                   href="https://github.com/LeoTuet/backend-we-want-to-sleep"
                   target="_blank"
+                  rel="noreferrer"
                   className={styles.link}
                 >
                   Github
@@ -90,13 +93,13 @@ export const Footer = () => {
           ]}
         />
         <div className={styles.legalTexts}>
-          <a href="/impressum" className={styles.link}>
+          <Link to="impressum" className={styles.link}>
             Impressum
-          </a>
+          </Link>
           <p>{" & "}</p>
-          <a href="/impressum" className={styles.link}>
+          <Link to="datenschutz" className={styles.link}>
             Datenschutz
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
