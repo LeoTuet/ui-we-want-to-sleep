@@ -9,12 +9,16 @@ const imageWidth = 198;
 
 export const Sheep = ({
   className,
-  height,
+  size: { width, height },
 }: {
   className?: string;
-  height: number;
+  size: {
+    width: number;
+    height: number;
+  };
 }) => {
-  const [image, setImage] = useState<p5Types.Image | undefined>(undefined);
+  const [image, setImage] = useState<p5Types.Image | null>(null);
+  const [lastSize, setLastSize] = useState({ width: 0, height: 0 });
 
   let xPos = 200;
   let yJumpOffset = 0;
@@ -23,20 +27,31 @@ export const Sheep = ({
   let orientation: "LEFT" | "RIGHT" = "RIGHT";
 
   const setup = (p5: p5Types, canvasParentRef: Element) => {
-    p5.createCanvas(p5.windowWidth, height).parent(canvasParentRef);
+    p5.createCanvas(width, height).parent(canvasParentRef);
     p5.loadImage(sheep, (img) => {
       setImage(img);
     });
   };
 
   const draw = (p5: p5Types) => {
+    if (lastSize.height !== height || lastSize.width !== width) {
+      setLastSize({ width, height });
+      p5.resizeCanvas(width, height);
+      if (width < xPos + imageWidth) {
+        const newPos = width - imageWidth;
+        if (newPos > 0) {
+          xPos = newPos;
+        }
+      }
+    }
+
     p5.translate(0, -imageHeight);
 
     p5.background(p5.color("#100522"));
 
     if (xPos < -imageWidth) {
-      xPos = p5.windowWidth; // To jump back to the right
-    } else if (xPos > p5.windowWidth) {
+      xPos = width; // To jump back to the right
+    } else if (xPos > width) {
       xPos = -imageWidth; // To jump back to the left
     }
 
@@ -91,16 +106,6 @@ export const Sheep = ({
     }
   };
 
-  const windowResized = (p5: p5Types) => {
-    p5.resizeCanvas(p5.windowWidth, height);
-    if (p5.windowWidth < xPos + imageWidth) {
-      const newPos = p5.windowWidth - imageWidth;
-      if (newPos > 0) {
-        xPos = newPos;
-      }
-    }
-  };
-
   const keyPressed = (p5: p5Types) => {
     if (p5.keyIsDown(p5.UP_ARROW) || p5.key === "w") {
       speed = -40;
@@ -112,7 +117,6 @@ export const Sheep = ({
       setup={setup}
       draw={draw}
       mouseClicked={mouseClicked}
-      windowResized={windowResized}
       keyPressed={keyPressed}
       className={className}
     />
