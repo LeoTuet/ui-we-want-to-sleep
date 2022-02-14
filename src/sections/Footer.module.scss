@@ -3,6 +3,8 @@
   color: var(--footer-color);
   text-align: left;
   padding: 3rem 1.5rem;
+  z-index: 1;
+  position: relative;
 }
 
 .innerFooter {
