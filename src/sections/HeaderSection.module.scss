@@ -1,8 +1,10 @@
-.title {
+.title,
+.title:visited {
   display: flex;
   align-content: start;
   padding: 10px;
   text-decoration: none;
+  color: var(--header-color);
 
   &:hover {
     text-decoration: underline;
