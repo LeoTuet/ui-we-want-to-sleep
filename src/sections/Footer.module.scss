@@ -2,9 +2,15 @@
   background-color: var(--footer-background);
   color: var(--footer-color);
   text-align: left;
-  padding: 3rem 1.5rem;
   z-index: 1;
   position: relative;
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .footer {
+    padding: 2rem 1.5rem;
+  }
 }
 
 .innerFooter {
@@ -31,7 +37,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 16px;
-  margin: 2rem 0 0.5rem 0;
+  margin: 2.5rem 0 0.5rem 0;
 }
 
 .link {

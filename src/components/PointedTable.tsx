@@ -19,7 +19,6 @@ export const PointedTable = ({ rows }: PointedTableProps) => {
           <div className={styles.pointDividerContainer}>
             <span className={styles.pointDivider}></span>
           </div>
-
           <p>{row.detail}</p>
         </div>
       ))}
