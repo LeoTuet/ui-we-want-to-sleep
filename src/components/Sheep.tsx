@@ -55,12 +55,15 @@ export const Sheep = ({
       xPos = -imageWidth; // To jump back to the left
     }
 
-    if (p5.keyIsDown(p5.RIGHT_ARROW) || (p5.key === "d" && p5.keyIsDown)) {
+    if (
+      p5.keyIsDown(p5.RIGHT_ARROW) ||
+      (p5.key === "d" && p5.keyIsDown(p5.keyCode))
+    ) {
       xPos += 10;
       orientation = "RIGHT";
     } else if (
       p5.keyIsDown(p5.LEFT_ARROW) ||
-      (p5.key === "a" && p5.keyIsDown)
+      (p5.key === "a" && p5.keyIsDown(p5.keyCode))
     ) {
       xPos -= 10;
       orientation = "LEFT";
