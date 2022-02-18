@@ -26,6 +26,20 @@ export const Sheep = ({
   let gravity = 3;
   let orientation: "LEFT" | "RIGHT" = "RIGHT";
 
+  const pressedKeys = {
+    a: false,
+    d: false,
+    left: false,
+    right: false,
+
+    direction(): "LEFT" | "RIGHT" | null {
+      const isLeft = this.a || this.left;
+      const isRight = this.d || this.right;
+      // don't move when neither or both is pressed
+      return isLeft === isRight ? null : isLeft ? "LEFT" : "RIGHT";
+    },
+  };
+
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(width, height).parent(canvasParentRef);
     p5.loadImage(sheep, (img) => {
@@ -55,18 +69,10 @@ export const Sheep = ({
       xPos = -imageWidth; // To jump back to the left
     }
 
-    if (
-      p5.keyIsDown(p5.RIGHT_ARROW) ||
-      (p5.key === "d" && p5.keyIsDown(p5.keyCode))
-    ) {
-      xPos += 10;
-      orientation = "RIGHT";
-    } else if (
-      p5.keyIsDown(p5.LEFT_ARROW) ||
-      (p5.key === "a" && p5.keyIsDown(p5.keyCode))
-    ) {
-      xPos -= 10;
-      orientation = "LEFT";
+    const moveDirection = pressedKeys.direction();
+    if (moveDirection != null) {
+      orientation = moveDirection;
+      xPos += moveDirection === "RIGHT" ? 10 : -10;
     }
 
     if (speed !== 0) {
@@ -110,8 +116,40 @@ export const Sheep = ({
   };
 
   const keyPressed = (p5: p5Types) => {
-    if (p5.keyIsDown(p5.UP_ARROW) || p5.key === "w") {
-      speed = -40;
+    switch (p5.key) {
+      case "a":
+        pressedKeys.a = true;
+        break;
+      case "d":
+        pressedKeys.d = true;
+        break;
+      case "ArrowLeft":
+        pressedKeys.left = true;
+        break;
+      case "ArrowRight":
+        pressedKeys.right = true;
+        break;
+      case "w":
+      case "ArrowUp":
+        speed = -40;
+        break;
+    }
+  };
+
+  const keyReleased = function (p5: p5Types) {
+    switch (p5.key) {
+      case "a":
+        pressedKeys.a = false;
+        break;
+      case "d":
+        pressedKeys.d = false;
+        break;
+      case "ArrowLeft":
+        pressedKeys.left = false;
+        break;
+      case "ArrowRight":
+        pressedKeys.right = false;
+        break;
     }
   };
 
@@ -121,6 +159,7 @@ export const Sheep = ({
       draw={draw}
       mouseClicked={mouseClicked}
       keyPressed={keyPressed}
+      keyReleased={keyReleased}
       className={className}
     />
   );
