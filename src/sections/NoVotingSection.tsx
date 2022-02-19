@@ -1,17 +1,24 @@
-import styles from "./NoVotingSection.module.scss";
-import sofa from "../assets/sofa.png";
+import {CouchPanel} from "../components/CouchPanel";
 
 export interface NoVotingSectionProps {
-  error?: BallotError;
+  type?: BallotError;
 }
 
 export type BallotError = "NO_RUNNING_BALLOT" | "SERVER_ERROR";
 
 export const NoVotingSection = ({
-  error = "NO_RUNNING_BALLOT",
-}: NoVotingSectionProps) => {
-  const getErrorText = (error: BallotError): string => {
-    switch (error) {
+                                  type = "NO_RUNNING_BALLOT",
+                                }: NoVotingSectionProps) => {
+  const getMainText = (type: BallotError): string => {
+    switch (type) {
+      case "NO_RUNNING_BALLOT":
+        return "Lehn' dich zurück!";
+      case "SERVER_ERROR":
+        return "Kontaktiere uns bitte!"
+    }
+  };
+  const getSubText = (type: BallotError): string => {
+    switch (type) {
       case "NO_RUNNING_BALLOT":
         return "Aktuell wird nicht abgestimmt. Komm’ vielleicht später noch mal!";
       case "SERVER_ERROR":
@@ -20,17 +27,6 @@ export const NoVotingSection = ({
   };
 
   return (
-    <div className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.textContainer}>
-          <h4>Lehn’ dich zurück!</h4>
-          <p>{getErrorText(error)}</p>
-        </div>
-
-        <div className={styles.sofaContainer}>
-          <img src={sofa} className={styles.sofa} alt="" />
-        </div>
-      </div>
-    </div>
+    <CouchPanel mainText={getMainText(type)} subText={getSubText(type)}/>
   );
 };
