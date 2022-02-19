@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { Api } from "../network/Api";
+import {configureStore} from "@reduxjs/toolkit";
+import {Api} from "../network/Api";
 
 import {
   ballotSlice,
@@ -13,7 +13,11 @@ import {
   initialState as tokenState,
 } from "./token";
 
-import { voteSlice, VoteState, initialState as voteState } from "./vote";
+import {
+  voteSlice,
+  VoteState,
+  initialState as voteState
+} from "./vote";
 
 export type RootState = {
   ballot: BallotState;

@@ -7,6 +7,7 @@ import {
 
 import { RootState, ThunkExtra } from "./rootStore";
 import { selectToken } from "./token";
+import {selectBallot} from "./ballot";
 
 export interface VoteState {
   voteError?: SerializedError;
@@ -26,8 +27,12 @@ export const recordVote = createAsyncThunk<void, string, ThunkExtra>(
     const { token, captchaToken } = selectToken(getState() as RootState);
     const { ballot } = selectBallot(getState() as RootState);
 
-    if (!ballot || !token || !captchaToken) {
-      return;
+    if (!ballot) {
+      throw new Error("Ballot Missing");
+    } else if (!token) {
+      throw new Error("Token Missing")
+    } else if (!captchaToken) {
+      throw new Error("Captcha Missing")
     }
 
     await api.voteApi.recordVote(identifier, ballot._id, token, captchaToken);
@@ -37,7 +42,8 @@ export const recordVote = createAsyncThunk<void, string, ThunkExtra>(
 export const voteSlice = createSlice({
   name: "vote",
   initialState,
-  reducers: {},
+  reducers: {
+  },
   extraReducers: (builder) => {
     builder.addCase(recordVote.pending, (state) => {
       state.voteError = undefined;
@@ -45,6 +51,7 @@ export const voteSlice = createSlice({
     });
     builder.addCase(recordVote.fulfilled, (state, action) => {
       state.voteLoading = false;
+      state.voteResult = "SUCCESS"
     });
     builder.addCase(recordVote.rejected, (state, action) => {
       state.voteError = action.error;
@@ -58,10 +65,10 @@ export const actions = {
   ...voteSlice.actions
 };
 
-export const selectBallotStore = (state: RootState) => state.ballot;
+export const selectVoteStore = (state: RootState) => state.vote;
 
-export const selectBallot = createSelector(selectBallotStore, (store) => ({
-  ballot: store.runningBallot,
-  ballotLoading: store.ballotLoading,
-  ballotError: store.ballotError,
+export const selectVote = createSelector(selectVoteStore, (store) => ({
+  voteError: store.voteError,
+  voteLoading: store.voteLoading,
+  voteResult: store.voteResult
 }));
