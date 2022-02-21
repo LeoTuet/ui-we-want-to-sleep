@@ -26,6 +26,23 @@ export const Sheep = ({
   let gravity = 3;
   let orientation: "LEFT" | "RIGHT" = "RIGHT";
 
+  const keyMap = {
+    left: ["a", "ArrowLeft"],
+    right: ["d", "ArrowRight"],
+    up: ["w", "ArrowUp"],
+  };
+
+  const pressedKeys: Record<string, boolean> = {};
+
+  const isPressed = (keys: string[]) => keys.some((key) => pressedKeys[key]);
+
+  const getDirection = (): "LEFT" | "RIGHT" | null => {
+    const isLeft = isPressed(keyMap.left);
+    const isRight = isPressed(keyMap.right);
+    // don't move when neither or both is pressed
+    return isLeft === isRight ? null : isLeft ? "LEFT" : "RIGHT";
+  };
+
   const setup = (p5: p5Types, canvasParentRef: Element) => {
     p5.createCanvas(width, height).parent(canvasParentRef);
     p5.loadImage(sheep, (img) => {
@@ -55,18 +72,10 @@ export const Sheep = ({
       xPos = -imageWidth; // To jump back to the left
     }
 
-    if (
-      p5.keyIsDown(p5.RIGHT_ARROW) ||
-      (p5.key === "d" && p5.keyIsDown(p5.keyCode))
-    ) {
-      xPos += 10;
-      orientation = "RIGHT";
-    } else if (
-      p5.keyIsDown(p5.LEFT_ARROW) ||
-      (p5.key === "a" && p5.keyIsDown(p5.keyCode))
-    ) {
-      xPos -= 10;
-      orientation = "LEFT";
+    const moveDirection = getDirection();
+    if (moveDirection != null) {
+      orientation = moveDirection;
+      xPos += moveDirection === "RIGHT" ? 10 : -10;
     }
 
     if (speed !== 0) {
@@ -110,9 +119,15 @@ export const Sheep = ({
   };
 
   const keyPressed = (p5: p5Types) => {
-    if (p5.keyIsDown(p5.UP_ARROW) || p5.key === "w") {
+    pressedKeys[p5.key] = true;
+
+    if (keyMap.up.includes(p5.key)) {
       speed = -40;
     }
+  };
+
+  const keyReleased = (p5: p5Types) => {
+    pressedKeys[p5.key] = false;
   };
 
   return (
@@ -121,6 +136,7 @@ export const Sheep = ({
       draw={draw}
       mouseClicked={mouseClicked}
       keyPressed={keyPressed}
+      keyReleased={keyReleased}
       className={className}
     />
   );
