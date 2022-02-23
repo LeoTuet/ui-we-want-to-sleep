@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useCallback, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
-import { ContentSection } from "../sections/ContentSection";
-import { IntroSection } from "../sections/IntroSection";
-import { VotingSection } from "../sections/VotingSection";
-import { fetchRunningBallot, selectBallot } from "../stores/ballot";
-import { BallotError, NoVotingSection } from "../sections/NoVotingSection";
+import {ContentSection} from "../sections/ContentSection";
+import {IntroSection} from "../sections/IntroSection";
+import {VotingSection} from "../sections/VotingSection";
+import {fetchRunningBallot, selectBallot} from "../stores/ballot";
+import {BallotError, NoVotingSection} from "../sections/NoVotingSection";
 import {recordVote, selectVote} from "../stores/vote";
-import { actions } from "../stores/token";
-import { useParams } from "react-router-dom";
+import {actions} from "../stores/token";
+import {useParams} from "react-router-dom";
 import {CouchPanel} from "../components/CouchPanel";
 
 export const Home = () => {
@@ -16,11 +16,28 @@ export const Home = () => {
   const vote = useSelector(selectVote);
   const dispatch = useDispatch();
 
-  let { token } = useParams();
+  let {token} = useParams();
 
   useEffect(() => {
-    dispatch(fetchRunningBallot());
+    dispatch(fetchRunningBallot())
   }, []);
+
+  // For Theme Sync
+  useEffect(() => {
+    let theme = "light";
+    if (localStorage.getItem("theme")) {
+      if (localStorage.getItem("theme") === "dark") {
+        theme = "dark";
+      }
+    } else if (!window.matchMedia) {
+      return;
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
+    }
+    if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  }, [])
 
   const handleVote = useCallback(
     (identifier: string) => {
@@ -44,8 +61,8 @@ export const Home = () => {
 
   return (
     <div>
-      <IntroSection />
-      <ContentSection />
+      <IntroSection/>
+      <ContentSection/>
       {ballot.ballot && !ballot.ballotError && !vote.voteResult && (
         <VotingSection
           onTokenReceive={handleCaptchaTokenReceive}
@@ -53,7 +70,7 @@ export const Home = () => {
           onVote={handleVote}
         />
       )}
-      {ballot.ballotError && !vote.voteResult &&  (
+      {ballot.ballotError && !vote.voteResult && (
         <NoVotingSection
           type={(ballot.ballotError.message ?? "") as BallotError}
         />
