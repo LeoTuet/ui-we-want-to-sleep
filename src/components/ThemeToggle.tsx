@@ -28,9 +28,8 @@ const ThemeToggle = () => {
     }
   }, [])
 
-  return (
-    <div onClick={handleChangeTheme}>
-      {isDark && (<img src={isDark ? halfMoon : sheep} alt={"Moon Icon for Theme Toggle"} width={"50"}/>)}
+  return (<div onClick={handleChangeTheme}>
+      <img src={isDark ? halfMoon : sheep} alt={"Moon Icon for Theme Toggle"} width={"50"}/>
     </div>
   );
 };
