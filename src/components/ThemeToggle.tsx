@@ -1,35 +1,42 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import halfMoon from "../assets/half-moon.png"
-import sheep from "../assets/sheep.png"
+import React, { useEffect, useState } from "react";
+import halfMoon from "../assets/half-moon.png";
+import sheep from "../assets/sheep.png";
+import { Theme } from "../models";
 
 const ThemeToggle = () => {
-  const [isDark, setIsDark] = useState(false)
+  const [theme, setTheme] = useState<Theme>();
   useEffect(() => {
     // Checks initial Theme
-    if (document.documentElement.getAttribute("data-theme") == "dark") {
-      console.log("setting")
-      setIsDark(true)
-      localStorage.setItem("theme", "dark")
-    } else {
-      setIsDark(false)
-      localStorage.setItem("theme", "light")
-    }
-  }, [])
+    const theme = document.documentElement.getAttribute("data-theme") as Theme;
+    setTheme(theme);
+  }, []);
 
-  const handleChangeTheme = useCallback(() => {
-    if (localStorage.getItem("theme") === "dark") {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem("theme", "light")
-      setIsDark(false)
+  const handleChangeTheme = () => {
+    if (localStorage.getItem("theme")) {
+      const newTheme = getOppositeTheme(localStorage.getItem("theme") as Theme);
+      document.documentElement.setAttribute("data-theme", newTheme as string);
+      localStorage.removeItem("theme");
     } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem("theme", "dark")
-      setIsDark(true)
+      const newTheme = getOppositeTheme(
+        document.documentElement.getAttribute("data-theme") as Theme
+      );
+      document.documentElement.setAttribute("data-theme", newTheme as string);
+      localStorage.setItem("theme", newTheme as string);
     }
-  }, [])
+  };
 
-  return (<div onClick={handleChangeTheme}>
-      <img src={isDark ? halfMoon : sheep} alt={"Moon Icon for Theme Toggle"} width={"50"}/>
+  const getOppositeTheme = (oldTheme: Theme) => {
+    if (oldTheme === "dark") return "light";
+    else if (oldTheme === "light") return "dark";
+  };
+
+  return (
+    <div onClick={handleChangeTheme}>
+      <img
+        src={theme ? halfMoon : sheep}
+        alt={"Moon Icon for Theme Toggle"}
+        width={"50"}
+      />
     </div>
   );
 };

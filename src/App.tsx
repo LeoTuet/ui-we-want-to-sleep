@@ -4,25 +4,22 @@ import { PrivacyStatement } from "./pages/PrivacyStatement";
 import { Imprint } from "./pages/Imprint";
 import { Footer } from "./sections/Footer";
 import { useEffect } from "react";
+import { Theme } from "./models";
 
 function App() {
   const { pathname } = useLocation();
   useEffect(() => window.scrollTo(0, 0), [pathname]);
   // For Theme Sync
   useEffect(() => {
-    let theme = "light";
+    let theme: Theme = "light"
     if (localStorage.getItem("theme")) {
-      if (localStorage.getItem("theme") === "dark") {
-        theme = "dark";
-      }
-    } else if (!window.matchMedia) {
-      return;
+      theme = localStorage.getItem("theme") as Theme
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       theme = "dark";
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      theme = "light"
     }
-    if (theme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
+      document.documentElement.setAttribute("data-theme", theme);
   }, [])
 
   return (
