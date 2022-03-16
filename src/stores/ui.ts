@@ -7,7 +7,7 @@ export interface UIState {
 }
 
 export const initialState: UIState = {
-  theme: "light",
+  theme: "default",
 };
 
 export const uiSlice = createSlice({
@@ -20,24 +20,9 @@ export const uiSlice = createSlice({
       }
     },
     toggleTheme(state) {
-      if (localStorage.getItem("theme")) {
-        const newTheme = getOppositeTheme(
-          localStorage.getItem("theme") as Theme
-        );
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.removeItem("theme");
-        state.theme = newTheme;
-      } else {
-        const newTheme = getOppositeTheme(
-          document.documentElement.getAttribute("data-theme") as Theme
-        );
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-        state.theme = newTheme;
-      }
+      state.theme = state.theme == 'light' ? 'dark' : 'light'
     },
   },
-  extraReducers: (builder) => {},
 });
 
 export const { reducer } = uiSlice;
@@ -51,7 +36,4 @@ export const selectUI = createSelector(selectUIStore, (store) => ({
   theme: store.theme,
 }));
 
-const getOppositeTheme = (oldTheme: Theme): Theme => {
-  if (oldTheme === "dark") return "light";
-  else return "dark";
-};
+
