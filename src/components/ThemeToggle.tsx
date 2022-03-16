@@ -1,39 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import halfMoon from "../assets/half-moon.png";
 import sheep from "../assets/sheep.png";
-import { Theme } from "../models";
+import { selectUIStore, actions } from "../stores/ui";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>();
-  useEffect(() => {
-    // Checks initial Theme
-    const theme = document.documentElement.getAttribute("data-theme") as Theme;
-    setTheme(theme);
-  }, []);
+  const uiStore = useSelector(selectUIStore);
+  const dispatch = useDispatch();
 
   const handleChangeTheme = () => {
-    if (localStorage.getItem("theme")) {
-      const newTheme = getOppositeTheme(localStorage.getItem("theme") as Theme);
-      document.documentElement.setAttribute("data-theme", newTheme as string);
-      localStorage.removeItem("theme");
-    } else {
-      const newTheme = getOppositeTheme(
-        document.documentElement.getAttribute("data-theme") as Theme
-      );
-      document.documentElement.setAttribute("data-theme", newTheme as string);
-      localStorage.setItem("theme", newTheme as string);
-    }
-  };
-
-  const getOppositeTheme = (oldTheme: Theme) => {
-    if (oldTheme === "dark") return "light";
-    else if (oldTheme === "light") return "dark";
+    dispatch(actions.toggleTheme());
   };
 
   return (
     <div onClick={handleChangeTheme}>
       <img
-        src={theme ? halfMoon : sheep}
+        src={uiStore.theme === "light" ? halfMoon : sheep}
         alt={"Moon Icon for Theme Toggle"}
         width={"50"}
       />
