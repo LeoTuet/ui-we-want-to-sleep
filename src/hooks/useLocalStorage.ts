@@ -1,26 +1,24 @@
-import React from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useLocalStorage = (keyName: string) => {
-  const [storedValue, setStoredValue] = React.useState(() => {
+  const [storedValue, setStoredValue] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
     try {
       const value = window.localStorage.getItem(keyName);
+      setStoredValue(value ? value : undefined);
+    } catch {}
+  }, [keyName]);
 
-      if (value) {
-        return JSON.parse(value);
-      } else {
-        return null;
-      }
-    } catch (err) {
-      return null;
-    }
-  });
+  const setValueForKey = useCallback(
+    (newValue: string) => {
+      try {
+        window.localStorage.setItem(keyName, newValue);
+      } catch (err) {}
+      setStoredValue(newValue);
+    },
+    [keyName]
+  );
 
-  const setValue = (newValue: string) => {
-    try {
-      window.localStorage.setItem(keyName, JSON.stringify(newValue));
-    } catch (err) {}
-    setStoredValue(newValue);
-  };
-
-  return [storedValue, setValue];
+  return [storedValue, setValueForKey];
 };
