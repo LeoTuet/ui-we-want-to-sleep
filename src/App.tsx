@@ -4,23 +4,13 @@ import { PrivacyStatement } from "./pages/PrivacyStatement";
 import { Imprint } from "./pages/Imprint";
 import { Footer } from "./sections/Footer";
 import { useEffect } from "react";
-import { Theme } from "./models";
+import { useTheme } from "./hooks/useTheme";
 
 function App() {
   const { pathname } = useLocation();
   useEffect(() => window.scrollTo(0, 0), [pathname]);
-  // For Theme Sync
-  useEffect(() => {
-    let theme: Theme = "light"
-    if (localStorage.getItem("theme")) {
-      theme = localStorage.getItem("theme") as Theme
-    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      theme = "dark";
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      theme = "light"
-    }
-      document.documentElement.setAttribute("data-theme", theme);
-  }, [])
+
+  useTheme();
 
   return (
     <div className="App">

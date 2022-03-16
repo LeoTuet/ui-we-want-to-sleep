@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
+import { selectUIStore, actions } from "../stores/ui";
 import halfMoon from "../assets/half-moon.png";
 import sheep from "../assets/sheep.png";
-import { selectUIStore, actions } from "../stores/ui";
 
 const ThemeToggle = () => {
-  const uiStore = useSelector(selectUIStore);
+  const { theme } = useSelector(selectUIStore);
   const dispatch = useDispatch();
 
   const handleChangeTheme = () => {
@@ -14,7 +14,7 @@ const ThemeToggle = () => {
   return (
     <div onClick={handleChangeTheme}>
       <img
-        src={uiStore.theme === "light" ? halfMoon : sheep}
+        src={theme === "light" ? halfMoon : sheep}
         alt={"Moon Icon for Theme Toggle"}
         width={"50"}
       />
