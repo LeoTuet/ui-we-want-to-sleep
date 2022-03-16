@@ -1,32 +1,12 @@
-.container {
-  background-color: var(--theme-background);
-  color: var(--header-color);
-  padding: 0 1.5rem;
+.legalTextContainer {
+  background-color: var(--background);
 }
 
-a {
-  color: var(--theme-color);
-}
-
-.innerContainer {
-  text-align: left;
-  max-width: 800px;
+.legalText {
+  max-width: 600px;
   margin: 0 auto;
-  padding-bottom: 20px;
-}
-
-h1 {
-  font-size: 50px;
-}
-
-h2 {
-  font-size: 1.8rem;
-}
-
-h3 {
-  font-size: 1.4rem;
-}
-
-h4 {
-  font-size: 1.2rem;
+  padding: 4rem 1.5rem;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 18px;
 }

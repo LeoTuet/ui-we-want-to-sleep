@@ -1,9 +1,9 @@
-import { TypingHeading } from "../components/TypingHeading";
-import { Sheep } from "../components/Sheep";
-import styles from "./IntroSection.module.scss";
+import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
+import { Sheep } from "../components/Sheep";
+import { TypingHeading } from "../components/TypingHeading";
 import { Size, useWindowSize } from "../hooks/useWindowSize";
-import halfMoon from "../assets/half-moon.png"
+import styles from "./IntroSection.module.scss";
 import ThemeToggle from "../components/ThemeToggle";
 
 export const IntroSection = () => {
@@ -22,12 +22,15 @@ export const IntroSection = () => {
   }, [size]);
 
   return (
-    <div className={styles.introSection} tabIndex={0}>
+    <div
+      className={classNames(styles.starBackground, styles.minStarBackground)}
+      tabIndex={0}
+    >
       <div className={styles.themeToggleContainer}>
         <ThemeToggle />
       </div>
       <div className={styles.innerSection}>
-        <TypingHeading />
+        <TypingHeading finalText={"we.wantToSleep()"} hlStart={3} hlEnd={14} />
         <p className={styles.description}>
           Es ist wissenschaftlich bewiesen, dass das Gehirn erst ab ca. 9 Uhr
           richtig leistungsfähig ist. Unsere Berufsschule startet um 7:30. Das
