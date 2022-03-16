@@ -13,4 +13,4 @@ export interface VoteOption {
   label: string;
 }
 
-export type Theme = "light" | "dark" | "default"
+export type Theme = "light" | "dark";

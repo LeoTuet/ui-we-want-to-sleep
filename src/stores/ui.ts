@@ -7,7 +7,7 @@ export interface UIState {
 }
 
 export const initialState: UIState = {
-  theme: "default",
+  theme: "light",
 };
 
 export const uiSlice = createSlice({
@@ -20,7 +20,7 @@ export const uiSlice = createSlice({
       }
     },
     toggleTheme(state) {
-      state.theme = state.theme == 'light' ? 'dark' : 'light'
+      state.theme = state.theme == "light" ? "dark" : "light";
     },
   },
 });
@@ -35,5 +35,3 @@ export const selectUIStore = (state: RootState) => state.ui;
 export const selectUI = createSelector(selectUIStore, (store) => ({
   theme: store.theme,
 }));
-
-
