@@ -1,28 +1,19 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {Api} from "../network/Api";
-
+import { configureStore } from "@reduxjs/toolkit";
+import { Api } from "../network/Api";
 import {
   ballotSlice,
   BallotState,
   initialState as ballotState,
 } from "./ballot";
-
-import {
-  tokenSlice,
-  TokenState,
-  initialState as tokenState,
-} from "./token";
-
-import {
-  voteSlice,
-  VoteState,
-  initialState as voteState
-} from "./vote";
+import { initialState as tokenState, tokenSlice, TokenState } from "./token";
+import { initialState as uiState, uiSlice, UIState } from "./ui";
+import { initialState as voteState, voteSlice, VoteState } from "./vote";
 
 export type RootState = {
   ballot: BallotState;
   token: TokenState;
   vote: VoteState;
+  ui: UIState;
 };
 
 export type ThunkExtra = {
@@ -37,6 +28,7 @@ export const createStore = (api: Api) =>
       ballot: ballotSlice.reducer,
       token: tokenSlice.reducer,
       vote: voteSlice.reducer,
+      ui: uiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -52,4 +44,5 @@ export const initialRootState: RootState = {
   ballot: ballotState,
   token: tokenState,
   vote: voteState,
+  ui: uiState,
 };
