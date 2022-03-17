@@ -1,5 +1,39 @@
 @use "src/theme/star-background";
 
-.minStarBackground {
-    min-height: 50vh
+.adjustedStarBackground {
+  min-height: 50vh;
+  position: sticky;
+  top: 0
+}
+
+.link,
+.link:visited {
+  display: flex;
+  align-content: start;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--header-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.navigation {
+  display: flex;
+  margin: 1rem;
+}
+
+.sheep {
+  height: 50px;
+  // for visual alignment
+  margin: 0 1rem 0 1.3rem;
+}
+
+.navigationBar {
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
 }

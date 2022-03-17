@@ -7,11 +7,10 @@ export const PrivacyStatement = () => {
   return (
     <div>
       <LegalHeader text={"unser.Datenschutz()"} hlStart={6} hlEnd={17} />
-      <div className={styles.legalTextContainer}>
+      <div className={styles.legalTextBackground}>
         <div className={styles.legalText}>
-          <div>
-            <h1>Daten&shy;schutz&shy;erklärung</h1>
-            <h2 id="m1870">Einleitung</h2>
+          <div className={styles.textSection}>
+            <strong className={styles.textSectionHeader} id="m1870">Einleitung</strong>
             <p>
               Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
               aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend
@@ -19,6 +18,8 @@ export const PrivacyStatement = () => {
               welchem Umfang im Rahmen der Bereitstellung unserer Applikation
               verarbeiten.
             </p>
+          </div>
+          <div>
             <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
             <p>Stand: 7. Februar 2022</p>
             <h2>Inhaltsübersicht</h2>

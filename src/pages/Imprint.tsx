@@ -6,8 +6,8 @@ export const Imprint = () => {
   return (
     <div>
       {/* <HeaderSection /> */}
-      <LegalHeader text={"unser.Impressum()"} hlStart={6} hlEnd={15} />
-      <div className={styles.legalTextContainer}>
+      <LegalHeader text={"unser.Impressum()"} hlStart={6} hlEnd={15}/>
+      <div className={styles.legalTextBackground}>
         <div className={styles.legalText}>
           <div>
             <h2>Angaben gemäß § 5 TMG</h2>
