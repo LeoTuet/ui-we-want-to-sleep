@@ -24,38 +24,36 @@
   --selection-text: #100522;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --theme-color: #fff153;
-    --theme-background: #100522;
+[data-theme="dark"] {
+  --theme-color: #fff153;
+  --theme-background: #100522;
 
-    --color: white;
-    --header-color: white;
-    --footer-color: white;
+  --color: white;
+  --header-color: white;
+  --footer-color: white;
 
-    --background: #111111;
-    --header-background: #282c34;
-    --footer-background: #09090a;
+  --background: #111111;
+  --header-background: #282c34;
+  --footer-background: #09090a;
 
-    --link: white;
-    --header-link: var(--theme-color);
-    --footer-link: white;
+  --link: white;
+  --header-link: var(--theme-color);
+  --footer-link: white;
 
-    --captcha-background: #282c34;
-    --point-divider: rgba(255, 255, 255, 0.25);
+  --captcha-background: #282c34;
+  --point-divider: rgba(255, 255, 255, 0.25);
 
-    --vote-button-background: #ffef3f;
-    --vote-button-color: black;
+  --vote-button-background: #ffef3f;
+  --vote-button-color: black;
 
-    --selection-background: var(--theme-color);
-    --selection-text: #100522;
-  }
+  --selection-background: var(--theme-color);
+  --selection-text: #100522;
 }
 
 body {
   margin: 0;
   font-family: "SpaceMono", source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
+  "Courier New", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
@@ -81,12 +79,12 @@ a:visited {
   font-family: "SpaceMono";
   font-weight: 400;
   src: url("./assets/font/Space_Mono/space-mono-regular.woff2") format("woff2"),
-    url("./assets/font/Space_Mono/space-mono-regular.woff") format("woff");
+  url("./assets/font/Space_Mono/space-mono-regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "SpaceMono";
   font-weight: 700;
   src: url("./assets/font/Space_Mono/space-mono-bold.woff2") format("woff2"),
-    url("./assets/font/Space_Mono/space-mono-bold.woff") format("woff");
+  url("./assets/font/Space_Mono/space-mono-bold.woff") format("woff");
 }
