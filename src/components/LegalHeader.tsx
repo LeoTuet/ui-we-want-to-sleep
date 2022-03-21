@@ -4,6 +4,7 @@ import styles from "./LegalHeader.module.scss";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import sheep from "../assets/sheep.png";
+import { StarBackground } from "./StarBackground";
 
 interface LegalHeaderProps {
   text: string;
@@ -13,10 +14,7 @@ interface LegalHeaderProps {
 
 export const LegalHeader = ({ text, hlStart, hlEnd }: LegalHeaderProps) => {
   return (
-    <div
-      className={classNames(styles.starBackground, styles.adjustedStarBackground)}
-      tabIndex={0}
-    >
+    <StarBackground className={styles.adjustedStarBackground}>
       <div className={styles.navigationBar}>
         <div className={styles.navigation}>
           <Link to="/" className={styles.link}>
@@ -29,6 +27,6 @@ export const LegalHeader = ({ text, hlStart, hlEnd }: LegalHeaderProps) => {
         </div>
       </div>
       <TypingHeading finalText={text} hlStart={hlStart} hlEnd={hlEnd} />
-    </div>
+    </StarBackground>
   );
 };

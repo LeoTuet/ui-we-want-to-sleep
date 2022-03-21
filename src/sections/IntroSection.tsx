@@ -5,6 +5,7 @@ import { TypingHeading } from "../components/TypingHeading";
 import { Size, useWindowSize } from "../hooks/useWindowSize";
 import styles from "./IntroSection.module.scss";
 import ThemeToggle from "../components/ThemeToggle";
+import { StarBackground } from "../components/StarBackground";
 
 export const IntroSection = () => {
   const sheep = useRef<HTMLDivElement | null>(null);
@@ -22,10 +23,7 @@ export const IntroSection = () => {
   }, [size]);
 
   return (
-    <div
-      className={classNames(styles.starBackground, styles.minStarBackground)}
-      tabIndex={0}
-    >
+    <StarBackground className={styles.minStarBackground}>
       <div className={styles.themeToggleContainer}>
         <ThemeToggle />
       </div>
@@ -40,6 +38,6 @@ export const IntroSection = () => {
       <div className={styles.sheepContainer} ref={sheep}>
         <Sheep className={styles.sheepCanvas} size={sheepContainerSize} />
       </div>
-    </div>
+    </StarBackground>
   );
 };
