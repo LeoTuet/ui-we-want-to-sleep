@@ -1,0 +1,52 @@
+{
+  "intro": {
+    "welcomeText": "It has been scientifically proven that the brain is only really efficient from around 9 o'clock. Our school starts at 7:30 a.m. That can be improved."
+  },
+  "content": {
+    "firstParagraph": "Especially students who have to drive distances complain again and again that they have to get up absurdly early. Even if you live in Munich and rely on public transport (you don't want to be late at the slightest delay in the subway), 7:30 is insanely early.",
+    "secondParagraph": "We advocate that the school starts at a later time, thus more in line with the biorhythms recommended by scientists.",
+    "thirdParagraph": "A few years ago there was already a vote that confirmed the time; we want to find out if there is now a majority in favor of a later school start."
+  },
+  "footer": {
+    "header": "Principles of our work",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "firstPrivacy": {
+      "header": "1. Privacy.",
+      "content": "This website stores hardly any data. Only one cookie is needed to integrate the captcha."
+    },
+    "secondPublicity": {
+      "header": "2. Publicity.",
+      "content": "Every line of code in this project is public and available on GitHub under an MIT License."
+    },
+    "thirdAccessibility": {
+      "header": "3. Accessibility.",
+      "content": "We have deliberately designed this website so that everyone can enjoy it."
+    },
+    "forNerds": {
+      "header": "For Nerds",
+      "database": "Database"
+    },
+    "links": {
+      "about": {
+        "header": "About us",
+        "ourStuff": "Our stuff"
+      }
+    }
+  },
+  "voting": {
+    "question": "What class start do you want?",
+    "description": "You can only vote once and cannot change your choice. Choose wisely.",
+    "error": "This is an error"
+  },
+  "noVoting": {
+    "noRunningBallot": {
+      "header": "Lean back!",
+      "content": "Currently there is no voting. Maybe come back later!!"
+    },
+    "serverError": {
+      "header": "Please contact us!",
+      "content": "We seem to have problems with our server :("
+    }
+  }
+}

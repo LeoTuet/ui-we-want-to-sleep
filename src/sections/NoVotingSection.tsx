@@ -1,4 +1,5 @@
-import {CouchPanel} from "../components/CouchPanel";
+import { useTranslation } from "react-i18next";
+import { CouchPanel } from "../components/CouchPanel";
 
 export interface NoVotingSectionProps {
   type?: BallotError;
@@ -7,26 +8,25 @@ export interface NoVotingSectionProps {
 export type BallotError = "NO_RUNNING_BALLOT" | "SERVER_ERROR";
 
 export const NoVotingSection = ({
-                                  type = "NO_RUNNING_BALLOT",
-                                }: NoVotingSectionProps) => {
+  type = "NO_RUNNING_BALLOT",
+}: NoVotingSectionProps) => {
+  const { t } = useTranslation();
   const getMainText = (type: BallotError): string => {
     switch (type) {
       case "NO_RUNNING_BALLOT":
-        return "Lehn' dich zurück!";
+        return t("noVoting.noRunningBallot.header");
       case "SERVER_ERROR":
-        return "Kontaktiere uns bitte!"
+        return t("noVoting.serverError.header");
     }
   };
   const getSubText = (type: BallotError): string => {
     switch (type) {
       case "NO_RUNNING_BALLOT":
-        return "Aktuell wird nicht abgestimmt. Komm’ vielleicht später noch mal!";
+        return t("noVoting.noRunningBallot.content");
       case "SERVER_ERROR":
-        return "Wir haben scheinbar Probleme mit unserem Server :(";
+        return t("noVoting.serverError.content");
     }
   };
 
-  return (
-    <CouchPanel mainText={getMainText(type)} subText={getSubText(type)}/>
-  );
+  return <CouchPanel mainText={getMainText(type)} subText={getSubText(type)} />;
 };

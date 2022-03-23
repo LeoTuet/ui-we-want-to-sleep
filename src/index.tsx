@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
+import "./i18n";
+
 ReactDOM.render(
   <Provider store={createStore(new Api())}>
     <BrowserRouter>
