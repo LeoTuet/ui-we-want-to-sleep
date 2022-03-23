@@ -14,19 +14,21 @@ interface LegalHeaderProps {
 
 export const LegalHeader = ({ text, hlStart, hlEnd }: LegalHeaderProps) => {
   return (
-    <StarBackground className={styles.adjustedStarBackground}>
-      <div className={styles.navigationBar}>
-        <div className={styles.navigation}>
-          <Link to="/" className={styles.link}>
-            Startseite
-          </Link>
-          <img src={sheep} alt={"wwts sheep"} className={styles.sheep} />
-          <Link to="/" className={styles.link}>
-            Abstimmung
-          </Link>
+    <header>
+      <StarBackground className={styles.adjustedStarBackground}>
+        <div className={styles.navigationBar}>
+          <nav className={styles.navigation}>
+            <Link to="/" className={styles.link}>
+              Startseite
+            </Link>
+            <img src={sheep} alt={"wwts sheep"} className={styles.sheep} />
+            <Link to="/" className={styles.link}>
+              Abstimmung
+            </Link>
+          </nav>
         </div>
-      </div>
-      <TypingHeading finalText={text} hlStart={hlStart} hlEnd={hlEnd} />
-    </StarBackground>
+        <TypingHeading finalText={text} hlStart={hlStart} hlEnd={hlEnd} />
+      </StarBackground>
+    </header>
   );
 };

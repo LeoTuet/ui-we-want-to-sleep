@@ -2,15 +2,15 @@ import React from "react";
 import styles from "./ImprintAndPrivacy.module.scss";
 import { LegalHeader } from "../components/LegalHeader";
 import { ExternalLink } from "../components/ExternalLink";
+import { LegalSection } from "../sections/LegalSection";
 
 export const PrivacyStatement = () => {
   return (
     <div>
-      <LegalHeader text={"unser.Datenschutz()"} hlStart={6} hlEnd={17} />
-      <div className={styles.legalTextBackground}>
-        <div className={styles.legalText}>
-          <div className={styles.textSection}>
-            <strong className={styles.textSectionHeader} id="m1870">Einleitung</strong>
+      <LegalHeader text={"unser.datenschutz()"} hlStart={6} hlEnd={17} />
+      <main className={styles.legalBackground}>
+        <div className={styles.legalContainer}>
+          <LegalSection header="Einleitung">
             <p>
               Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
               aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend
@@ -18,11 +18,11 @@ export const PrivacyStatement = () => {
               welchem Umfang im Rahmen der Bereitstellung unserer Applikation
               verarbeiten.
             </p>
-          </div>
-          <div>
             <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
             <p>Stand: 7. Februar 2022</p>
-            <h2>Inhaltsübersicht</h2>
+          </LegalSection>
+          <LegalSection header="Inhaltsübersicht">
+            {" "}
             <ul className="index">
               <li>
                 <a className="index-link" href="#m1870">
@@ -90,7 +90,8 @@ export const PrivacyStatement = () => {
                 </a>
               </li>
             </ul>
-            <h2 id="m3">Verantwortlicher</h2>
+          </LegalSection>
+          <LegalSection header="Verantwortlicher">
             <p>
               Muster, Max <br />
               Musterstraße 1 <br />
@@ -100,7 +101,8 @@ export const PrivacyStatement = () => {
             <p>
               <a href="mailto:max@muster.de">max@muster.de</a>
             </p>
-            <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
+          </LegalSection>
+          <LegalSection header="Übersicht der Verarbeitungen">
             <p>
               Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten
               und die Zwecke ihrer Verarbeitung zusammen und verweist auf die
@@ -128,7 +130,8 @@ export const PrivacyStatement = () => {
                 Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit.
               </li>
             </ul>
-            <h2 id="m13">Maßgebliche Rechtsgrundlagen</h2>
+          </LegalSection>
+          <LegalSection header="Maßgebliche Rechtsgrundlagen">
             <p>
               Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der
               DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten.
@@ -191,7 +194,9 @@ export const PrivacyStatement = () => {
               Beschäftigten. Ferner können Landesdatenschutzgesetze der
               einzelnen Bundesländer zur Anwendung gelangen.
             </p>
-            <h2 id="m27">Sicherheitsmaßnahmen</h2>
+          </LegalSection>
+          <LegalSection header="Sicherheitsmaßnahmen">
+            {" "}
             <p>
               Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter
               Berücksichtigung des Stands der Technik, der
@@ -224,7 +229,8 @@ export const PrivacyStatement = () => {
               Verbindungen an dem Präfix „https://“ in der Adresszeile Ihres
               Browsers.
             </p>
-            <h2 id="m25">Übermittlung von personenbezogenen Daten</h2>
+          </LegalSection>
+          <LegalSection header="Übermittlung von personenbezogenen Daten">
             <p>
               Im Rahmen unserer Verarbeitung von personenbezogenen Daten kommt
               es vor, dass die Daten an andere Stellen, Unternehmen, rechtlich
@@ -237,7 +243,8 @@ export const PrivacyStatement = () => {
               Verträge bzw. Vereinbarungen, die dem Schutz Ihrer Daten dienen,
               mit den Empfängern Ihrer Daten ab.
             </p>
-            <h2 id="m12">Löschung von Daten</h2>
+          </LegalSection>
+          <LegalSection header="Löschung von Daten">
             <p>
               Die von uns verarbeiteten Daten werden nach Maßgabe der
               gesetzlichen Vorgaben gelöscht, sobald deren zur Verarbeitung
@@ -262,7 +269,8 @@ export const PrivacyStatement = () => {
               Aufbewahrung und Löschung von Daten beinhalten, die für die
               jeweiligen Verarbeitungen vorrangig gelten.
             </p>
-            <h2 id="m225">Bereitstellung des Onlineangebotes und Webhosting</h2>
+          </LegalSection>
+          <LegalSection header="Bereitstellung des Onlineangebotes und Webhosting">
             <p>
               Um unser Onlineangebot sicher und effizient bereitstellen zu
               können, nehmen wir die Leistungen von einem oder mehreren
@@ -358,7 +366,9 @@ export const PrivacyStatement = () => {
                 </ul>
               </li>
             </ul>
-            <h2 id="m182">Kontakt- und Anfragenverwaltung</h2>
+          </LegalSection>
+          <LegalSection header="Kontakt- und Anfragenverwaltung">
+            {" "}
             <p>
               Bei der Kontaktaufnahme mit uns (z.B. per Kontaktformular, E-Mail,
               Telefon oder via soziale Medien) sowie im Rahmen bestehender
@@ -416,7 +426,8 @@ export const PrivacyStatement = () => {
                 unserer gesetzlichen Aufbewahrungspflichten.
               </li>
             </ul>
-            <h2 id="m17">Newsletter und elektronische Benachrichtigungen</h2>
+          </LegalSection>
+          <LegalSection header="Newsletter und elektronische Benachrichtigungen">
             <p>
               Wir versenden Newsletter, E-Mails und weitere elektronische
               Benachrichtigungen (nachfolgend „Newsletter“) nur mit der
@@ -538,7 +549,8 @@ export const PrivacyStatement = () => {
                 geöffnet werden und TODO here is text missing
               </li>
             </ul>
-            <h2 id="m408">Umfragen und Befragungen</h2>
+          </LegalSection>
+          <LegalSection header="Umfragen und Befragungen">
             <p>
               Die von uns durchgeführten Umfragen und Befragungen (nachfolgend
               „Befragungen“) werden anonym ausgewertet. Eine Verarbeitung
@@ -580,7 +592,8 @@ export const PrivacyStatement = () => {
                 lit. f. DSGVO).
               </li>
             </ul>
-            <h2 id="m10">Rechte der betroffenen Personen</h2>
+          </LegalSection>
+          <LegalSection header="Rechte der betroffenen Personen">
             <p>
               Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu,
               die sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:
@@ -646,7 +659,8 @@ export const PrivacyStatement = () => {
                 die Vorgaben der DSGVO verstößt.
               </li>
             </ul>
-            <h2 id="m42">Begriffsdefinitionen</h2>
+          </LegalSection>
+          <LegalSection header="Begriffsdefinitionen">
             <p>
               In diesem Abschnitt erhalten Sie eine Übersicht über die in dieser
               Datenschutzerklärung verwendeten Begrifflichkeiten. Viele der
@@ -686,16 +700,16 @@ export const PrivacyStatement = () => {
                 Speichern, das Übermitteln oder das Löschen.
               </li>
             </ul>
-            <p className="seal">
-              <ExternalLink
-                href="https://datenschutz-generator.de/"
-                title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken."
-                text="Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke"
-              />
-            </p>
-          </div>
+          </LegalSection>
+          <p className="seal">
+            <ExternalLink
+              href="https://datenschutz-generator.de/"
+              title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken."
+              text="Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke"
+            />
+          </p>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

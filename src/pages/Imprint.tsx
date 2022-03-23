@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./ImprintAndPrivacy.module.scss";
 import { LegalHeader } from "../components/LegalHeader";
+import { LegalSection } from "../sections/LegalSection";
 
 export const Imprint = () => {
   return (
     <div>
-      {/* <HeaderSection /> */}
-      <LegalHeader text={"unser.Impressum()"} hlStart={6} hlEnd={15}/>
-      <div className={styles.legalTextBackground}>
-        <div className={styles.legalText}>
-          <div>
-            <h2>Angaben gemäß § 5 TMG</h2>
+      <LegalHeader text={"unser.impressum()"} hlStart={6} hlEnd={15} />
+      <main className={styles.legalBackground}>
+        <div className={styles.legalContainer}>
+          <LegalSection header="Angaben gemäß § 5 TMG">
             <p>
               Max Muster <br />
               Musterweg <br />
@@ -27,8 +26,10 @@ export const Imprint = () => {
               Fax: 1234-56789 <br />
               E-Mail: <a href="mailto:max@muster.de">max@muster.de</a>
             </p>
-            <h3>Haftungsausschluss:</h3>
-            <h4>Haftung für Inhalte</h4>
+          </LegalSection>
+          {/* <h3>Haftungsausschluss:</h3> */}
+          <LegalSection header="Haftung für Inhalte">
+            {" "}
             <p>
               Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt.
               Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte
@@ -45,7 +46,8 @@ export const Imprint = () => {
               Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
               Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
             </p>
-            <h4>Haftung für Links</h4>
+          </LegalSection>
+          <LegalSection header="Haftung für Links">
             <p>
               Unser Angebot enthält Links zu externen Webseiten Dritter, auf
               deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
@@ -59,7 +61,8 @@ export const Imprint = () => {
               Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von
               Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </p>
-            <h4>Urheberrecht</h4>
+          </LegalSection>
+          <LegalSection header="Urheberrecht">
             <p>
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
               diesen Seiten unterliegen dem deutschen Urheberrecht. Die
@@ -75,7 +78,9 @@ export const Imprint = () => {
               entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
               werden wir derartige Inhalte umgehend entfernen.
             </p>
-            <h4>Datenschutz</h4>
+          </LegalSection>
+          <LegalSection header="Datenschutz">
+            {" "}
             <p>
               Die Nutzung unserer Webseite ist in der Regel ohne Angabe
               personenbezogener Daten möglich. Soweit auf unseren Seiten
@@ -98,7 +103,10 @@ export const Imprint = () => {
               ausdrücklich rechtliche Schritte im Falle der unverlangten
               Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.
             </p>
-            <h4>Google Analytics</h4>
+          </LegalSection>
+
+          <LegalSection header="Google Analytics">
+            {" "}
             <p>
               Diese Website benutzt Google Analytics, einen Webanalysedienst der
               Google Inc. („Google“). Google Analytics verwendet sog. „Cookies“,
@@ -124,7 +132,9 @@ export const Imprint = () => {
               erhobenen Daten durch Google in der zuvor beschriebenen Art und
               Weise und zu dem zuvor benannten Zweck einverstanden.
             </p>
-            <h4>Google AdSense</h4>
+          </LegalSection>
+          <LegalSection header="Google AdSense">
+            {" "}
             <p>
               Diese Website benutzt Google Adsense, einen Webanzeigendienst der
               Google Inc., USA („Google“). Google Adsense verwendet sog.
@@ -159,21 +169,19 @@ export const Imprint = () => {
               durch Google in der zuvor beschriebenen Art und Weise und zu dem
               zuvor benannten Zweck einverstanden.
             </p>
-            <br />
-            <p>
-              Impressum vom{" "}
-              <a href="https://www.impressum-generator.de">
-                Impressum Generator
-              </a>{" "}
-              der{" "}
-              <a href="https://www.kanzlei-hasselbach.de/">
-                Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und
-                Familienrecht
-              </a>
-            </p>
-          </div>
+          </LegalSection>
+          <br />
+          <p>
+            Impressum vom{" "}
+            <a href="https://www.impressum-generator.de">Impressum Generator</a>{" "}
+            der{" "}
+            <a href="https://www.kanzlei-hasselbach.de/">
+              Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und
+              Familienrecht
+            </a>
+          </p>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
