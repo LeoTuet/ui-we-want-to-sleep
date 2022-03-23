@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./ImprintAndPrivacy.module.scss";
 import { LegalHeader } from "../components/LegalHeader";
 import { ExternalLink } from "../components/ExternalLink";
 import { LegalSection } from "../sections/LegalSection";
 
 export const PrivacyStatement = () => {
+  const [scrolled, setScrolled] = useState<boolean>(false);
+  const text = useRef<null | HTMLDivElement>(null);
+
+  const navbarheight = 82;
+
+  useEffect(() => {
+    const onScroll = (e: any) => {
+      setScrolled((prev) => !prev);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const calculateTopInset = useCallback(() => {
+    const scrollTop = text.current?.getBoundingClientRect().y;
+
+    if (scrollTop == undefined) {
+      return 0;
+    }
+
+    if (scrollTop > navbarheight) {
+      return 0;
+    } else if (scrollTop > 0 && scrollTop < navbarheight) {
+      return navbarheight - scrollTop;
+    } else {
+      return -scrollTop + navbarheight;
+    }
+  }, [scrolled]);
+
   return (
     <div>
       <LegalHeader text={"unser.datenschutz()"} hlStart={6} hlEnd={17} />
-      <main className={styles.legalBackground}>
-        <div className={styles.legalContainer}>
+      <main
+        className={styles.legalBackground}
+        style={{
+          clipPath: `inset(${calculateTopInset()}px 0px 0px 0px)`,
+        }}
+      >
+        <div className={styles.legalContainer} ref={text}>
           <LegalSection header="Einleitung">
             <p>
               Mit der folgenden Datenschutzerklärung möchten wir Sie darüber

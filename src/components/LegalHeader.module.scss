@@ -1,7 +1,10 @@
-.adjustedStarBackground {
-  min-height: 50vh;
+.stickyHeader {
   position: sticky;
   top: 0;
+}
+
+.adjustedStarBackground {
+  min-height: 50vh;
 }
 
 .link,

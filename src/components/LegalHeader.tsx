@@ -14,7 +14,7 @@ interface LegalHeaderProps {
 
 export const LegalHeader = ({ text, hlStart, hlEnd }: LegalHeaderProps) => {
   return (
-    <header>
+    <header className={styles.stickyHeader}>
       <StarBackground className={styles.adjustedStarBackground}>
         <div className={styles.navigationBar}>
           <nav className={styles.navigation}>
