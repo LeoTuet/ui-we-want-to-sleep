@@ -1,4 +1,4 @@
-import React from "react";
+import React, { HTMLProps } from "react";
 import { TypingHeading } from "./TypingHeading";
 import styles from "./LegalHeader.module.scss";
 import classNames from "classnames";
@@ -6,15 +6,20 @@ import { Link } from "react-router-dom";
 import sheep from "../assets/sheep.png";
 import { StarBackground } from "./StarBackground";
 
-interface LegalHeaderProps {
+interface LegalHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
   hlStart: number;
   hlEnd: number;
 }
 
-export const LegalHeader = ({ text, hlStart, hlEnd }: LegalHeaderProps) => {
+export const LegalHeader = ({
+  text,
+  hlStart,
+  hlEnd,
+  ...rest
+}: LegalHeaderProps) => {
   return (
-    <header className={styles.stickyHeader}>
+    <header className={styles.stickyHeader} {...rest}>
       <StarBackground className={styles.adjustedStarBackground}>
         <div className={styles.navigationBar}>
           <nav className={styles.navigation}>

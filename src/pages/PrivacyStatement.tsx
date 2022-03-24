@@ -5,46 +5,42 @@ import { ExternalLink } from "../components/ExternalLink";
 import { LegalSection } from "../sections/LegalSection";
 
 export const PrivacyStatement = () => {
-  const [scrolled, setScrolled] = useState<boolean>(false);
-  const text = useRef<null | HTMLDivElement>(null);
+  const [scrollOffset, setScrollOffset] = useState(
+    document.documentElement.scrollTop ?? 0
+  );
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
-  const navbarheight = 82;
+  const minNavHeight = 82;
+  const maxNavHeight = Math.max(120, windowHeight / 2);
+  const clipInset = Math.min(maxNavHeight - minNavHeight, scrollOffset);
 
   useEffect(() => {
-    const onScroll = (e: any) => {
-      setScrolled((prev) => !prev);
+    const onScroll = () => {
+      setScrollOffset(document.documentElement.scrollTop ?? 0);
     };
+    const onResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
     window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
-
-  const calculateTopInset = useCallback(() => {
-    const scrollTop = text.current?.getBoundingClientRect().y;
-
-    if (scrollTop == undefined) {
-      return 0;
-    }
-
-    if (scrollTop > navbarheight) {
-      return 0;
-    } else if (scrollTop > 0 && scrollTop < navbarheight) {
-      return navbarheight - scrollTop;
-    } else {
-      return -scrollTop + navbarheight;
-    }
-  }, [scrolled]);
 
   return (
     <div>
-      <LegalHeader text={"unser.datenschutz()"} hlStart={6} hlEnd={17} />
-      <main
-        className={styles.legalBackground}
-        style={{
-          clipPath: `inset(${calculateTopInset()}px 0px 0px 0px)`,
-        }}
-      >
-        <div className={styles.legalContainer} ref={text}>
+      <LegalHeader
+        style={{ clipPath: `inset(0 0 ${clipInset}px 0)` }}
+        text={"unser.datenschutz()"}
+        hlStart={6}
+        hlEnd={17}
+      />
+      <main className={styles.legalBackground}>
+        <div className={styles.legalContainer}>
           <LegalSection header="Einleitung">
             <p>
               Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
