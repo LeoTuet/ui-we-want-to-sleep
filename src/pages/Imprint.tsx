@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./ImprintAndPrivacy.module.scss";
-import { LegalHeader } from "../components/LegalHeader";
+import { StickyLegalHeader } from "../components/StickyHeader";
 import { LegalSection } from "../sections/LegalSection";
 
 export const Imprint = () => {
   return (
     <div>
-      <LegalHeader text={"unser.impressum()"} hlStart={6} hlEnd={15} />
+      <StickyLegalHeader text="unser.impressum()" hlStart={6} hlEnd={15} />
       <main className={styles.legalBackground}>
         <div className={styles.legalContainer}>
           <LegalSection header="Angaben gemäß § 5 TMG">

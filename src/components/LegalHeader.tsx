@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import sheep from "../assets/sheep.png";
 import { StarBackground } from "./StarBackground";
 
-interface LegalHeaderProps extends HTMLProps<HTMLElement> {
+export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
   hlStart: number;
   hlEnd: number;
