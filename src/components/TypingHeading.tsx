@@ -2,13 +2,19 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import styles from "./TypingHeading.module.scss";
 
-export const TypingHeading = () => {
-  const finalText = "we.wantToSleep()";
+interface TypingHeadingProps {
+  finalText: string;
   // index of first highlighted character
-  const hlStart = 3;
+  hlStart: number;
   // index of first non-highlighted character
-  const hlEnd = 14;
+  hlEnd: number;
+}
 
+export const TypingHeading = ({
+  finalText,
+  hlStart,
+  hlEnd,
+}: TypingHeadingProps) => {
   const [index, setIndex] = useState(1);
   const [caretBlinking, setCaretBlinking] = useState(false);
 
@@ -24,7 +30,7 @@ export const TypingHeading = () => {
     }, 100);
 
     return () => clearInterval(countdownID);
-  }, []);
+  }, [finalText]);
 
   return (
     <h1

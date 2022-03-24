@@ -1,0 +1,58 @@
+.starBackground {
+    background-color: var(--theme-background);
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    & > * {
+      color: var(--header-color);
+    }
+  
+    position: relative;
+    // overflow: hidden;
+    outline: none;
+    box-sizing: border-box;
+    padding: 1.5rem;
+  }
+  
+  .starBackground ~ * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .starBackground::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    background-size: cover;
+    background: url("../assets/star-background.svg");
+  }
+
+  @media screen and (orientation: portrait) {
+    .starBackground::before {
+      height: 130vh;
+      width: 130vh;
+    }
+  }
+  
+  @media screen and (orientation: landscape) {
+    .starBackground::before {
+      height: 130vw;
+      width: 130vw;
+    }
+  }
+  
+  .starBackground::before {
+    animation: star-background-spin infinite 150s linear;
+  }
+  
+  @keyframes star-background-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

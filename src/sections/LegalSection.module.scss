@@ -1,0 +1,35 @@
+$medium: 768px;
+$large: 992px;
+
+.legalSection {
+  color: var(--theme-background);
+}
+
+.legalSubheader {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+@media (min-width: $large) {
+  .legalSection {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1rem;
+    display: grid;
+  }
+
+  .legalSubheader {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    position: sticky;
+    top: 7rem;
+    height: fit-content;
+  }
+}
+
+.legalText {
+  grid-column-start: 6;
+  grid-column-end: 13;
+  & > p:first-child {
+    margin-top: 0;
+  }
+}

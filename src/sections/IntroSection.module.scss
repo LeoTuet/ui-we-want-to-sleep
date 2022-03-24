@@ -1,36 +1,7 @@
 @import "src/theme/mixin";
 
-.introSection {
-  background-color: var(--theme-background);
-  z-index: 0;
+.minStarBackground {
   min-height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  & > * {
-    color: var(--header-color);
-  }
-
-  position: relative;
-  overflow: hidden;
-  outline: none;
-  box-sizing: border-box;
-  padding: 1.5rem;
-}
-
-.introSection ~ * {
-  position: relative;
-  z-index: 1;
-}
-
-.introSection::before {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  background-size: cover;
-  background: url("../assets/star-background.svg");
 }
 
 .innerSection {
@@ -50,33 +21,6 @@
 @media (min-width: 576px) {
   .description {
     font-size: 1.2rem;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  .introSection::before {
-    height: 130vh;
-    width: 130vh;
-  }
-}
-
-@media screen and (orientation: landscape) {
-  .introSection::before {
-    height: 130vw;
-    width: 130vw;
-  }
-}
-
-.introSection::before {
-  animation: star-background-spin infinite 150s linear;
-}
-
-@keyframes star-background-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 
