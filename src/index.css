@@ -53,13 +53,19 @@
 body {
   margin: 0;
   font-family: "SpaceMono", source-code-pro, Menlo, Monaco, Consolas,
-  "Courier New", monospace;
+    "Courier New", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
 
   color: var(--color);
   background-color: var(--background);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 ::selection {
@@ -79,12 +85,12 @@ a:visited {
   font-family: "SpaceMono";
   font-weight: 400;
   src: url("./assets/font/Space_Mono/space-mono-regular.woff2") format("woff2"),
-  url("./assets/font/Space_Mono/space-mono-regular.woff") format("woff");
+    url("./assets/font/Space_Mono/space-mono-regular.woff") format("woff");
 }
 
 @font-face {
   font-family: "SpaceMono";
   font-weight: 700;
   src: url("./assets/font/Space_Mono/space-mono-bold.woff2") format("woff2"),
-  url("./assets/font/Space_Mono/space-mono-bold.woff") format("woff");
+    url("./assets/font/Space_Mono/space-mono-bold.woff") format("woff");
 }

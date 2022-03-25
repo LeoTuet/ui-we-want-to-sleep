@@ -1,16 +1,13 @@
-$medium: 768px;
-$large: 992px;
+@use "src/theme/mixin";
 
 .legalSubheader {
   margin: 0;
   font-size: 1.4rem;
 }
 
-@media (min-width: $large) {
+@media (min-width: 992px) {
   .legalSection {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 1rem;
-    display: grid;
+    @include mixin.defaultGrid;
   }
 
   .legalSubheader {

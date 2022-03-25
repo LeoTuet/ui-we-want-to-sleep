@@ -6,6 +6,7 @@ import { Footer } from "./sections/Footer";
 import { useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
 import { useCookieConsent } from "./hooks/useCookieConsent";
+import { CookieBannerWidget } from "./widgets/CookieBannerWidget";
 
 function App() {
   const { pathname } = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
+      <CookieBannerWidget />
     </div>
   );
 }
