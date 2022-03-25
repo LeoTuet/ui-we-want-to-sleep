@@ -34,7 +34,6 @@ export const Footer = () => {
           </li>
         </ul>
         <h3 className={styles.captionHeading}>
-          {" "}
           {t("footer.forNerds.header")}
         </h3>
 
@@ -96,11 +95,11 @@ export const Footer = () => {
           <Link to="impressum" className={styles.link}>
             {t("footer.imprint")}
           </Link>
-          <p>{" & "}</p>
+          <span>{" & "}</span>
           <Link to="datenschutz" className={styles.link}>
             {t("footer.privacy")}
           </Link>
-          <p>{" & "}</p>
+          <span>{" & "}</span>
           <p className={styles.languageSwitch} onClick={handleLanguageChange}>
             {i18n.language == "de-DE" ? "DE" : "EN"}
           </p>
