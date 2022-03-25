@@ -16,7 +16,7 @@ export const BottomBanner = ({
     <div className={styles.overlay}>
       <div className={styles.bannerBackground}>
         <div className={styles.bannerContent}>
-          <div className={styles.bannerText}>{text}</div>
+          <span className={styles.bannerText}>{text}</span>
           <CustomButton onClick={onButtonClick} className={styles.bannerButton}>
             {buttonText}
           </CustomButton>

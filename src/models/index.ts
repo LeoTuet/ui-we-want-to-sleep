@@ -20,4 +20,4 @@ export interface TokenStatus {
 }
 
 export type Theme = "light" | "dark";
-export type CookieConsent = "accepted" | undefined
+export type CookieConsent = "accepted" | undefined;

@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <CookieBannerWidget />
       <Routes>
         <Route path="/:token" element={<Home />} />
         <Route path="datenschutz" element={<PrivacyStatement />} />
@@ -24,7 +25,6 @@ function App() {
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />
-      <CookieBannerWidget />
     </div>
   );
 }
