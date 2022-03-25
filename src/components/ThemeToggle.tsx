@@ -14,21 +14,23 @@ const ThemeToggle = () => {
 
   return (
     <button className={styles.button} onClick={handleChangeTheme}>
-      {theme == "light" ? (
-        <img
-          src={halfMoon}
-          alt="Moon Icon for Theme Toggle"
-          title="Zum dunklen Design wechseln"
-        />
-      ) : (
-        <img
-          src={sun}
-          alt="Sun Icon for Theme Toggle"
-          title="Zum hellen Design wechseln"
-        />
-      )}
+      <img
+        src={theme == "light" ? halfMoon : sun}
+        alt={altText[theme]}
+        title={germanTitleText[theme]}
+      />
     </button>
   );
+};
+
+const altText = {
+  light: "Moon Icon for Theme Toggle",
+  dark: "Sun Icon for Theme Toggle",
+};
+
+const germanTitleText = {
+  light: "Zum dunklen Design wechseln",
+  dark: "Zum hellen Design wechseln",
 };
 
 export default ThemeToggle;
