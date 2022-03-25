@@ -5,12 +5,14 @@ import { Imprint } from "./pages/Imprint";
 import { Footer } from "./sections/Footer";
 import { useEffect } from "react";
 import { useTheme } from "./hooks/useTheme";
+import { useCookieConsent } from "./hooks/useCookieConsent";
 
 function App() {
   const { pathname } = useLocation();
   useEffect(() => window.scrollTo(0, 0), [pathname]);
 
   useTheme();
+  useCookieConsent();
 
   return (
     <div className="App">
