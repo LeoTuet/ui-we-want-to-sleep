@@ -72,7 +72,7 @@
     },
     "INVALID_CAPTCHA": {
       "header": "Something isn't right!",
-      "content": "Your captcha was invalid."
+      "content": "Your captcha was invalid!"
     }
   }
 }
