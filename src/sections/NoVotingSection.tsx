@@ -1,32 +1,41 @@
 import { useTranslation } from "react-i18next";
 import { CouchPanel } from "../components/CouchPanel";
+import { useCallback } from "react";
 
 export interface NoVotingSectionProps {
-  type?: BallotError;
+  type?: NoVotingType;
 }
 
-export type BallotError = "NO_RUNNING_BALLOT" | "SERVER_ERROR";
+export type NoVotingType =
+  | "NO_RUNNING_BALLOT"
+  | "SERVER_ERROR"
+  | "INVALID"
+  | "USED"
+  | "LOADING"
+  | "NONE_EXISTENT";
 
 export const NoVotingSection = ({
   type = "NO_RUNNING_BALLOT",
 }: NoVotingSectionProps) => {
   const { t } = useTranslation();
-  const getMainText = (type: BallotError): string => {
-    switch (type) {
-      case "NO_RUNNING_BALLOT":
-        return t("noVoting.noRunningBallot.header");
-      case "SERVER_ERROR":
-        return t("noVoting.serverError.header");
-    }
-  };
-  const getSubText = (type: BallotError): string => {
-    switch (type) {
-      case "NO_RUNNING_BALLOT":
-        return t("noVoting.noRunningBallot.content");
-      case "SERVER_ERROR":
-        return t("noVoting.serverError.content");
-    }
-  };
 
-  return <CouchPanel mainText={getMainText(type)} subText={getSubText(type)} />;
+  const getMainText = useCallback(() => {
+    return t(`noVoting.${type}.header`);
+  }, [type]);
+
+  const getSubText = useCallback(() => {
+    return t(`noVoting.${type}.content`);
+  }, [type]);
+
+  const getFlipped = useCallback(() => {
+    return type === "NONE_EXISTENT";
+  }, [type]);
+
+  return (
+    <CouchPanel
+      mainText={getMainText()}
+      subText={getSubText()}
+      flipped={getFlipped()}
+    />
+  );
 };
