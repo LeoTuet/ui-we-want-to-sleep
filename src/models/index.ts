@@ -14,3 +14,9 @@ export interface VoteOption {
 }
 
 export type Theme = "light" | "dark";
+
+export interface TokenStatus {
+  exists: boolean,
+  valid: boolean,
+  used: boolean
+}

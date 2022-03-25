@@ -35,19 +35,44 @@
     }
   },
   "voting": {
-      "question": "Welchen Unterrichtsbeginn wünscht du dir?",
-      "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",
-      "error": "Das hier ist ein Error"
-
+    "question": "Welchen Unterrichtsbeginn wünscht du dir?",
+    "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",
+    "error": "Das hier ist ein Error"
   },
   "noVoting": {
-    "noRunningBallot": {
+    "NO_RUNNING_BALLOT": {
       "header": "Lehn' dich zurück!",
       "content": "Aktuell wird nicht abgestimmt. Komm’ vielleicht später noch mal!"
     },
-    "serverError": {
+    "NONE_EXISTENT": {
+      "header": "Etwas stimmt nicht!",
+      "content": "Dein Token scheint nicht zu existieren"
+    },
+    "USED": {
+      "header": "Lehn' dich zurück!",
+      "content": "Du hast bereits abgestimmt :)"
+    },
+    "INVALID": {
+      "header": "Kontaktiere uns bitte!",
+      "content": "Dein Token scheint invalide zu sein!"
+    },
+    "LOADING": {
+      "header": "Lädt...",
+      "content": "Du scheinst Internet Probleme zuhaben :/"
+    },
+    "SERVER_ERROR": {
       "header": "Kontaktiere uns bitte!",
       "content": "Wir haben scheinbar Probleme mit unserem Server :("
+    }
+  },
+  "voteResponse": {
+    "SUCCESS": {
+      "header": "Du hast abgestimmt :)",
+      "content": "Dann entspann dich doch!"
+    },
+    "INVALID_CAPTCHA": {
+      "header": "Etwas stimmt nicht!",
+      "content": "Dein Captcha war invalide."
     }
   }
 }

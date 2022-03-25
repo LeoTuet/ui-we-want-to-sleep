@@ -46,3 +46,4 @@ export const initialRootState: RootState = {
   vote: voteState,
   ui: uiState,
 };
+

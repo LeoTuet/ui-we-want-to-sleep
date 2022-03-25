@@ -8,10 +8,10 @@ import styles from "./Footer.module.scss";
 export const Footer = () => {
   const { t, i18n } = useTranslation();
   const handleLanguageChange = () => {
-    if (i18n.language === "en") {
-      i18n.changeLanguage("de");
+    if (i18n.language === "en-US") {
+      i18n.changeLanguage("de-DE");
     } else {
-      i18n.changeLanguage("en");
+      i18n.changeLanguage("en-US");
     }
   };
 
@@ -102,7 +102,7 @@ export const Footer = () => {
           </Link>
           <p>{" & "}</p>
           <p className={styles.languageSwitch} onClick={handleLanguageChange}>
-            {i18n.language == "en" ? "EN" : "DE"}
+            {i18n.language == "de-DE" ? "DE" : "EN"}
           </p>
         </div>
       </div>

@@ -40,13 +40,39 @@
     "error": "This is an error"
   },
   "noVoting": {
-    "noRunningBallot": {
+    "NO_RUNNING_BALLOT": {
       "header": "Lean back!",
       "content": "Currently there is no voting. Maybe come back later!!"
     },
-    "serverError": {
+    "NONE_EXISTENT": {
+      "header": "Something isn't right!",
+      "content": "Your token does not exits on our database"
+    },
+    "USED": {
+      "header": "Lean back!",
+      "content": "You already voted :)"
+    },
+    "INVALID": {
+      "header": "Please contact us!",
+      "content": "Your token seems to be invalid!"
+    },
+    "LOADING": {
+      "header": "Loading...",
+      "content": "You seem to have connection issues :/"
+    },
+    "SERVER_ERROR": {
       "header": "Please contact us!",
       "content": "We seem to have problems with our server :("
+    }
+  },
+  "voteResponse": {
+    "SUCCESS": {
+      "header": "You voted :)",
+      "content": "You can now relax if you want!"
+    },
+    "INVALID_CAPTCHA": {
+      "header": "Something isn't right!",
+      "content": "Your captcha was invalid."
     }
   }
 }
