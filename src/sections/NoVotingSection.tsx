@@ -32,10 +32,12 @@ export const NoVotingSection = ({
   }, [type]);
 
   return (
-    <CouchPanel
-      mainText={getMainText()}
-      subText={getSubText()}
-      flipped={getFlipped()}
-    />
+    <section>
+      <CouchPanel
+        mainText={getMainText()}
+        subText={getSubText()}
+        flipped={getFlipped()}
+      />
+    </section>
   );
 };

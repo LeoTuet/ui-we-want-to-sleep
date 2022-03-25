@@ -19,5 +19,9 @@ export const VoteResponseSection = ({ type }: NoVotingSectionProps) => {
     return t(`voteResponse.${type}.content`);
   }, [type]);
 
-  return <CouchPanel mainText={getMainText()} subText={getSubText()} />;
+  return (
+    <section>
+      <CouchPanel mainText={getMainText()} subText={getSubText()} />
+    </section>
+  );
 };

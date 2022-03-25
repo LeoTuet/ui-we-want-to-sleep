@@ -24,19 +24,23 @@ export const IntroSection = () => {
   }, [size]);
 
   return (
-    <StarBackground className={styles.minStarBackground}>
-      <div className={styles.themeToggleContainer}>
-        <ThemeToggle />
-      </div>
-      <div className={styles.innerSection}>
-        <TypingHeading finalText={"we.wantToSleep()"} hlStart={3} hlEnd={14} />
-        <p className={styles.description}>
-          {t("intro.welcomeText")}
-        </p>
-      </div>
-      <div className={styles.sheepContainer} ref={sheep}>
-        <Sheep className={styles.sheepCanvas} size={sheepContainerSize} />
-      </div>
-    </StarBackground>
+    <header>
+      <StarBackground className={styles.minStarBackground}>
+        <div className={styles.themeToggleContainer}>
+          <ThemeToggle />
+        </div>
+        <div className={styles.innerSection}>
+          <TypingHeading
+            finalText={"we.wantToSleep()"}
+            hlStart={3}
+            hlEnd={14}
+          />
+          <p className={styles.description}>{t("intro.welcomeText")}</p>
+        </div>
+        <div className={styles.sheepContainer} ref={sheep}>
+          <Sheep className={styles.sheepCanvas} size={sheepContainerSize} />
+        </div>
+      </StarBackground>
+    </header>
   );
 };
