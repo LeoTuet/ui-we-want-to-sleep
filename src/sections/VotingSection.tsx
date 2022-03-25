@@ -1,10 +1,11 @@
 import styles from "./VotingSection.module.scss";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Ballot } from "../models";
 
 import { SerializedError } from "@reduxjs/toolkit";
 import { useTranslation } from "react-i18next";
+import { CustomButton } from "../components/CustomButton";
 
 interface VotingSectionProps {
   onTokenReceive: (token: string) => void;
@@ -55,13 +56,12 @@ export const VotingSection = ({
         {captchaSaved && (
           <div className={styles.buttonContainer}>
             {ballot.ballot?.options.map((option) => (
-              <button
+              <CustomButton
                 key={option.identifier}
-                className={styles.voteButton}
                 onClick={() => onVote(option.identifier)}
               >
                 {option.label}
-              </button>
+              </CustomButton>
             ))}
           </div>
         )}
