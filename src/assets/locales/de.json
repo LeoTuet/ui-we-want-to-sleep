@@ -54,7 +54,7 @@
     },
     "INVALID": {
       "header": "Kontaktiere uns bitte!",
-      "content": "Dein Token scheint invalide zu sein!"
+      "content": "Dein Token scheint ungültig zu sein!"
     },
     "LOADING": {
       "header": "Lädt...",
@@ -72,7 +72,7 @@
     },
     "INVALID_CAPTCHA": {
       "header": "Etwas stimmt nicht!",
-      "content": "Dein Captcha war invalide."
+      "content": "Dein Captcha war ungültig!"
     }
   }
 }
