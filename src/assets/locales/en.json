@@ -1,6 +1,6 @@
 {
   "intro": {
-    "welcomeText": "It has been scientifically proven that the brain is only really efficient from around 9 o'clock. Our school starts at 7:30 a.m. That can be improved."
+    "welcomeText": "It has been scientifically proven that the brain is only really efficient from around 9 o'clock. Our school starts at 7:30 a.m. This can be improved."
   },
   "content": {
     "firstParagraph": "Especially students who have to drive distances complain again and again that they have to get up absurdly early. Even if you live in Munich and rely on public transport (you don't want to be late at the slightest delay in the subway), 7:30 is insanely early.",
@@ -42,7 +42,7 @@
   "noVoting": {
     "NO_RUNNING_BALLOT": {
       "header": "Lean back!",
-      "content": "Currently there is no voting. Maybe come back later!!"
+      "content": "Currently there is no voting. Maybe come back later!"
     },
     "NONE_EXISTENT": {
       "header": "Something isn't right!",
@@ -68,7 +68,7 @@
   "voteResponse": {
     "SUCCESS": {
       "header": "You voted :)",
-      "content": "You can now relax if you want!"
+      "content": "You may relax now!"
     },
     "INVALID_CAPTCHA": {
       "header": "Something isn't right!",

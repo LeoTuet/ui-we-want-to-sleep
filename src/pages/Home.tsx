@@ -45,8 +45,6 @@ export const Home = () => {
     }
   }, [token]);
 
-  console.log(tokenStore.statusResult);
-  console.log(ballot.ballotLoading);
 
   return (
     <div>
@@ -67,7 +65,7 @@ export const Home = () => {
           type={(ballot.ballotError?.message ?? "LOADING") as NoVotingType}
         />
       )}
-      {tokenStore.statusResult != ("VALID" && "MISSING") && (
+      {!["VALID", "MISSING"].includes(tokenStore.statusResult) && (
         <NoVotingSection type={tokenStore.statusResult as NoVotingType} />
       )}
       {(vote.voteResult || vote.voteError) && (
