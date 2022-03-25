@@ -10,7 +10,10 @@ import { NoVotingType, NoVotingSection } from "../sections/NoVotingSection";
 import { recordVote, selectVote } from "../stores/vote";
 import { actions } from "../stores/token";
 import { useParams } from "react-router-dom";
-import { VoteResponseType, VoteResponseSection } from "../sections/VoteResponseSection";
+import {
+  VoteResponseType,
+  VoteResponseSection,
+} from "../sections/VoteResponseSection";
 
 export const Home = () => {
   const ballot = useSelector(selectBallot);
@@ -45,32 +48,35 @@ export const Home = () => {
     }
   }, [token]);
 
-
   return (
-    <div>
+    <>
       <IntroSection />
-      <ContentSection />
-      {ballot.ballot &&
-        !ballot.ballotError &&
-        !vote.voteResult &&
-        tokenStore.statusResult === "VALID" && (
-          <VotingSection
-            onTokenReceive={handleCaptchaTokenReceive}
-            ballot={ballot}
-            onVote={handleVote}
+      <main>
+        <ContentSection />
+        {ballot.ballot &&
+          !ballot.ballotError &&
+          !vote.voteResult &&
+          tokenStore.statusResult === "VALID" && (
+            <VotingSection
+              onTokenReceive={handleCaptchaTokenReceive}
+              ballot={ballot}
+              onVote={handleVote}
+            />
+          )}
+        {(ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) && (
+          <NoVotingSection
+            type={(ballot.ballotError?.message ?? "LOADING") as NoVotingType}
           />
         )}
-      {(ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) && (
-        <NoVotingSection
-          type={(ballot.ballotError?.message ?? "LOADING") as NoVotingType}
-        />
-      )}
-      {!["VALID", "MISSING"].includes(tokenStore.statusResult) && (
-        <NoVotingSection type={tokenStore.statusResult as NoVotingType} />
-      )}
-      {(vote.voteResult || vote.voteError) && (
-        <VoteResponseSection type={(vote.voteResult ?? vote.voteError) as VoteResponseType} />
-      )}
-    </div>
+        {!["VALID", "MISSING"].includes(tokenStore.statusResult) && (
+          <NoVotingSection type={tokenStore.statusResult as NoVotingType} />
+        )}
+        {(vote.voteResult || vote.voteError) && (
+          <VoteResponseSection
+            type={(vote.voteResult ?? vote.voteError) as VoteResponseType}
+          />
+        )}
+      </main>
+    </>
   );
 };

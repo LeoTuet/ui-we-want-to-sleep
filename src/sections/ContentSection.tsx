@@ -5,14 +5,12 @@ export const ContentSection = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.contentSection}>
-      <p className={styles.content}>
-        {t("content.firstParagraph")}
-        <br /> <br />
-        {t("content.secondParagraph")}
-        <br /> <br />
-        {t("content.thirdParagraph")}
-      </p>
-    </div>
+    <section className={styles.contentSection}>
+      <div className={styles.content}>
+        <p>{t("content.firstParagraph")}</p>
+        <p>{t("content.secondParagraph")}</p>
+        <p>{t("content.thirdParagraph")}</p>
+      </div>
+    </section>
   );
 };

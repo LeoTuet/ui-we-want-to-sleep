@@ -36,7 +36,7 @@ export const VotingSection = ({
   );
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.votingSection}>
         <h4 className={styles.question}>{t("voting.question")}</h4>
         <p className={styles.description}>{t("voting.description")}</p>
@@ -67,6 +67,6 @@ export const VotingSection = ({
         )}
         {ballot.ballotError && <p>{t("voting.error")}</p>}
       </div>
-    </div>
+    </section>
   );
 };
