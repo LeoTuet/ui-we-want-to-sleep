@@ -11,20 +11,13 @@ export const Imprint = () => {
         <div className={styles.legalContainer}>
           <LegalSection header="Angaben gemäß § 5 TMG">
             <p>
-              Max Muster <br />
-              Musterweg <br />
-              12345 Musterstadt
-            </p>
-            <h3>Vertreten durch:</h3>
-            <p>
-              Max Muster <br />
-              Lisa Muster
+              Leopold Tüting <br />
+              Starnberger Weg 15c <br />
+              82110 Germering
             </p>
             <h3>Kontakt:</h3>
             <p>
-              Telefon: 01234-789456 <br />
-              Fax: 1234-56789 <br />
-              E-Mail: <a href="mailto:max@muster.de">max@muster.de</a>
+              E-Mail: <a href="info@wewanttosleep.de">info@wewanttosleep.de</a>
             </p>
           </LegalSection>
           {/* <h3>Haftungsausschluss:</h3> */}
