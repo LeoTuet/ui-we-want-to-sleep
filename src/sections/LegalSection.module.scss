@@ -25,6 +25,9 @@ $large: 992px;
 .legalText {
   grid-column-start: 6;
   grid-column-end: 13;
+  & > h3:first-child {
+    margin-top: 0;
+  }
   & > p:first-child {
     margin-top: 0;
   }
