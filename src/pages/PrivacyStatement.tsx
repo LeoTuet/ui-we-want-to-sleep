@@ -19,7 +19,7 @@ export const PrivacyStatement = () => {
               verarbeiten.
             </p>
             <p>Die verwendeten Begriffe sind nicht geschlechtsspezifisch.</p>
-            <p>Stand: 7. Februar 2022</p>
+            <p>Stand: 26. März 2022</p>
           </LegalSection>
           <LegalSection header="Inhaltsübersicht">
             {" "}
@@ -93,13 +93,13 @@ export const PrivacyStatement = () => {
           </LegalSection>
           <LegalSection header="Verantwortlicher">
             <p>
-              Muster, Max <br />
-              Musterstraße 1 <br />
-              1111, Muster, Deutschland
+              Tüting, Leopold <br />
+              Starnberger Weg 15c <br />
+              82110, Germering, Deutschland
             </p>
             <p>E-Mail-Adresse:</p>
             <p>
-              <a href="mailto:max@muster.de">max@muster.de</a>
+              <a href="info@wewanttosleep.de">info@wewanttosleep.de</a>
             </p>
           </LegalSection>
           <LegalSection header="Übersicht der Verarbeitungen">
@@ -351,16 +351,16 @@ export const PrivacyStatement = () => {
                     <strong>Dienstanbieter:</strong> Hetzner Online GmbH,
                     Industriestr. 25, 91710 Gunzenhausen, Deutschland
                   </li>
-                  <li>
-                    <strong>Website:</strong>{" "}
+                  <li className={styles.list}>
+                    <strong>Website:</strong>
                     <ExternalLink href="https://www.hetzner.com" />
                   </li>
-                  <li>
-                    <strong>Datenschutzerklärung:</strong>{" "}
+                  <li className={styles.list}>
+                    <strong>Datenschutzerklärung:</strong>
                     <ExternalLink href="https://www.hetzner.com/de/rechtliches/datenschutz" />
                   </li>
-                  <li>
-                    <strong>Auftragsverarbeitungsvertrag:</strong>{" "}
+                  <li className={styles.list}>
+                    <strong>Auftragsverarbeitungsvertrag:</strong>
                     <ExternalLink href="https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/" />
                   </li>
                 </ul>
@@ -546,7 +546,7 @@ export const PrivacyStatement = () => {
                 Abruforte (die mit Hilfe der IP-Adresse bestimmbar sind) oder
                 der Zugriffszeiten genutzt. Diese Analyse beinhaltet ebenfalls
                 die Feststellung, ob die Newsletter geöffnet werden, wann sie
-                geöffnet werden und TODO here is text missing
+                geöffnet werden und wo sie geöffnet werden.
               </li>
             </ul>
           </LegalSection>
