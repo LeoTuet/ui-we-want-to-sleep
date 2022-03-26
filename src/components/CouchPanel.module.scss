@@ -1,5 +1,15 @@
 @import "src/theme/mixin";
 
+.flipped {
+  transition: 0.15s ease-out;
+  .sofa {
+    transform: rotate(-170deg);
+    &:hover {
+      transform: rotate(-190deg);
+    }
+  }
+}
+
 .section {
   padding: 0 1.5rem 1.5rem 1.5rem;
   text-align: center;
@@ -39,11 +49,10 @@
 }
 
 @media (hover: hover) {
-  .sofaContainer {
+  .sofaContainer:not(.flipped) {
     transition: 0.15s ease-out;
     &:hover {
       transform: translateY(-14px);
-
       .sofa {
         transform: rotate(-2deg);
       }

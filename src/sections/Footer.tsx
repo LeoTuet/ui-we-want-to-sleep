@@ -1,37 +1,41 @@
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "../components/ExternalLink";
 import { PointedTable } from "../components/PointedTable";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+  const { t, i18n } = useTranslation();
+  const handleLanguageChange = () => {
+    if (i18n.language === "en-US") {
+      i18n.changeLanguage("de-DE");
+    } else {
+      i18n.changeLanguage("en-US");
+    }
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.innerFooter}>
-        <h3 className={styles.captionHeading}>Prinzipien unserer Arbeit</h3>
+        <h3 className={styles.captionHeading}>{t("footer.header")}</h3>
         <ul>
           <li>
-            <h4>1. Datenschutz.</h4>
-            <p>
-              Diese Website speichert kaum Daten. Lediglich ein einziger Cookie
-              wird dafür benötigt, das Captcha einzubinden.
-            </p>
+            <h4>{t("footer.firstPrivacy.header")}</h4>
+            <p>{t("footer.firstPrivacy.content")}</p>
           </li>
           <li>
-            <h4>2. Öffentlichkeit.</h4>
-            <p>
-              Jede Zeile Code dieses Projektes ist öffentlich und auf GitHub
-              unter einer MIT Licence verfügbar.
-            </p>
+            <h4>{t("footer.secondPublicity.header")}</h4>
+            <p>{t("footer.secondPublicity.content")}</p>
           </li>
           <li>
-            <h4>3. Barrierefreiheit.</h4>
-            <p>
-              Wir haben diese Website bewusst so gestaltet, dass jeder daran
-              Spaß hat.
-            </p>
+            <h4>{t("footer.thirdAccessibility.header")}</h4>
+            <p>{t("footer.thirdAccessibility.content")}</p>
           </li>
         </ul>
-        <h3 className={styles.captionHeading}>Für Nerds</h3>
+        <h3 className={styles.captionHeading}>
+          {t("footer.forNerds.header")}
+        </h3>
 
         <PointedTable
           rows={[
@@ -44,7 +48,7 @@ export const Footer = () => {
               detail: "Node Express (TS)",
             },
             {
-              title: "Datenbank",
+              title: t("footer.forNerds.database"),
               detail: "MongoDB",
             },
             {
@@ -78,19 +82,27 @@ export const Footer = () => {
               ),
             },
             {
-              title: "Über uns",
-              detail: <a className={styles.link}>Unser Zeug</a>,
+              title: t("footer.links.about.header"),
+              detail: (
+                <a className={styles.link}>
+                  {t("footer.links.about.ourStuff")}
+                </a>
+              ),
             },
           ]}
         />
         <div className={styles.legalTexts}>
           <Link to="impressum" className={styles.link}>
-            Impressum
+            {t("footer.imprint")}
           </Link>
-          <p>{" & "}</p>
+          <span>{" & "}</span>
           <Link to="datenschutz" className={styles.link}>
-            Datenschutz
+            {t("footer.privacy")}
           </Link>
+          <span>{" & "}</span>
+          <p className={styles.languageSwitch} onClick={handleLanguageChange}>
+            {i18n.language == "de-DE" ? "DE" : "EN"}
+          </p>
         </div>
       </div>
     </footer>

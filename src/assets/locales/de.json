@@ -1,0 +1,78 @@
+{
+  "intro": {
+    "welcomeText": "Es ist wissenschaftlich bewiesen, dass das Gehirn erst ab ca. 9 Uhr richtig leistungsfähig ist. Unsere Berufsschule startet um 7:30. Das geht besser."
+  },
+  "content": {
+    "firstParagraph": "Gerade Schüler:innen mit langer Anfahrt beschweren sich immer wieder darüber, dass sie absurd früh aufstehen müssen. Selbst, wenn man in München wohnt und auf den öffentlichen Nahverkehr angewiesen ist (man will ja auch nicht bei der kleinsten Verzögerung der U-Bahn zu spät kommen), ist 7:30 wahnsinnig früh.",
+    "secondParagraph": "Wir setzen uns dafür ein, dass die Schule zu einem späteren Zeitpunkt startet und so mehr dem von Wissenschaftler:innen empfohlenen Biorhythmus entspricht.",
+    "thirdParagraph": "Vor einigen Jahren gab es schon einmal eine Abstimmung, die die Uhrzeit bestätigt hat; wir wollen herausfinden ob es mittlerweile eine Mehrheit für einen späteren Schulstart gibt."
+  },
+  "footer": {
+    "header": "Prinzipien unserer Arbeit",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz",
+    "firstPrivacy": {
+      "header": "1. Datenschutz.",
+      "content": "Diese Website speichert kaum Daten. Lediglich ein einziger Cookie wird dafür benötigt, das Captcha einzubinden."
+    },
+    "secondPublicity": {
+      "header": "2. Öffentlichkeit.",
+      "content": "Jede Zeile Code dieses Projektes ist öffentlich und auf GitHub unter einer MIT Licence verfügbar."
+    },
+    "thirdAccessibility": {
+      "header": "3. Barrierefreiheit.",
+      "content": "Wir haben diese Website bewusst so gestaltet, dass jeder daran Spaß hat."
+    },
+    "forNerds": {
+      "header": "Für Nerds",
+      "database": "Datenbank"
+    },
+    "links": {
+      "about": {
+        "header": "Über uns",
+        "ourStuff": "Unzer Zeug"
+      }
+    }
+  },
+  "voting": {
+    "question": "Welchen Unterrichtsbeginn wünscht du dir?",
+    "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",
+    "error": "Das hier ist ein Error"
+  },
+  "noVoting": {
+    "NO_RUNNING_BALLOT": {
+      "header": "Lehn' dich zurück!",
+      "content": "Aktuell wird nicht abgestimmt. Komm’ vielleicht später noch mal!"
+    },
+    "NONE_EXISTENT": {
+      "header": "Etwas stimmt nicht!",
+      "content": "Dein Token scheint nicht zu existieren"
+    },
+    "USED": {
+      "header": "Lehn' dich zurück!",
+      "content": "Du hast bereits abgestimmt :)"
+    },
+    "INVALID": {
+      "header": "Kontaktiere uns bitte!",
+      "content": "Dein Token scheint ungültig zu sein!"
+    },
+    "LOADING": {
+      "header": "Lädt...",
+      "content": "Du scheinst Internet Probleme zuhaben :/"
+    },
+    "SERVER_ERROR": {
+      "header": "Kontaktiere uns bitte!",
+      "content": "Wir haben scheinbar Probleme mit unserem Server :("
+    }
+  },
+  "voteResponse": {
+    "SUCCESS": {
+      "header": "Du hast abgestimmt :)",
+      "content": "Dann entspann dich doch!"
+    },
+    "INVALID_CAPTCHA": {
+      "header": "Etwas stimmt nicht!",
+      "content": "Dein Captcha war ungültig!"
+    }
+  }
+}

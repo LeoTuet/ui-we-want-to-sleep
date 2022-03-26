@@ -3,12 +3,11 @@ import { Ballot, BallotResponse } from "../models";
 export const fetchRunningBallot = async (): Promise<Ballot | undefined> => {
   const url = "/api/ballot/running";
 
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    });
-    const jsonResponse = (await response.json()) as BallotResponse;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  });
+  const jsonResponse = (await response.json()) as BallotResponse;
 
     if (response.status === 404) {
       return Promise.reject("NO_RUNNING_BALLOT");
@@ -16,8 +15,5 @@ export const fetchRunningBallot = async (): Promise<Ballot | undefined> => {
       return Promise.reject("SERVER_ERROR");
     }
 
-    return jsonResponse.data;
-  } catch (error) {
-    console.log(error);
-  }
+  return jsonResponse.data;
 };

@@ -2,12 +2,12 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
-  SerializedError,
+  SerializedError
 } from "@reduxjs/toolkit";
 
 import { RootState, ThunkExtra } from "./rootStore";
 import { selectToken } from "./token";
-import {selectBallot} from "./ballot";
+import { selectBallot } from "./ballot";
 
 export interface VoteState {
   voteError?: SerializedError;
@@ -23,27 +23,23 @@ export const initialState: VoteState = {
 
 export const recordVote = createAsyncThunk<void, string, ThunkExtra>(
   "vote/recordVote",
-  async (identifier, { getState, extra: { api }, dispatch }) => {
+  async (
+    identifier,
+    { getState, extra: { api }, dispatch, rejectWithValue }
+  ) => {
     const { token, captchaToken } = selectToken(getState() as RootState);
     const { ballot } = selectBallot(getState() as RootState);
 
-    if (!ballot) {
-      throw new Error("Ballot Missing");
-    } else if (!token) {
-      throw new Error("Token Missing")
-    } else if (!captchaToken) {
-      throw new Error("Captcha Missing")
+    if (ballot && token && captchaToken) {
+      await api.voteApi.recordVote(identifier, ballot._id, token, captchaToken);
     }
-
-    await api.voteApi.recordVote(identifier, ballot._id, token, captchaToken);
   }
 );
 
 export const voteSlice = createSlice({
   name: "vote",
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(recordVote.pending, (state) => {
       state.voteError = undefined;
@@ -51,7 +47,7 @@ export const voteSlice = createSlice({
     });
     builder.addCase(recordVote.fulfilled, (state, action) => {
       state.voteLoading = false;
-      state.voteResult = "SUCCESS"
+      state.voteResult = "SUCCESS";
     });
     builder.addCase(recordVote.rejected, (state, action) => {
       state.voteError = action.error;
@@ -62,7 +58,7 @@ export const voteSlice = createSlice({
 
 export const { reducer } = voteSlice;
 export const actions = {
-  ...voteSlice.actions
+  ...voteSlice.actions,
 };
 
 export const selectVoteStore = (state: RootState) => state.vote;
@@ -70,5 +66,5 @@ export const selectVoteStore = (state: RootState) => state.vote;
 export const selectVote = createSelector(selectVoteStore, (store) => ({
   voteError: store.voteError,
   voteLoading: store.voteLoading,
-  voteResult: store.voteResult
+  voteResult: store.voteResult,
 }));

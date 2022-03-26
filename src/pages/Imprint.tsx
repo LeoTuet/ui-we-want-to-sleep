@@ -5,7 +5,7 @@ import { LegalSection } from "../sections/LegalSection";
 
 export const Imprint = () => {
   return (
-    <div>
+    <>
       <StickyLegalHeader text="unser.impressum()" hlStart={6} hlEnd={15} />
       <main className={styles.legalBackground}>
         <div className={styles.legalContainer}>
@@ -89,6 +89,6 @@ export const Imprint = () => {
           </LegalSection>
         </div>
       </main>
-    </div>
+    </>
   );
 };

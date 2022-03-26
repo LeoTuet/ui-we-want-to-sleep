@@ -24,8 +24,8 @@ export const fetchRunningBallot = createAsyncThunk<
   Ballot | undefined,
   undefined,
   ThunkExtra
->("ballot/fetchRunningBallot", async (_, { extra: { api }, dispatch }) => {
-  return api.ballotApi.fetchRunningBallot();
+>("ballot/fetchRunningBallot", async (_, { extra: { api }}) => {
+  return await api.ballotApi.fetchRunningBallot();
 });
 
 export const ballotSlice = createSlice({
