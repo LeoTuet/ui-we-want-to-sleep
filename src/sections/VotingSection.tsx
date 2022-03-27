@@ -4,6 +4,7 @@ import React, { useCallback, useState } from "react";
 import { Ballot } from "../models";
 
 import { SerializedError } from "@reduxjs/toolkit";
+import { useTranslation } from "react-i18next";
 
 interface VotingSectionProps {
   onTokenReceive: (token: string) => void;
@@ -21,6 +22,7 @@ export const VotingSection = ({
   onVote,
 }: VotingSectionProps) => {
   const [captchaSaved, setCaptchaSaved] = useState(false);
+  const { t } = useTranslation();
 
   const handleTokenReceive = useCallback(
     (token: string) => {
@@ -34,15 +36,10 @@ export const VotingSection = ({
   );
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <div className={styles.votingSection}>
-        <h4 className={styles.question}>
-          Welchen Unterrichtsbeginn wünscht du dir?
-        </h4>
-        <p className={styles.description}>
-          Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle
-          weise.
-        </p>
+        <h4 className={styles.question}>{t("voting.question")}</h4>
+        <p className={styles.description}>{t("voting.description")}</p>
         {!captchaSaved && (
           <div className={styles.captchaContainer}>
             <div style={{ marginBottom: "-7px" }}>
@@ -68,8 +65,8 @@ export const VotingSection = ({
             ))}
           </div>
         )}
-        {ballot.ballotError && <p>Das hier ist ein Error</p>}
+        {ballot.ballotError && <p>{t("voting.error")}</p>}
       </div>
-    </div>
+    </section>
   );
 };

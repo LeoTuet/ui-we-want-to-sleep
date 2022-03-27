@@ -6,16 +6,18 @@ export const recordVote = async (
 ): Promise<void> => {
   const url = `/api/vote/${ballotID}`;
 
-  try {
-    await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Captcha": captchaToken,
-      },
-      body: JSON.stringify({ token, vote: identifier }),
-    });
-  } catch (error) {
-    console.log(error);
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Captcha": captchaToken,
+    },
+    body: JSON.stringify({ token, vote: identifier }),
+  });
+  const jsonResponse = await response.json();
+
+  if (jsonResponse.error.message.includes("Captcha")) {
+    return Promise.reject("INVALID_CAPTCHA");
   }
+
 };

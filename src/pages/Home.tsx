@@ -1,26 +1,32 @@
-import React, {useCallback, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import {ContentSection} from "../sections/ContentSection";
-import {IntroSection} from "../sections/IntroSection";
-import {VotingSection} from "../sections/VotingSection";
-import {fetchRunningBallot, selectBallot} from "../stores/ballot";
-import {BallotError, NoVotingSection} from "../sections/NoVotingSection";
-import {recordVote, selectVote} from "../stores/vote";
-import {actions} from "../stores/token";
-import {useParams} from "react-router-dom";
-import {CouchPanel} from "../components/CouchPanel";
+import { ContentSection } from "../sections/ContentSection";
+import { IntroSection } from "../sections/IntroSection";
+import { VotingSection } from "../sections/VotingSection";
+import { fetchRunningBallot, selectBallot } from "../stores/ballot";
+import { fetchTokenStatus, selectToken } from "../stores/token";
+import { NoVotingType, NoVotingSection } from "../sections/NoVotingSection";
+import { recordVote, selectVote } from "../stores/vote";
+import { actions } from "../stores/token";
+import { useParams } from "react-router-dom";
+import {
+  VoteResponseType,
+  VoteResponseSection,
+} from "../sections/VoteResponseSection";
 
 export const Home = () => {
   const ballot = useSelector(selectBallot);
   const vote = useSelector(selectVote);
+  const tokenStore = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  let {token} = useParams();
+  let { token } = useParams();
 
   useEffect(() => {
-    dispatch(fetchRunningBallot())
-  }, []);
+    // @ts-ignore
+    dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
+  }, [dispatch]);
 
   const handleVote = useCallback(
     (identifier: string) => {
@@ -43,24 +49,34 @@ export const Home = () => {
   }, [token]);
 
   return (
-    <div>
-      <IntroSection/>
-      <ContentSection/>
-      {ballot.ballot && !ballot.ballotError && !vote.voteResult && (
-        <VotingSection
-          onTokenReceive={handleCaptchaTokenReceive}
-          ballot={ballot}
-          onVote={handleVote}
-        />
-      )}
-      {ballot.ballotError && !vote.voteResult && (
-        <NoVotingSection
-          type={(ballot.ballotError.message ?? "") as BallotError}
-        />
-      )}
-      {vote.voteResult && (
-        <CouchPanel mainText={"Du hast abgestimmt :)"} subText={"Dann entspann dich doch!"}/>
-      )}
-    </div>
+    <>
+      <IntroSection />
+      <main>
+        <ContentSection />
+        {ballot.ballot &&
+          !ballot.ballotError &&
+          !vote.voteResult &&
+          tokenStore.statusResult === "VALID" && (
+            <VotingSection
+              onTokenReceive={handleCaptchaTokenReceive}
+              ballot={ballot}
+              onVote={handleVote}
+            />
+          )}
+        {(ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) && (
+          <NoVotingSection
+            type={(ballot.ballotError?.message ?? "LOADING") as NoVotingType}
+          />
+        )}
+        {!["VALID", "MISSING"].includes(tokenStore.statusResult) && (
+          <NoVotingSection type={tokenStore.statusResult as NoVotingType} />
+        )}
+        {(vote.voteResult || vote.voteError) && (
+          <VoteResponseSection
+            type={(vote.voteResult ?? vote.voteError) as VoteResponseType}
+          />
+        )}
+      </main>
+    </>
   );
 };
