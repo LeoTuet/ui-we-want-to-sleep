@@ -30,11 +30,7 @@ export const IntroSection = () => {
           <OptionsPanel />
         </div>
         <div className={styles.innerSection}>
-          <TypingHeading
-            finalText={"we.wantToSleep()"}
-            hlStart={3}
-            hlEnd={14}
-          />
+          <TypingHeading finalText={"we.wantToSleep()"} />
           <p className={styles.description}>{t("intro.welcomeText")}</p>
         </div>
         <div className={styles.sheepContainer} ref={sheep}>

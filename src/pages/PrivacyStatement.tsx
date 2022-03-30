@@ -7,7 +7,7 @@ import { LegalSection } from "../sections/LegalSection";
 export const PrivacyStatement = () => {
   return (
     <>
-      <StickyLegalHeader text="unser.datenschutz()" hlStart={6} hlEnd={17} />
+      <StickyLegalHeader text="unser.datenschutz()" />
       <main className={styles.legalBackground}>
         <div className={styles.legalContainer}>
           <LegalSection header="Einleitung">
