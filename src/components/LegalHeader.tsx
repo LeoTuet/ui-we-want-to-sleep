@@ -8,16 +8,9 @@ import { StarBackground } from "./StarBackground";
 
 export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
-  hlStart: number;
-  hlEnd: number;
 }
 
-export const LegalHeader = ({
-  text,
-  hlStart,
-  hlEnd,
-  ...rest
-}: LegalHeaderProps) => {
+export const LegalHeader = ({ text, ...rest }: LegalHeaderProps) => {
   return (
     <header className={styles.stickyHeader} {...rest}>
       <StarBackground className={styles.adjustedStarBackground}>
@@ -32,7 +25,7 @@ export const LegalHeader = ({
             </Link>
           </nav>
         </div>
-        <TypingHeading finalText={text} hlStart={hlStart} hlEnd={hlEnd} />
+        <TypingHeading finalText={text} />
       </StarBackground>
     </header>
   );

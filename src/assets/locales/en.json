@@ -80,5 +80,32 @@
       "header": "Something isn't right!",
       "content": "Your captcha was invalid!"
     }
+  },
+  "imprint": {
+    "header": "our.imprint()",
+    "general": {
+      "header": "Details according to $5 TMG",
+      "owner": "Owner",
+      "contact": "Contact",
+      "responsibilities": "Responsibilities",
+      "content": "Responsible for the content according to § 55 Abs. 2 Rundfunkstaatsvertrag (RStV) is",
+      "sources": "Sources for the images and graphics used"
+    },
+    "limitationOfLiability": {
+      "header": "Limitation of liability",
+      "content": "The contents of this website are created with the greatest possible care. However, the provider does not guarantee the accuracy, completeness and timeliness of the content provided. The use of the contents of the website is at the user's own risk. Contributions identified by name reflect the opinion of the respective author and not always the opinion of the provider. The mere use of the provider's website does not constitute any contractual relationship between the user and the provider."
+    },
+    "liabilityOfLinks": {
+      "header": "Liability for links",
+      "content": "The content published on this website is subject to German copyright and ancillary copyright law. Any use not permitted by German copyright and ancillary copyright law requires the prior written consent of the provider or the respective copyright holder. This applies in particular to the copying, editing, translation, storage, processing or reproduction of content in databases or other electronic media and systems. Contents and rights of third parties are marked as such. The unauthorized reproduction or distribution of individual content or complete pages is not permitted and is punishable by law. Only the production of copies and downloads for personal, private and non-commercial use is permitted. The display of this website in external frames is only permitted with written permission."
+    },
+    "copyright": {
+      "header": "Copyrights and ancillary copyrights",
+      "content": "The content and works created by the site operators on these pages are subject to German copyright law. The reproduction, editing, distribution and any kind of exploitation outside the limits of copyright require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use. Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is identified as such. Should you nevertheless become aware of a copyright infringement, please inform us accordingly. If we become aware of any infringements, we will remove such content immediately."
+    },
+    "termsOfUse": {
+      "header": "Special terms of use",
+      "content": "Insofar as special conditions for individual uses of this website deviate from the aforementioned paragraphs, this will be expressly indicated at the appropriate place. In this case, the special terms of use apply in the respective individual case."
+    }
   }
 }
