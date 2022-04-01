@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { Jwt, useJwt } from "../network/jwt";
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";
 
@@ -12,29 +12,18 @@ export const Home = () => {
     };
   }, []);
 
-  const [accessToken, setAccessToken] = useLocalStorage<string | null>(
-    "admin.accessToken",
-    null
-  );
-  const [username, setUsername] = useLocalStorage<string | null>(
-    "admin.username",
-    null
-  );
+  const [jwt, setJwt] = useJwt("admin.accessToken");
 
-  function onLogin(username: string, accessToken: string) {
-    setAccessToken(accessToken);
-    setUsername(username);
+  function onLogin(jwt: Jwt) {
+    setJwt(jwt);
   }
 
   function onLogout() {
-    setAccessToken(null);
-    setUsername(null);
+    setJwt(null);
   }
 
-  if (accessToken != null && username != null) {
-    return (
-      <Main username={username} accessToken={accessToken} onLogout={onLogout} />
-    );
+  if (jwt != null) {
+    return <Main jwt={jwt} onLogout={onLogout} />;
   } else {
     return <Login onLogin={onLogin} />;
   }

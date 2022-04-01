@@ -1,19 +1,19 @@
 import { ChangeEvent, useState } from "react";
 import { generateToken } from "../../network/adminApi";
+import { Jwt } from "../../network/jwt";
 import styles from "./Main.module.scss";
 
 interface MainProps {
-  username: string;
-  accessToken: string;
+  jwt: Jwt;
   onLogout(): void;
 }
 
-export const Main = ({ username, accessToken, onLogout }: MainProps) => {
+export const Main = ({ jwt, onLogout }: MainProps) => {
   const [generatedTokens, setGeneratedTokens] = useState<string[]>([]);
   const [tokenNumber, setTokenNumber] = useState(1);
 
   async function genToken() {
-    const tokens = await generateToken(accessToken, {
+    const tokens = await generateToken(jwt.encoded, {
       amount: tokenNumber,
       valid: true,
     });
@@ -33,7 +33,7 @@ export const Main = ({ username, accessToken, onLogout }: MainProps) => {
     <div className={styles.outer}>
       <header className={styles.header}>
         <div className={styles.title}>we.wantToSleep() ADMIN area</div>
-        <div className={styles.greeting}>Hello {username}</div>
+        <div className={styles.greeting}>Hello {jwt.username}</div>
         <button onClick={onLogout}>Logout</button>
       </header>
 

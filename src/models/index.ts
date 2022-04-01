@@ -1,5 +1,5 @@
-export interface BallotResponse {
-  data: Ballot;
+export interface Data<T> {
+  data: T;
 }
 
 export interface Ballot {

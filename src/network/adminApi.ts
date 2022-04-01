@@ -1,15 +1,11 @@
-interface AccessToken {
-  accessToken: string;
-}
+import { Jwt, parseJwt } from "./jwt";
 
 interface Credentials {
   username: string;
   password: string;
 }
 
-export const loginAdmin = async (
-  credentials: Credentials
-): Promise<AccessToken> => {
+export const loginAdmin = async (credentials: Credentials): Promise<Jwt> => {
   const url = "/api/admin/login";
 
   const response = await fetch(url, {
@@ -32,7 +28,8 @@ export const loginAdmin = async (
   if (!response.ok) {
     throw new Error(json.error.message);
   }
-  return json.data;
+
+  return parseJwt(json.data.accessToken);
 };
 
 export const addAdmin = async (

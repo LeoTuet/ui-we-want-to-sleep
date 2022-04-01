@@ -1,10 +1,11 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { loginAdmin } from "../../network/adminApi";
+import { Jwt } from "../../network/jwt";
 import styles from "./Login.module.scss";
 
 interface LoginProps {
-  onLogin(username: string, accessToken: string): void;
+  onLogin(jwt: Jwt): void;
 }
 
 export const Login = ({ onLogin }: LoginProps) => {
@@ -51,8 +52,8 @@ export const Login = ({ onLogin }: LoginProps) => {
 
   async function attemptLogin() {
     try {
-      const { accessToken } = await loginAdmin({ username, password });
-      onLogin(username, accessToken);
+      const jwt = await loginAdmin({ username, password });
+      onLogin(jwt);
     } catch (e: any) {
       console.log(e);
       if (e instanceof Array) {
@@ -72,7 +73,7 @@ export const Login = ({ onLogin }: LoginProps) => {
       <form className={styles.loginForm} onSubmit={submit}>
         Username:
         <input
-          autoFocus
+          autoFocus={username == ""}
           autoCapitalize="off"
           spellCheck={false}
           type="text"
@@ -82,6 +83,7 @@ export const Login = ({ onLogin }: LoginProps) => {
         />
         Password:
         <input
+          autoFocus={username != ""}
           type="password"
           className={styles.inputField}
           onChange={changePassword}
