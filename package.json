@@ -6,10 +6,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "jest",
-    "tsc:errors": "tsc -p .",
+    "typecheck": "tsc --noEmit --incremental",
     "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/core": "^7.17.7",
@@ -56,13 +57,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "prettier": "^2.6.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
