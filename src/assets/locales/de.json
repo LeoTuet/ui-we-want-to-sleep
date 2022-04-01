@@ -80,5 +80,9 @@
       "header": "Etwas stimmt nicht!",
       "content": "Dein Captcha war ungültig!"
     }
+  },
+  "cookieBanner": {
+    "content": "Wir verwenden ausschließlich einen einzigen & essentiellen Cookie um die Funktionsweise des Captchas sicherzustellen",
+    "acceptButtonText": "Akzeptieren"
   }
 }

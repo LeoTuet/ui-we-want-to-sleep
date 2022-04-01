@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BottomBanner } from "../components/BottomBanner";
 import { actions, selectUIStore } from "../stores/ui";
+import { useTranslation } from "react-i18next";
 
 export const CookieBannerWidget = () => {
   const { cookieConsent } = useSelector(selectUIStore);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -11,16 +13,11 @@ export const CookieBannerWidget = () => {
     dispatch(actions.consentCookies());
   };
 
-  const cookieBannerText =
-    "Wir verwenden ausschließlich einen einzigen & essentiellen Cookie um die Funktionsweise des Captchas sicherzustellen";
-
-  const consentButtonText = "Akzeptieren";
-
   if (cookieConsent !== "accepted") {
     return (
       <BottomBanner
-        text={cookieBannerText}
-        buttonText={consentButtonText}
+        text={t("cookieBanner.content")}
+        buttonText={t("cookieBanner.acceptButtonText")}
         onButtonClick={handleConsentCookies}
       />
     );
