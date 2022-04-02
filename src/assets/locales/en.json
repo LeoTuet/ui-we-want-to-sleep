@@ -34,6 +34,12 @@
       }
     }
   },
+  "ui": {
+    "theme": "Theme",
+    "light_theme": "Light theme",
+    "dark_theme": "Dark theme",
+    "language": "Language"
+  },
   "voting": {
     "question": "What class start do you want?",
     "description": "You can only vote once and cannot change your choice. Choose wisely.",

@@ -1,0 +1,23 @@
+.slider {
+  border: 1px solid #9995;
+  border-radius: 100px;
+  padding: 3px 4px;
+
+  button {
+    color: inherit;
+    border-radius: 100px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin: 0;
+    padding: 4px 10px;
+    font-family: inherit;
+    font-size: 95%;
+    line-height: 23px;
+    transition: 0.2s;
+
+    &.selected {
+      background-color: #9992;
+      border: 1px solid #9999;
+    }
+  }
+}

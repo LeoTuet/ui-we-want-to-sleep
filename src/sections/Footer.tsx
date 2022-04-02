@@ -1,19 +1,17 @@
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "../components/ExternalLink";
+import { Language, OptionsPanel } from "../components/OptionsPanel";
 import { PointedTable } from "../components/PointedTable";
+import { useTheme } from "../hooks/useTheme";
+import { actions as uiActions } from "../stores/ui";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
-  const handleLanguageChange = () => {
-    if (i18n.language === "en-US") {
-      i18n.changeLanguage("de-DE");
-    } else {
-      i18n.changeLanguage("en-US");
-    }
-  };
+  const { theme } = useTheme();
 
   return (
     <footer className={styles.footer}>
@@ -33,9 +31,7 @@ export const Footer = () => {
             <p>{t("footer.thirdAccessibility.content")}</p>
           </li>
         </ul>
-        <h3 className={styles.captionHeading}>
-          {t("footer.forNerds.header")}
-        </h3>
+        <h3 className={styles.captionHeading}>{t("footer.forNerds.header")}</h3>
 
         <PointedTable
           rows={[
@@ -91,7 +87,7 @@ export const Footer = () => {
             },
           ]}
         />
-        <div className={styles.legalTexts}>
+        <p className={styles.centered}>
           <Link to="impressum" className={styles.link}>
             {t("footer.imprint")}
           </Link>
@@ -99,11 +95,10 @@ export const Footer = () => {
           <Link to="datenschutz" className={styles.link}>
             {t("footer.privacy")}
           </Link>
-          <span>{" & "}</span>
-          <p className={styles.languageSwitch} onClick={handleLanguageChange}>
-            {i18n.language == "de-DE" ? "DE" : "EN"}
-          </p>
-        </div>
+        </p>
+        <p className={styles.centered}>
+          <OptionsPanel />
+        </p>
       </div>
     </footer>
   );

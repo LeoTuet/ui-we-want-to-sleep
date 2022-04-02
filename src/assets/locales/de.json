@@ -34,6 +34,12 @@
       }
     }
   },
+  "ui": {
+    "theme": "Thema",
+    "light_theme": "Helles Thema",
+    "dark_theme": "Dunkles Thema",
+    "language": "Sprache"
+  },
   "voting": {
     "question": "Welchen Unterrichtsbeginn wünscht du dir?",
     "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",

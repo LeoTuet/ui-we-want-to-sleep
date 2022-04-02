@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="192px" height="192px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+   <g>
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:7;paint-order:markers fill stroke"
+         transform="translate(96,96) rotate(2.04906e-005) translate(-96,-96)"
+         d="M 137,96 A 41,41 0 0 1 96,137 41,41 0 0 1 55,96 41,41 0 0 1 96,55 41,41 0 0 1 137,96 Z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="M 16.5,88 A 9.5,9.5 0 0 0 7,97.5 9.5,9.5 0 0 0 16.5,107 h 15 A 9.5,9.5 0 0 0 41,97.5 9.5,9.5 0 0 0 31.5,88 Z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="M 94.5,7 A 9.5,9.5 0 0 0 85,16.5 v 15 a 9.5,9.5 0 0 0 9.5,9.5 9.5,9.5 0 0 0 9.5,-9.5 v -15 A 9.5,9.5 0 0 0 94.5,7 Z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 160.5,85 a 9.5,9.5 0 0 0 -9.5,9.5 9.5,9.5 0 0 0 9.5,9.5 h 15 A 9.5,9.5 0 0 0 185,94.5 9.5,9.5 0 0 0 175.5,85 Z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 97.5,151 a 9.5,9.5 0 0 0 -9.5,9.5 v 15 a 9.5,9.5 0 0 0 9.5,9.5 9.5,9.5 0 0 0 9.5,-9.5 v -15 A 9.5,9.5 0 0 0 97.5,151 Z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 37.896484,30.517578 a 9.5,9.5 0 0 0 -6.71875,2.78125 9.5,9.5 0 0 0 0,13.435547 l 10.607422,10.607422 a 9.5,9.5 0 0 0 13.435547,0 9.5,9.5 0 0 0 0,-13.435547 L 44.613281,33.298828 a 9.5,9.5 0 0 0 -6.716797,-2.78125 z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 151.98242,28.396484 a 9.5,9.5 0 0 0 -6.7168,2.78125 L 134.6582,41.785156 a 9.5,9.5 0 0 0 0,13.435547 9.5,9.5 0 0 0 13.43555,0 l 10.60742,-10.607422 a 9.5,9.5 0 0 0 0,-13.435547 9.5,9.5 0 0 0 -6.71875,-2.78125 z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 143.49609,131.87695 a 9.5,9.5 0 0 0 -6.71679,2.78125 9.5,9.5 0 0 0 0,13.43555 l 10.60742,10.60742 a 9.5,9.5 0 0 0 13.43555,0 9.5,9.5 0 0 0 0,-13.43555 L 150.21484,134.6582 a 9.5,9.5 0 0 0 -6.71875,-2.78125 z" />
+      <path style="fill:#fff25e;stroke:#100522;stroke-width:14;paint-order:markers stroke fill"
+         d="m 50.623047,133.99609 a 9.5,9.5 0 0 0 -6.716797,2.78321 l -10.607422,10.60742 a 9.5,9.5 0 0 0 0.002,13.43555 9.5,9.5 0 0 0 13.433594,0 l 10.607422,-10.60743 a 9.5,9.5 0 0 0 0,-13.43554 9.5,9.5 0 0 0 -6.71875,-2.78321 z" />
+   </g>
+</svg>
