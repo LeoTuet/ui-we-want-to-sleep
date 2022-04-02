@@ -1,3 +1,14 @@
+.outer {
+  background-color: var(--footer-background);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
 .error {
   color: red;
 }

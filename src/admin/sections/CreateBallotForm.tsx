@@ -76,7 +76,7 @@ export function CreateBallotForm({
   }
 
   return (
-    <>
+    <div className={styles.outer}>
       <h2>Create new Ballot</h2>
       <p className={styles.error}>{error}</p>
 
@@ -124,6 +124,6 @@ export function CreateBallotForm({
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
