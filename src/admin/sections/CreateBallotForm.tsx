@@ -8,9 +8,14 @@ import styles from "./CreateBallotForm.module.scss";
 interface CreateBallotProps {
   jwt: Jwt;
   onSubmit(): void;
+  onCancel(): void;
 }
 
-export function CreateBallotForm({ jwt, onSubmit }: CreateBallotProps) {
+export function CreateBallotForm({
+  jwt,
+  onSubmit,
+  onCancel,
+}: CreateBallotProps) {
   const [error, setError] = useState<string | null>(null);
   const [showErrors, setShowErrors] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -49,6 +54,11 @@ export function CreateBallotForm({ jwt, onSubmit }: CreateBallotProps) {
     }
   }
 
+  function cancel(e: FormEvent) {
+    e.preventDefault();
+    onCancel();
+  }
+
   function addVoteOption(e: FormEvent) {
     e.preventDefault();
     setVoteOptions([...voteOptions, { identifier: "", label: "" }]);
@@ -56,7 +66,7 @@ export function CreateBallotForm({ jwt, onSubmit }: CreateBallotProps) {
   }
 
   function removeVoteOption(index: number) {
-    setVoteOptions(voteOptions.slice().splice(index, 1));
+    setVoteOptions(voteOptions.filter((_, i) => i !== index));
     setShowErrors(false);
   }
 
@@ -102,7 +112,17 @@ export function CreateBallotForm({ jwt, onSubmit }: CreateBallotProps) {
           +
         </button>
 
-        <input type="submit" value="Submit" disabled={disabled} />
+        <div>
+          <input
+            className={styles.submit}
+            type="submit"
+            value="Submit"
+            disabled={disabled}
+          />
+          <button className={styles.cancel} onClick={cancel}>
+            Cancel
+          </button>
+        </div>
       </form>
     </>
   );

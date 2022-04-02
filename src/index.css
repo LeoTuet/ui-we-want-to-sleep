@@ -20,6 +20,7 @@
 
   --vote-button-background: #ffef3f;
   --vote-button-color: black;
+  --green-button-background: #50dd4b;
 
   --selection-background: var(--theme-color);
   --selection-text: #100522;
@@ -47,6 +48,7 @@
 
   --vote-button-background: #ffef3f;
   --vote-button-color: black;
+  --green-button-background: #058a00;
 
   --selection-background: var(--theme-color);
   --selection-text: #100522;

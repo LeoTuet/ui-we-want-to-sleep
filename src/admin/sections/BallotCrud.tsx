@@ -46,13 +46,19 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
           ))
         : "There are no ballots."}
 
-      <p>
-        <button className={styles.button} onClick={toggleCreationFormVisible}>
-          Create new ballot
-        </button>
-      </p>
-      {creationFormVisible && (
-        <CreateBallotForm jwt={jwt} onSubmit={createBallot} />
+      <hr className={styles.hr} />
+      {creationFormVisible ? (
+        <CreateBallotForm
+          jwt={jwt}
+          onSubmit={createBallot}
+          onCancel={toggleCreationFormVisible}
+        />
+      ) : (
+        <p>
+          <button className={styles.button} onClick={toggleCreationFormVisible}>
+            Create new ballot
+          </button>
+        </p>
       )}
     </>
   );

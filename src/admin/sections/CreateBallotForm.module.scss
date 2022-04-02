@@ -23,7 +23,8 @@
     align-self: start;
   }
 
-  input[type="submit"] {
-    align-self: flex-start;
+  .submit {
+    background-color: var(--green-button-background);
+    margin-right: 1rem;
   }
 }
