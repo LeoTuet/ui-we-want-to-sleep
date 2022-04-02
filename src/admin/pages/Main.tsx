@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { DownloadFile } from "../../components/DownloadFile";
 import { generateToken } from "../../network/adminApi";
 import { Jwt } from "../../network/jwt";
 import styles from "./Main.module.scss";
@@ -40,7 +41,7 @@ export const Main = ({ jwt, onLogout }: MainProps) => {
       <h2>Tokens</h2>
 
       <p>
-        {"Generate "}
+        Generate
         <input
           type="number"
           className={styles.tokenNumberInput}
@@ -48,8 +49,8 @@ export const Main = ({ jwt, onLogout }: MainProps) => {
           value={tokenNumber}
           onChange={changeTokenNumber}
         />
-        {" tokens "}
-        <button className={styles.tokenButton} onClick={genToken}>
+        tokens
+        <button className={styles.button} onClick={genToken}>
           GO
         </button>
       </p>
@@ -65,7 +66,17 @@ export const Main = ({ jwt, onLogout }: MainProps) => {
             ))}
           </ul>
           <p>
-            <button className={styles.clearTokenButton} onClick={clearTokens}>
+            <DownloadFile
+              className={styles.button}
+              contents={generatedTokens.join("\n")}
+              type="text/plain"
+              download={`WWTS_${
+                generatedTokens.length
+              }_tokens_${formatDate()}_${timestamp()}.txt`}
+            >
+              Download
+            </DownloadFile>
+            <button className={styles.button} onClick={clearTokens}>
               Clear tokens
             </button>
           </p>
@@ -77,3 +88,11 @@ export const Main = ({ jwt, onLogout }: MainProps) => {
     </div>
   );
 };
+
+function formatDate(): string {
+  return new Date().toISOString().substring(0, 10);
+}
+
+function timestamp(): number {
+  return (Date.now() / 1000) | 0;
+}

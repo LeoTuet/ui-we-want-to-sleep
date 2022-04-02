@@ -31,9 +31,8 @@
   }
 }
 
-.tokenButton,
 .tokenNumberInput,
-.clearTokenButton {
+.button {
   border: none;
   background-color: var(--input-background);
   color: var(--input-color);
@@ -41,10 +40,18 @@
   border-radius: 3px;
   font-family: inherit;
   font-size: 1rem;
+  text-decoration: none;
+
+  & + .tokenNumberInput,
+  & + .button {
+    margin-left: 1em;
+  }
 }
 
 .tokenNumberInput {
   width: 4rem;
+  margin-left: 1em;
+  margin-right: 1em;
   text-align: center;
 }
 

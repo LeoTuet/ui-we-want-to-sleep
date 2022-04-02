@@ -33,9 +33,7 @@ export const Footer = () => {
             <p>{t("footer.thirdAccessibility.content")}</p>
           </li>
         </ul>
-        <h3 className={styles.captionHeading}>
-          {t("footer.forNerds.header")}
-        </h3>
+        <h3 className={styles.captionHeading}>{t("footer.forNerds.header")}</h3>
 
         <PointedTable
           rows={[
@@ -103,6 +101,10 @@ export const Footer = () => {
           <p className={styles.languageSwitch} onClick={handleLanguageChange}>
             {i18n.language == "de-DE" ? "DE" : "EN"}
           </p>
+          <span>{" & "}</span>
+          <Link to="admin" className={styles.link}>
+            {t("footer.adminLogin")}
+          </Link>
         </div>
       </div>
     </footer>

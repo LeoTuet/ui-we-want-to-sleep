@@ -1,4 +1,3 @@
-import { SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectJwt, actions } from "../stores/jwts";
 
@@ -48,18 +47,23 @@ export function useJwt(
   };
 
   const { jwts } = useSelector(selectJwt);
+
   if (name in jwts) {
     return [jwts[name][0], setJwt];
   } else {
     const local = localStorage.getItem(name);
+    let jwt: Jwt | null = null;
+
     if (local != null) {
-      const jwt = parseJwt(local);
+      jwt = parseJwt(local);
       if (Date.now() >= jwt.exp * 1000) {
-        return [null, setJwt];
+        jwt = null;
       }
-      return [jwt, setJwt];
-    } else {
-      return [null, setJwt];
     }
+
+    if (jwt != null) {
+      setJwt(jwt);
+    }
+    return [jwt, setJwt];
   }
 }
