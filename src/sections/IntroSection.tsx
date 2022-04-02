@@ -4,9 +4,9 @@ import { Sheep } from "../components/Sheep";
 import { TypingHeading } from "../components/TypingHeading";
 import { Size, useWindowSize } from "../hooks/useWindowSize";
 import styles from "./IntroSection.module.scss";
-import ThemeToggle from "../components/ThemeToggle";
 import { StarBackground } from "../components/StarBackground";
 import { useTranslation } from "react-i18next";
+import { OptionsPanel } from "../components/OptionsPanel";
 
 export const IntroSection = () => {
   const sheep = useRef<HTMLDivElement | null>(null);
@@ -26,8 +26,8 @@ export const IntroSection = () => {
   return (
     <header>
       <StarBackground className={styles.minStarBackground}>
-        <div className={styles.themeToggleContainer}>
-          <ThemeToggle />
+        <div className={styles.optionsContainer}>
+          <OptionsPanel />
         </div>
         <div className={styles.innerSection}>
           <TypingHeading
