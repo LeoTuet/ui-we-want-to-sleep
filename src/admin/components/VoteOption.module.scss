@@ -1,0 +1,23 @@
+.outer {
+  display: flex;
+  gap: 0.5rem;
+
+  .identifier,
+  .label {
+    width: 50px;
+    flex-grow: 1;
+    transition: box-shadow 0.2s;
+
+    &.invalid {
+      box-shadow: 0 0 0 2px red;
+    }
+  }
+
+  .label {
+    flex-grow: 3;
+  }
+
+  .removeButton {
+    flex-grow: 0;
+  }
+}

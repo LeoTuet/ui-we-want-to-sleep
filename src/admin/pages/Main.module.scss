@@ -30,38 +30,3 @@
     }
   }
 }
-
-.tokenNumberInput,
-.button {
-  border: none;
-  background-color: var(--input-background);
-  color: var(--input-color);
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-family: inherit;
-  font-size: 1rem;
-  text-decoration: none;
-
-  & + .tokenNumberInput,
-  & + .button {
-    margin-left: 1em;
-  }
-}
-
-.tokenNumberInput {
-  width: 4rem;
-  margin-left: 1em;
-  margin-right: 1em;
-  text-align: center;
-}
-
-.tokenList {
-  list-style-type: none;
-  margin: 1rem 0;
-  padding: 0;
-
-  li {
-    margin: 0;
-    padding: 5px 20px;
-  }
-}

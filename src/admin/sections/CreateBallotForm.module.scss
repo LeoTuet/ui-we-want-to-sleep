@@ -1,0 +1,29 @@
+.error {
+  color: red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  button,
+  input {
+    border: none;
+    background-color: var(--input-background);
+    color: var(--input-color);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .addVoteOption {
+    align-self: start;
+  }
+
+  input[type="submit"] {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,38 @@
+.status {
+  &.active {
+    color: #00b700;
+  }
+}
+
+.table {
+  border-collapse: collapse;
+
+  td,
+  th {
+    text-align: left;
+    padding: 2px 10px;
+  }
+
+  td {
+    border-top: 1px solid #9996;
+    opacity: 0.7;
+  }
+  th {
+    font-weight: bold;
+  }
+}
+
+.button {
+  border: none;
+  background-color: var(--input-background);
+  color: var(--input-color);
+  padding: 5px 10px;
+  margin: 0.5rem 0 1rem 0;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+}
