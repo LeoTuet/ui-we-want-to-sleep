@@ -1,17 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "../components/ExternalLink";
-import { Language, OptionsPanel } from "../components/OptionsPanel";
+import { OptionsPanel } from "../components/OptionsPanel";
 import { PointedTable } from "../components/PointedTable";
-import { useTheme } from "../hooks/useTheme";
-import { actions as uiActions } from "../stores/ui";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
-  const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <footer className={styles.footer}>

@@ -3,13 +3,22 @@ import { ReactNode } from "react";
 import styles from "./SelectSlider.module.scss";
 
 interface SelectProps<T extends string> {
+  /** Name of the slider */
   name: string;
+  /** Options to select from */
   options: Option<T>[];
+  /** String identifying the selected element */
   value: T;
+  /** Event listener providing the new value */
   onChange(value: T): void;
 }
 
-type Option<T extends string> = T | { name: T; node: ReactNode };
+export interface Option<T extends string> {
+  /** String identifying the option */
+  name: T;
+  /** Displayed text or element */
+  node: ReactNode;
+}
 
 export function SelectSlider<T extends string>({
   name,
@@ -19,33 +28,19 @@ export function SelectSlider<T extends string>({
 }: SelectProps<T>) {
   return (
     <div className={styles.slider} title={name} aria-label={name}>
-      {options.map((option) =>
-        typeof option === "string" ? (
-          <button
-            className={classNames({ [styles.selected]: option === value })}
-            onClick={() => {
-              if (option !== value) {
-                onChange(option);
-              }
-            }}
-            key={option}
-          >
-            {option}
-          </button>
-        ) : (
-          <button
-            className={classNames({ [styles.selected]: option.name === value })}
-            onClick={() => {
-              if (option.name !== value) {
-                onChange(option.name);
-              }
-            }}
-            key={option.name}
-          >
-            {option.node}
-          </button>
-        )
-      )}
+      {options.map(({ name, node }) => (
+        <button
+          className={classNames({ [styles.selected]: name === value })}
+          onClick={() => {
+            if (name !== value) {
+              onChange(name);
+            }
+          }}
+          key={name}
+        >
+          {node}
+        </button>
+      ))}
     </div>
   );
 }
