@@ -11,6 +11,7 @@ vite-dev.config.ts
 
 # testing
 /coverage
+tsconfig.tsbuildinfo
 
 # production
 /build

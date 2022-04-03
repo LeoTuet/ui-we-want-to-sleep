@@ -6,8 +6,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "test": "jest",
-    "tsc:errors": "tsc -p .",
-    "preview": "vite preview"
+    "typecheck": "tsc --noEmit --incremental",
+    "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
+    "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore",
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/core": "^7.17.7",
@@ -44,11 +47,19 @@
     "vite": "^2.8.0",
     "web-vitals": "^2.1.4"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1"
   },
   "browserslist": {
     "production": [
