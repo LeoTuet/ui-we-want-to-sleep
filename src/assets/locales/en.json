@@ -36,8 +36,8 @@
   },
   "ui": {
     "theme": "Theme",
-    "light_theme": "Light theme",
-    "dark_theme": "Dark theme",
+    "lightTheme": "Light theme",
+    "darkTheme": "Dark theme",
     "language": "Language"
   },
   "voting": {
