@@ -1,19 +1,12 @@
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ExternalLink } from "../components/ExternalLink";
+import { OptionsPanel } from "../components/OptionsPanel";
 import { PointedTable } from "../components/PointedTable";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
-  const { t, i18n } = useTranslation();
-  const handleLanguageChange = () => {
-    if (i18n.language === "en-US") {
-      i18n.changeLanguage("de-DE");
-    } else {
-      i18n.changeLanguage("en-US");
-    }
-  };
+  const { t } = useTranslation();
 
   return (
     <footer className={styles.footer}>
@@ -89,7 +82,7 @@ export const Footer = () => {
             },
           ]}
         />
-        <div className={styles.legalTexts}>
+        <p className={styles.centered}>
           <Link to="impressum" className={styles.link}>
             {t("footer.imprint")}
           </Link>
@@ -98,14 +91,13 @@ export const Footer = () => {
             {t("footer.privacy")}
           </Link>
           <span>{" & "}</span>
-          <p className={styles.languageSwitch} onClick={handleLanguageChange}>
-            {i18n.language == "de-DE" ? "DE" : "EN"}
-          </p>
-          <span>{" & "}</span>
           <Link to="admin" className={styles.link}>
             {t("footer.adminLogin")}
           </Link>
-        </div>
+        </p>
+        <p className={styles.centered}>
+          <OptionsPanel />
+        </p>
       </div>
     </footer>
   );

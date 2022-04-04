@@ -7,7 +7,7 @@ ARG NPM_TOKEN
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm ci --silent --only=production
+RUN npm ci --silent
 COPY . ./
 RUN npm run build
 

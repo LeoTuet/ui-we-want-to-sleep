@@ -48,19 +48,8 @@
   color: var(--footer-link);
 }
 
-.legalTexts {
-  margin: 0 auto;
-  width: max-content;
-  margin-top: 3rem;
-
+p.centered {
   display: block;
-
-  & p {
-    display: inline;
-    font: inherit;
-  }
-}
-
-.languageSwitch {
-  text-decoration: underline;
+  text-align: center;
+  margin: 1.5rem 0 0;
 }
