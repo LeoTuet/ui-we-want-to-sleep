@@ -1,7 +1,9 @@
 import { FormEvent, useState } from "react";
+
 import { VoteOption } from "../../models";
 import { addBallot } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
+import { Button, Input } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./CreateBallotForm.module.scss";
 
@@ -91,7 +93,7 @@ export function CreateBallotForm({
         </label>
 
         <label htmlFor="question">Question:</label>
-        <input
+        <Input
           id="question"
           type="text"
           value={question}
@@ -108,20 +110,20 @@ export function CreateBallotForm({
             showErrors={showErrors}
           />
         ))}
-        <button className={styles.addVoteOption} onClick={addVoteOption}>
+        <Button className={styles.addVoteOption} onClick={addVoteOption}>
           +
-        </button>
+        </Button>
 
         <div>
-          <input
+          <Input
             className={styles.submit}
             type="submit"
             value="Submit"
             disabled={disabled}
           />
-          <button className={styles.cancel} onClick={cancel}>
+          <Button className={styles.cancel} onClick={cancel}>
             Cancel
-          </button>
+          </Button>
         </div>
       </form>
     </div>

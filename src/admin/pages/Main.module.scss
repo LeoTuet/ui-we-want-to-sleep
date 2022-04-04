@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1000px;
-  padding: 0 20px;
+  padding: 0 20px 1rem;
   min-height: 90vh;
 }
 
@@ -14,19 +14,5 @@
 
   .title {
     flex-grow: 1;
-  }
-
-  button {
-    border: none;
-    background-color: var(--input-background);
-    color: var(--input-color);
-    padding: 5px 10px;
-    border-radius: 3px;
-    font: inherit;
-
-    &:focus {
-      box-shadow: 0 0 0 2px var(--theme-color);
-      outline: none;
-    }
   }
 }

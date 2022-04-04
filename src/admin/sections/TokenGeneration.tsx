@@ -1,7 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { DownloadFile } from "../../components/DownloadFile";
+
 import { generateToken } from "../../network/adminApi";
 import { Jwt } from "../../network/jwt";
+import { Button, Input } from "../components/Button";
+import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";
 
 interface TokenGenerationProps {
@@ -13,7 +15,7 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
   const [tokenNumber, setTokenNumber] = useState(1);
 
   async function genToken() {
-    const tokens = await generateToken(jwt.encoded, {
+    const tokens = await generateToken(jwt, {
       amount: tokenNumber,
       valid: true,
     });
@@ -33,7 +35,7 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
     <>
       <p>
         Generate
-        <input
+        <Input
           type="number"
           className={styles.tokenNumberInput}
           min={1}
@@ -41,9 +43,7 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
           onChange={changeTokenNumber}
         />
         tokens
-        <button className={styles.button} onClick={genToken}>
-          GO
-        </button>
+        <Button onClick={genToken}>GO</Button>
       </p>
 
       {generatedTokens.length > 0 && (
@@ -58,7 +58,6 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
           </ul>
           <p>
             <DownloadFile
-              className={styles.button}
               contents={generatedTokens.join("\n")}
               type="text/plain"
               download={`WWTS_${
@@ -67,9 +66,7 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
             >
               Download
             </DownloadFile>
-            <button className={styles.button} onClick={clearTokens}>
-              Clear tokens
-            </button>
+            <Button onClick={clearTokens}>Clear tokens</Button>
           </p>
         </>
       )}

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+
 import { Ballot } from "../../models";
 import { fetchAllBallots } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
 import BallotView from "../components/Ballot";
+import { Button } from "../components/Button";
 import styles from "./BallotCrud.module.scss";
 import { CreateBallotForm } from "./CreateBallotForm";
 
@@ -24,7 +26,7 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
       .then(setBallots)
       .catch((e) => {
         console.error(e);
-        setError("An error occurred");
+        setError("An error occurred while trying to fetch ballots");
       });
   }
 
@@ -42,7 +44,12 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
         ? "Loading..."
         : ballots.length > 0
         ? ballots.map((ballot) => (
-            <BallotView jwt={jwt} ballot={ballot} onDelete={updateBallots} />
+            <BallotView
+              key={ballot._id}
+              jwt={jwt}
+              ballot={ballot}
+              onDelete={updateBallots}
+            />
           ))
         : "There are no ballots."}
 
@@ -53,10 +60,8 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
           onCancel={toggleCreationFormVisible}
         />
       ) : (
-        <p className={styles.lastItem}>
-          <button className={styles.button} onClick={toggleCreationFormVisible}>
-            Create new ballot
-          </button>
+        <p>
+          <Button onClick={toggleCreationFormVisible}>Create new ballot</Button>
         </p>
       )}
     </>

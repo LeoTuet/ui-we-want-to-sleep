@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectJwt, actions } from "../stores/jwts";
+
+import { actions, selectJwt } from "../stores/jwts";
 
 export interface Jwt {
   readonly encoded: string;
@@ -9,18 +10,9 @@ export interface Jwt {
 }
 
 export function parseJwt(token: string): Jwt {
-  var base64Url = token.split(".")[1];
-  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  var jsonPayload = decodeURIComponent(
-    atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-
-  const jwt = JSON.parse(jsonPayload);
+  const base64Url = token.split(".")[1];
+  const base64 = base64Url.replace(/[+-]/g, (t) => (t === "-" ? "+" : "/"));
+  const jwt = JSON.parse(atob(base64));
   jwt.encoded = token;
   return jwt;
 }
@@ -47,12 +39,12 @@ export function useJwt(
   };
 
   const { jwts } = useSelector(selectJwt);
+  let jwt: Jwt | null = null;
 
   if (name in jwts) {
-    return [jwts[name][0], setJwt];
+    jwt = jwts[name][0];
   } else {
     const local = localStorage.getItem(name);
-    let jwt: Jwt | null = null;
 
     if (local != null) {
       jwt = parseJwt(local);
@@ -64,6 +56,7 @@ export function useJwt(
     if (jwt != null) {
       setJwt(jwt);
     }
-    return [jwt, setJwt];
   }
+
+  return [jwt, setJwt];
 }

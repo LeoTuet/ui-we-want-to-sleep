@@ -1,5 +1,7 @@
 import { HTMLAttributes, useMemo } from "react";
 
+import { A } from "./Button";
+
 interface Props extends Omit<HTMLAttributes<HTMLAnchorElement>, "href"> {
   download: string;
   contents: string;
@@ -13,8 +15,8 @@ export function DownloadFile({ children, contents, type, ...rest }: Props) {
   }, [contents, type]);
 
   return (
-    <a href={href} {...rest}>
+    <A href={href} {...rest}>
       {children}
-    </a>
+    </A>
   );
 }

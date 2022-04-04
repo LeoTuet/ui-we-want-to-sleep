@@ -1,4 +1,5 @@
 import { Jwt } from "../../network/jwt";
+import { Button } from "../components/Button";
 import { BallotCrud } from "../sections/BallotCrud";
 import { TokenGeneration } from "../sections/TokenGeneration";
 import styles from "./Main.module.scss";
@@ -12,9 +13,9 @@ export const Main = ({ jwt, onLogout }: MainProps) => {
   return (
     <div className={styles.outer}>
       <header className={styles.header}>
-        <div className={styles.title}>we.wantToSleep() ADMIN area</div>
-        <div className={styles.greeting}>Hello {jwt.username}</div>
-        <button onClick={onLogout}>Logout</button>
+        <span className={styles.title}>we.wantToSleep() ADMIN area</span>
+        <span className={styles.greeting}>Hello {jwt.username}</span>
+        <Button onClick={onLogout}>Logout</Button>
       </header>
 
       <h1>Tokens</h1>

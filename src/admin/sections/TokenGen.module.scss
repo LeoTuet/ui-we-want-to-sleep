@@ -1,21 +1,4 @@
-.tokenNumberInput,
-.button {
-  border: none;
-  background-color: var(--input-background);
-  color: var(--input-color);
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-family: inherit;
-  font-size: 1rem;
-  text-decoration: none;
-
-  & + .tokenNumberInput,
-  & + .button {
-    margin-left: 1em;
-  }
-}
-
-.tokenNumberInput {
+input.tokenNumberInput {
   width: 4rem;
   margin-left: 1em;
   margin-right: 1em;
@@ -23,12 +6,17 @@
 }
 
 .tokenList {
+  box-sizing: border-box;
   list-style-type: none;
   margin: 1rem 0;
-  padding: 0;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--footer-background);
+  max-height: 50vh;
+  overflow: auto;
 
   li {
     margin: 0;
-    padding: 5px 20px;
+    padding: 0.2rem 0px;
   }
 }

@@ -1,9 +1,11 @@
 import classNames from "classnames";
 import { useState } from "react";
+
 import { Ballot } from "../../models";
 import { deleteBallot } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
 import styles from "./Ballot.module.scss";
+import { Button } from "./Button";
 
 interface BallotProps {
   jwt: Jwt;
@@ -27,7 +29,7 @@ function BallotView({ jwt, ballot, onDelete }: BallotProps) {
 
   return (
     <div>
-      <h3>{ballot._id}</h3>
+      <h2>{ballot._id}</h2>
       <p
         className={classNames(styles.status, {
           [styles.active]: ballot.running,
@@ -37,23 +39,23 @@ function BallotView({ jwt, ballot, onDelete }: BallotProps) {
       </p>
 
       <table className={styles.table}>
-        <tr>
-          <th>Identifier</th>
-          <th>Label</th>
-        </tr>
-        {ballot.options.map(({ identifier, label }) => (
+        <tbody>
           <tr>
-            <td>{identifier}</td>
-            <td>{label}</td>
+            <th>Identifier</th>
+            <th>Label</th>
           </tr>
-        ))}
+          {ballot.options.map(({ identifier, label }) => (
+            <tr key={identifier}>
+              <td>{identifier}</td>
+              <td>{label}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
 
       <p className={styles.error}>{error}</p>
 
-      <button className={styles.button} onClick={clickDeleteBallot}>
-        Delete
-      </button>
+      <Button onClick={clickDeleteBallot}>Delete</Button>
     </div>
   );
 }

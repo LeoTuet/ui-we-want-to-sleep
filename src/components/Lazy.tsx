@@ -1,4 +1,5 @@
 import { FunctionComponent, ReactNode, useEffect, useState } from "react";
+
 import styles from "./Lazy.module.scss";
 
 interface LazyProps {
@@ -30,6 +31,11 @@ export const Lazy = ({ init }: LazyProps) => {
   if (Component != null) {
     return <Component />;
   } else {
-    return <div className={styles.placeholder}>Loading</div>;
+    return (
+      <div className={styles.placeholder}>
+        <div className={styles.animation}></div>
+        Loading
+      </div>
+    );
   }
 };

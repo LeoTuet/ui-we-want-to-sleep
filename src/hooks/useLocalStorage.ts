@@ -26,31 +26,25 @@ export function useLocalStorage<T extends Serializable>(
   initialValue: T
 ): [T, SetValue<T>] {
   const [value, setValue] = useState<T>(() => {
-    let storedValue = localStorage.getItem(key);
+    const storedValue = localStorage.getItem(key);
     return storedValue == null ? initialValue : JSON.parse(storedValue);
   });
 
   return [
     value,
-    (v, { remember = true }: SetOptions = {}) => {
-      if (typeof v === "function") {
-        setValue((previous) => {
-          const newValue = v(previous);
-          if (!remember || newValue === initialValue) {
-            localStorage.removeItem(key);
-          } else {
-            localStorage.setItem(key, JSON.stringify(newValue));
-          }
-          return newValue;
-        });
-      } else {
-        setValue(v);
-        if (!remember || v === initialValue) {
+    (action, { remember = true }: SetOptions = {}) => {
+      const actionFunction =
+        typeof action === "function" ? action : () => action;
+
+      setValue((previous) => {
+        const newValue = actionFunction(previous);
+        if (!remember || newValue === initialValue) {
           localStorage.removeItem(key);
         } else {
-          localStorage.setItem(key, JSON.stringify(v));
+          localStorage.setItem(key, JSON.stringify(newValue));
         }
-      }
+        return newValue;
+      });
     },
   ];
 }

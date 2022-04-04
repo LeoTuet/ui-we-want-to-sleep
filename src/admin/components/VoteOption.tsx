@@ -1,5 +1,7 @@
 import classNames from "classnames";
+
 import { VoteOption } from "../../models";
+import { Button, Input } from "./Button";
 import styles from "./VoteOption.module.scss";
 
 interface VoteOptionProps {
@@ -17,7 +19,7 @@ function VoteOptionView({
 }: VoteOptionProps) {
   return (
     <div className={styles.outer}>
-      <button
+      <Button
         className={styles.removeButton}
         onClick={(e) => {
           e.preventDefault();
@@ -25,8 +27,8 @@ function VoteOptionView({
         }}
       >
         –
-      </button>
-      <input
+      </Button>
+      <Input
         aria-label="Identifier"
         title="Identifier"
         placeholder="Identifier"
@@ -36,7 +38,7 @@ function VoteOptionView({
           [styles.invalid]: showErrors && identifier === "",
         })}
       />
-      <input
+      <Input
         aria-label="Label"
         title="Label"
         placeholder="Label"
