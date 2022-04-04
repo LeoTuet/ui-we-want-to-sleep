@@ -7,7 +7,7 @@ export interface UIState {
 }
 
 export const initialState: UIState = {
-  theme: "light",
+  theme: "default",
 };
 
 export const uiSlice = createSlice({
@@ -18,9 +18,6 @@ export const uiSlice = createSlice({
       if (action.payload) {
         state.theme = action.payload;
       }
-    },
-    toggleTheme(state) {
-      state.theme = state.theme == "light" ? "dark" : "light";
     },
   },
 });
