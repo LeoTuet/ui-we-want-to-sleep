@@ -21,8 +21,8 @@ export function OptionsPanel() {
       <SelectSlider
         name={t("ui.language")}
         options={[
-          { name: "de-DE", node: "Deutsch" },
-          { name: "en-US", node: "English" },
+          { name: "de", node: "Deutsch" },
+          { name: "en", node: "English" },
         ]}
         value={i18n.language}
         onChange={i18n.changeLanguage}
