@@ -56,9 +56,9 @@ function option(
 }
 
 function getLanguage(lang: string): "de-DE" | "en-US" {
-  if (lang === "de" || lang.startsWith("de-")) {
-    return "de-DE";
-  } else {
+  if (lang === "en" || lang.startsWith("en-")) {
     return "en-US";
+  } else {
+    return "de-DE";
   }
 }
