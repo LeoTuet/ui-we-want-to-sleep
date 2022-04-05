@@ -21,10 +21,10 @@ export function OptionsPanel() {
       <SelectSlider
         name={t("ui.language")}
         options={[
-          { name: "de", node: "Deutsch" },
-          { name: "en", node: "English" },
+          { name: "de-DE", node: "Deutsch" },
+          { name: "en-US", node: "English" },
         ]}
-        value={i18n.language}
+        value={getLanguage(i18n.language)}
         onChange={i18n.changeLanguage}
       />
       <SelectSlider
@@ -53,4 +53,12 @@ function option(
     name,
     node: <img src={src} alt={alt} aria-label={label} title={label} />,
   };
+}
+
+function getLanguage(lang: string): "de-DE" | "en-US" {
+  if (lang === "de" || lang.startsWith("de-")) {
+    return "de-DE";
+  } else {
+    return "en-US";
+  }
 }
