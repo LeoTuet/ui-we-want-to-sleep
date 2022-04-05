@@ -1,19 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import { ContentSection } from "../sections/ContentSection";
 import { IntroSection } from "../sections/IntroSection";
+import { NoVotingSection, NoVotingType } from "../sections/NoVotingSection";
+import {
+  VoteResponseSection,
+  VoteResponseType,
+} from "../sections/VoteResponseSection";
 import { VotingSection } from "../sections/VotingSection";
 import { fetchRunningBallot, selectBallot } from "../stores/ballot";
-import { fetchTokenStatus, selectToken } from "../stores/token";
-import { NoVotingType, NoVotingSection } from "../sections/NoVotingSection";
+import { actions, fetchTokenStatus, selectToken } from "../stores/token";
 import { recordVote, selectVote } from "../stores/vote";
-import { actions } from "../stores/token";
-import { useParams } from "react-router-dom";
-import {
-  VoteResponseType,
-  VoteResponseSection,
-} from "../sections/VoteResponseSection";
+import styles from "./Home.module.scss";
 
 export const Home = () => {
   const ballot = useSelector(selectBallot);
@@ -21,7 +21,7 @@ export const Home = () => {
   const tokenStore = useSelector(selectToken);
   const dispatch = useDispatch();
 
-  let { token } = useParams();
+  const { token } = useParams();
 
   useEffect(() => {
     // @ts-ignore
@@ -51,7 +51,7 @@ export const Home = () => {
   return (
     <>
       <IntroSection />
-      <main>
+      <main className={styles.main}>
         <ContentSection />
         {ballot.ballot &&
           !ballot.ballotError &&
