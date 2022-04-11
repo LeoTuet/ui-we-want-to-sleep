@@ -1,45 +1,39 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Theme } from "../models";
 
 import { actions, selectUI } from "../stores/ui";
 
 export const useTheme = () => {
   const dispatch = useDispatch();
-  const { theme } = useSelector(selectUI);
+  let { theme } = useSelector(selectUI);
 
   const isDefaultDark = window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
 
-  const isDefaultLight = window.matchMedia(
-    "(prefers-color-scheme: light)"
-  ).matches;
-
-  useEffect(() => {
+  if (theme === "default") {
     const value = window.localStorage.getItem("theme");
 
-    if (value) {
-      dispatch(actions.setTheme(value as Theme));
+    if (value != null && (value === "light" || value === "dark")) {
+      theme = value;
     } else if (isDefaultDark) {
-      dispatch(actions.setTheme("dark"));
-    } else if (isDefaultLight) {
-      dispatch(actions.setTheme("light"));
+      theme = "dark";
+    } else {
+      theme = "light";
     }
-  }, [dispatch]);
+
+    dispatch(actions.setTheme(theme));
+  }
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
 
-    if (
-      (isDefaultDark && theme === "dark") ||
-      (isDefaultLight && theme === "light")
-    ) {
+    if (isDefaultDark === (theme === "dark")) {
       localStorage.removeItem("theme");
     } else {
       localStorage.setItem("theme", theme);
     }
-  }, [theme, isDefaultDark, isDefaultLight]);
+  }, [theme, isDefaultDark]);
 
   return { theme };
 };

@@ -24,7 +24,7 @@ export function OptionsPanel() {
           { name: "de-DE", node: "Deutsch" },
           { name: "en-US", node: "English" },
         ]}
-        value={i18n.language}
+        value={getLanguage(i18n.language)}
         onChange={i18n.changeLanguage}
       />
       <SelectSlider
@@ -53,4 +53,12 @@ function option(
     name,
     node: <img src={src} alt={alt} aria-label={label} title={label} />,
   };
+}
+
+function getLanguage(lang: string): "de-DE" | "en-US" {
+  if (lang === "en" || lang.startsWith("en-")) {
+    return "en-US";
+  } else {
+    return "de-DE";
+  }
 }
