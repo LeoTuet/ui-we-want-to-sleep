@@ -1,57 +1,27 @@
 import { Jwt, parseJwt } from "./jwt";
+import { post } from "./request";
 
 interface Credentials {
   username: string;
   password: string;
 }
 
-export const loginAdmin = async (credentials: Credentials): Promise<Jwt> => {
-  const url = "/api/admin/login";
-
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(credentials),
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
+export async function loginAdmin(body: Credentials): Promise<Jwt> {
+  const data = await post<{ accessToken: string }>("/api/admin/login", {
+    body,
   });
+  return parseJwt(data.accessToken);
+}
 
-  const text = await response.text();
-  let json;
-  try {
-    json = JSON.parse(text);
-  } catch {
-    throw new Error(text);
-  }
+interface GenerateTokenBody {
+  amount: number;
+  valid: boolean;
+}
 
-  if (!response.ok) {
-    throw new Error(json.error.message);
-  }
-
-  return parseJwt(json.data.accessToken);
-};
-
-export const generateToken = async (
+export async function generateToken(
   jwt: Jwt,
-  data: {
-    amount: number;
-    valid: boolean;
-  }
-): Promise<string[]> => {
-  const url = `/api/token`;
-
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt.encoded}`,
-    },
-  });
-  const json = await response.json();
-  if (!response.ok) {
-    throw new Error(json.error.message);
-  }
-  return json.data;
-};
+  body: GenerateTokenBody
+): Promise<string[]> {
+  const data = await post<string[]>("/api/token", { body, jwt });
+  return data;
+}

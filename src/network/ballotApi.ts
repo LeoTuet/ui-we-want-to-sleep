@@ -1,76 +1,51 @@
-import { Ballot, Data, VoteOption } from "../models";
+import { Ballot, VoteOption } from "../models";
 import { Jwt } from "./jwt";
+import { del, FetchError, get, post, put } from "./request";
 
-export const fetchRunningBallot = async (): Promise<Ballot | undefined> => {
-  const url = "/api/ballot/running";
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  });
-
-  if (response.status === 404) {
-    return Promise.reject("NO_RUNNING_BALLOT");
-  } else if (response.status >= 500) {
-    return Promise.reject("SERVER_ERROR");
+export async function fetchRunningBallot(): Promise<Ballot | undefined> {
+  try {
+    const data = await get<Ballot>("/api/ballot/running");
+    return data;
+  } catch (e) {
+    if (e instanceof FetchError) {
+      if (e.status === 404) {
+        return Promise.reject("NO_RUNNING_BALLOT");
+      } else if (e.status >= 500) {
+        return Promise.reject("SERVER_ERROR");
+      }
+    }
+    return Promise.reject("UNKNOWN_ERROR");
   }
-
-  const json: Data<Ballot> = await response.json();
-  return json.data;
-};
-
-export async function fetchAllBallots(): Promise<Ballot[]> {
-  const url = "/api/ballot";
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  });
-
-  if (response.status >= 500) {
-    return Promise.reject("SERVER_ERROR");
-  }
-
-  const json: Data<Ballot[]> = await response.json();
-  return json.data;
 }
 
-export async function addBallot(jwt: Jwt, schema: BallotSchema): Promise<void> {
-  const url = "/api/ballot";
-
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(schema),
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${jwt.encoded}`,
-    },
-  });
-
-  if (!response.ok) {
-    const json = await response.json();
-    throw new Error(json.error.message);
+export async function fetchAllBallots(): Promise<Ballot[]> {
+  try {
+    const data = await get<Ballot[]>("/api/ballot");
+    return data;
+  } catch (e) {
+    if (e instanceof FetchError) {
+      if (e.status >= 500) {
+        throw "SERVER_ERROR";
+      }
+    }
+    throw e;
   }
+}
+
+export async function addBallot(jwt: Jwt, body: BallotSchema): Promise<void> {
+  await post<void>("/api/ballot", { body, jwt });
 }
 
 export async function deleteBallot(jwt: Jwt, id: string): Promise<void> {
-  const url = "/api/ballot";
+  await del("/api/ballot", { body: { id }, jwt });
+}
 
-  const response = await fetch(url, {
-    method: "DELETE",
-    body: JSON.stringify({ id }),
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${jwt.encoded}`,
-    },
-  });
-
-  if (!response.ok) {
-    const json = await response.json();
-    throw new Error(json.error.message);
-  }
+export async function updateBallot(
+  jwt: Jwt,
+  id: string,
+  body: BallotSchema
+): Promise<void> {
+  await put(`/api/ballot/${id}`, { body, jwt });
 }
 
 interface BallotSchema {

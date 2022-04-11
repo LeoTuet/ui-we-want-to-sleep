@@ -1,8 +1,10 @@
 import { FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { VoteOption } from "../../models";
 import { addBallot } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
+import { FetchError } from "../../network/request";
 import { Button, Input } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./CreateBallotForm.module.scss";
@@ -25,6 +27,8 @@ export function CreateBallotForm({
   const [running, setRunning] = useState(false);
   const [question, setQuestion] = useState("");
   const [voteOptions, setVoteOptions] = useState<VoteOption[]>([]);
+
+  const dispatch = useDispatch();
 
   function submit(e: FormEvent) {
     e.preventDefault();
@@ -49,9 +53,8 @@ export function CreateBallotForm({
         options: voteOptions,
       })
         .then(onSubmit)
-        .catch((e) => {
-          console.error(e);
-          setError("An error occured creating the ballot.");
+        .catch((e: FetchError) => {
+          dispatch(e.showToast("Failed to create ballot"));
         });
     }
   }
@@ -100,7 +103,7 @@ export function CreateBallotForm({
           onChange={(e) => setQuestion(e.target.value)}
         />
 
-        <label>Vote Options:</label>
+        <h3>Vote Options:</h3>
         {voteOptions.map((vo, i) => (
           <VoteOptionView
             key={i}

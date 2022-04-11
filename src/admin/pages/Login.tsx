@@ -3,6 +3,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { loginAdmin } from "../../network/adminApi";
 import { Jwt } from "../../network/jwt";
+import { FetchError } from "../../network/request";
 import styles from "./Login.module.scss";
 
 interface LoginProps {
@@ -55,15 +56,8 @@ export const Login = ({ onLogin }: LoginProps) => {
     try {
       const jwt = await loginAdmin({ username, password });
       onLogin(jwt);
-    } catch (e: any) {
-      console.log(e);
-      if (e instanceof Array) {
-        setErrorMessage(
-          e.map((e) => ("message" in e ? e.message : e)).join("; ")
-        );
-      } else {
-        setErrorMessage("message" in e ? e.message : e);
-      }
+    } catch (e) {
+      setErrorMessage((e as FetchError).message);
     }
   }
 

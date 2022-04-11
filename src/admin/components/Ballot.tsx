@@ -1,9 +1,10 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Ballot } from "../../models";
-import { deleteBallot } from "../../network/ballotApi";
+import { deleteBallot, updateBallot } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
+import { FetchError } from "../../network/request";
 import styles from "./Ballot.module.scss";
 import { Button } from "./Button";
 
@@ -11,25 +12,42 @@ interface BallotProps {
   jwt: Jwt;
   ballot: Ballot;
   onDelete(): void;
+  onUpdate(): void;
 }
 
-function BallotView({ jwt, ballot, onDelete }: BallotProps) {
-  const [error, setError] = useState<string | null>(null);
+function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
+  const dispatch = useDispatch();
 
   function clickDeleteBallot() {
     if (confirm("Do you really want to delete this ballot?")) {
       deleteBallot(jwt, ballot._id)
         .then(onDelete)
-        .catch((e) => {
-          console.error(e);
-          setError("An error occurred, the ballot could not be deleted.");
+        .catch((e: FetchError) => {
+          dispatch(e.showToast("The ballot could not be deleted"));
+        });
+    }
+  }
+
+  function toggleRunning() {
+    const action = ballot.running ? "pause" : "start";
+
+    if (confirm(`Do you really want to ${action} this ballot?`)) {
+      const updated = {
+        running: !ballot.running,
+        options: ballot.options,
+        question: ballot.question,
+      };
+      updateBallot(jwt, ballot._id, updated)
+        .then(onUpdate)
+        .catch((e: FetchError) => {
+          dispatch(e.showToast(`The ballot could not be ${action}d`));
         });
     }
   }
 
   return (
     <div>
-      <h2>{ballot._id}</h2>
+      <h2>{ballot.question}</h2>
       <p
         className={classNames(styles.status, {
           [styles.active]: ballot.running,
@@ -39,11 +57,13 @@ function BallotView({ jwt, ballot, onDelete }: BallotProps) {
       </p>
 
       <table className={styles.table}>
-        <tbody>
+        <thead>
           <tr>
             <th>Identifier</th>
             <th>Label</th>
           </tr>
+        </thead>
+        <tbody>
           {ballot.options.map(({ identifier, label }) => (
             <tr key={identifier}>
               <td>{identifier}</td>
@@ -53,9 +73,10 @@ function BallotView({ jwt, ballot, onDelete }: BallotProps) {
         </tbody>
       </table>
 
-      <p className={styles.error}>{error}</p>
-
       <Button onClick={clickDeleteBallot}>Delete</Button>
+      <Button onClick={toggleRunning}>
+        {ballot.running ? "Pause" : "Start"}
+      </Button>
     </div>
   );
 }

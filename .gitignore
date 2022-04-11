@@ -8,6 +8,7 @@ vite-dev.config.ts
 .pnp.js
 
 /.idea
+/.vscode
 
 # testing
 /coverage

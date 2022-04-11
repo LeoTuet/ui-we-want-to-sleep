@@ -1,7 +1,9 @@
 import { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { generateToken } from "../../network/adminApi";
 import { Jwt } from "../../network/jwt";
+import { FetchError } from "../../network/request";
 import { Button, Input } from "../components/Button";
 import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";
@@ -13,13 +15,18 @@ interface TokenGenerationProps {
 export function TokenGeneration({ jwt }: TokenGenerationProps) {
   const [generatedTokens, setGeneratedTokens] = useState<string[]>([]);
   const [tokenNumber, setTokenNumber] = useState(1);
+  const dispatch = useDispatch();
 
   async function genToken() {
-    const tokens = await generateToken(jwt, {
-      amount: tokenNumber,
-      valid: true,
-    });
-    setGeneratedTokens((prev) => [...prev, ...tokens]);
+    try {
+      const tokens = await generateToken(jwt, {
+        amount: tokenNumber,
+        valid: true,
+      });
+      setGeneratedTokens((prev) => [...prev, ...tokens]);
+    } catch (e) {
+      dispatch((e as FetchError).showToast("Failed to generate tokens"));
+    }
   }
 
   function changeTokenNumber(e: ChangeEvent<HTMLInputElement>) {

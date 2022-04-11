@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Ballot } from "../../models";
 import { fetchAllBallots } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
+import { FetchError } from "../../network/request";
 import BallotView from "../components/Ballot";
 import { Button } from "../components/Button";
-import styles from "./BallotCrud.module.scss";
 import { CreateBallotForm } from "./CreateBallotForm";
 
 interface BallotCrudProps {
@@ -14,8 +15,9 @@ interface BallotCrudProps {
 
 export function BallotCrud({ jwt }: BallotCrudProps) {
   const [ballots, setBallots] = useState<Ballot[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [creationFormVisible, setCreationFormVisible] = useState(false);
+
+  const dispatch = useDispatch();
 
   function toggleCreationFormVisible() {
     setCreationFormVisible((prev) => !prev);
@@ -24,9 +26,8 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
   function updateBallots() {
     fetchAllBallots()
       .then(setBallots)
-      .catch((e) => {
-        console.error(e);
-        setError("An error occurred while trying to fetch ballots");
+      .catch((e: FetchError) => {
+        dispatch(e.showToast("Cound not fetch ballots"));
       });
   }
 
@@ -39,7 +40,6 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
 
   return (
     <>
-      <p className={styles.error}>{error}</p>
       {ballots == null
         ? "Loading..."
         : ballots.length > 0
@@ -49,6 +49,7 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
               jwt={jwt}
               ballot={ballot}
               onDelete={updateBallots}
+              onUpdate={updateBallots}
             />
           ))
         : "There are no ballots."}

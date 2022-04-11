@@ -1,9 +1,6 @@
-export interface Data<T> {
-  data: T;
-}
-
 export interface Ballot {
   _id: string;
+  question: string;
   running: boolean;
   options: VoteOption[];
 }

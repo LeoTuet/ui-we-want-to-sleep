@@ -9,8 +9,10 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./i18n";
 
+export const store = createStore(new Api());
+
 ReactDOM.render(
-  <Provider store={createStore(new Api())}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
