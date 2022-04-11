@@ -107,5 +107,189 @@
       "header": "Special terms of use",
       "content": "Insofar as special conditions for individual uses of this website deviate from the aforementioned paragraphs, this will be expressly indicated at the appropriate place. In this case, the special terms of use apply in the respective individual case."
     }
+  },
+  "privacy": {
+    "header": "our.privacyStatement()",
+    "intro": {
+      "header": "Introduction",
+      "firstParagraph": "With the following data protection declaration, we would like to inform you about the types of your personal data (hereinafter also referred to as 'data') that we process, for what purposes and to what extent in the context of providing our application.",
+      "secondParagraph": "The terms used are not gender specific.",
+      "thridParagraph": "Status: April 10, 2022"
+    },
+    "tableOfContents": "Table of contents",
+    "responsibilities": {
+      "header": "Responsible",
+      "firstParagraph": "E-mail address:",
+      "secondParagraph": "Imprint:"
+    },
+    "overviewOverProcesses": {
+      "header": "Processing overview",
+      "firstParagraph": "The following overview summarizes the types of data processed and the purposes of their processing and refers to the data subjects.",
+      "secondParagraph": {
+        "header": "Types of data processed: ",
+        "content": "Contact data, content data, usage data, meta/communication data"
+      },
+      "thridParagraph": {
+        "header": "Categories of persons concerned: ",
+        "content": "communication partners, users, provision of our online offer and user-friendliness."
+      }
+    },
+    "relevantLegalBases": {
+      "header": "Relevant legal bases",
+      "firstParagraph": "The following is an overview of the legal basis of the GDPR on the basis of which we process personal data. Please note that in addition to the provisions of the GDPR, national data protection regulations may apply in your or our country of residence or domicile. If, in addition, more specific legal bases are relevant in individual cases, we will inform you of these in the data protection declaration. Translated with www.DeepL.com/Translator (free version)",
+      "secondParagraph": "Consent (Art. 6 (1) p. 1 lit. a. DSGVO) - The data subject has given his/her consent to the processing of personal data concerning him/her for a specific purpose or purposes.",
+      "thirdParagraph": "Legitimate interests (Art. 6 (1) p. 1 lit. f. DSGVO) - Processing is necessary for the purposes of the legitimate interests of the controller or a third party, unless such interests are overridden by the interests or fundamental rights and freedoms of the data subject which require the protection of personal data.",
+      "fourthParagraph": "In addition to the data protection regulations of the General Data Protection Regulation, national regulations on data protection apply in Germany. These include, in particular, the Act on Protection against Misuse of Personal Data in Data Processing (Federal Data Protection Act - BDSG). In particular, the BDSG contains special regulations on the right to information, the right to erasure, the right to object, the processing of special categories of personal data, processing for other purposes and transmission, as well as automated decision-making in individual cases, including profiling. Furthermore, it regulates data processing for employment purposes (Section 26 BDSG), in particular with regard to the establishment, implementation or termination of employment relationships as well as the consent of employees. Furthermore, state data protection laws of the individual federal states may apply. Translated with www.DeepL.com/Translator (free version)"
+    },
+    "security": {
+      "header": "Security measures",
+      "firstParagraph": "We take appropriate technical and organizational measures to ensure a level of protection appropriate to the risk in accordance with the legal requirements, taking into account the state of the art, the implementation costs and the nature, scope, circumstances and purposes of the processing, as well as the different probabilities of occurrence and the extent of the threat to the rights and freedoms of natural persons. Translated with www.DeepL.com/Translator (free version)",
+      "secondParagraph": "The measures include, in particular, safeguarding the confidentiality, integrity and availability of data by controlling physical and electronic access to the data as well as the access, input, transfer, safeguarding of availability and its separation. Furthermore, we have established procedures to ensure the exercise of data subjects' rights, the deletion of data, and responses to data compromise. Furthermore, we take the protection of personal data into account as early as the development or selection of hardware, software and processes in accordance with the principle of data protection, through technology design and through data protection-friendly default settings.",
+      "thirdParagraph": {
+        "header": "SSL encryption (https):",
+        "content": "To protect your data transmitted via our online offer, we use SSL encryption. You can recognize such encrypted connections by the prefix 'https://' in the address bar of your browser."
+      }
+    },
+    "deletionOfData": {
+      "header": "Deletion of data",
+      "firstParagraph": "The data processed by us will be deleted in accordance with the legal requirements as soon as their consents permitted for processing are revoked or other permissions cease to apply (e.g. if the purpose of processing this data has ceased to apply or it is not required for the purpose).",
+      "secondParagraph": "If the data is not deleted because it is required for other and legally permissible purposes, its processing is limited to these purposes. I.e., the data is blocked and not processed for other purposes. This applies, for example, to data that must be retained for reasons of commercial or tax law or whose storage is necessary for the assertion, exercise or defense of legal claims or for the protection of the rights of another natural or legal person.",
+      "thirdParagraph": "Our privacy notices may also contain further information on the retention and deletion of data, which will take precedence for the respective processing operations."
+    },
+    "useOfCookies": {
+      "header": "Use of cookies",
+      "firstParagraph": "Cookies are small text files or other memory tags that store information on end devices and read information from the end devices. For example, to store the login status in a user account, a shopping cart content in an e-shop, the content accessed or functions used of an online offer. Cookies can also be used for various purposes, e.g. for purposes of functionality, security and convenience of online offers as well as the creation of analyses of visitor flows.",
+      "secondParagraph": {
+        "header": "Notes on the legal basis for data protection: ",
+        "content": "The legal basis under data protection law on which we process users' personal data using cookies depends on whether we ask users for consent. If users consent, the legal basis for processing their data is their declared consent. Otherwise, the data processed with the help of cookies is processed on the basis of our legitimate interests (e.g. in a business operation of our online offer and improvement of its usability) or, if this is done in the context of the fulfillment of our contractual obligations, if the use of cookies is necessary to fulfill our contractual obligations. We explain the purposes for which we process the cookies in the course of this privacy policy or as part of our consent and processing procedures."
+      },
+      "thirdParagraph": {
+        "header": "Storage time:",
+        "content": "With regard to the storage period, the following types of cookies are distinguished:"
+      },
+      "fourthParagraph": {
+        "header": "Temporary cookies (also: session cookies):",
+        "content": "Temporary cookies are deleted at the latest after a user has left an online offer and closed his end device (e.g. browser or mobile application)."
+      },
+      "fifthParagraph": {
+        "header": "Permanent cookies:",
+        "content": "Permanent cookies remain stored even after the terminal device is closed. For example, the login status can be saved or preferred content can be displayed directly when the user visits a website again. Likewise, user data collected with the help of cookies can be used for reach measurement. Unless we provide users with explicit information about the type and storage duration of cookies (e.g., when obtaining consent), users should assume that cookies are permanent and that the storage period can be up to two years."
+      }
+    },
+    "webhosting": {
+      "header": "Provision of the online offer and web hosting" ,
+      "firstParagraph": "In order to provide our online offer securely and efficiently, we use the services of one or more web hosting providers from whose servers (or servers managed by them) the online offer can be accessed. For these purposes, we may use infrastructure and platform services, computing capacity, storage space and database services, as well as security services and technical maintenance services.",
+      "secondParagraph": "The data processed as part of the provision of the hosting offer may include all information relating to the users of our online offer, which is generated as part of the use and communication. This regularly includes the IP address, which is necessary to be able to deliver the contents of online offers to browsers, and all entries made within our online offer or from websites.",
+      "thirdParagraph": {
+        "header": "Processed data types:",
+        "content": "Content data (e.g. entries in online forms); Usage data (e.g. websites visited, interest in content, access times); Meta/communication data (e.g. device information, IP addresses)."
+      },
+      "fourhtParagraph": {
+        "header": "Affected persons:",
+        "content": "Users (e.g., website visitors, users of online services)."
+      },
+      "fifthParagraph": {
+        "header": "Purposes of processing:",
+        "content": "Provision of our online offer and user-friendliness."
+      },
+      "sixthParagraph": {
+        "header": "Legal Bases:",
+        "content": "Legitimate interests (Art. 6 para. 1 p. 1 lit. f. DSGVO)."
+      },
+      "subSection": {
+        "header": "Further notes on processing operations, procedures and services",
+        "firstParagraph": {
+          "header": "Hetzner:",
+          "content": "Services in the field of providing information technology infrastructure and related services (e.g., storage space and/or computing capacity)."
+        },
+        "secondParagraph": {
+          "header": "Service provider:",
+          "content": "Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Germany"
+        },
+        "privacyStatement": "Privacy Statement:",
+        "dataPrivacyFAQ": "Order processing agreement:"
+      }
+    },
+    "votes": {
+      "header": "Surveys and polls",
+      "firstParagraph": "The surveys and polls we conduct (hereinafter 'surveys') are evaluated anonymously. Personal data is only processed insofar as this is necessary for the provision and technical implementation of the surveys (e.g. processing of the IP address in order to display the survey in the user's browser or to enable a resumption of the survey with the aid of a temporary cookie (session cookie)) or users have consented to this.",
+      "secondParagraph": {
+        "header": "Notes on legal bases:",
+        "content": "If we ask participants for consent to process their data, this is the legal basis for the processing; otherwise, the processing of participants' data is based on our legitimate interests in conducting an objective survey."
+      },
+      "thirdParagraph": {
+        "header": "Types of data processed:",
+        "content": "Contact data (e.g. e-mail, telephone numbers); content data (e.g. entries in online forms); usage data (e.g. websites visited, interest in content, access times); meta/communication data (e.g. device information, IP addresses)."
+      },
+      "fourthParagraph": {
+        "header": "Affected persons:",
+        "content": "Communication partner."
+      },
+      "fifthParagraph": {
+        "header": "Purposes of processing:",
+        "content": "Contact inquiries and communications; direct marketing (e.g., by e-mail or postal mail)."
+      },
+      "sixthParagraph": {
+        "header": "Legal Bases:",
+        "content": "Consent (Art. 6 para. 1 p. 1 lit. a. DSGVO); Legitimate interests (Art. 6 para. 1 p. 1 lit. f. DSGVO)."
+      }
+    },
+    "updates": {
+      "header": "Modification and update of the privacy policy",
+      "firstParagraph": "We ask you to regularly inform yourself about the content of our privacy policy. We adapt the data protection declaration as soon as the changes in the data processing carried out by us make this necessary. We will inform you as soon as the changes require an act of cooperation on your part (e.g. consent) or other individual notification.",
+      "secondParagraph": "Where we provide addresses and contact information for companies and organizations in this privacy statement, please note that the addresses may change over time and please check the information before contacting us."
+    },
+    "rights": {
+      "header": "Rights of the data subjects",
+      "firstParagraph": "As a data subject, you are entitled to various rights under the GDPR, which arise in particular from Art. 15 to 21 GDPR:",
+      "secondParagraph": {
+        "header": "Right of objection:",
+        "content": "You have the right to object at any time, on grounds relating to your particular situation, to the processing of personal data concerning you which is carried out on the basis of Article 6(1)(e) or (f) DSGVO; this also applies to profiling based on these provisions. If the personal data concerning you is processed for the purposes of direct marketing, you have the right to object at any time to the processing of personal data concerning you for the purposes of such marketing; this also applies to profiling, insofar as it is related to such direct marketing."
+      },
+      "thirdParagraph": {
+        "header": "Right to withdraw consent:",
+        "content": "You have the right to revoke any consent you have given at any time."
+      },
+      "fourthParagraph": {
+        "header": "Right to Information:",
+        "content": "You have the right to request confirmation as to whether data in question is being processed and to information about this data, as well as further information and a copy of the data in accordance with the legal requirements."
+      },
+      "fifthParagraph": {
+        "header": "Right to correction:",
+        "content": "In accordance with the legal requirements, you have the right to request that the data concerning you be completed or that incorrect data concerning you be corrected."
+      },
+      "sixthParagraph": {
+        "header": "Right to erasure and restriction of processing:",
+        "content": "In accordance with the statutory provisions, you have the right to demand that data relating to you be deleted immediately or, alternatively, to demand restriction of the processing of the data in accordance with the statutory provisions."
+      },
+      "seventhParagraph": {
+        "header": "Right to data portability:",
+        "content": "You have the right to receive data relating to you that you have provided to us in a structured, common and machine-readable format in accordance with the legal requirements, or to request that it be transferred to another controller."
+      },
+      "eighthParagraph": {
+        "header": "Complaint to supervisory authority:",
+        "content": "Without prejudice to any other administrative or judicial remedy, you have the right to lodge a complaint with a supervisory authority, in particular in the Member State of your habitual residence, place of work or the place of the alleged infringement, if you consider that the processing of personal data relating to you infringes the requirements of the GDPR."
+      }
+    },
+    "definitions": {
+      "header": "Definitions of terms",
+      "firstParagraph": "This section provides you with an overview of the terms used in this privacy policy. Many of the terms are taken from the law and defined primarily in Art. 4 of the GDPR. The legal definitions are binding. The following explanations, on the other hand, are primarily intended to aid understanding. The terms are sorted alphabetically.",
+      "secondParagraph": {
+        "header": "Personal data:",
+        "content": "`Personal data' means any information relating to an identified or identifiable natural person (hereinafter 'data subject'); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier (e.g. cookie) or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person."
+      },
+      "thirdParagraph": {
+        "header": "Responsible person:",
+        "content": "'Responsible person' means the natural or legal person, public authority, agency or other body which alone or jointly with others determines the purposes and means of the processing of personal data."
+      },
+      "fourthParagraph": {
+        "header": "Processing:",
+        "content": "'Processing' means any operation or set of operations which is performed upon personal data, whether or not by automatic means. The term is broad and includes virtually any handling of data, be it collection, analysis, storage, transmission or deletion."
+      }
+    },
+    "external": {
+      "header": "Legal text by Dr. Schwenke - please click for further information.",
+      "content": "Created with free Datenschutz-Generator.de by Dr. Thomas Schwenke"
+    }
   }
 }
