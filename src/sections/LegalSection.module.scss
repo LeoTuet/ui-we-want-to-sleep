@@ -6,11 +6,16 @@ $large: 992px;
   font-size: 1.4rem;
 }
 
+.legalSection h2 {
+  margin-bottom: 1em;
+}
+
 @media (min-width: $large) {
   .legalSection {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 1rem;
     display: grid;
+    align-items: flex-start;
   }
 
   .legalSubheader {
