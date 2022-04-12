@@ -39,3 +39,17 @@
   justify-content: center;
   position: absolute;
 }
+
+.optionsContainer {
+  display: none;
+  margin: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (min-width: 1000px) {
+  .optionsContainer {
+    display: block;
+  }
+}
