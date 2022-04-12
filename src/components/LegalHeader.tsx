@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 import sheep from "../assets/sheep.png";
 import { StarBackground } from "./StarBackground";
+import { OptionsPanel } from "./OptionsPanel";
 
 export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
@@ -23,6 +24,9 @@ export const LegalHeader = ({ text, ...rest }: LegalHeaderProps) => {
             <Link to="/" className={styles.link}>
               Abstimmung
             </Link>
+            <div className={styles.optionsContainer}>
+            <OptionsPanel />
+            </div>
           </nav>
         </div>
         <TypingHeading finalText={text} />
