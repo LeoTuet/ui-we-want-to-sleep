@@ -28,7 +28,7 @@ export const PrivacyStatement = () => {
               <li><a href="#deletion"> {t("privacy.deletionOfData.header")} </a></li>
               <li><a href="#cookies"> {t("privacy.useOfCookies.header")} </a></li>
               <li><a href="#webhosting"> {t("privacy.webhosting.header")} </a></li>
-              <li><a  href="#vote"> {t("privacy.votes.header")} </a></li>
+              <li><a href="#vote"> {t("privacy.votes.header")} </a></li>
               <li><a href="#changes"> {t("privacy.updates.header")} </a></li>
               <li><a href="#rights"> {t("privacy.rights.header")} </a></li>
               <li><a href="#definitions"> {t("privacy.definitions.header")} </a></li>
