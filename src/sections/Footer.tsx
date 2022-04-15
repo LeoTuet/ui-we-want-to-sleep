@@ -83,12 +83,16 @@ export const Footer = () => {
           ]}
         />
         <p className={styles.centered}>
-          <Link to="impressum" className={styles.link}>
+          <Link to="imprint" className={styles.link}>
             {t("footer.imprint")}
           </Link>
           <span>{" & "}</span>
-          <Link to="datenschutz" className={styles.link}>
+          <Link to="privacy-statement" className={styles.link}>
             {t("footer.privacy")}
+          </Link>
+          <span>{" & "}</span>
+          <Link to="sources" className={styles.link}>
+            {t("footer.sources")}
           </Link>
         </p>
         <p className={styles.centered}>

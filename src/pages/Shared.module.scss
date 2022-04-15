@@ -1,0 +1,16 @@
+.background {
+  background-color: var(--background);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  text-align: left;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.list {
+  word-break: break-word;
+}

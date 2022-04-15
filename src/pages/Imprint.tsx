@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ImprintAndPrivacy.module.scss";
+import styles from "./Shared.module.scss";
 import { StickyLegalHeader } from "../components/StickyHeader";
 import { LegalSection } from "../sections/LegalSection";
 import { useTranslation } from "react-i18next";
@@ -9,8 +9,8 @@ export const Imprint = () => {
   return (
     <>
       <StickyLegalHeader text={t("imprint.header")} />
-      <main className={styles.legalBackground}>
-        <div className={styles.legalContainer}>
+      <main className={styles.background}>
+        <div className={styles.container}>
           <LegalSection header={t("imprint.general.header")}>
             <h3>{t("imprint.general.owner")}:</h3>
             <p>

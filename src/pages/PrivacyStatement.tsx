@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ImprintAndPrivacy.module.scss";
+import styles from "./Shared.module.scss";
 import { StickyLegalHeader } from "../components/StickyHeader";
 import { ExternalLink } from "../components/ExternalLink";
 import { LegalSection } from "../sections/LegalSection";
@@ -11,8 +11,8 @@ export const PrivacyStatement = () => {
   return (
     <>
       <StickyLegalHeader text={t("privacy.header")} />
-      <main className={styles.legalBackground}>
-        <div className={styles.legalContainer}>
+      <main className={styles.background}>
+        <div className={styles.container}>
           <LegalSection id="intro" header={t("privacy.intro.header")}>
             <p> {t("privacy.intro.firstParagraph")} </p>
             <p> {t("privacy.intro.secondParagraph")} </p>
