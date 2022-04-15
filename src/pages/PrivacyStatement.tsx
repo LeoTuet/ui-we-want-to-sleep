@@ -13,28 +13,28 @@ export const PrivacyStatement = () => {
       <StickyLegalHeader text={t("privacy.header")} />
       <main className={styles.legalBackground}>
         <div className={styles.legalContainer}>
-          <LegalSection id="mIntro" header={t("privacy.intro.header")}>
+          <LegalSection id="intro" header={t("privacy.intro.header")}>
             <p> {t("privacy.intro.firstParagraph")} </p>
             <p> {t("privacy.intro.secondParagraph")} </p>
             <p> {t("privacy.intro.thridParagraph")} </p>
           </LegalSection>
           <LegalSection header={t("privacy.tableOfContents")}>
             <ul>
-              <li><a href="#mIntro"> {t("privacy.intro.header")} </a></li>
-              <li><a href="#mResponsible"> {t("privacy.responsibilities.header")} </a></li>
-              <li><a href="#mOverview"> {t("privacy.overviewOverProcesses.header")} </a></li>
-              <li><a href="#mLegalBases"> {t("privacy.relevantLegalBases.header")} </a></li>
-              <li><a href="#mSecurity"> {t("privacy.security.header")} </a></li>
-              <li><a href="#mDeletion"> {t("privacy.deletionOfData.header")} </a></li>
-              <li><a href="#mCookies"> {t("privacy.useOfCookies.header")} </a></li>
-              <li><a href="#mWebhosting"> {t("privacy.webhosting.header")} </a></li>
-              <li><a  href="#mVote"> {t("privacy.votes.header")} </a></li>
-              <li><a href="#mChanges"> {t("privacy.updates.header")} </a></li>
-              <li><a href="#mRights"> {t("privacy.rights.header")} </a></li>
-              <li><a href="#mDefinitions"> {t("privacy.definitions.header")} </a></li>
+              <li><a href="#intro"> {t("privacy.intro.header")} </a></li>
+              <li><a href="#responsible"> {t("privacy.responsibilities.header")} </a></li>
+              <li><a href="#overview"> {t("privacy.overviewOverProcesses.header")} </a></li>
+              <li><a href="#legal-bases"> {t("privacy.relevantLegalBases.header")} </a></li>
+              <li><a href="#security"> {t("privacy.security.header")} </a></li>
+              <li><a href="#deletion"> {t("privacy.deletionOfData.header")} </a></li>
+              <li><a href="#cookies"> {t("privacy.useOfCookies.header")} </a></li>
+              <li><a href="#webhosting"> {t("privacy.webhosting.header")} </a></li>
+              <li><a  href="#vote"> {t("privacy.votes.header")} </a></li>
+              <li><a href="#changes"> {t("privacy.updates.header")} </a></li>
+              <li><a href="#rights"> {t("privacy.rights.header")} </a></li>
+              <li><a href="#definitions"> {t("privacy.definitions.header")} </a></li>
             </ul>
           </LegalSection>
-          <LegalSection id="mResponsible" header={t("privacy.responsibilities.header")}>
+          <LegalSection id="responsible" header={t("privacy.responsibilities.header")}>
             <p>
               Tüting, Leopold <br />
               Starnberger Weg 15c <br />
@@ -43,7 +43,7 @@ export const PrivacyStatement = () => {
             <p> {t("privacy.responsibilities.firstParagraph")} <ExternalLink href="mailto:info@wewanttosleep.de" text="info@wewanttosleep.de" /></p>
             <p> {t("privacy.responsibilities.secondParagraph")}  <ExternalLink href="https://wewanttosleep.de/impressum" /></p>
           </LegalSection>
-          <LegalSection id="mOverview" header={t("privacy.overviewOverProcesses.header")}>
+          <LegalSection id="overview" header={t("privacy.overviewOverProcesses.header")}>
             <p> {t("privacy.overviewOverProcesses.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.overviewOverProcesses.secondParagraph.header")} </strong> 
@@ -54,13 +54,13 @@ export const PrivacyStatement = () => {
               {t("privacy.overviewOverProcesses.thridParagraph.content")}
             </p>
           </LegalSection>
-          <LegalSection id="mLegalBases" header={t("privacy.relevantLegalBases.header")}>
+          <LegalSection id="legal-bases" header={t("privacy.relevantLegalBases.header")}>
             <p> {t("privacy.relevantLegalBases.firstParagraph")} </p>
             <p> {t("privacy.relevantLegalBases.secondParagraph")} </p>
             <p> {t("privacy.relevantLegalBases.thirdParagraph")} </p>
             <p> {t("privacy.relevantLegalBases.fourthParagraph")} </p>
           </LegalSection>
-          <LegalSection id="mSecurity" header={t("privacy.security.header")}>
+          <LegalSection id="security" header={t("privacy.security.header")}>
             <p> {t("privacy.security.firstParagraph")} </p>
             <p> {t("privacy.security.secondParagraph")} </p>
             <p>
@@ -68,12 +68,12 @@ export const PrivacyStatement = () => {
               {t("privacy.security.thirdParagraph.content")}
             </p>
           </LegalSection>
-          <LegalSection id="mDeletion" header={t("privacy.deletionOfData.header")}>
+          <LegalSection id="deletion" header={t("privacy.deletionOfData.header")}>
             <p> {t("privacy.deletionOfData.firstParagraph")} </p>
             <p> {t("privacy.deletionOfData.secondParagraph")} </p>
             <p> {t("privacy.deletionOfData.thirdParagraph")} </p>
           </LegalSection>
-          <LegalSection id="mCookies" header={t("privacy.useOfCookies.header")}>
+          <LegalSection id="cookies" header={t("privacy.useOfCookies.header")}>
           <p> {t("privacy.useOfCookies.firstParagraph")} </p>
           <p>
               <strong> {t("privacy.useOfCookies.secondParagraph.header")} </strong>
@@ -92,7 +92,7 @@ export const PrivacyStatement = () => {
               {t("privacy.votes.fifthParagraph.content")}
           </p>
          </LegalSection>
-          <LegalSection id="mWebhosting" header= {t("privacy.webhosting.header")}>
+          <LegalSection id="webhosting" header= {t("privacy.webhosting.header")}>
             <p>  {t("privacy.webhosting.firstParagraph")} </p>
             <p>  {t("privacy.webhosting.secondParagraph")} </p>
             <p>
@@ -135,7 +135,7 @@ export const PrivacyStatement = () => {
               <ExternalLink href="https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/" />
             </p>
           </LegalSection>
-          <LegalSection id="mVote" header={t("privacy.votes.header")}>
+          <LegalSection id="vote" header={t("privacy.votes.header")}>
             <p> {t("privacy.votes.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.votes.secondParagraph.header")} </strong>
@@ -158,11 +158,11 @@ export const PrivacyStatement = () => {
               {t("privacy.votes.sixthParagraph.content")}
             </p>
           </LegalSection>
-          <LegalSection id="mChanges" header={t("privacy.updates.header")}>
+          <LegalSection id="changes" header={t("privacy.updates.header")}>
             <p> {t("privacy.updates.firstParagraph")} </p>
             <p> {t("privacy.updates.secondParagraph")} </p>
           </LegalSection>
-          <LegalSection id="mRights" header={t("privacy.rights.header")}>
+          <LegalSection id="rights" header={t("privacy.rights.header")}>
             <p> {t("privacy.rights.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.rights.secondParagraph.header")} </strong>
@@ -193,7 +193,7 @@ export const PrivacyStatement = () => {
               {t("privacy.rights.eighthParagraph.content")}
             </p>
           </LegalSection>
-          <LegalSection id="mDefinitions" header={t("privacy.definitions.header")}>
+          <LegalSection id="definitions" header={t("privacy.definitions.header")}>
             <p> {t("privacy.definitions.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.definitions.secondParagraph.header")} </strong>
