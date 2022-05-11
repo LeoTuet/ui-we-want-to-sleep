@@ -87,7 +87,7 @@ export const Footer = () => {
             {t("footer.imprint")}
           </Link>
           <span>{" & "}</span>
-          <Link to="privacy-statement" className={styles.link}>
+          <Link to="privacy" className={styles.link}>
             {t("footer.privacy")}
           </Link>
           <span>{" & "}</span>

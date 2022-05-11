@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/:token" element={<Home />} />
-        <Route path="privacy-statement" element={<PrivacyStatement />} />
+        <Route path="privacy" element={<PrivacyStatement />} />
         <Route path="imprint" element={<Imprint />} />
         <Route path="sources" element={<Sources />} />
         <Route path="*" element={<Home />} />
