@@ -109,7 +109,7 @@
     }
   },
   "privacy": {
-    "header": "our.privacyStatement()",
+    "header": "our.privacy()",
     "intro": {
       "header": "Introduction",
       "firstParagraph": "With the following data protection declaration, we would like to inform you about the types of your personal data (hereinafter also referred to as 'data') that we process, for what purposes and to what extent in the context of providing our application.",

@@ -40,8 +40,14 @@ export const PrivacyStatement = () => {
               Starnberger Weg 15c <br />
               82110, Germering, Germany
             </p>
-            <p> {t("privacy.responsibilities.firstParagraph")} <ExternalLink href="mailto:info@wewanttosleep.de" text="info@wewanttosleep.de" /></p>
-            <p> {t("privacy.responsibilities.secondParagraph")}  <ExternalLink href="https://wewanttosleep.de/impressum" /></p>
+            <p className= {styles.list}>
+              {t("privacy.responsibilities.firstParagraph")} 
+              <ExternalLink href="mailto:info@wewanttosleep.de" text="info@wewanttosleep.de" />
+            </p>
+            <p className= {styles.list}>
+              {t("privacy.responsibilities.secondParagraph")}  
+              <ExternalLink href="https://wewanttosleep.de/impressum" />
+            </p>
           </LegalSection>
           <LegalSection id="overview" header={t("privacy.overviewOverProcesses.header")}>
             <p> {t("privacy.overviewOverProcesses.firstParagraph")} </p>
@@ -122,15 +128,15 @@ export const PrivacyStatement = () => {
               <strong> {t("privacy.webhosting.subSection.secondParagraph.header")} </strong>
               {t("privacy.webhosting.subSection.secondParagraph.content")}
             </p>
-            <p>
+            <p className= {styles.list}>
               <strong>Website: </strong>
               <ExternalLink href="https://www.hetzner.com" />
             </p>
-            <p>
+            <p className= {styles.list}>
               <strong> {t("privacy.webhosting.subSection.privacyStatement")} </strong>
               <ExternalLink href="https://www.hetzner.com/de/rechtliches/datenschutz" />
             </p>
-            <p>
+            <p className= {styles.list}>
               <strong> {t("privacy.webhosting.subSection.dataPrivacyFAQ")} </strong>
               <ExternalLink href="https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/" />
             </p>
