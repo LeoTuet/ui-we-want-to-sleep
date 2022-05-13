@@ -7,7 +7,7 @@ import { Jwt } from "../../network/jwt";
 import { FetchError } from "../../network/request";
 import BallotView from "../components/Ballot";
 import { Button } from "../components/Button";
-import { CreateBallotForm } from "./CreateBallotForm";
+import { BallotForm } from "./BallotForm";
 
 interface BallotCrudProps {
   jwt: Jwt;
@@ -55,7 +55,7 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
         : "There are no ballots."}
 
       {creationFormVisible ? (
-        <CreateBallotForm
+        <BallotForm
           jwt={jwt}
           onSubmit={createBallot}
           onCancel={toggleCreationFormVisible}

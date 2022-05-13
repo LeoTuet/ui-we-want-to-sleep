@@ -1,34 +1,46 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { VoteOption } from "../../models";
-import { addBallot } from "../../network/ballotApi";
+import { Ballot, VoteOption } from "../../models";
+import { addBallot, updateBallot } from "../../network/ballotApi";
 import { Jwt } from "../../network/jwt";
 import { FetchError } from "../../network/request";
 import { Button, Input } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
-import styles from "./CreateBallotForm.module.scss";
+import styles from "./BallotForm.module.scss";
 
-interface CreateBallotProps {
+interface BallotProps {
   jwt: Jwt;
+  payload?: Ballot,
   onSubmit(): void;
   onCancel(): void;
 }
 
-export function CreateBallotForm({
+export function BallotForm({
   jwt,
+  payload,
   onSubmit,
   onCancel,
-}: CreateBallotProps) {
+}: BallotProps) {
   const [error, setError] = useState<string | null>(null);
   const [showErrors, setShowErrors] = useState(false);
   const [disabled, setDisabled] = useState(false);
 
+  const [id, setId] = useState("");
   const [running, setRunning] = useState(false);
   const [question, setQuestion] = useState("");
   const [voteOptions, setVoteOptions] = useState<VoteOption[]>([]);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(payload) {
+      setId(payload._id)
+      setRunning(payload.running);
+      setQuestion(payload.question)
+      setVoteOptions(payload.options)
+    }
+  }, [payload])
 
   function submit(e: FormEvent) {
     e.preventDefault();
@@ -44,6 +56,18 @@ export function CreateBallotForm({
     ) {
       setError("Error: Some values are missing");
       setShowErrors(true);
+    } else if (payload) {
+      setShowErrors(true);
+      setDisabled(true);
+      updateBallot(jwt,  id, {
+        running,
+        question,
+        options: voteOptions,
+      })
+        .then(onSubmit)
+        .catch((e: FetchError) => {
+          dispatch(e.showToast("Failed to update ballot"));
+        });
     } else {
       setShowErrors(true);
       setDisabled(true);
@@ -82,7 +106,7 @@ export function CreateBallotForm({
 
   return (
     <div className={styles.outer}>
-      <h2>Create new Ballot</h2>
+      <h2>{payload ? "Update" : "Create new"} Ballot</h2>
       <p className={styles.error}>{error}</p>
 
       <form className={styles.form} onSubmit={submit}>

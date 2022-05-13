@@ -1,8 +1,10 @@
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 import { Ballot } from "../../models";
 import { deleteBallot, updateBallot } from "../../network/ballotApi";
+import { BallotForm } from "../sections/BallotForm"
 import { Jwt } from "../../network/jwt";
 import { FetchError } from "../../network/request";
 import styles from "./Ballot.module.scss";
@@ -16,6 +18,7 @@ interface BallotProps {
 }
 
 function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
+  const [updateFormVisible, setUpdateFormVisible] = useState(false);
   const dispatch = useDispatch();
 
   function clickDeleteBallot() {
@@ -26,6 +29,15 @@ function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
           dispatch(e.showToast("The ballot could not be deleted"));
         });
     }
+  }
+
+  function toggleUpdateFormVisible() {
+    setUpdateFormVisible((prev) => !prev);
+  }
+
+  function onUpdateBallot() {
+    setUpdateFormVisible(false);
+    onUpdate();
   }
 
   function toggleRunning() {
@@ -73,6 +85,16 @@ function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
         </tbody>
       </table>
 
+      {updateFormVisible ? (
+        <BallotForm
+          jwt={jwt}
+          payload={ballot}
+          onSubmit={onUpdateBallot}
+          onCancel={toggleUpdateFormVisible}
+        />
+      ) : (
+        <Button onClick={toggleUpdateFormVisible}>Update</Button>
+      )}
       <Button onClick={clickDeleteBallot}>Delete</Button>
       <Button onClick={toggleRunning}>
         {ballot.running ? "Pause" : "Start"}
