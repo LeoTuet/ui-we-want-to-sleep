@@ -294,6 +294,8 @@
     }
   },
   "sources": {
-    "header": "our.sources()"
+    "header": "our.sources()",
+    "videos": "Videos",
+    "article": "Article"
   }
 }
