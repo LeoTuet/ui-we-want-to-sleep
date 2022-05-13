@@ -14,10 +14,14 @@ export const recordVote = async (
     },
     body: JSON.stringify({ token, vote: identifier }),
   });
-  const jsonResponse = await response.json();
 
-  if (jsonResponse.error.message.includes("Captcha")) {
-    return Promise.reject("INVALID_CAPTCHA");
+  if (!response.ok) {
+    const jsonResponse = await response.json();
+
+    if (jsonResponse.error.message.includes("Captcha")) {
+      return Promise.reject("INVALID_CAPTCHA");
+    }
+    
   }
 
 };
