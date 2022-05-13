@@ -95,9 +95,9 @@ export const Footer = () => {
             {t("footer.adminLogin")}
           </Link>
         </p>
-        <p className={styles.centered}>
+        <span className={styles.centered}>
           <OptionsPanel />
-        </p>
+        </span>
       </div>
     </footer>
   );

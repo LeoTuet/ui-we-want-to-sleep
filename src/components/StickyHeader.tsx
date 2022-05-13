@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { LegalHeader, LegalHeaderProps } from "./LegalHeader";
 
-export const StickyLegalHeader = ({
-  text,
-  hlStart,
-  hlEnd,
-  ...rest
-}: LegalHeaderProps) => {
+export const StickyLegalHeader = ({ text, ...rest }: LegalHeaderProps) => {
   const [scrollOffset, setScrollOffset] = useState(
     document.documentElement.scrollTop ?? 0
   );
@@ -37,8 +32,6 @@ export const StickyLegalHeader = ({
     <LegalHeader
       style={{ clipPath: `inset(0 0 ${clipInset}px 0)` }}
       text={text}
-      hlStart={hlStart}
-      hlEnd={hlEnd}
       {...rest}
     />
   );
