@@ -1,6 +1,6 @@
 import styles from "./VotingSection.module.scss";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Ballot } from "../models";
 
 import { SerializedError } from "@reduxjs/toolkit";

@@ -12,7 +12,9 @@ export type NoVotingType =
   | "INVALID"
   | "USED"
   | "LOADING"
-  | "NONE_EXISTENT";
+  | "NONE_EXISTENT"
+  | "SUCCESS" 
+  | "INVALID_CAPTCHA";
 
 export const NoVotingSection = ({
   type = "NO_RUNNING_BALLOT",

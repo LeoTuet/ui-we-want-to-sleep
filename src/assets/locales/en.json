@@ -69,9 +69,7 @@
     "SERVER_ERROR": {
       "header": "Please contact us!",
       "content": "We seem to have problems with our server :("
-    }
-  },
-  "voteResponse": {
+    },
     "SUCCESS": {
       "header": "You voted :)",
       "content": "You may relax now!"
