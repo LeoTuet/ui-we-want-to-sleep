@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: WeWantToSleep
+    url: https://wewanttosleep.de/
+    about: Checkout our page here
+  - name: Contribute
+    url: https://github.com/LeoTuet/ui-we-want-to-sleep#contribute
+    about: Feel free to create issues and pull requests.
