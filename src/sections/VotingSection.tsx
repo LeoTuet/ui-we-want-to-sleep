@@ -1,10 +1,10 @@
-import styles from "./VotingSection.module.scss";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
-import React, { useCallback, useState } from "react";
-import { Ballot } from "../models";
-
 import { SerializedError } from "@reduxjs/toolkit";
+import React, { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+import { Ballot } from "../models";
+import styles from "./VotingSection.module.scss";
 
 interface VotingSectionProps {
   onTokenReceive: (token: string) => void;

@@ -1,33 +1,19 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { generateToken } from "../../network/adminApi";
-import { Jwt } from "../../network/jwt";
-import { FetchError } from "../../network/request";
+import { generateToken } from "../../stores/adminLogin";
 import { Button, Input } from "../components/Button";
 import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";
 
-interface TokenGenerationProps {
-  jwt: Jwt;
-}
-
-export function TokenGeneration({ jwt }: TokenGenerationProps) {
+export function TokenGeneration() {
   const [generatedTokens, setGeneratedTokens] = useState<string[]>([]);
   const [tokenNumber, setTokenNumber] = useState(1);
   const dispatch = useDispatch();
 
-  async function genToken() {
-    try {
-      const tokens = await generateToken(jwt, {
-        amount: tokenNumber,
-        valid: true,
-      });
-      setGeneratedTokens((prev) => [...prev, ...tokens]);
-    } catch (e) {
-      dispatch((e as FetchError).showToast("Failed to generate tokens"));
-    }
-  }
+  const handleTokenGeneration = useCallback(() => {
+    dispatch(generateToken);
+  }, [dispatch]);
 
   function changeTokenNumber(e: ChangeEvent<HTMLInputElement>) {
     const number = +e.target.value;
@@ -50,7 +36,7 @@ export function TokenGeneration({ jwt }: TokenGenerationProps) {
           onChange={changeTokenNumber}
         />
         tokens
-        <Button onClick={genToken}>GO</Button>
+        <Button onClick={handleTokenGeneration}>GO</Button>
       </p>
 
       {generatedTokens.length > 0 && (

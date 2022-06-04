@@ -1,6 +1,6 @@
+import p5Types from "p5"; //Typen von p5
 import { useState } from "react";
 import Sketch from "react-p5";
-import p5Types from "p5"; //Typen von p5
 
 import sheep from "../assets/sheep.png";
 
@@ -23,7 +23,7 @@ export const Sheep = ({
   let xPos = 200;
   let yJumpOffset = 0;
   let speed = 0;
-  let gravity = 3;
+  const gravity = 3;
   let orientation: "LEFT" | "RIGHT" = "RIGHT";
 
   const keyMap = {

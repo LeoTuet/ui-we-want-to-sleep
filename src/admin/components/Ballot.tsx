@@ -1,33 +1,32 @@
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Ballot } from "../../models";
 import { deleteBallot, updateBallot } from "../../network/ballotApi";
-import { BallotForm } from "../sections/BallotForm"
 import { Jwt } from "../../network/jwt";
 import { FetchError } from "../../network/request";
+import { BallotForm } from "../sections/BallotForm";
 import styles from "./Ballot.module.scss";
 import { Button } from "./Button";
 
 interface BallotProps {
-  jwt: Jwt;
   ballot: Ballot;
   onDelete(): void;
   onUpdate(): void;
 }
 
-function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
+function BallotView({ ballot, onDelete, onUpdate }: BallotProps) {
   const [updateFormVisible, setUpdateFormVisible] = useState(false);
   const dispatch = useDispatch();
 
   function clickDeleteBallot() {
     if (confirm("Do you really want to delete this ballot?")) {
-      deleteBallot(jwt, ballot._id)
-        .then(onDelete)
-        .catch((e: FetchError) => {
-          dispatch(e.showToast("The ballot could not be deleted"));
-        });
+      // deleteBallot(jwt, ballot._id)
+      //   .then(onDelete)
+      //   .catch((e: FetchError) => {
+      //     dispatch(e.showToast("The ballot could not be deleted"));
+      //   });
     }
   }
 
@@ -44,16 +43,16 @@ function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
     const action = ballot.running ? "pause" : "start";
 
     if (confirm(`Do you really want to ${action} this ballot?`)) {
-      const updated = {
-        running: !ballot.running,
-        options: ballot.options,
-        question: ballot.question,
-      };
-      updateBallot(jwt, ballot._id, updated)
-        .then(onUpdate)
-        .catch((e: FetchError) => {
-          dispatch(e.showToast(`The ballot could not be ${action}d`));
-        });
+      // const updated = {
+      //   running: !ballot.running,
+      //   options: ballot.options,
+      //   question: ballot.question,
+      // };
+      // updateBallot(jwt, ballot._id, updated)
+      //   .then(onUpdate)
+      //   .catch((e: FetchError) => {
+      //     dispatch(e.showToast(`The ballot could not be ${action}d`));
+      //   });
     }
   }
 
@@ -87,7 +86,6 @@ function BallotView({ jwt, ballot, onDelete, onUpdate }: BallotProps) {
 
       {updateFormVisible ? (
         <BallotForm
-          jwt={jwt}
           payload={ballot}
           onSubmit={onUpdateBallot}
           onCancel={toggleUpdateFormVisible}

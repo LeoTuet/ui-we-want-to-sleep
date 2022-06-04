@@ -1,21 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { loginAdmin } from "../../network/adminApi";
-import { Jwt } from "../../network/jwt";
-import { FetchError } from "../../network/request";
+import { login } from "../../stores/adminLogin";
 import styles from "./Login.module.scss";
 
-interface LoginProps {
-  onLogin(jwt: Jwt): void;
-}
+export const Login = () => {
+  const dispatch = useDispatch();
 
-export const Login = ({ onLogin }: LoginProps) => {
   const [rememberUsername, setRememberUsername] = useLocalStorage<boolean>(
     "admin.rememberUsername",
     true
   );
-  const [username, setUsername] = useLocalStorage<string>(
+  const [username, setUserName] = useLocalStorage<string>(
     "admin.cacheUsername",
     ""
   );
@@ -24,7 +21,7 @@ export const Login = ({ onLogin }: LoginProps) => {
 
   function changeUsername(e: ChangeEvent<HTMLInputElement>) {
     const username = e.target.value;
-    setUsername(username, { remember: rememberUsername });
+    setUserName(username, { remember: rememberUsername });
     setErrorMessage("");
   }
 
@@ -37,7 +34,7 @@ export const Login = ({ onLogin }: LoginProps) => {
   function changeRemember(e: ChangeEvent<HTMLInputElement>) {
     const remember = e.target.checked;
     setRememberUsername(remember);
-    setUsername((v) => v, { remember });
+    setUserName((v) => v, { remember });
   }
 
   function submit(e: FormEvent) {
@@ -48,18 +45,22 @@ export const Login = ({ onLogin }: LoginProps) => {
     } else if (password === "") {
       setErrorMessage("Error: Password missing");
     } else {
-      attemptLogin();
+      handleLogin();
     }
   }
 
-  async function attemptLogin() {
-    try {
-      const jwt = await loginAdmin({ username, password });
-      onLogin(jwt);
-    } catch (e) {
-      setErrorMessage((e as FetchError).message);
-    }
-  }
+  // async function attemptLogin() {
+  //   try {
+  //     const jwt = await loginAdmin({ username, password });
+  //     onLogin(jwt);
+  //   } catch (e) {
+  //     setErrorMessage((e as FetchError).message);
+  //   }
+  // }
+
+  const handleLogin = useCallback(() => {
+    dispatch(login({ username, password }));
+  }, [dispatch, password, username]);
 
   return (
     <div className={styles.outer}>
@@ -68,7 +69,6 @@ export const Login = ({ onLogin }: LoginProps) => {
       <form className={styles.loginForm} onSubmit={submit}>
         Username:
         <input
-          autoFocus={username == ""}
           autoCapitalize="off"
           spellCheck={false}
           type="text"
@@ -78,7 +78,6 @@ export const Login = ({ onLogin }: LoginProps) => {
         />
         Password:
         <input
-          autoFocus={username != ""}
           type="password"
           className={styles.inputField}
           onChange={changePassword}

@@ -2,6 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { Api } from "../network/Api";
 import {
+  adminLoginSlice,
+  AdminLoginState,
+  initialState as adminLoginState,
+} from "./adminLogin";
+import {
   ballotSlice,
   BallotState,
   initialState as ballotState,
@@ -18,6 +23,7 @@ export type RootState = {
   vote: VoteState;
   ui: UIState;
   jwt: JwtState;
+  adminLogin: AdminLoginState;
   toasts: ToastState;
 };
 
@@ -35,6 +41,7 @@ export const createStore = (api: Api) =>
       vote: voteSlice.reducer,
       ui: uiSlice.reducer,
       jwt: jwtSlice.reducer,
+      adminLogin: adminLoginSlice.reducer,
       toasts: toastSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
@@ -54,4 +61,5 @@ export const initialRootState: RootState = {
   ui: uiState,
   jwt: jwtState,
   toasts: toastState,
+  adminLogin: adminLoginState,
 };

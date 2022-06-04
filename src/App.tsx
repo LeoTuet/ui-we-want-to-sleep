@@ -1,11 +1,12 @@
-import { Home } from "./pages/Home";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { PrivacyStatement } from "./pages/PrivacyStatement";
-import { Imprint } from "./pages/Imprint";
-import { Footer } from "./sections/Footer";
 import { useEffect } from "react";
-import { useTheme } from "./hooks/useTheme";
+import { Route, Routes, useLocation } from "react-router-dom";
+
 import { Lazy } from "./components/Lazy";
+import { useTheme } from "./hooks/useTheme";
+import { Home } from "./pages/Home";
+import { Imprint } from "./pages/Imprint";
+import { PrivacyStatement } from "./pages/PrivacyStatement";
+import { Footer } from "./sections/Footer";
 
 function App() {
   const { pathname } = useLocation();

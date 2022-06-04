@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Ballot, VoteOption } from "../../models";
@@ -10,18 +10,12 @@ import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";
 
 interface BallotProps {
-  jwt: Jwt;
-  payload?: Ballot,
+  payload?: Ballot;
   onSubmit(): void;
   onCancel(): void;
 }
 
-export function BallotForm({
-  jwt,
-  payload,
-  onSubmit,
-  onCancel,
-}: BallotProps) {
+export function BallotForm({ payload, onSubmit, onCancel }: BallotProps) {
   const [error, setError] = useState<string | null>(null);
   const [showErrors, setShowErrors] = useState(false);
   const [disabled, setDisabled] = useState(false);
@@ -34,13 +28,13 @@ export function BallotForm({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(payload) {
-      setId(payload._id)
+    if (payload) {
+      setId(payload._id);
       setRunning(payload.running);
-      setQuestion(payload.question)
-      setVoteOptions(payload.options)
+      setQuestion(payload.question);
+      setVoteOptions(payload.options);
     }
-  }, [payload])
+  }, [payload]);
 
   function submit(e: FormEvent) {
     e.preventDefault();
@@ -59,27 +53,27 @@ export function BallotForm({
     } else if (payload) {
       setShowErrors(true);
       setDisabled(true);
-      updateBallot(jwt,  id, {
-        running,
-        question,
-        options: voteOptions,
-      })
-        .then(onSubmit)
-        .catch((e: FetchError) => {
-          dispatch(e.showToast("Failed to update ballot"));
-        });
+      // updateBallot(jwt, id, {
+      //   running,
+      //   question,
+      //   options: voteOptions,
+      // })
+      //   .then(onSubmit)
+      //   .catch((e: FetchError) => {
+      //     dispatch(e.showToast("Failed to update ballot"));
+      //   });
     } else {
       setShowErrors(true);
       setDisabled(true);
-      addBallot(jwt, {
-        running,
-        question,
-        options: voteOptions,
-      })
-        .then(onSubmit)
-        .catch((e: FetchError) => {
-          dispatch(e.showToast("Failed to create ballot"));
-        });
+      // addBallot(jwt, {
+      //   running,
+      //   question,
+      //   options: voteOptions,
+      // })
+      //   .then(onSubmit)
+      //   .catch((e: FetchError) => {
+      //     dispatch(e.showToast("Failed to create ballot"));
+      //   });
     }
   }
 

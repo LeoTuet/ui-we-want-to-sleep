@@ -1,13 +1,14 @@
-import ReactDOM from "react-dom";
 import "./index.css";
-import { createStore } from "./stores/rootStore";
-import App from "./App";
-import { Api } from "./network/Api";
+import "./i18n";
+
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
-import "./i18n";
+import App from "./App";
+import { Api } from "./network/Api";
+import reportWebVitals from "./reportWebVitals";
+import { createStore } from "./stores/rootStore";
 
 export const store = createStore(new Api());
 

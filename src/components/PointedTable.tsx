@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./PointedTable.module.scss";
 
 export type DetailElement = React.ReactElement | string;

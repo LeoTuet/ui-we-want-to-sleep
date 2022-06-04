@@ -3,17 +3,12 @@ import { useDispatch } from "react-redux";
 
 import { Ballot } from "../../models";
 import { fetchAllBallots } from "../../network/ballotApi";
-import { Jwt } from "../../network/jwt";
 import { FetchError } from "../../network/request";
 import BallotView from "../components/Ballot";
 import { Button } from "../components/Button";
 import { BallotForm } from "./BallotForm";
 
-interface BallotCrudProps {
-  jwt: Jwt;
-}
-
-export function BallotCrud({ jwt }: BallotCrudProps) {
+export function BallotCrud() {
   const [ballots, setBallots] = useState<Ballot[] | null>(null);
   const [creationFormVisible, setCreationFormVisible] = useState(false);
 
@@ -46,7 +41,6 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
         ? ballots.map((ballot) => (
             <BallotView
               key={ballot._id}
-              jwt={jwt}
               ballot={ballot}
               onDelete={updateBallots}
               onUpdate={updateBallots}
@@ -56,7 +50,6 @@ export function BallotCrud({ jwt }: BallotCrudProps) {
 
       {creationFormVisible ? (
         <BallotForm
-          jwt={jwt}
           onSubmit={createBallot}
           onCancel={toggleCreationFormVisible}
         />
