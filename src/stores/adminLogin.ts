@@ -60,6 +60,26 @@ export const createBallot = createAsyncThunk<
   }
 );
 
+export const updateBallot = createAsyncThunk<
+  Ballot,
+  { ballot: Ballot; creationBallot: CreationBallot },
+  ThunkExtra
+>(
+  "adminLogin/createBallot",
+  async ({ ballot, creationBallot }, { getState, extra: { api } }) => {
+    const { decodedJwt } = selectAdminLogin(getState() as RootState);
+
+    if (!decodedJwt) {
+      throw new Error("You must be logged in to generate token");
+    }
+
+    return api.ballotApi.updateBallot(decodedJwt, ballot._id, {
+      ...ballot,
+      ...creationBallot,
+    });
+  }
+);
+
 export const generateToken = createAsyncThunk<
   string[],
   { amount: number; valid: boolean },

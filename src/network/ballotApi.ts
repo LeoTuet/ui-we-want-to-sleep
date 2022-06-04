@@ -46,17 +46,13 @@ export async function deleteBallot(jwt: Jwt, id: string): Promise<void> {
 export async function updateBallot(
   jwt: Jwt,
   id: string,
-  body: AdminBallot
-): Promise<void> {
-  await put(`/api/ballot/${id}`, { body, jwt });
+  body: Ballot
+): Promise<Ballot> {
+  return await put<Ballot>(`/api/ballot/${id}`, { body, jwt });
 }
 
 export interface CreationBallot {
   running: boolean;
   question: string;
   options: VoteOption[];
-}
-
-interface AdminBallot extends CreationBallot {
-  id: string;
 }

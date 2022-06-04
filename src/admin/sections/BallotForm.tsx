@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { Ballot, VoteOption } from "../../models";
 import { CreationBallot } from "../../network/ballotApi";
-import { createBallot } from "../../stores/adminLogin";
+import { createBallot, updateBallot } from "../../stores/adminLogin";
 import { Button, Input } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";
@@ -20,7 +20,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   const {
     watch,
     setValue,
-    formState,
+    formState: { isDirty, isValid, dirtyFields, errors },
     handleSubmit,
     register,
     setError,
@@ -31,12 +31,11 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
       options: [],
       running: false,
     },
-    mode: "onChange",
-    reValidateMode: "onChange",
   });
-  const { isDirty, isValid } = formState;
 
-  // Should be done with the validation of react hook form but i'm to dumb to do it
+  console.log(isDirty, dirtyFields);
+
+  // TODO: Should be done with the validation of react-hook-form but i'm to dumb to do it
   const validateForm = useCallback(() => {
     console.log(watch(), "watch");
     clearErrors();
@@ -69,7 +68,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   const onSubmit = useCallback(() => {
     console.log("dings");
     if (payload) {
-      // dispatch(updateBallot(payload, watch()));
+      dispatch(updateBallot({ ballot: payload, creationBallot: watch() }));
     } else {
       dispatch(createBallot(watch()));
     }
@@ -79,7 +78,10 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   const addVoteOption = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
-      setValue("options", [...watch().options, { identifier: "", label: "" }]);
+      setValue("options", [...watch().options, { identifier: "", label: "" }], {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
       validateForm();
     },
     [setValue, validateForm, watch]
@@ -89,7 +91,8 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
     (index: number) => {
       setValue(
         "options",
-        watch().options.filter((_, i) => i !== index)
+        watch().options.filter((_, i) => i !== index),
+        { shouldDirty: true, shouldValidate: true }
       );
       validateForm();
     },
@@ -101,14 +104,13 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
       clearErrors("options");
       setValue(
         "options",
-        watch().options.map((vo, i) => (i === index ? newVo : vo))
+        watch().options.map((vo, i) => (i === index ? newVo : vo)),
+        { shouldDirty: true, shouldValidate: true }
       );
       validateForm();
     },
     [clearErrors, setValue, validateForm, watch]
   );
-
-  console.log(formState.errors);
 
   return (
     <div className={styles.outer}>
@@ -119,7 +121,12 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
           <input
             type="checkbox"
             checked={watch().running}
-            onChange={(e) => setValue("running", e.target.checked)}
+            onChange={(e) =>
+              setValue("running", e.target.checked, {
+                shouldDirty: true,
+                shouldValidate: true,
+              })
+            }
           />
           Running
         </label>
@@ -130,7 +137,10 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
           type="text"
           value={watch().question}
           onChange={(e) => {
-            setValue("question", e.target.value);
+            setValue("question", e.target.value, {
+              shouldDirty: true,
+              shouldValidate: true,
+            });
             validateForm();
           }}
         />
@@ -142,7 +152,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
             voteOption={vo}
             onChange={(vo) => changeVoteOption(i, vo)}
             onRemove={() => removeVoteOption(i)}
-            showErrors={Object.keys(formState.errors).includes(`options[${i}]`)}
+            showErrors={Object.keys(errors).includes(`options[${i}]`)}
           />
         ))}
         <Button className={styles.addVoteOption} onClick={addVoteOption}>
