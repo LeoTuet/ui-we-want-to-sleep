@@ -5,6 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 
 import { parseJwt } from "../lib/parseJwt";
+import { Ballot } from "../models";
+import { CreationBallot } from "../network/ballotApi";
 import { Jwt } from "../network/jwt";
 import { post } from "../network/request";
 import { RootState, ThunkExtra } from "./rootStore";
@@ -15,6 +17,7 @@ export interface AdminLoginState {
   jwt?: string;
   decodedJwt?: Jwt;
   generatedToken: string[];
+  ballots: Ballot[];
 }
 
 export const initialState: AdminLoginState = {
@@ -23,6 +26,7 @@ export const initialState: AdminLoginState = {
   jwt: undefined,
   decodedJwt: undefined,
   generatedToken: [],
+  ballots: [],
 };
 
 export const login = createAsyncThunk<
@@ -36,6 +40,23 @@ export const login = createAsyncThunk<
       body: { username, password },
     });
     return data.accessToken;
+  }
+);
+
+export const createBallot = createAsyncThunk<
+  Ballot,
+  CreationBallot,
+  ThunkExtra
+>(
+  "adminLogin/createBallot",
+  async (creationBallot, { getState, extra: { api } }) => {
+    const { decodedJwt } = selectAdminLogin(getState() as RootState);
+
+    if (!decodedJwt) {
+      throw new Error("You must be logged in to generate token");
+    }
+
+    return api.ballotApi.addBallot(decodedJwt, creationBallot);
   }
 );
 
@@ -58,6 +79,14 @@ export const generateToken = createAsyncThunk<
     });
   }
 );
+
+export const fetchAllBallots = createAsyncThunk<
+  Ballot[],
+  undefined,
+  ThunkExtra
+>("adminLogin/fetchAllBallots", async (_, { getState, extra: { api } }) => {
+  return api.ballotApi.fetchAllBallots();
+});
 
 export const adminLoginSlice = createSlice({
   name: "token",
@@ -101,6 +130,10 @@ export const adminLoginSlice = createSlice({
     builder.addCase(generateToken.rejected, (state) => {
       console.error("Token Generation Failed");
     });
+
+    builder.addCase(fetchAllBallots.fulfilled, (state, { payload }) => {
+      state.ballots = payload;
+    });
   },
 });
 
@@ -123,5 +156,12 @@ export const selectGeneratedToken = createSelector(
   selectAdminLoginStore,
   ({ generatedToken }) => ({
     generatedToken,
+  })
+);
+
+export const selectBallots = createSelector(
+  selectAdminLoginStore,
+  ({ ballots }) => ({
+    ballots,
   })
 );

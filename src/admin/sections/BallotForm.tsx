@@ -1,114 +1,125 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
 import { Ballot, VoteOption } from "../../models";
-import { addBallot, updateBallot } from "../../network/ballotApi";
-import { Jwt } from "../../network/jwt";
-import { FetchError } from "../../network/request";
+import { CreationBallot } from "../../network/ballotApi";
+import { createBallot } from "../../stores/adminLogin";
 import { Button, Input } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";
 
 interface BallotProps {
   payload?: Ballot;
-  onSubmit(): void;
-  onCancel(): void;
+  onFormClose: () => void;
 }
 
-export function BallotForm({ payload, onSubmit, onCancel }: BallotProps) {
-  const [error, setError] = useState<string | null>(null);
-  const [showErrors, setShowErrors] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-
-  const [id, setId] = useState("");
-  const [running, setRunning] = useState(false);
-  const [question, setQuestion] = useState("");
-  const [voteOptions, setVoteOptions] = useState<VoteOption[]>([]);
-
+export function BallotForm({ payload, onFormClose }: BallotProps) {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (payload) {
-      setId(payload._id);
-      setRunning(payload.running);
-      setQuestion(payload.question);
-      setVoteOptions(payload.options);
+  const {
+    watch,
+    setValue,
+    formState,
+    handleSubmit,
+    register,
+    setError,
+    clearErrors,
+  } = useForm<CreationBallot>({
+    defaultValues: payload ?? {
+      question: "",
+      options: [],
+      running: false,
+    },
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+  const { isDirty, isValid } = formState;
+
+  // Should be done with the validation of react hook form but i'm to dumb to do it
+  const validateForm = useCallback(() => {
+    console.log(watch(), "watch");
+    clearErrors();
+    if (watch().question.length < 1) {
+      setError("question", { message: "Error: Question missing" });
     }
-  }, [payload]);
 
-  function submit(e: FormEvent) {
-    e.preventDefault();
-
-    if (question === "") {
-      setError("Error: Question missing");
-      setShowErrors(false);
-    } else if (voteOptions.length < 2) {
-      setError("Error: You need at least 2 vote options");
-      setShowErrors(false);
-    } else if (
-      voteOptions.find((vo) => vo.identifier === "" || vo.label === "") != null
+    if (
+      watch().options.some((o) => o.label.length < 1 || o.identifier.length < 1)
     ) {
-      setError("Error: Some values are missing");
-      setShowErrors(true);
-    } else if (payload) {
-      setShowErrors(true);
-      setDisabled(true);
-      // updateBallot(jwt, id, {
-      //   running,
-      //   question,
-      //   options: voteOptions,
-      // })
-      //   .then(onSubmit)
-      //   .catch((e: FetchError) => {
-      //     dispatch(e.showToast("Failed to update ballot"));
-      //   });
-    } else {
-      setShowErrors(true);
-      setDisabled(true);
-      // addBallot(jwt, {
-      //   running,
-      //   question,
-      //   options: voteOptions,
-      // })
-      //   .then(onSubmit)
-      //   .catch((e: FetchError) => {
-      //     dispatch(e.showToast("Failed to create ballot"));
-      //   });
+      setError("options", {
+        message: "You have a invalid vote option",
+      });
     }
-  }
 
-  function cancel(e: FormEvent) {
-    e.preventDefault();
-    onCancel();
-  }
+    if (watch().options.length < 2) {
+      setError("options", {
+        message: "You need at least 2 vote options",
+      });
+    }
+  }, [clearErrors, setError, watch]);
 
-  function addVoteOption(e: FormEvent) {
-    e.preventDefault();
-    setVoteOptions([...voteOptions, { identifier: "", label: "" }]);
-    setShowErrors(false);
-  }
+  useEffect(() => {
+    register("question", { required: true });
+    register("options", { required: true });
+    register("running", { required: true });
+    validateForm();
+  }, [register, validateForm]);
 
-  function removeVoteOption(index: number) {
-    setVoteOptions(voteOptions.filter((_, i) => i !== index));
-    setShowErrors(false);
-  }
+  const onSubmit = useCallback(() => {
+    console.log("dings");
+    if (payload) {
+      // dispatch(updateBallot(payload, watch()));
+    } else {
+      dispatch(createBallot(watch()));
+    }
+    onFormClose();
+  }, [dispatch, onFormClose, payload, watch]);
 
-  function changeVoteOption(index: number, newVo: VoteOption) {
-    setVoteOptions(voteOptions.map((vo, i) => (i === index ? newVo : vo)));
-    setShowErrors(false);
-  }
+  const addVoteOption = useCallback(
+    (e: FormEvent) => {
+      e.preventDefault();
+      setValue("options", [...watch().options, { identifier: "", label: "" }]);
+      validateForm();
+    },
+    [setValue, validateForm, watch]
+  );
+
+  const removeVoteOption = useCallback(
+    (index: number) => {
+      setValue(
+        "options",
+        watch().options.filter((_, i) => i !== index)
+      );
+      validateForm();
+    },
+    [setValue, validateForm, watch]
+  );
+
+  const changeVoteOption = useCallback(
+    (index: number, newVo: VoteOption) => {
+      clearErrors("options");
+      setValue(
+        "options",
+        watch().options.map((vo, i) => (i === index ? newVo : vo))
+      );
+      validateForm();
+    },
+    [clearErrors, setValue, validateForm, watch]
+  );
+
+  console.log(formState.errors);
 
   return (
     <div className={styles.outer}>
       <h2>{payload ? "Update" : "Create new"} Ballot</h2>
-      <p className={styles.error}>{error}</p>
-
-      <form className={styles.form} onSubmit={submit}>
+      <p className={styles.error}>{}</p>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <label>
           <input
             type="checkbox"
-            checked={running}
-            onChange={(e) => setRunning(e.target.checked)}
+            checked={watch().running}
+            onChange={(e) => setValue("running", e.target.checked)}
           />
           Running
         </label>
@@ -117,18 +128,21 @@ export function BallotForm({ payload, onSubmit, onCancel }: BallotProps) {
         <Input
           id="question"
           type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
+          value={watch().question}
+          onChange={(e) => {
+            setValue("question", e.target.value);
+            validateForm();
+          }}
         />
 
         <h3>Vote Options:</h3>
-        {voteOptions.map((vo, i) => (
+        {watch().options.map((vo, i) => (
           <VoteOptionView
             key={i}
             voteOption={vo}
             onChange={(vo) => changeVoteOption(i, vo)}
             onRemove={() => removeVoteOption(i)}
-            showErrors={showErrors}
+            showErrors={Object.keys(formState.errors).includes(`options[${i}]`)}
           />
         ))}
         <Button className={styles.addVoteOption} onClick={addVoteOption}>
@@ -140,9 +154,9 @@ export function BallotForm({ payload, onSubmit, onCancel }: BallotProps) {
             className={styles.submit}
             type="submit"
             value="Submit"
-            disabled={disabled}
+            disabled={!isDirty || !isValid}
           />
-          <Button className={styles.cancel} onClick={cancel}>
+          <Button className={styles.cancel} onClick={onFormClose}>
             Cancel
           </Button>
         </div>

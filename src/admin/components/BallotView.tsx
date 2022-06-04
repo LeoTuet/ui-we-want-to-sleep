@@ -1,42 +1,27 @@
 import classNames from "classnames";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useState } from "react";
 
 import { Ballot } from "../../models";
-import { deleteBallot, updateBallot } from "../../network/ballotApi";
-import { Jwt } from "../../network/jwt";
-import { FetchError } from "../../network/request";
 import { BallotForm } from "../sections/BallotForm";
-import styles from "./Ballot.module.scss";
+import styles from "./BallotView.module.scss";
 import { Button } from "./Button";
 
 interface BallotProps {
   ballot: Ballot;
-  onDelete(): void;
-  onUpdate(): void;
+  onDelete(ballot: Ballot): void;
 }
 
-function BallotView({ ballot, onDelete, onUpdate }: BallotProps) {
+function BallotView({ ballot, onDelete }: BallotProps) {
   const [updateFormVisible, setUpdateFormVisible] = useState(false);
-  const dispatch = useDispatch();
 
-  function clickDeleteBallot() {
+  const handleBallotDelte = useCallback(() => {
     if (confirm("Do you really want to delete this ballot?")) {
-      // deleteBallot(jwt, ballot._id)
-      //   .then(onDelete)
-      //   .catch((e: FetchError) => {
-      //     dispatch(e.showToast("The ballot could not be deleted"));
-      //   });
+      onDelete(ballot);
     }
-  }
-
-  function toggleUpdateFormVisible() {
-    setUpdateFormVisible((prev) => !prev);
-  }
+  }, [ballot, onDelete]);
 
   function onUpdateBallot() {
     setUpdateFormVisible(false);
-    onUpdate();
   }
 
   function toggleRunning() {
@@ -87,13 +72,12 @@ function BallotView({ ballot, onDelete, onUpdate }: BallotProps) {
       {updateFormVisible ? (
         <BallotForm
           payload={ballot}
-          onSubmit={onUpdateBallot}
-          onCancel={toggleUpdateFormVisible}
+          onFormClose={() => setUpdateFormVisible(false)}
         />
       ) : (
-        <Button onClick={toggleUpdateFormVisible}>Update</Button>
+        <Button onClick={() => setUpdateFormVisible(false)}>Update</Button>
       )}
-      <Button onClick={clickDeleteBallot}>Delete</Button>
+      <Button onClick={handleBallotDelte}>Delete</Button>
       <Button onClick={toggleRunning}>
         {ballot.running ? "Pause" : "Start"}
       </Button>

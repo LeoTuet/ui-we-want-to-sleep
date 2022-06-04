@@ -32,8 +32,11 @@ export async function fetchAllBallots(): Promise<Ballot[]> {
   }
 }
 
-export async function addBallot(jwt: Jwt, body: BallotSchema): Promise<void> {
-  await post<void>("/api/ballot", { body, jwt });
+export async function addBallot(
+  jwt: Jwt,
+  body: CreationBallot
+): Promise<Ballot> {
+  return await post<Ballot>("/api/ballot", { body, jwt });
 }
 
 export async function deleteBallot(jwt: Jwt, id: string): Promise<void> {
@@ -43,13 +46,17 @@ export async function deleteBallot(jwt: Jwt, id: string): Promise<void> {
 export async function updateBallot(
   jwt: Jwt,
   id: string,
-  body: BallotSchema
+  body: AdminBallot
 ): Promise<void> {
   await put(`/api/ballot/${id}`, { body, jwt });
 }
 
-interface BallotSchema {
+export interface CreationBallot {
   running: boolean;
   question: string;
   options: VoteOption[];
+}
+
+interface AdminBallot extends CreationBallot {
+  id: string;
 }

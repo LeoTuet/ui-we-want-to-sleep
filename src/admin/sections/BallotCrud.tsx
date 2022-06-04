@@ -1,37 +1,25 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Ballot } from "../../models";
-import { fetchAllBallots } from "../../network/ballotApi";
-import { FetchError } from "../../network/request";
-import BallotView from "../components/Ballot";
+import { fetchAllBallots, selectBallots } from "../../stores/adminLogin";
+import BallotView from "../components/BallotView";
 import { Button } from "../components/Button";
 import { BallotForm } from "./BallotForm";
 
 export function BallotCrud() {
-  const [ballots, setBallots] = useState<Ballot[] | null>(null);
+  const { ballots } = useSelector(selectBallots);
   const [creationFormVisible, setCreationFormVisible] = useState(false);
-
   const dispatch = useDispatch();
 
-  function toggleCreationFormVisible() {
-    setCreationFormVisible((prev) => !prev);
-  }
+  useEffect(() => {
+    dispatch(fetchAllBallots());
+  }, [dispatch]);
 
-  function updateBallots() {
-    fetchAllBallots()
-      .then(setBallots)
-      .catch((e: FetchError) => {
-        dispatch(e.showToast("Cound not fetch ballots"));
-      });
-  }
-
-  function createBallot() {
-    setCreationFormVisible(false);
-    updateBallots();
-  }
-
-  useEffect(updateBallots, []);
+  const handleBallotDeletion = useCallback((ballot: Ballot) => {
+    // wants to delete ballot
+    console.log(ballot, "wants to delete ");
+  }, []);
 
   return (
     <>
@@ -42,20 +30,18 @@ export function BallotCrud() {
             <BallotView
               key={ballot._id}
               ballot={ballot}
-              onDelete={updateBallots}
-              onUpdate={updateBallots}
+              onDelete={handleBallotDeletion}
             />
           ))
         : "There are no ballots."}
 
       {creationFormVisible ? (
-        <BallotForm
-          onSubmit={createBallot}
-          onCancel={toggleCreationFormVisible}
-        />
+        <BallotForm onFormClose={() => setCreationFormVisible(false)} />
       ) : (
         <p>
-          <Button onClick={toggleCreationFormVisible}>Create new ballot</Button>
+          <Button onClick={() => setCreationFormVisible(true)}>
+            Create new ballot
+          </Button>
         </p>
       )}
     </>
