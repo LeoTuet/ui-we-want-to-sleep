@@ -14,6 +14,7 @@ export interface AdminLoginState {
   loginLoading: boolean;
   jwt?: string;
   decodedJwt?: Jwt;
+  generatedToken: string[];
 }
 
 export const initialState: AdminLoginState = {
@@ -21,6 +22,7 @@ export const initialState: AdminLoginState = {
   loginLoading: false,
   jwt: undefined,
   decodedJwt: undefined,
+  generatedToken: [],
 };
 
 export const login = createAsyncThunk<
@@ -28,7 +30,7 @@ export const login = createAsyncThunk<
   { username: string; password: string },
   ThunkExtra
 >(
-  "token/fetchTokenStatus",
+  "adminLogin/login",
   async ({ username, password }, { getState, extra: { api } }) => {
     const data = await post<{ accessToken: string }>("/api/admin/login", {
       body: { username, password },
@@ -38,25 +40,22 @@ export const login = createAsyncThunk<
 );
 
 export const generateToken = createAsyncThunk<
-  string,
+  string[],
   { amount: number; valid: boolean },
   ThunkExtra
 >(
-  "token/fetchTokenStatus",
+  "adminLogin/generateToken",
   async ({ amount, valid }, { getState, extra: { api } }) => {
-    return api.generateToken("jwt", {
+    const { decodedJwt } = selectAdminLogin(getState() as RootState);
+
+    if (!decodedJwt) {
+      throw new Error("You must be logged in to generate token");
+    }
+
+    return api.adminApi.generateToken(decodedJwt, {
       amount: amount,
       valid: valid,
     });
-    // try {
-    //   const tokens = await generateToken(jwt, {
-    //     amount: tokenNumber,
-    //     valid: true,
-    //   });
-    //   setGeneratedTokens((prev) => [...prev, ...tokens]);
-    // } catch (e) {
-    //   dispatch((e as FetchError).showToast("Failed to generate tokens"));
-    // }
   }
 );
 
@@ -77,6 +76,9 @@ export const adminLoginSlice = createSlice({
       //     })
       //   );
     },
+    clearToken(state) {
+      state.generatedToken = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
@@ -93,6 +95,12 @@ export const adminLoginSlice = createSlice({
     builder.addCase(login.rejected, (state) => {
       state.loginLoading = false;
     });
+    builder.addCase(generateToken.fulfilled, (state, { payload }) => {
+      state.generatedToken = [...state.generatedToken, ...payload];
+    });
+    builder.addCase(generateToken.rejected, (state) => {
+      console.error("Token Generation Failed");
+    });
   },
 });
 
@@ -108,5 +116,12 @@ export const selectAdminLogin = createSelector(
   (store) => ({
     decodedJwt: store.decodedJwt,
     loginLoading: store.loginLoading,
+  })
+);
+
+export const selectGeneratedToken = createSelector(
+  selectAdminLoginStore,
+  ({ generatedToken }) => ({
+    generatedToken,
   })
 );

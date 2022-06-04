@@ -1,27 +1,28 @@
 import { ChangeEvent, useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { generateToken } from "../../stores/adminLogin";
+import { generateToken, selectGeneratedToken } from "../../stores/adminLogin";
+import { actions as adminActions } from "../../stores/adminLogin";
 import { Button, Input } from "../components/Button";
 import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";
 
 export function TokenGeneration() {
-  const [generatedTokens, setGeneratedTokens] = useState<string[]>([]);
+  const { generatedToken } = useSelector(selectGeneratedToken);
   const [tokenNumber, setTokenNumber] = useState(1);
   const dispatch = useDispatch();
 
   const handleTokenGeneration = useCallback(() => {
-    dispatch(generateToken);
+    dispatch(generateToken({ amount: tokenNumber, valid: true }));
+  }, [dispatch, tokenNumber]);
+
+  const handleClearToken = useCallback(() => {
+    dispatch(adminActions.clearToken());
   }, [dispatch]);
 
   function changeTokenNumber(e: ChangeEvent<HTMLInputElement>) {
     const number = +e.target.value;
     setTokenNumber(Number.isNaN(number) ? 1 : number);
-  }
-
-  function clearTokens() {
-    setGeneratedTokens([]);
   }
 
   return (
@@ -39,27 +40,27 @@ export function TokenGeneration() {
         <Button onClick={handleTokenGeneration}>GO</Button>
       </p>
 
-      {generatedTokens.length > 0 && (
+      {generatedToken.length > 0 && (
         <>
           <p>
             <strong>Tokens generated:</strong>
           </p>
           <ul className={styles.tokenList}>
-            {generatedTokens.map((token) => (
+            {generatedToken.map((token) => (
               <li key={token}>{token}</li>
             ))}
           </ul>
           <p>
             <DownloadFile
-              contents={generatedTokens.join("\n")}
+              contents={generatedToken.join("\n")}
               type="text/plain"
               download={`WWTS_${
-                generatedTokens.length
+                generatedToken.length
               }_tokens_${formatDate()}_${timestamp()}.txt`}
             >
               Download
             </DownloadFile>
-            <Button onClick={clearTokens}>Clear tokens</Button>
+            <Button onClick={handleClearToken}>Clear tokens</Button>
           </p>
         </>
       )}
