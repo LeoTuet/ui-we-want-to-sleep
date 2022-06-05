@@ -6,6 +6,7 @@ import {
   deleteBallot,
   fetchAllBallots,
   selectBallots,
+  updateBallot,
 } from "../../stores/adminLogin";
 import BallotView from "../components/BallotView";
 import { Button } from "../components/Button";
@@ -27,9 +28,12 @@ export function BallotCrud() {
     [dispatch]
   );
 
-  const handleBallotUpdate = useCallback((ballot: Ballot) => {
-    //
-  }, []);
+  const handleBallotUpdate = useCallback(
+    (ballot: Ballot, newBallot: Ballot) => {
+      dispatch(updateBallot({ ballot, creationBallot: newBallot }));
+    },
+    [dispatch]
+  );
 
   return (
     <>

@@ -9,7 +9,7 @@ import { Button } from "./Button";
 interface BallotProps {
   ballot: Ballot;
   onDelete(ballot: Ballot): void;
-  onStatusChange(ballot: Ballot): void;
+  onStatusChange(ballot: Ballot, newBallot: Ballot): void;
 }
 
 function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
@@ -25,7 +25,7 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
     const action = ballot.running ? "pause" : "start";
 
     if (confirm(`Do you really want to ${action} this ballot?`)) {
-      onStatusChange({ ...ballot, running: !ballot.running });
+      onStatusChange(ballot, { ...ballot, running: !ballot.running });
     }
   }, [ballot, onStatusChange]);
 
@@ -63,7 +63,7 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
           onFormClose={() => setUpdateFormVisible(false)}
         />
       ) : (
-        <Button onClick={() => setUpdateFormVisible(false)}>Update</Button>
+        <Button onClick={() => setUpdateFormVisible(true)}>Update</Button>
       )}
       <Button onClick={handleBallotDelte}>Delete</Button>
       <Button onClick={toggleRunning}>
