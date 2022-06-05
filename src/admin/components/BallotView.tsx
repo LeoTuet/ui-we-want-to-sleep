@@ -9,9 +9,10 @@ import { Button } from "./Button";
 interface BallotProps {
   ballot: Ballot;
   onDelete(ballot: Ballot): void;
+  onStatusChange(ballot: Ballot): void;
 }
 
-function BallotView({ ballot, onDelete }: BallotProps) {
+function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
   const [updateFormVisible, setUpdateFormVisible] = useState(false);
 
   const handleBallotDelte = useCallback(() => {
@@ -20,26 +21,13 @@ function BallotView({ ballot, onDelete }: BallotProps) {
     }
   }, [ballot, onDelete]);
 
-  function onUpdateBallot() {
-    setUpdateFormVisible(false);
-  }
-
-  function toggleRunning() {
+  const toggleRunning = useCallback(() => {
     const action = ballot.running ? "pause" : "start";
 
     if (confirm(`Do you really want to ${action} this ballot?`)) {
-      // const updated = {
-      //   running: !ballot.running,
-      //   options: ballot.options,
-      //   question: ballot.question,
-      // };
-      // updateBallot(jwt, ballot._id, updated)
-      //   .then(onUpdate)
-      //   .catch((e: FetchError) => {
-      //     dispatch(e.showToast(`The ballot could not be ${action}d`));
-      //   });
+      onStatusChange({ ...ballot, running: !ballot.running });
     }
-  }
+  }, [ballot, onStatusChange]);
 
   return (
     <div>

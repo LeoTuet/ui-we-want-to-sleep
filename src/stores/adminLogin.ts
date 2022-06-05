@@ -80,6 +80,19 @@ export const updateBallot = createAsyncThunk<
   }
 );
 
+export const deleteBallot = createAsyncThunk<void, Ballot, ThunkExtra>(
+  "adminLogin/deleteBallot",
+  async (ballot, { getState, extra: { api } }) => {
+    const { decodedJwt } = selectAdminLogin(getState() as RootState);
+
+    if (!decodedJwt) {
+      throw new Error("You must be logged in to generate token");
+    }
+
+    return api.ballotApi.deleteBallot(decodedJwt, ballot._id);
+  }
+);
+
 export const generateToken = createAsyncThunk<
   string[],
   { amount: number; valid: boolean },
@@ -154,6 +167,18 @@ export const adminLoginSlice = createSlice({
     builder.addCase(fetchAllBallots.fulfilled, (state, { payload }) => {
       state.ballots = payload;
     });
+
+    builder.addCase(createBallot.fulfilled, (state, { payload }) => {
+      state.ballots = [...state.ballots, payload];
+    });
+
+    builder.addCase(deleteBallot.fulfilled, (state, { meta }) => {
+      state.ballots = state.ballots.filter(
+        (ballot) => ballot._id !== meta.arg._id
+      );
+    });
+
+    createBallot;
   },
 });
 

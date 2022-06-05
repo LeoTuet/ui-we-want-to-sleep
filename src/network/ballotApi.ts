@@ -40,7 +40,9 @@ export async function addBallot(
 }
 
 export async function deleteBallot(jwt: Jwt, id: string): Promise<void> {
-  await del("/api/ballot", { body: { id }, jwt });
+  await del(`/api/ballot/${id}`, {
+    jwt,
+  });
 }
 
 export async function updateBallot(

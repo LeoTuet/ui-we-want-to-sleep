@@ -2,7 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Ballot } from "../../models";
-import { fetchAllBallots, selectBallots } from "../../stores/adminLogin";
+import {
+  deleteBallot,
+  fetchAllBallots,
+  selectBallots,
+} from "../../stores/adminLogin";
 import BallotView from "../components/BallotView";
 import { Button } from "../components/Button";
 import { BallotForm } from "./BallotForm";
@@ -16,9 +20,15 @@ export function BallotCrud() {
     dispatch(fetchAllBallots());
   }, [dispatch]);
 
-  const handleBallotDeletion = useCallback((ballot: Ballot) => {
-    // wants to delete ballot
-    console.log(ballot, "wants to delete ");
+  const handleBallotDeletion = useCallback(
+    (ballot: Ballot) => {
+      dispatch(deleteBallot(ballot));
+    },
+    [dispatch]
+  );
+
+  const handleBallotUpdate = useCallback((ballot: Ballot) => {
+    //
   }, []);
 
   return (
@@ -31,6 +41,7 @@ export function BallotCrud() {
               key={ballot._id}
               ballot={ballot}
               onDelete={handleBallotDeletion}
+              onStatusChange={handleBallotUpdate}
             />
           ))
         : "There are no ballots."}
