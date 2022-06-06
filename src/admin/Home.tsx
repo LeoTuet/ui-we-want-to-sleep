@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
+import { useJWT } from "../hooks/useJWT";
 import { selectAdminLogin } from "../stores/adminLogin";
 import { ToastList } from "./components/ToastList";
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";
 
 export const Home = () => {
-  const { decodedJwt } = useSelector(selectAdminLogin);
+  const { jwt, decodedJwt } = useSelector(selectAdminLogin);
+  useJWT(jwt);
 
   useEffect(() => {
     const previousTitle = document.title;

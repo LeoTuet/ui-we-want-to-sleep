@@ -2,6 +2,7 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
+  PayloadAction,
 } from "@reduxjs/toolkit";
 
 import { parseJwt } from "../lib/parseJwt";
@@ -65,7 +66,7 @@ export const updateBallot = createAsyncThunk<
   { ballot: Ballot; creationBallot: CreationBallot },
   ThunkExtra
 >(
-  "adminLogin/createBallot",
+  "adminLogin/updateBallot",
   async ({ ballot, creationBallot }, { getState, extra: { api } }) => {
     const { decodedJwt } = selectAdminLogin(getState() as RootState);
 
@@ -128,18 +129,15 @@ export const adminLoginSlice = createSlice({
     logout(state) {
       state.jwt = undefined;
       state.decodedJwt = undefined;
-      console.log("deleted token from store");
-
-      //   dispatch(
-      //     actions.addToast({
-      //       kind: "info",
-      //       timeout_ms: 4000,
-      //       children: "You were logged out.",
-      //     })
-      //   );
+      localStorage.removeItem("accessToken");
     },
     clearToken(state) {
       state.generatedToken = [];
+    },
+
+    setAccessToken(state, { payload }: PayloadAction<string>) {
+      state.jwt = payload;
+      state.decodedJwt = parseJwt(payload);
     },
   },
   extraReducers: (builder) => {
@@ -178,6 +176,12 @@ export const adminLoginSlice = createSlice({
       );
     });
 
+    builder.addCase(updateBallot.fulfilled, (state, { payload }) => {
+      state.ballots = state.ballots.map((ballot) =>
+        ballot._id === payload._id ? payload : ballot
+      );
+    });
+
     createBallot;
   },
 });
@@ -192,6 +196,7 @@ export const selectAdminLoginStore = (state: RootState) => state.adminLogin;
 export const selectAdminLogin = createSelector(
   selectAdminLoginStore,
   (store) => ({
+    jwt: store.jwt,
     decodedJwt: store.decodedJwt,
     loginLoading: store.loginLoading,
   })
