@@ -1,5 +1,5 @@
+import { Jwt } from "../models";
 import { actions as toastActions } from "../stores/toasts";
-import { Jwt } from "./jwt";
 
 export class FetchError extends Error {
   constructor(

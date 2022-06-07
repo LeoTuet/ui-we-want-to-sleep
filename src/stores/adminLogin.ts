@@ -6,10 +6,8 @@ import {
 } from "@reduxjs/toolkit";
 
 import { parseJwt } from "../lib/parseJwt";
-import { Ballot } from "../models";
+import { Ballot, Jwt } from "../models";
 import { CreationBallot } from "../network/ballotApi";
-import { Jwt } from "../network/jwt";
-import { post } from "../network/request";
 import { RootState, ThunkExtra } from "./rootStore";
 
 export interface AdminLoginState {
@@ -34,15 +32,10 @@ export const login = createAsyncThunk<
   string,
   { username: string; password: string },
   ThunkExtra
->(
-  "adminLogin/login",
-  async ({ username, password }, { getState, extra: { api } }) => {
-    const data = await post<{ accessToken: string }>("/api/admin/login", {
-      body: { username, password },
-    });
-    return data.accessToken;
-  }
-);
+>("adminLogin/login", async ({ username, password }, { extra: { api } }) => {
+  const data = await api.adminApi.loginAdmin({ username, password });
+  return data;
+});
 
 export const createBallot = createAsyncThunk<
   Ballot,
@@ -118,7 +111,7 @@ export const fetchAllBallots = createAsyncThunk<
   Ballot[],
   undefined,
   ThunkExtra
->("adminLogin/fetchAllBallots", async (_, { getState, extra: { api } }) => {
+>("adminLogin/fetchAllBallots", async (_, { extra: { api } }) => {
   return api.ballotApi.fetchAllBallots();
 });
 
@@ -144,22 +137,19 @@ export const adminLoginSlice = createSlice({
     builder.addCase(login.pending, (state) => {
       state.loginLoading = true;
     });
+
     builder.addCase(login.fulfilled, (state, { payload }) => {
-      console.log({ payload });
       state.jwt = payload;
       state.decodedJwt = parseJwt(payload);
       state.loginLoading = false;
-
-      console.log(state.jwt, state.decodedJwt);
     });
+
     builder.addCase(login.rejected, (state) => {
       state.loginLoading = false;
     });
+
     builder.addCase(generateToken.fulfilled, (state, { payload }) => {
       state.generatedToken = [...state.generatedToken, ...payload];
-    });
-    builder.addCase(generateToken.rejected, (state) => {
-      console.error("Token Generation Failed");
     });
 
     builder.addCase(fetchAllBallots.fulfilled, (state, { payload }) => {

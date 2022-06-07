@@ -1,12 +1,21 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import { parseJwt } from "../lib/parseJwt";
 import { actions } from "../stores/adminLogin";
 
 export const useJWT = (storeValue?: string) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const savedToken = localStorage.getItem("accessToken");
+    let savedToken = localStorage.getItem("accessToken");
+
+    if (savedToken) {
+      const parsedSavedToken = parseJwt(savedToken);
+
+      if (Date.now() >= parsedSavedToken.exp * 1000) {
+        savedToken = null;
+      }
+    }
 
     if (savedToken && !storeValue) {
       dispatch(actions.setAccessToken(savedToken));

@@ -17,3 +17,10 @@ export interface TokenStatus {
 }
 
 export type Theme = "light" | "dark" | "default";
+
+export interface Jwt {
+  readonly encoded: string;
+  readonly username: string;
+  readonly iat: number;
+  readonly exp: number;
+}

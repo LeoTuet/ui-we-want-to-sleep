@@ -10,7 +10,8 @@
     "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "tsc:errors": "tsc -p ."
   },
   "dependencies": {
     "@babel/core": "^7.17.7",

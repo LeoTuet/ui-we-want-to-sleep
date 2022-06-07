@@ -9,6 +9,7 @@ interface VoteOptionProps {
   onChange(voteOption: VoteOption): void;
   onRemove(): void;
   showErrors: boolean;
+  onlyEdit: boolean;
 }
 
 function VoteOptionView({
@@ -16,18 +17,22 @@ function VoteOptionView({
   onRemove,
   onChange,
   showErrors,
+  onlyEdit,
 }: VoteOptionProps) {
   return (
     <div className={styles.outer}>
-      <Button
-        className={styles.removeButton}
-        onClick={(e) => {
-          e.preventDefault();
-          onRemove();
-        }}
-      >
-        –
-      </Button>
+      {!onlyEdit && (
+        <Button
+          className={styles.removeButton}
+          onClick={(e) => {
+            e.preventDefault();
+            onRemove();
+          }}
+        >
+          –
+        </Button>
+      )}
+
       <Input
         aria-label="Identifier"
         title="Identifier"
@@ -37,6 +42,7 @@ function VoteOptionView({
         className={classNames(styles.identifier, {
           [styles.invalid]: showErrors && identifier === "",
         })}
+        disabled={onlyEdit}
       />
       <Input
         aria-label="Label"

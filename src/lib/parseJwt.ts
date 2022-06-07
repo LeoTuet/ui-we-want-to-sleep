@@ -1,4 +1,4 @@
-import { Jwt } from "../network/jwt";
+import { Jwt } from "../models";
 
 export function parseJwt(token: string): Jwt {
   const base64Url = token.split(".")[1];

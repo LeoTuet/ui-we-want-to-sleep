@@ -33,8 +33,6 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
     },
   });
 
-  console.log(isDirty, dirtyFields);
-
   // TODO: Should be done with the validation of react-hook-form but i'm to dumb to do it
   const validateForm = useCallback(() => {
     console.log(watch(), "watch");
@@ -61,7 +59,6 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   useEffect(() => {
     register("question", { required: true });
     register("options", { required: true });
-    register("running", { required: true });
     validateForm();
   }, [register, validateForm]);
 
@@ -153,6 +150,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
             onChange={(vo) => changeVoteOption(i, vo)}
             onRemove={() => removeVoteOption(i)}
             showErrors={Object.keys(errors).includes(`options[${i}]`)}
+            onlyEdit={!!payload}
           />
         ))}
         <Button className={styles.addVoteOption} onClick={addVoteOption}>

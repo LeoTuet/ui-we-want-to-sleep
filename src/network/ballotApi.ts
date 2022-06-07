@@ -1,5 +1,4 @@
-import { Ballot, VoteOption } from "../models";
-import { Jwt } from "./jwt";
+import { Ballot, Jwt, VoteOption } from "../models";
 import { del, FetchError, get, post, put } from "./request";
 
 export async function fetchRunningBallot(): Promise<Ballot | undefined> {

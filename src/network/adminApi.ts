@@ -1,4 +1,4 @@
-import { Jwt, parseJwt } from "./jwt";
+import { Jwt } from "../models";
 import { post } from "./request";
 
 interface Credentials {
@@ -6,11 +6,11 @@ interface Credentials {
   password: string;
 }
 
-export async function loginAdmin(body: Credentials): Promise<Jwt> {
+export async function loginAdmin(body: Credentials): Promise<string> {
   const data = await post<{ accessToken: string }>("/api/admin/login", {
     body,
   });
-  return parseJwt(data.accessToken);
+  return data.accessToken;
 }
 
 interface GenerateTokenBody {
