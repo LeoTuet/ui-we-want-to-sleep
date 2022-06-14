@@ -55,7 +55,7 @@ export async function request<T>(
   url: ApiUrl,
   options: RequestOptions = {}
 ): Promise<T> {
-  const { jwt, headers = {}, body, ...remaining } = options;
+  const { jwt, headers = {}, body, ...remainingOptions } = options;
 
   const newHeaders: Record<string, string> = {
     ...headers,
@@ -70,7 +70,7 @@ export async function request<T>(
 
   try {
     response = await fetch(url, {
-      ...remaining,
+      ...remainingOptions,
       body: JSON.stringify(body),
       headers: newHeaders,
     });
@@ -84,14 +84,13 @@ export async function request<T>(
   if (text !== "") {
     const contentType = response.headers.get("Content-Type")?.split(";")[0];
 
-    if (contentType === "application/json") {
-      try {
-        json = JSON.parse(text);
-      } catch (e) {
-        throw new FetchError("Invalid response", 0, e as Error);
-      }
-    } else {
+    if (contentType !== "application/json") {
       throw new FetchError("Server responded with unsupported content type", 0);
+    }
+    try {
+      json = JSON.parse(text);
+    } catch (e) {
+      throw new FetchError("Invalid response", 0, e as Error);
     }
   }
 
@@ -131,7 +130,7 @@ export function put<T>(
 
 // delete is a reserved word :(
 export function del<T>(
-  url: `/api/${string}`,
+  url: ApiUrl,
   options: OptionsWithoutMethod = {}
 ): Promise<T> {
   return request(url, { ...options, method: "DELETE" });

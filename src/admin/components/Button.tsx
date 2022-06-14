@@ -7,7 +7,7 @@ import {
 
 import styles from "./Button.module.scss";
 
-export function Button({
+export function WWTSButton({
   className,
   children,
   ...rest
@@ -19,7 +19,7 @@ export function Button({
   );
 }
 
-export function Input({
+export function WWTSInput({
   className,
   children,
   ...rest
@@ -31,7 +31,7 @@ export function Input({
   );
 }
 
-export function A({
+export function WWTSAnchor({
   className,
   children,
   ...rest

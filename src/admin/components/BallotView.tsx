@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { Ballot } from "../../models";
 import { BallotForm } from "../sections/BallotForm";
 import styles from "./BallotView.module.scss";
-import { Button } from "./Button";
+import { WWTSButton } from "./Button";
 
 interface BallotProps {
   ballot: Ballot;
@@ -63,12 +63,14 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
           onFormClose={() => setUpdateFormVisible(false)}
         />
       ) : (
-        <Button onClick={() => setUpdateFormVisible(true)}>Update</Button>
+        <WWTSButton onClick={() => setUpdateFormVisible(true)}>
+          Update
+        </WWTSButton>
       )}
-      <Button onClick={handleBallotDelte}>Delete</Button>
-      <Button onClick={toggleRunning}>
+      <WWTSButton onClick={handleBallotDelte}>Delete</WWTSButton>
+      <WWTSButton onClick={toggleRunning}>
         {ballot.running ? "Pause" : "Start"}
-      </Button>
+      </WWTSButton>
     </div>
   );
 }

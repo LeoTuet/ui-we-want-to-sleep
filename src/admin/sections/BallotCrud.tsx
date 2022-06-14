@@ -9,7 +9,7 @@ import {
   updateBallot,
 } from "../../stores/adminLogin";
 import BallotView from "../components/BallotView";
-import { Button } from "../components/Button";
+import { WWTSButton } from "../components/Button";
 import { BallotForm } from "./BallotForm";
 
 export function BallotCrud() {
@@ -54,9 +54,9 @@ export function BallotCrud() {
         <BallotForm onFormClose={() => setCreationFormVisible(false)} />
       ) : (
         <p>
-          <Button onClick={() => setCreationFormVisible(true)}>
+          <WWTSButton onClick={() => setCreationFormVisible(true)}>
             Create new ballot
-          </Button>
+          </WWTSButton>
         </p>
       )}
     </>

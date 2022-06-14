@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import { VoteOption } from "../../models";
-import { Button, Input } from "./Button";
+import { WWTSButton, WWTSInput } from "./Button";
 import styles from "./VoteOption.module.scss";
 
 interface VoteOptionProps {
@@ -22,7 +22,7 @@ function VoteOptionView({
   return (
     <div className={styles.outer}>
       {!onlyEdit && (
-        <Button
+        <WWTSButton
           className={styles.removeButton}
           onClick={(e) => {
             e.preventDefault();
@@ -30,10 +30,10 @@ function VoteOptionView({
           }}
         >
           –
-        </Button>
+        </WWTSButton>
       )}
 
-      <Input
+      <WWTSInput
         aria-label="Identifier"
         title="Identifier"
         placeholder="Identifier"
@@ -44,7 +44,7 @@ function VoteOptionView({
         })}
         disabled={onlyEdit}
       />
-      <Input
+      <WWTSInput
         aria-label="Label"
         title="Label"
         placeholder="Label"

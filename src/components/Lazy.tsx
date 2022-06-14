@@ -26,14 +26,14 @@ export const Lazy = ({ init }: LazyProps) => {
 
   useEffect(() => {
     init().then((mod) => setComponent(() => mod));
-  }, []);
+  }, [init]);
 
   if (Component != null) {
     return <Component />;
   } else {
     return (
       <div className={styles.placeholder}>
-        <div className={styles.animation}></div>
+        <div className={styles.spinner}></div>
         Loading
       </div>
     );
