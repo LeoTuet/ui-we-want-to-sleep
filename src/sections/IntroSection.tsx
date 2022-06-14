@@ -1,12 +1,13 @@
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { OptionsPanel } from "../components/OptionsPanel";
 import { Sheep } from "../components/Sheep";
+import { StarBackground } from "../components/StarBackground";
 import { TypingHeading } from "../components/TypingHeading";
 import { Size, useWindowSize } from "../hooks/useWindowSize";
 import styles from "./IntroSection.module.scss";
-import { StarBackground } from "../components/StarBackground";
-import { useTranslation } from "react-i18next";
-import { OptionsPanel } from "../components/OptionsPanel";
 
 export const IntroSection = () => {
   const sheep = useRef<HTMLDivElement | null>(null);

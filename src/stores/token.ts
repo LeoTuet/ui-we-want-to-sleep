@@ -1,14 +1,14 @@
-import { NoVotingType } from "./../sections/NoVotingSection";
 import {
+  createAsyncThunk,
   createSelector,
   createSlice,
   PayloadAction,
-  createAsyncThunk,
   SerializedError,
 } from "@reduxjs/toolkit";
+
 import { TokenStatus } from "../models";
-import { RootState, ThunkExtra } from "./rootStore";
 import { selectBallot } from "./ballot";
+import { RootState, ThunkExtra } from "./rootStore";
 
 export interface TokenState {
   token?: string;

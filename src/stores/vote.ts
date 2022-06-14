@@ -2,12 +2,12 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
-  SerializedError
+  SerializedError,
 } from "@reduxjs/toolkit";
 
+import { selectBallot } from "./ballot";
 import { RootState, ThunkExtra } from "./rootStore";
 import { selectToken } from "./token";
-import { selectBallot } from "./ballot";
 
 export interface VoteState {
   voteError?: SerializedError;

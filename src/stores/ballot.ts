@@ -4,8 +4,8 @@ import {
   createSlice,
   SerializedError,
 } from "@reduxjs/toolkit";
-import { Ballot } from "../models";
 
+import { Ballot } from "../models";
 import { RootState, ThunkExtra } from "./rootStore";
 
 export interface BallotState {
@@ -24,7 +24,7 @@ export const fetchRunningBallot = createAsyncThunk<
   Ballot | undefined,
   undefined,
   ThunkExtra
->("ballot/fetchRunningBallot", async (_, { extra: { api }}) => {
+>("ballot/fetchRunningBallot", async (_, { extra: { api } }) => {
   return await api.ballotApi.fetchRunningBallot();
 });
 
