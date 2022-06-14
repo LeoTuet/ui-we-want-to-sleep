@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { login } from "../../stores/adminLogin";
+import { login } from "../../stores/admin";
 import styles from "./Login.module.scss";
 
 export const Login = () => {

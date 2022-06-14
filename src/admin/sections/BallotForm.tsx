@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 
 import { Ballot, VoteOption } from "../../models";
 import { CreationBallot } from "../../network/ballotApi";
-import { createBallot, updateBallot } from "../../stores/adminLogin";
-import { Button, Input } from "../components/Button";
+import { createBallot, updateBallot } from "../../stores/admin";
+import { WWTSButton, WWTSInput } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";
 
@@ -20,7 +20,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   const {
     watch,
     setValue,
-    formState: { isDirty, isValid, dirtyFields, errors },
+    formState: { isDirty, isValid, errors },
     handleSubmit,
     register,
     setError,
@@ -35,7 +35,6 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
 
   // TODO: Should be done with the validation of react-hook-form but i'm to dumb to do it
   const validateForm = useCallback(() => {
-    console.log(watch(), "watch");
     clearErrors();
     if (watch().question.length < 1) {
       setError("question", { message: "Error: Question missing" });
@@ -63,7 +62,6 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   }, [register, validateForm]);
 
   const onSubmit = useCallback(() => {
-    console.log("dings");
     if (payload) {
       dispatch(updateBallot({ ballot: payload, creationBallot: watch() }));
     } else {
@@ -129,7 +127,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
         </label>
 
         <label htmlFor="question">Question:</label>
-        <Input
+        <WWTSInput
           id="question"
           type="text"
           value={watch().question}
@@ -153,20 +151,20 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
             onlyEdit={!!payload}
           />
         ))}
-        <Button className={styles.addVoteOption} onClick={addVoteOption}>
+        <WWTSButton className={styles.addVoteOption} onClick={addVoteOption}>
           +
-        </Button>
+        </WWTSButton>
 
         <div>
-          <Input
+          <WWTSInput
             className={styles.submit}
             type="submit"
             value="Submit"
             disabled={!isDirty || !isValid}
           />
-          <Button className={styles.cancel} onClick={onFormClose}>
+          <WWTSButton className={styles.cancel} onClick={onFormClose}>
             Cancel
-          </Button>
+          </WWTSButton>
         </div>
       </form>
     </div>

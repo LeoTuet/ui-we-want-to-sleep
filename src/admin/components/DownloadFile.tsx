@@ -1,6 +1,6 @@
 import { HTMLAttributes, useMemo } from "react";
 
-import { A } from "./Button";
+import { WWTSAnchor } from "./Button";
 
 interface Props extends Omit<HTMLAttributes<HTMLAnchorElement>, "href"> {
   download: string;
@@ -15,8 +15,8 @@ export function DownloadFile({ children, contents, type, ...rest }: Props) {
   }, [contents, type]);
 
   return (
-    <A href={href} {...rest}>
+    <WWTSAnchor href={href} {...rest}>
       {children}
-    </A>
+    </WWTSAnchor>
   );
 }

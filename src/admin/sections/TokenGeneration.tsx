@@ -1,9 +1,9 @@
 import { ChangeEvent, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { generateToken, selectGeneratedToken } from "../../stores/adminLogin";
-import { actions as adminActions } from "../../stores/adminLogin";
-import { Button, Input } from "../components/Button";
+import { generateToken, selectGeneratedToken } from "../../stores/admin";
+import { actions as adminActions } from "../../stores/admin";
+import { WWTSButton, WWTSInput } from "../components/Button";
 import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";
 
@@ -29,7 +29,7 @@ export function TokenGeneration() {
     <>
       <p>
         Generate
-        <Input
+        <WWTSInput
           type="number"
           className={styles.tokenNumberInput}
           min={1}
@@ -37,7 +37,7 @@ export function TokenGeneration() {
           onChange={changeTokenNumber}
         />
         tokens
-        <Button onClick={handleTokenGeneration}>GO</Button>
+        <WWTSButton onClick={handleTokenGeneration}>GO</WWTSButton>
       </p>
 
       {generatedToken.length > 0 && (
@@ -60,7 +60,7 @@ export function TokenGeneration() {
             >
               Download
             </DownloadFile>
-            <Button onClick={handleClearToken}>Clear tokens</Button>
+            <WWTSButton onClick={handleClearToken}>Clear tokens</WWTSButton>
           </p>
         </>
       )}

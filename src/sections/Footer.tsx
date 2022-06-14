@@ -91,10 +91,6 @@ export const Footer = () => {
           <Link to="datenschutz" className={styles.link}>
             {t("footer.privacy")}
           </Link>
-          <span>{" & "}</span>
-          <Link to="admin" className={styles.link}>
-            {t("footer.adminLogin")}
-          </Link>
         </p>
         <span className={styles.centered}>
           <OptionsPanel />

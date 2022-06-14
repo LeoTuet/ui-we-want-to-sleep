@@ -22,10 +22,8 @@ export async function fetchAllBallots(): Promise<Ballot[]> {
     const data = await get<Ballot[]>("/api/ballot");
     return data;
   } catch (e) {
-    if (e instanceof FetchError) {
-      if (e.status >= 500) {
-        throw "SERVER_ERROR";
-      }
+    if (e instanceof FetchError && e.status >= 500) {
+      throw "SERVER_ERROR";
     }
     throw e;
   }
