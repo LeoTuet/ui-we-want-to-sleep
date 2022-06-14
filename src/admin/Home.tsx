@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { useJWT } from "../hooks/useJWT";
-import { selectAdminLogin } from "../stores/adminLogin";
+import { selectAdminLogin } from "../stores/admin";
 import { ToastList } from "./components/ToastList";
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";

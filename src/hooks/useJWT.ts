@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { parseJwt } from "../lib/parseJwt";
-import { actions } from "../stores/adminLogin";
+import { actions } from "../stores/admin";
 
 export const useJWT = (storeValue?: string) => {
   const dispatch = useDispatch();

@@ -7,7 +7,7 @@ import {
   fetchAllBallots,
   selectBallots,
   updateBallot,
-} from "../../stores/adminLogin";
+} from "../../stores/admin";
 import BallotView from "../components/BallotView";
 import { WWTSButton } from "../components/Button";
 import { BallotForm } from "./BallotForm";

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { Ballot, VoteOption } from "../../models";
 import { CreationBallot } from "../../network/ballotApi";
-import { createBallot, updateBallot } from "../../stores/adminLogin";
+import { createBallot, updateBallot } from "../../stores/admin";
 import { WWTSButton, WWTSInput } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";

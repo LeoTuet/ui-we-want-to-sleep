@@ -10,7 +10,7 @@ import { Ballot, Jwt } from "../models";
 import { CreationBallot } from "../network/ballotApi";
 import { RootState, ThunkExtra } from "./rootStore";
 
-export interface AdminLoginState {
+export interface AdminState {
   loginError?: string;
   loginLoading: boolean;
   jwt?: string;
@@ -19,7 +19,7 @@ export interface AdminLoginState {
   ballots: Ballot[];
 }
 
-export const initialState: AdminLoginState = {
+export const initialState: AdminState = {
   loginError: undefined,
   loginLoading: false,
   jwt: undefined,
@@ -32,7 +32,7 @@ export const login = createAsyncThunk<
   string,
   { username: string; password: string },
   ThunkExtra
->("adminLogin/login", async ({ username, password }, { extra: { api } }) => {
+>("admin/login", async ({ username, password }, { extra: { api } }) => {
   const data = await api.adminApi.loginAdmin({ username, password });
   return data;
 });
@@ -42,7 +42,7 @@ export const createBallot = createAsyncThunk<
   CreationBallot,
   ThunkExtra
 >(
-  "adminLogin/createBallot",
+  "admin/createBallot",
   async (creationBallot, { getState, extra: { api } }) => {
     const { decodedJwt } = selectAdminLogin(getState() as RootState);
 
@@ -59,7 +59,7 @@ export const updateBallot = createAsyncThunk<
   { ballot: Ballot; creationBallot: CreationBallot },
   ThunkExtra
 >(
-  "adminLogin/updateBallot",
+  "admin/updateBallot",
   async ({ ballot, creationBallot }, { getState, extra: { api } }) => {
     const { decodedJwt } = selectAdminLogin(getState() as RootState);
 
@@ -75,7 +75,7 @@ export const updateBallot = createAsyncThunk<
 );
 
 export const deleteBallot = createAsyncThunk<void, Ballot, ThunkExtra>(
-  "adminLogin/deleteBallot",
+  "admin/deleteBallot",
   async (ballot, { getState, extra: { api } }) => {
     const { decodedJwt } = selectAdminLogin(getState() as RootState);
 
@@ -92,7 +92,7 @@ export const generateToken = createAsyncThunk<
   { amount: number; valid: boolean },
   ThunkExtra
 >(
-  "adminLogin/generateToken",
+  "admin/generateToken",
   async ({ amount, valid }, { getState, extra: { api } }) => {
     const { decodedJwt } = selectAdminLogin(getState() as RootState);
 
@@ -111,11 +111,11 @@ export const fetchAllBallots = createAsyncThunk<
   Ballot[],
   undefined,
   ThunkExtra
->("adminLogin/fetchAllBallots", async (_, { extra: { api } }) => {
+>("admin/fetchAllBallots", async (_, { extra: { api } }) => {
   return api.ballotApi.fetchAllBallots();
 });
 
-export const adminLoginSlice = createSlice({
+export const adminSlice = createSlice({
   name: "token",
   initialState,
   reducers: {
@@ -176,31 +176,28 @@ export const adminLoginSlice = createSlice({
   },
 });
 
-export const { reducer } = adminLoginSlice;
+export const { reducer } = adminSlice;
 export const actions = {
-  ...adminLoginSlice.actions,
+  ...adminSlice.actions,
 };
 
-export const selectAdminLoginStore = (state: RootState) => state.adminLogin;
+export const selectAdminStore = (state: RootState) => state.admin;
 
-export const selectAdminLogin = createSelector(
-  selectAdminLoginStore,
-  (store) => ({
-    jwt: store.jwt,
-    decodedJwt: store.decodedJwt,
-    loginLoading: store.loginLoading,
-  })
-);
+export const selectAdminLogin = createSelector(selectAdminStore, (store) => ({
+  jwt: store.jwt,
+  decodedJwt: store.decodedJwt,
+  loginLoading: store.loginLoading,
+}));
 
 export const selectGeneratedToken = createSelector(
-  selectAdminLoginStore,
+  selectAdminStore,
   ({ generatedToken }) => ({
     generatedToken,
   })
 );
 
 export const selectBallots = createSelector(
-  selectAdminLoginStore,
+  selectAdminStore,
   ({ ballots }) => ({
     ballots,
   })

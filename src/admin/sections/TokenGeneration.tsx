@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { generateToken, selectGeneratedToken } from "../../stores/adminLogin";
-import { actions as adminActions } from "../../stores/adminLogin";
+import { generateToken, selectGeneratedToken } from "../../stores/admin";
+import { actions as adminActions } from "../../stores/admin";
 import { WWTSButton, WWTSInput } from "../components/Button";
 import { DownloadFile } from "../components/DownloadFile";
 import styles from "./TokenGen.module.scss";

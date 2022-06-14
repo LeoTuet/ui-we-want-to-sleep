@@ -1,10 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  actions as adminLoginActions,
-  selectAdminLogin,
-} from "../../stores/adminLogin";
+import { actions as adminActions, selectAdminLogin } from "../../stores/admin";
 import { WWTSButton } from "../components/Button";
 import { BallotCrud } from "../sections/BallotCrud";
 import { TokenGeneration } from "../sections/TokenGeneration";
@@ -15,7 +12,7 @@ export const Main = () => {
   const { decodedJwt } = useSelector(selectAdminLogin);
 
   const handleLogout = useCallback(() => {
-    dispatch(adminLoginActions.logout());
+    dispatch(adminActions.logout());
   }, [dispatch]);
 
   return (
