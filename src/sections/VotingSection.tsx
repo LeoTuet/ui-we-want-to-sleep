@@ -1,9 +1,9 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { SerializedError } from "@reduxjs/toolkit";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Ballot } from "../models";
+import { Ballot, TranslatableText } from "../models";
 import styles from "./VotingSection.module.scss";
 
 interface VotingSectionProps {
@@ -21,8 +21,13 @@ export const VotingSection = ({
   ballot,
   onVote,
 }: VotingSectionProps) => {
+  const [language, setLanguage] = useState<keyof TranslatableText>("en");
   const [captchaSaved, setCaptchaSaved] = useState(false);
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    setLanguage(i18n.language.slice(0, 2) as never);
+  }, [i18n.language]);
 
   const handleTokenReceive = useCallback(
     (token: string) => {
@@ -38,9 +43,7 @@ export const VotingSection = ({
   return (
     <section className={styles.container}>
       <div className={styles.votingSection}>
-        <h4 className={styles.question}>
-          {ballot.ballot?.question[i18n.language.slice(0, 2) as never]}
-        </h4>
+        <h4 className={styles.question}>{ballot.ballot?.question[language]}</h4>
         <p className={styles.description}>{t("voting.description")}</p>
         {!captchaSaved && (
           <div className={styles.captchaContainer}>
@@ -62,7 +65,7 @@ export const VotingSection = ({
                 className={styles.voteButton}
                 onClick={() => onVote(option.identifier)}
               >
-                {option.label[i18n.language.slice(0, 2) as never]}
+                {option.label[language]}
               </button>
             ))}
           </div>
