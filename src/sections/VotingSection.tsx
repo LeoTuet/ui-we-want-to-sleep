@@ -22,7 +22,7 @@ export const VotingSection = ({
   onVote,
 }: VotingSectionProps) => {
   const [captchaSaved, setCaptchaSaved] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const handleTokenReceive = useCallback(
     (token: string) => {
@@ -38,7 +38,9 @@ export const VotingSection = ({
   return (
     <section className={styles.container}>
       <div className={styles.votingSection}>
-        <h4 className={styles.question}>{t("voting.question")}</h4>
+        <h4 className={styles.question}>
+          {ballot.ballot?.question[i18n.language.slice(0, 2) as never]}
+        </h4>
         <p className={styles.description}>{t("voting.description")}</p>
         {!captchaSaved && (
           <div className={styles.captchaContainer}>
@@ -60,7 +62,7 @@ export const VotingSection = ({
                 className={styles.voteButton}
                 onClick={() => onVote(option.identifier)}
               >
-                {option.label}
+                {option.label[i18n.language.slice(0, 2) as never]}
               </button>
             ))}
           </div>

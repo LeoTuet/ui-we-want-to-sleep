@@ -20,6 +20,7 @@ export const Home = () => {
   const { token } = useParams();
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
   }, [dispatch]);
@@ -38,7 +39,7 @@ export const Home = () => {
     [dispatch]
   );
 
-  const getNoVotingStatus =  useCallback(() =>  {
+  const getNoVotingStatus = useCallback(() => {
     if (ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) {
       return ballot.ballotError?.message ?? "LOADING";
     } else if (!["VALID", "MISSING"].includes(tokenStore.statusResult)) {
@@ -46,13 +47,13 @@ export const Home = () => {
     } else if (vote.voteResult || vote.voteError) {
       return vote.voteResult ?? vote.voteError;
     } else return false;
-  }, [ballot, tokenStore, vote])
+  }, [ballot, tokenStore, vote]);
 
   useEffect(() => {
     if (token) {
       dispatch(actions.saveToken(token));
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <>
@@ -70,9 +71,7 @@ export const Home = () => {
             />
           )}
         {getNoVotingStatus() && (
-          <NoVotingSection
-            type={getNoVotingStatus() as NoVotingType}
-          />
+          <NoVotingSection type={getNoVotingStatus() as NoVotingType} />
         )}
       </main>
     </>
