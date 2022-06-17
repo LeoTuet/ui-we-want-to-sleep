@@ -1,0 +1,37 @@
+.outer {
+  background-color: var(--footer-background);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.error {
+  color: red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .addVoteOption {
+    align-self: start;
+  }
+
+  h3 {
+    margin: 0.3em 0 0 0;
+  }
+
+  .submit {
+    background-color: var(--green-button-background);
+  }
+}
+
+// i don't fucking know re
+.input {
+  margin-left: 0 !important
+}

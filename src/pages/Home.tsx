@@ -1,14 +1,10 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { ContentSection } from "../sections/ContentSection";
 import { IntroSection } from "../sections/IntroSection";
 import { NoVotingSection, NoVotingType } from "../sections/NoVotingSection";
-import {
-  VoteResponseSection,
-  VoteResponseType,
-} from "../sections/VoteResponseSection";
 import { VotingSection } from "../sections/VotingSection";
 import { fetchRunningBallot, selectBallot } from "../stores/ballot";
 import { actions, fetchTokenStatus, selectToken } from "../stores/token";
@@ -24,6 +20,10 @@ export const Home = () => {
   const { token } = useParams();
 
   useEffect(() => {
+    // There is an issue with typing the dispatch correctly.
+    // Here is a link on how it should be: https://redux-toolkit.js.org/usage/usage-with-typescript#getting-the-dispatch-type
+    // Feel free to fix it - I wasn't able to
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
   }, [dispatch]);
@@ -42,11 +42,21 @@ export const Home = () => {
     [dispatch]
   );
 
+  const getNoVotingStatus = useCallback(() => {
+    if (ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) {
+      return ballot.ballotError?.message ?? "LOADING";
+    } else if (!["VALID", "MISSING"].includes(tokenStore.statusResult)) {
+      return tokenStore.statusResult;
+    } else if (vote.voteResult || vote.voteError) {
+      return vote.voteResult ?? vote.voteError;
+    } else return false;
+  }, [ballot, tokenStore, vote]);
+
   useEffect(() => {
     if (token) {
       dispatch(actions.saveToken(token));
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <>
@@ -63,18 +73,8 @@ export const Home = () => {
               onVote={handleVote}
             />
           )}
-        {(ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) && (
-          <NoVotingSection
-            type={(ballot.ballotError?.message ?? "LOADING") as NoVotingType}
-          />
-        )}
-        {!["VALID", "MISSING"].includes(tokenStore.statusResult) && (
-          <NoVotingSection type={tokenStore.statusResult as NoVotingType} />
-        )}
-        {(vote.voteResult || vote.voteError) && (
-          <VoteResponseSection
-            type={(vote.voteResult ?? vote.voteError) as VoteResponseType}
-          />
+        {getNoVotingStatus() && (
+          <NoVotingSection type={getNoVotingStatus() as NoVotingType} />
         )}
       </main>
     </>

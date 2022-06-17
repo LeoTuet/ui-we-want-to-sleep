@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { LegalHeader, LegalHeaderProps } from "./LegalHeader";
 
 export const StickyLegalHeader = ({ text, ...rest }: LegalHeaderProps) => {

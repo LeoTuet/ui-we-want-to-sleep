@@ -70,9 +70,7 @@
     "SERVER_ERROR": {
       "header": "Kontaktiere uns bitte!",
       "content": "Wir haben scheinbar Probleme mit unserem Server :("
-    }
-  },
-  "voteResponse": {
+    },
     "SUCCESS": {
       "header": "Du hast abgestimmt :)",
       "content": "Dann entspann dich doch!"

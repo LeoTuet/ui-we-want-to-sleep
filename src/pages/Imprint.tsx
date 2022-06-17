@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./Shared.module.scss";
+import { useTranslation } from "react-i18next";
+
 import { StickyLegalHeader } from "../components/StickyHeader";
 import { LegalSection } from "../sections/LegalSection";
-import { useTranslation } from "react-i18next";
+import styles from "./ImprintAndPrivacy.module.scss";
 
 export const Imprint = () => {
   const { t } = useTranslation();

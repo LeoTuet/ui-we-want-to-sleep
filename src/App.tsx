@@ -1,11 +1,11 @@
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+
+import { Lazy } from "./components/Lazy";
+import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { PrivacyStatement } from "./pages/PrivacyStatement";
-import { Imprint } from "./pages/Imprint";
 import { Sources } from "./pages/Sources";
 import { Footer } from "./sections/Footer";
-import { useEffect } from "react";
-import { useTheme } from "./hooks/useTheme";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,9 +17,33 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/:token" element={<Home />} />
-        <Route path="privacy" element={<PrivacyStatement />} />
-        <Route path="imprint" element={<Imprint />} />
         <Route path="sources" element={<Sources />} />
+        <Route
+          path="privacy"
+          element={
+            <Lazy
+              init={() =>
+                import("./pages/PrivacyStatement").then(
+                  (mod) => mod.PrivacyStatement
+                )
+              }
+            />
+          }
+        />
+        <Route
+          path="imprint"
+          element={
+            <Lazy
+              init={() => import("./pages/Imprint").then((mod) => mod.Imprint)}
+            />
+          }
+        />
+        <Route
+          path="admin/*"
+          element={
+            <Lazy init={() => import("./admin/Home").then((mod) => mod.Home)} />
+          }
+        />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footer />

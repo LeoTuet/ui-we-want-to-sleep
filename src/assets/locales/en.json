@@ -70,9 +70,7 @@
     "SERVER_ERROR": {
       "header": "Please contact us!",
       "content": "We seem to have problems with our server :("
-    }
-  },
-  "voteResponse": {
+    },
     "SUCCESS": {
       "header": "You voted :)",
       "content": "You may relax now!"
@@ -178,7 +176,7 @@
       }
     },
     "webhosting": {
-      "header": "Provision of the online offer and web hosting" ,
+      "header": "Provision of the online offer and web hosting",
       "firstParagraph": "In order to provide our online offer securely and efficiently, we use the services of one or more web hosting providers from whose servers (or servers managed by them) the online offer can be accessed. For these purposes, we may use infrastructure and platform services, computing capacity, storage space and database services, as well as security services and technical maintenance services.",
       "secondParagraph": "The data processed as part of the provision of the hosting offer may include all information relating to the users of our online offer, which is generated as part of the use and communication. This regularly includes the IP address, which is necessary to be able to deliver the contents of online offers to browsers, and all entries made within our online offer or from websites.",
       "thirdParagraph": {
