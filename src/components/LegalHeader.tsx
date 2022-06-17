@@ -1,11 +1,11 @@
 import React, { HTMLProps } from "react";
-import { TypingHeading } from "./TypingHeading";
-import styles from "./LegalHeader.module.scss";
-import classNames from "classnames";
 import { Link } from "react-router-dom";
+
 import sheep from "../assets/sheep.png";
-import { StarBackground } from "./StarBackground";
+import styles from "./LegalHeader.module.scss";
 import { OptionsPanel } from "./OptionsPanel";
+import { StarBackground } from "./StarBackground";
+import { TypingHeading } from "./TypingHeading";
 
 export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
@@ -25,7 +25,7 @@ export const LegalHeader = ({ text, ...rest }: LegalHeaderProps) => {
               Abstimmung
             </Link>
             <div className={styles.optionsContainer}>
-            <OptionsPanel />
+              <OptionsPanel />
             </div>
           </nav>
         </div>

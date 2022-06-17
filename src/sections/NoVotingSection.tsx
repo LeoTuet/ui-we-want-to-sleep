@@ -1,6 +1,7 @@
-import { useTranslation } from "react-i18next";
-import { CouchPanel } from "../components/CouchPanel";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+
+import { CouchPanel } from "../components/CouchPanel";
 
 export interface NoVotingSectionProps {
   type?: NoVotingType;

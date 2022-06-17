@@ -1,0 +1,52 @@
+.outer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 30px;
+  min-height: 90vh;
+
+  .heading {
+    text-align: center;
+    margin: 1rem 0;
+  }
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+
+  .inputField {
+    border: none;
+    margin: 0;
+    padding: 0.5rem 0.8rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    flex-grow: 1;
+    background-color: var(--input-background);
+    color: var(--color);
+    border-radius: 5px;
+  }
+
+  .errorMessage {
+    color: red;
+    line-height: 1.2em;
+    min-height: 1.2em;
+  }
+
+  button,
+  input[type="submit"] {
+    border: none;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 100%;
+    font-family: inherit;
+    background-color: var(--theme-color);
+    color: var(--vote-button-color);
+    border-radius: 5px;
+  }
+}

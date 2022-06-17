@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import { Api } from "../network/Api";
+import { adminSlice, AdminState, initialState as adminState } from "./admin";
 import {
   ballotSlice,
   BallotState,
   initialState as ballotState,
 } from "./ballot";
+import { initialState as toastState, toastSlice, ToastState } from "./toasts";
 import { initialState as tokenState, tokenSlice, TokenState } from "./token";
 import { initialState as uiState, uiSlice, UIState } from "./ui";
 import { initialState as voteState, voteSlice, VoteState } from "./vote";
@@ -14,6 +17,8 @@ export type RootState = {
   token: TokenState;
   vote: VoteState;
   ui: UIState;
+  admin: AdminState;
+  toasts: ToastState;
 };
 
 export type ThunkExtra = {
@@ -29,6 +34,8 @@ export const createStore = (api: Api) =>
       token: tokenSlice.reducer,
       vote: voteSlice.reducer,
       ui: uiSlice.reducer,
+      admin: adminSlice.reducer,
+      toasts: toastSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -45,5 +52,6 @@ export const initialRootState: RootState = {
   token: tokenState,
   vote: voteState,
   ui: uiState,
+  toasts: toastState,
+  admin: adminState,
 };
-

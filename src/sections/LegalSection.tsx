@@ -1,4 +1,5 @@
 import { PropsWithChildren } from "react";
+
 import styles from "./LegalSection.module.scss";
 
 interface LegalSectionProps {
@@ -9,7 +10,7 @@ interface LegalSectionProps {
 export const LegalSection = ({
   children,
   header,
-  id = ""
+  id = "",
 }: PropsWithChildren<LegalSectionProps>) => {
   return (
     <section className={styles.legalSection} id={id}>
