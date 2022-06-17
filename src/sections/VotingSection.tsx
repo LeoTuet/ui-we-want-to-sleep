@@ -1,6 +1,6 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { SerializedError } from "@reduxjs/toolkit";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Ballot } from "../models";
