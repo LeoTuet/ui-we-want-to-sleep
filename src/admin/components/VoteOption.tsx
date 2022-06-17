@@ -47,11 +47,25 @@ function VoteOptionView({
       <WWTSInput
         aria-label="Label"
         title="Label"
-        placeholder="Label"
-        value={label}
-        onChange={(e) => onChange({ identifier, label: e.target.value })}
+        placeholder=" German Label"
+        value={label.de}
+        onChange={(e) =>
+          onChange({ identifier, label: { de: e.target.value, en: label.en } })
+        }
         className={classNames(styles.label, {
-          [styles.invalid]: showErrors && label === "",
+          [styles.invalid]: showErrors && label.de === "",
+        })}
+      />
+      <WWTSInput
+        aria-label="Label"
+        title="Label"
+        placeholder="English Label"
+        value={label.en}
+        onChange={(e) =>
+          onChange({ identifier, label: { de: label.de, en: e.target.value } })
+        }
+        className={classNames(styles.label, {
+          [styles.invalid]: showErrors && label.en === "",
         })}
       />
     </div>
