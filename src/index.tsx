@@ -7,7 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { Api } from "./network/Api";
-import reportWebVitals from "./reportWebVitals";
 import { createStore } from "./stores/rootStore";
 
 export const store = createStore(new Api());

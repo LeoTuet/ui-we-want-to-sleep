@@ -18,8 +18,26 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/:token" element={<Home />} />
-        <Route path="datenschutz" element={<PrivacyStatement />} />
-        <Route path="impressum" element={<Imprint />} />
+        <Route
+          path="datenschutz"
+          element={
+            <Lazy
+              init={() =>
+                import("./pages/PrivacyStatement").then(
+                  (mod) => mod.PrivacyStatement
+                )
+              }
+            />
+          }
+        />
+        <Route
+          path="impressum"
+          element={
+            <Lazy
+              init={() => import("./pages/Imprint").then((mod) => mod.Imprint)}
+            />
+          }
+        />
         <Route
           path="admin/*"
           element={

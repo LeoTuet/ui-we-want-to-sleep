@@ -25,7 +25,7 @@ export interface Jwt {
   readonly exp: number;
 }
 
-interface TranslatableText {
+export interface TranslatableText {
   de: string;
   en: string;
 }

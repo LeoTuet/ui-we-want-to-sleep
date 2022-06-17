@@ -20,6 +20,10 @@ export const Home = () => {
   const { token } = useParams();
 
   useEffect(() => {
+    // There is an issue with typing the dispatch correctly.
+    // Here is a link on how it should be: https://redux-toolkit.js.org/usage/usage-with-typescript#getting-the-dispatch-type
+    // Feel free to fix it - I wasn't able to
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
   }, [dispatch]);
@@ -38,7 +42,7 @@ export const Home = () => {
     [dispatch]
   );
 
-  const getNoVotingStatus =  useCallback(() =>  {
+  const getNoVotingStatus = useCallback(() => {
     if (ballot.ballotLoading || (ballot.ballotError && !vote.voteResult)) {
       return ballot.ballotError?.message ?? "LOADING";
     } else if (!["VALID", "MISSING"].includes(tokenStore.statusResult)) {
@@ -46,13 +50,13 @@ export const Home = () => {
     } else if (vote.voteResult || vote.voteError) {
       return vote.voteResult ?? vote.voteError;
     } else return false;
-  }, [ballot, tokenStore, vote])
+  }, [ballot, tokenStore, vote]);
 
   useEffect(() => {
     if (token) {
       dispatch(actions.saveToken(token));
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <>
@@ -70,9 +74,7 @@ export const Home = () => {
             />
           )}
         {getNoVotingStatus() && (
-          <NoVotingSection
-            type={getNoVotingStatus() as NoVotingType}
-          />
+          <NoVotingSection type={getNoVotingStatus() as NoVotingType} />
         )}
       </main>
     </>
