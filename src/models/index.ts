@@ -1,13 +1,13 @@
 export interface Ballot {
   _id: string;
-  question: string;
+  question: TranslatableText;
   running: boolean;
   options: VoteOption[];
 }
 
 export interface VoteOption {
   identifier: string;
-  label: string;
+  label: TranslatableText;
 }
 
 export interface TokenStatus {
@@ -23,4 +23,9 @@ export interface Jwt {
   readonly username: string;
   readonly iat: number;
   readonly exp: number;
+}
+
+interface TranslatableText {
+  de: string;
+  en: string;
 }

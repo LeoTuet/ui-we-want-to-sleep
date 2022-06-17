@@ -1,4 +1,4 @@
-import { Ballot, Jwt, VoteOption } from "../models";
+import { Ballot, Jwt } from "../models";
 import { del, FetchError, get, post, put } from "./request";
 
 export async function fetchRunningBallot(): Promise<Ballot | undefined> {
@@ -50,8 +50,4 @@ export async function updateBallot(
   return await put<Ballot>(`/api/ballot/${id}`, { body, jwt });
 }
 
-export interface CreationBallot {
-  running: boolean;
-  question: string;
-  options: VoteOption[];
-}
+export type CreationBallot = Omit<Ballot, "_id">;

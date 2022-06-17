@@ -31,7 +31,10 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
 
   return (
     <div>
-      <h2>{ballot.question}</h2>
+      <div className={styles.header}>
+        <h2>{ballot.question.en}</h2>
+        <p>{ballot.question.de}</p>
+      </div>
       <p
         className={classNames(styles.status, {
           [styles.active]: ballot.running,
@@ -44,14 +47,16 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
         <thead>
           <tr>
             <th>Identifier</th>
-            <th>Label</th>
+            <th>German Label</th>
+            <th>English Label</th>
           </tr>
         </thead>
         <tbody>
           {ballot.options.map(({ identifier, label }) => (
             <tr key={identifier}>
               <td>{identifier}</td>
-              <td>{label}</td>
+              <td>{label.de}</td>
+              <td>{label.en}</td>
             </tr>
           ))}
         </tbody>

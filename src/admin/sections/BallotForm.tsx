@@ -27,7 +27,7 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
     clearErrors,
   } = useForm<CreationBallot>({
     defaultValues: payload ?? {
-      question: "",
+      question: { de: "", en: "" },
       options: [],
       running: false,
     },
@@ -36,12 +36,17 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   // TODO: Should be done with the validation of react-hook-form but i'm to dumb to do it
   const validateForm = useCallback(() => {
     clearErrors();
-    if (watch().question.length < 1) {
+    if (watch().question.de.length < 1 && watch().question.en.length < 1) {
       setError("question", { message: "Error: Question missing" });
     }
 
     if (
-      watch().options.some((o) => o.label.length < 1 || o.identifier.length < 1)
+      watch().options.some(
+        (o) =>
+          o.label.en.length < 1 ||
+          o.label.de.length < 1 ||
+          o.identifier.length < 1
+      )
     ) {
       setError("options", {
         message: "You have a invalid vote option",
@@ -73,10 +78,14 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
   const addVoteOption = useCallback(
     (e: FormEvent) => {
       e.preventDefault();
-      setValue("options", [...watch().options, { identifier: "", label: "" }], {
-        shouldDirty: true,
-        shouldValidate: true,
-      });
+      setValue(
+        "options",
+        [...watch().options, { identifier: "", label: { en: "", de: "" } }],
+        {
+          shouldDirty: true,
+          shouldValidate: true,
+        }
+      );
       validateForm();
     },
     [setValue, validateForm, watch]
@@ -128,11 +137,27 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
 
         <label htmlFor="question">Question:</label>
         <WWTSInput
-          id="question"
+          className={styles.input}
+          id="question.de"
           type="text"
-          value={watch().question}
+          placeholder="German Question"
+          value={watch().question.de}
           onChange={(e) => {
-            setValue("question", e.target.value, {
+            setValue("question.de", e.target.value, {
+              shouldDirty: true,
+              shouldValidate: true,
+            });
+            validateForm();
+          }}
+        />
+        <WWTSInput
+          className={styles.input}
+          id="question.en"
+          type="text"
+          placeholder="English Question"
+          value={watch().question.en}
+          onChange={(e) => {
+            setValue("question.en", e.target.value, {
               shouldDirty: true,
               shouldValidate: true,
             });
