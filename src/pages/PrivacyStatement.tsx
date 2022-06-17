@@ -1,24 +1,24 @@
 import { useTranslation } from "react-i18next";
 
 import { ExternalLink } from "../components/ExternalLink";
-import { StickyLegalHeader } from "../components/StickyHeader";
-import { LegalSection } from "../sections/LegalSection";
-import styles from "./ImprintAndPrivacy.module.scss";
+import { StickySharedHeader } from "../components/StickySharedHeader";
+import { SharedSection } from "../sections/SharedSection";
+import styles from "./Shared.module.scss";
 
 export const PrivacyStatement = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <StickyLegalHeader text={t("privacy.header")} />
+      <StickySharedHeader text={t("privacy.header")} />
       <main className={styles.background}>
         <div className={styles.container}>
-          <LegalSection id="intro" header={t("privacy.intro.header")}>
+          <SharedSection id="intro" header={t("privacy.intro.header")}>
             <p> {t("privacy.intro.firstParagraph")} </p>
             <p> {t("privacy.intro.secondParagraph")} </p>
             <p> {t("privacy.intro.thridParagraph")} </p>
-          </LegalSection>
-          <LegalSection header={t("privacy.tableOfContents")}>
+          </SharedSection>
+          <SharedSection header={t("privacy.tableOfContents")}>
             <ul>
               <li>
                 <a href="#intro"> {t("privacy.intro.header")} </a>
@@ -66,8 +66,8 @@ export const PrivacyStatement = () => {
                 <a href="#definitions"> {t("privacy.definitions.header")} </a>
               </li>
             </ul>
-          </LegalSection>
-          <LegalSection
+          </SharedSection>
+          <SharedSection
             id="responsible"
             header={t("privacy.responsibilities.header")}
           >
@@ -87,8 +87,8 @@ export const PrivacyStatement = () => {
               {t("privacy.responsibilities.secondParagraph")}
               <ExternalLink href="https://wewanttosleep.de/impressum" />
             </p>
-          </LegalSection>
-          <LegalSection
+          </SharedSection>
+          <SharedSection
             id="overview"
             header={t("privacy.overviewOverProcesses.header")}
           >
@@ -107,8 +107,8 @@ export const PrivacyStatement = () => {
               </strong>
               {t("privacy.overviewOverProcesses.thridParagraph.content")}
             </p>
-          </LegalSection>
-          <LegalSection
+          </SharedSection>
+          <SharedSection
             id="legal-bases"
             header={t("privacy.relevantLegalBases.header")}
           >
@@ -116,24 +116,24 @@ export const PrivacyStatement = () => {
             <p> {t("privacy.relevantLegalBases.secondParagraph")} </p>
             <p> {t("privacy.relevantLegalBases.thirdParagraph")} </p>
             <p> {t("privacy.relevantLegalBases.fourthParagraph")} </p>
-          </LegalSection>
-          <LegalSection id="security" header={t("privacy.security.header")}>
+          </SharedSection>
+          <SharedSection id="security" header={t("privacy.security.header")}>
             <p> {t("privacy.security.firstParagraph")} </p>
             <p> {t("privacy.security.secondParagraph")} </p>
             <p>
               <strong> {t("privacy.security.thirdParagraph.header")} </strong>
               {t("privacy.security.thirdParagraph.content")}
             </p>
-          </LegalSection>
-          <LegalSection
+          </SharedSection>
+          <SharedSection
             id="deletion"
             header={t("privacy.deletionOfData.header")}
           >
             <p> {t("privacy.deletionOfData.firstParagraph")} </p>
             <p> {t("privacy.deletionOfData.secondParagraph")} </p>
             <p> {t("privacy.deletionOfData.thirdParagraph")} </p>
-          </LegalSection>
-          <LegalSection id="cookies" header={t("privacy.useOfCookies.header")}>
+          </SharedSection>
+          <SharedSection id="cookies" header={t("privacy.useOfCookies.header")}>
             <p> {t("privacy.useOfCookies.firstParagraph")} </p>
             <p>
               <strong>
@@ -163,8 +163,11 @@ export const PrivacyStatement = () => {
               </strong>
               {t("privacy.votes.fifthParagraph.content")}
             </p>
-          </LegalSection>
-          <LegalSection id="webhosting" header={t("privacy.webhosting.header")}>
+          </SharedSection>
+          <SharedSection
+            id="webhosting"
+            header={t("privacy.webhosting.header")}
+          >
             <p> {t("privacy.webhosting.firstParagraph")} </p>
             <p> {t("privacy.webhosting.secondParagraph")} </p>
             <p>
@@ -219,8 +222,8 @@ export const PrivacyStatement = () => {
               </strong>
               <ExternalLink href="https://docs.hetzner.com/de/general/general-terms-and-conditions/data-privacy-faq/" />
             </p>
-          </LegalSection>
-          <LegalSection id="vote" header={t("privacy.votes.header")}>
+          </SharedSection>
+          <SharedSection id="vote" header={t("privacy.votes.header")}>
             <p> {t("privacy.votes.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.votes.secondParagraph.header")} </strong>
@@ -242,12 +245,12 @@ export const PrivacyStatement = () => {
               <strong> {t("privacy.votes.sixthParagraph.header")} </strong>
               {t("privacy.votes.sixthParagraph.content")}
             </p>
-          </LegalSection>
-          <LegalSection id="changes" header={t("privacy.updates.header")}>
+          </SharedSection>
+          <SharedSection id="changes" header={t("privacy.updates.header")}>
             <p> {t("privacy.updates.firstParagraph")} </p>
             <p> {t("privacy.updates.secondParagraph")} </p>
-          </LegalSection>
-          <LegalSection id="rights" header={t("privacy.rights.header")}>
+          </SharedSection>
+          <SharedSection id="rights" header={t("privacy.rights.header")}>
             <p> {t("privacy.rights.firstParagraph")} </p>
             <p>
               <strong> {t("privacy.rights.secondParagraph.header")} </strong>
@@ -277,8 +280,8 @@ export const PrivacyStatement = () => {
               <strong> {t("privacy.rights.eighthParagraph.header")} </strong>
               {t("privacy.rights.eighthParagraph.content")}
             </p>
-          </LegalSection>
-          <LegalSection
+          </SharedSection>
+          <SharedSection
             id="definitions"
             header={t("privacy.definitions.header")}
           >
@@ -304,7 +307,7 @@ export const PrivacyStatement = () => {
               </strong>
               {t("privacy.definitions.fourthParagraph.content")}
             </p>
-          </LegalSection>
+          </SharedSection>
           <p>
             <ExternalLink
               href="https://datenschutz-generator.de/"

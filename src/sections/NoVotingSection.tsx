@@ -14,7 +14,7 @@ export type NoVotingType =
   | "USED"
   | "LOADING"
   | "NONE_EXISTENT"
-  | "SUCCESS" 
+  | "SUCCESS"
   | "INVALID_CAPTCHA";
 
 export const NoVotingSection = ({
@@ -24,11 +24,11 @@ export const NoVotingSection = ({
 
   const getMainText = useCallback(() => {
     return t(`noVoting.${type}.header`);
-  }, [type]);
+  }, [type, t]);
 
   const getSubText = useCallback(() => {
     return t(`noVoting.${type}.content`);
-  }, [type]);
+  }, [type, t]);
 
   const getFlipped = useCallback(() => {
     return type === "NONE_EXISTENT";

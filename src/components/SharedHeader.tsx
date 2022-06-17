@@ -1,17 +1,17 @@
-import React, { HTMLProps } from "react";
+import { HTMLProps } from "react";
 import { Link } from "react-router-dom";
 
 import sheep from "../assets/sheep.png";
-import styles from "./LegalHeader.module.scss";
 import { OptionsPanel } from "./OptionsPanel";
+import styles from "./SharedHeader.module.scss";
 import { StarBackground } from "./StarBackground";
 import { TypingHeading } from "./TypingHeading";
 
-export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
+export interface SharedHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
 }
 
-export const LegalHeader = ({ text, ...rest }: LegalHeaderProps) => {
+export const SharedHeader = ({ text, ...rest }: SharedHeaderProps) => {
   return (
     <header className={styles.stickyHeader} {...rest}>
       <StarBackground className={styles.adjustedStarBackground}>
