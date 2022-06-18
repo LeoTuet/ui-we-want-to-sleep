@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { StickySharedHeader } from "../components/StickySharedHeader";
+import { SharedHeaderSticky } from "../components/SharedHeaderSticky";
 import { SharedSection } from "../sections/SharedSection";
 import styles from "./Shared.module.scss";
 
@@ -8,7 +8,7 @@ export const Imprint = () => {
   const { t } = useTranslation();
   return (
     <>
-      <StickySharedHeader text={t("imprint.header")} />
+      <SharedHeaderSticky text={t("imprint.header")} />
       <main className={styles.background}>
         <div className={styles.container}>
           <SharedSection header={t("imprint.general.header")}>

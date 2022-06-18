@@ -292,7 +292,7 @@
     }
   },
   "sources": {
-    "header": "our.sources()",
+    "header": "unsere.quellen()",
     "videos": "Videos",
     "article": "Artikel"
   }

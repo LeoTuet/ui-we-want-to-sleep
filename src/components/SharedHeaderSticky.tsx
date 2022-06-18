@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { SharedHeader, SharedHeaderProps } from "./SharedHeader";
 
-export const StickySharedHeader = ({ text, ...rest }: SharedHeaderProps) => {
+export const SharedHeaderSticky = ({ text, ...rest }: SharedHeaderProps) => {
   const [scrollOffset, setScrollOffset] = useState(
     document.documentElement.scrollTop ?? 0
   );

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { ExternalLink } from "../components/ExternalLink";
-import { StickySharedHeader } from "../components/StickySharedHeader";
+import { SharedHeaderSticky } from "../components/SharedHeaderSticky";
 import { SharedSection } from "../sections/SharedSection";
 import styles from "./Shared.module.scss";
 
@@ -10,7 +10,7 @@ export const PrivacyStatement = () => {
 
   return (
     <>
-      <StickySharedHeader text={t("privacy.header")} />
+      <SharedHeaderSticky text={t("privacy.header")} />
       <main className={styles.background}>
         <div className={styles.container}>
           <SharedSection id="intro" header={t("privacy.intro.header")}>
