@@ -13,13 +13,17 @@
 
 .sheep {
   height: 50px;
-  // for visual alignment
-  margin: 0 1rem 0 1.3rem;
 }
 
 .navigation {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  gap: 1em;
   margin: 1rem;
+
+  &:first-child {
+    justify-content: flex-end;
+  }
 }
 
 .navigationBar {

@@ -15,12 +15,12 @@ export const NavigationBar = () => {
           {t("navigation.landingPage")}
         </Link>
         <img src={sheep} alt={"wwts sheep"} className={styles.sheep} />
-        <Link to="/results" className={styles.link}>
+        <Link to="/result" className={styles.link}>
           {t("navigation.results")}
         </Link>
-        <div className={styles.optionsContainer}>
-          <OptionsPanel />
-        </div>
+      </div>
+      <div className={styles.optionsContainer}>
+        <OptionsPanel />
       </div>
     </nav>
   );
