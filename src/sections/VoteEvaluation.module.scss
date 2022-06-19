@@ -1,9 +1,8 @@
-.row {
-  display: flex;
-}
-
-.row > div {
-    margin-left: 1.5rem
+.gridLayout {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 1rem;
+  text-align: end;
 }
 
 .bar {
@@ -12,5 +11,5 @@
   border-radius: 10px;
   font-weight: bold;
   text-align: start;
-  padding: 1rem
+  padding: 1rem;
 }

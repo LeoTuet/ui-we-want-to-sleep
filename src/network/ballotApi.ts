@@ -53,8 +53,11 @@ export async function updateBallot(
 
 export type CreationBallot = Omit<Ballot, "_id">;
 
-export async function getVoteResult(id: string): Promise<VoteResult[]> {
-  return await get<VoteResult[]>(`/api/ballot/result/${id}`, {});
+export async function getVoteResult(
+  id: string,
+  jwt: Jwt
+): Promise<VoteResult[]> {
+  return await get<VoteResult[]>(`/api/ballot/result/${id}`, { jwt });
 }
 
 export async function getTotalVoteCount(id: string): Promise<TotalVoteCount> {
