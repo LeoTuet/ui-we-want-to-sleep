@@ -11,6 +11,7 @@
     "header": "Principles of our work",
     "imprint": "Imprint",
     "privacy": "Privacy",
+    "sources": "Sources",
     "firstPrivacy": {
       "header": "1. Privacy.",
       "content": "This website stores hardly any data. Only one cookie is needed to integrate the captcha."
@@ -289,5 +290,10 @@
       "header": "Legal text by Dr. Schwenke - please click for further information.",
       "content": "Created with free Datenschutz-Generator.de by Dr. Thomas Schwenke"
     }
+  },
+  "sources": {
+    "header": "our.sources()",
+    "videos": "Videos",
+    "article": "Article"
   }
 }

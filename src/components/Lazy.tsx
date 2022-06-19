@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 
 import styles from "./Lazy.module.scss";
 

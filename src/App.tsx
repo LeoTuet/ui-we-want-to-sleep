@@ -4,8 +4,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Lazy } from "./components/Lazy";
 import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
-import { Imprint } from "./pages/Imprint";
-import { PrivacyStatement } from "./pages/PrivacyStatement";
 import { Footer } from "./sections/Footer";
 
 function App() {
@@ -19,7 +17,15 @@ function App() {
       <Routes>
         <Route path="/:token" element={<Home />} />
         <Route
-          path="datenschutz"
+          path="sources"
+          element={
+            <Lazy
+              init={() => import("./pages/Sources").then((mod) => mod.Sources)}
+            />
+          }
+        />
+        <Route
+          path="privacy"
           element={
             <Lazy
               init={() =>
@@ -31,7 +37,7 @@ function App() {
           }
         />
         <Route
-          path="impressum"
+          path="imprint"
           element={
             <Lazy
               init={() => import("./pages/Imprint").then((mod) => mod.Imprint)}

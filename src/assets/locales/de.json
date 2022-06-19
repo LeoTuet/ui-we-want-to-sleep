@@ -11,6 +11,7 @@
     "header": "Prinzipien unserer Arbeit",
     "imprint": "Impressum",
     "privacy": "Datenschutz",
+    "sources": "Quellen",
     "firstPrivacy": {
       "header": "1. Datenschutz.",
       "content": "Diese Website speichert kaum Daten. Lediglich ein einziger Cookie wird dafür benötigt, das Captcha einzubinden."
@@ -289,5 +290,10 @@
       "header": "Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken.",
       "content": "Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke"
     }
+  },
+  "sources": {
+    "header": "unsere.quellen()",
+    "videos": "Videos",
+    "article": "Artikel"
   }
 }

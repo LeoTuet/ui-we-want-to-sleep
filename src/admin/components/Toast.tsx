@@ -28,7 +28,7 @@ export function Toast({
 
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [onClose, timeout_ms]);
 
   function clickClose() {
     if (timer) clearTimeout(timer);
