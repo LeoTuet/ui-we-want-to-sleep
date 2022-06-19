@@ -1,4 +1,8 @@
 {
+  "navigation": {
+    "landingPage": "Startseite",
+    "results": "Ergebnisse"
+  },
   "intro": {
     "welcomeText": "Es ist wissenschaftlich bewiesen, dass das Gehirn erst ab ca. 9 Uhr richtig leistungsfähig ist. Unsere Berufsschule startet um 7:30. Das geht besser."
   },
@@ -42,7 +46,6 @@
     "language": "Sprache"
   },
   "voting": {
-    "question": "Welchen Unterrichtsbeginn wünscht du dir?",
     "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",
     "error": "Das hier ist ein Error"
   },
@@ -176,7 +179,7 @@
       }
     },
     "webhosting": {
-      "header": "Bereitstellung des Onlineangebotes und Webhosting" ,
+      "header": "Bereitstellung des Onlineangebotes und Webhosting",
       "firstParagraph": "Um unser Onlineangebot sicher und effizient bereitstellen zu können, nehmen wir die Leistungen von einem oder mehreren Webhosting-Anbietern in Anspruch, von deren Servern (bzw. von ihnen verwalteten Servern) das Onlineangebot abgerufen werden kann. Zu diesen Zwecken können wir Infrastruktur- und Plattformdienstleistungen, Rechenkapazität, Speicherplatz und Datenbankdienste sowie Sicherheitsleistungen und technische Wartungsleistungen in Anspruch nehmen.",
       "secondParagraph": "Zu den im Rahmen der Bereitstellung des Hostingangebotes verarbeiteten Daten können alle die Nutzer unseres Onlineangebotes betreffenden Angaben gehören, die im Rahmen der Nutzung und der Kommunikation anfallen. Hierzu gehören regelmäßig die IP-Adresse, die notwendig ist, um die Inhalte von Onlineangeboten an Browser ausliefern zu können, und alle innerhalb unseres Onlineangebotes oder von Webseiten getätigten Eingaben.",
       "thirdParagraph": {

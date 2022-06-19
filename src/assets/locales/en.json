@@ -1,4 +1,8 @@
 {
+  "navigation": {
+    "landingPage": "Landing Page",
+    "results": "Results"
+  },
   "intro": {
     "welcomeText": "It has been scientifically proven that the brain is only really efficient from around 9 o'clock. Our school starts at 7:30 a.m. This can be improved."
   },
@@ -42,7 +46,6 @@
     "language": "Language"
   },
   "voting": {
-    "question": "What class start do you want?",
     "description": "You can only vote once and cannot change your choice. Choose wisely.",
     "error": "This is an error"
   },

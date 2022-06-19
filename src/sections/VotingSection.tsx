@@ -1,9 +1,10 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { SerializedError } from "@reduxjs/toolkit";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Ballot, TranslatableText } from "../models";
+import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
+import { Ballot } from "../models";
 import styles from "./VotingSection.module.scss";
 
 interface VotingSectionProps {
@@ -21,13 +22,9 @@ export const VotingSection = ({
   ballot,
   onVote,
 }: VotingSectionProps) => {
-  const [language, setLanguage] = useState<keyof TranslatableText>("en");
+  const { language } = useCurrentLanguage();
   const [captchaSaved, setCaptchaSaved] = useState(false);
-  const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    setLanguage(i18n.language.slice(0, 2) as never);
-  }, [i18n.language]);
+  const { t } = useTranslation();
 
   const handleTokenReceive = useCallback(
     (token: string) => {

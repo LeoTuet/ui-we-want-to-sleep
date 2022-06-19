@@ -1,4 +1,5 @@
-import { Ballot, Jwt } from "../models";
+import { Ballot, Jwt, VoteResult } from "../models";
+import { TotalVoteCount } from "./../models/index";
 import { del, FetchError, get, post, put } from "./request";
 
 export async function fetchRunningBallot(): Promise<Ballot | undefined> {
@@ -51,3 +52,11 @@ export async function updateBallot(
 }
 
 export type CreationBallot = Omit<Ballot, "_id">;
+
+export async function getVoteResult(id: string): Promise<VoteResult[]> {
+  return await get<VoteResult[]>(`/api/ballot/result/${id}`, {});
+}
+
+export async function getTotalVoteCount(id: string): Promise<TotalVoteCount> {
+  return await get<TotalVoteCount>(`/api/ballot/status/${id}`, {});
+}

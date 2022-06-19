@@ -1,0 +1,16 @@
+.row {
+  display: flex;
+}
+
+.row > div {
+    margin-left: 1.5rem
+}
+
+.bar {
+  background-color: var(--theme-color);
+  color: var(--theme-background);
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: start;
+  padding: 1rem
+}

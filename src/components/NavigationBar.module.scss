@@ -1,0 +1,45 @@
+.link,
+.link:visited {
+  display: flex;
+  align-content: start;
+  padding: 10px;
+  text-decoration: none;
+  color: var(--header-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.sheep {
+  height: 50px;
+  // for visual alignment
+  margin: 0 1rem 0 1.3rem;
+}
+
+.navigation {
+  display: flex;
+  margin: 1rem;
+}
+
+.navigationBar {
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.optionsContainer {
+  display: none;
+  margin: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (min-width: 1000px) {
+  .optionsContainer {
+    display: block;
+  }
+}

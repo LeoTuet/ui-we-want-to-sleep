@@ -1,13 +1,14 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 
-import styles from "./TypingHeading.module.scss";
+import styles from "./TypingHeader.module.scss";
 
-interface TypingHeadingProps {
+interface TypingHeaderProps {
   finalText: string;
+  className?: string;
 }
 
-export const TypingHeading = ({ finalText }: TypingHeadingProps) => {
+export const TypingHeader = ({ finalText, className }: TypingHeaderProps) => {
   const [index, setIndex] = useState(1);
   const [hlStart, setHlStart] = useState(0);
   const [hlEnd, setHlEnd] = useState(0);
@@ -36,7 +37,7 @@ export const TypingHeading = ({ finalText }: TypingHeadingProps) => {
 
   return (
     <h1
-      className={classNames(styles.heading, {
+      className={classNames(styles.heading, className, {
         [styles.blinkingCaret]: caretBlinking,
       })}
     >
