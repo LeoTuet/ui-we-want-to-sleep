@@ -14,20 +14,20 @@ export const Sources = () => {
       <main className={styles.background}>
         <div className={styles.container}>
           <SharedSection header={t("sources.videos")}>
-            <ul className={styles.list}>
+            <div className={styles.list}>
               <ExternalLink href="https://www.youtube.com/watch?v=1otF0N6surM" />
               <ExternalLink href="https://youtu.be/a_UjKdfIj3Q" />
-            </ul>
+            </div>
           </SharedSection>
           <SharedSection header={t("sources.article")}>
-            <ul className={styles.list}>
+            <div className={styles.list}>
               <ExternalLink href="https://www.cdc.gov/sleep/features/schools-start-too-early.html" />
               <ExternalLink href="https://www.sleepfoundation.org/school-and-sleep/later-school-start-times" />
               <ExternalLink href="https://www.sciencenewsforstudents.org/article/survey-finds-us-schools-start-too-early" />
               <ExternalLink href="https://www.educationnext.org/do-schools-begin-too-early/" />
               <ExternalLink href="https://www.br.de/nachrichten/wissen/muede-schueler-faengt-die-schule-zu-frueh-an,ReJa68f" />
               <ExternalLink href="https://www.rtl.de/cms/beginnt-die-schule-morgens-zu-frueh-4416894.html" />
-            </ul>
+            </div>
           </SharedSection>
         </div>
       </main>
