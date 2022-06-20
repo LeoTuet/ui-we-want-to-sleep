@@ -20,6 +20,7 @@ function App() {
     // There is an issue with typing the dispatch correctly.
     // Here is a link on how it should be: https://redux-toolkit.js.org/usage/usage-with-typescript#getting-the-dispatch-type
     // Feel free to fix it - I wasn't able to
+    // totalHoursWasted: 1
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
