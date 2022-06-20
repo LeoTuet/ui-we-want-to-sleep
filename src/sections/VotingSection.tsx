@@ -22,7 +22,7 @@ export const VotingSection = ({
   ballot,
   onVote,
 }: VotingSectionProps) => {
-  const { language } = useCurrentLanguage();
+  const languageIdentifier = useCurrentLanguage();
   const [captchaSaved, setCaptchaSaved] = useState(false);
   const { t } = useTranslation();
 
@@ -40,7 +40,9 @@ export const VotingSection = ({
   return (
     <section className={styles.container}>
       <div className={styles.votingSection}>
-        <h4 className={styles.question}>{ballot.ballot?.question[language]}</h4>
+        <h4 className={styles.question}>
+          {ballot.ballot?.question[languageIdentifier]}
+        </h4>
         <p className={styles.description}>{t("voting.description")}</p>
         {!captchaSaved && (
           <div className={styles.captchaContainer}>
@@ -62,7 +64,7 @@ export const VotingSection = ({
                 className={styles.voteButton}
                 onClick={() => onVote(option.identifier)}
               >
-                {option.label[language]}
+                {option.label[languageIdentifier]}
               </button>
             ))}
           </div>

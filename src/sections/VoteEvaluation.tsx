@@ -13,7 +13,7 @@ export const VoteEvaluation = ({
   voteCount,
   ballot,
 }: VoteEvaluationProps) => {
-  const { language } = useCurrentLanguage();
+  const languageIdentifier = useCurrentLanguage();
 
   interface PercentageBarProps {
     percentage: number | undefined;
@@ -59,7 +59,7 @@ export const VoteEvaluation = ({
         <PercentageBar
           key={result?.percentage}
           percentage={result?.percentage}
-          voteOption={result?.label[language]}
+          voteOption={result?.label[languageIdentifier]}
           width={result?.width}
         />
       ))}

@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavigationBar } from "../components/NavigationBar";
 import { StarBackground } from "../components/StarBackground";
-import { TypingHeader } from "../components/TypingHeader";
 import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
 import { VoteEvaluation } from "../sections/VoteEvaluation";
 import { selectBallot } from "../stores/ballot";
@@ -19,7 +17,7 @@ export const Result = () => {
   const ballot = useSelector(selectBallot);
   const result = useSelector(selectResult);
   const dispatch = useDispatch();
-  const { language } = useCurrentLanguage();
+  const languageIdentifier = useCurrentLanguage();
 
   useEffect(() => {
     if (!ballot.ballot) return;
@@ -33,7 +31,7 @@ export const Result = () => {
         <NavigationBar />
         <div>
           <h2 className={styles.question}>
-            {ballot.ballot?.question[language]}
+            {ballot.ballot?.question[languageIdentifier]}
           </h2>
           {result.voteResultError && result.totalVoteCount && (
             <p>{`${result.totalVoteCount} People voted`}</p>
