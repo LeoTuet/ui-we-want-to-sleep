@@ -1,16 +1,46 @@
-.button {
-  border: none;
-  background-color: var(--input-background);
-  color: var(--input-color);
-  padding: 5px 10px;
+@import "src/theme/mixin";
+
+.btnBase {
+  @include noSelect;
+  background-color: var(--btn-background-color);
+  color: var(--btn-color);
+
   margin: 0;
-  border-radius: 3px;
-  font-family: inherit;
-  font-size: 1rem;
   text-decoration: none;
+  border: none;
+
+  font: inherit;
   cursor: pointer;
 
-  & + .button {
+  transition: transform 0.07s ease-out, outline 0.03s ease-out;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--btn-background-color);
+    outline-offset: 3px;
+  }
+}
+
+.btnDefault {
+  --btn-background-color: var(--vote-button-background);
+  --btn-color: var(--vote-button-color);
+  border-radius: 12px;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.btnAdmin {
+  --btn-color: var(--input-color);
+  --btn-background-color: var(--input-background);
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 1rem;
+  border: none;
+
+  & + .btn-admin {
     margin-left: 1em;
   }
 }

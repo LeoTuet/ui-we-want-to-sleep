@@ -1,7 +1,8 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+
 import { BottomBanner } from "../components/BottomBanner";
 import { actions, selectUIStore } from "../stores/ui";
-import { useTranslation } from "react-i18next";
 
 export const CookieBannerWidget = () => {
   const { cookieConsent } = useSelector(selectUIStore);

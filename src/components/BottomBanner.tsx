@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
+
+import { WWTSButton } from "../admin/components/Button";
 import styles from "./BottomBanner.module.scss";
-import { CustomButton } from "./CustomButton";
 
 interface BottomBannerProps {
   text: string;
@@ -15,7 +16,8 @@ export const BottomBanner = ({
 }: BottomBannerProps) => {
   const bannerRef = useRef<HTMLDivElement | null>(null);
 
-  const focusHandler = (event: KeyboardEvent) => {    
+  /**This is for trapping the users focus */
+  const focusHandler = (event: KeyboardEvent) => {
     if (event.key == "Tab") {
       const focusableElements: NodeListOf<HTMLElement> | undefined =
         bannerRef.current?.querySelectorAll(
@@ -23,9 +25,9 @@ export const BottomBanner = ({
         );
 
       if (focusableElements && focusableElements.length) {
-        let first = focusableElements[0];
-        let last = focusableElements[focusableElements.length - 1];
-        let shift = event.shiftKey;
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        const shift = event.shiftKey;
 
         if (shift && event.target == first) {
           last.focus();
@@ -52,9 +54,9 @@ export const BottomBanner = ({
       <div role="dialog" className={styles.bannerBackground}>
         <div ref={bannerRef} className={styles.bannerContent}>
           <span className={styles.bannerText}>{text}</span>
-          <CustomButton onClick={onButtonClick} className={styles.bannerButton}>
+          <WWTSButton onClick={onButtonClick} className={styles.bannerButton}>
             {buttonText}
-          </CustomButton>
+          </WWTSButton>
         </div>
       </div>
     </div>

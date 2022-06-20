@@ -7,13 +7,26 @@ import {
 
 import styles from "./Button.module.scss";
 
+const buttonVariants = {
+  default: styles.btnDefault,
+  admin: styles.btnAdmin,
+};
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: keyof typeof buttonVariants;
+};
+
 export function WWTSButton({
   className,
   children,
+  variant = "default",
   ...rest
-}: ButtonHTMLAttributes<HTMLButtonElement>) {
+}: ButtonProps) {
   return (
-    <button className={classNames(styles.button, className)} {...rest}>
+    <button
+      className={classNames(styles.btnBase, buttonVariants[variant], className)}
+      {...rest}
+    >
       {children}
     </button>
   );
