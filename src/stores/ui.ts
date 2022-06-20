@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Theme, CookieConsent } from "../models";
+
+import { CookieConsent, Theme } from "../models";
 import { RootState } from "./rootStore";
 
 export interface UIState {
@@ -8,7 +9,7 @@ export interface UIState {
 }
 
 export const initialState: UIState = {
-  theme: "light",
+  theme: "default",
   cookieConsent: undefined,
 };
 
@@ -20,9 +21,6 @@ export const uiSlice = createSlice({
       if (action.payload) {
         state.theme = action.payload;
       }
-    },
-    toggleTheme(state) {
-      state.theme = state.theme == "light" ? "dark" : "light";
     },
     setCookieConsent(state, action: PayloadAction<CookieConsent>) {
       if (action.payload) state.cookieConsent = action.payload;

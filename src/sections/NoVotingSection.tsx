@@ -1,6 +1,7 @@
-import { useTranslation } from "react-i18next";
-import { CouchPanel } from "../components/CouchPanel";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+
+import { CouchPanel } from "../components/CouchPanel";
 
 export interface NoVotingSectionProps {
   type?: NoVotingType;
@@ -12,7 +13,9 @@ export type NoVotingType =
   | "INVALID"
   | "USED"
   | "LOADING"
-  | "NONE_EXISTENT";
+  | "NONE_EXISTENT"
+  | "SUCCESS"
+  | "INVALID_CAPTCHA";
 
 export const NoVotingSection = ({
   type = "NO_RUNNING_BALLOT",
@@ -21,11 +24,11 @@ export const NoVotingSection = ({
 
   const getMainText = useCallback(() => {
     return t(`noVoting.${type}.header`);
-  }, [type]);
+  }, [type, t]);
 
   const getSubText = useCallback(() => {
     return t(`noVoting.${type}.content`);
-  }, [type]);
+  }, [type, t]);
 
   const getFlipped = useCallback(() => {
     return type === "NONE_EXISTENT";

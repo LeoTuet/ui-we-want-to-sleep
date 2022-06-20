@@ -1,21 +1,16 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+
 import styles from "./TypingHeading.module.scss";
 
 interface TypingHeadingProps {
   finalText: string;
-  // index of first highlighted character
-  hlStart: number;
-  // index of first non-highlighted character
-  hlEnd: number;
 }
 
-export const TypingHeading = ({
-  finalText,
-  hlStart,
-  hlEnd,
-}: TypingHeadingProps) => {
+export const TypingHeading = ({ finalText }: TypingHeadingProps) => {
   const [index, setIndex] = useState(1);
+  const [hlStart, setHlStart] = useState(0);
+  const [hlEnd, setHlEnd] = useState(0);
   const [caretBlinking, setCaretBlinking] = useState(false);
 
   useEffect(() => {
@@ -30,6 +25,13 @@ export const TypingHeading = ({
     }, 100);
 
     return () => clearInterval(countdownID);
+  }, [finalText]);
+
+  useEffect(() => {
+    const indexOfPoint = finalText.indexOf(".");
+    setHlStart(indexOfPoint + 1);
+    const indexOfBrackets = finalText.indexOf("(");
+    setHlEnd(indexOfBrackets);
   }, [finalText]);
 
   return (

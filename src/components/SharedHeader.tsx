@@ -1,23 +1,17 @@
-import React, { HTMLProps } from "react";
-import { TypingHeading } from "./TypingHeading";
-import styles from "./LegalHeader.module.scss";
-import classNames from "classnames";
+import { HTMLProps } from "react";
 import { Link } from "react-router-dom";
-import sheep from "../assets/sheep.png";
-import { StarBackground } from "./StarBackground";
 
-export interface LegalHeaderProps extends HTMLProps<HTMLElement> {
+import sheep from "../assets/sheep.png";
+import { OptionsPanel } from "./OptionsPanel";
+import styles from "./SharedHeader.module.scss";
+import { StarBackground } from "./StarBackground";
+import { TypingHeading } from "./TypingHeading";
+
+export interface SharedHeaderProps extends HTMLProps<HTMLElement> {
   text: string;
-  hlStart: number;
-  hlEnd: number;
 }
 
-export const LegalHeader = ({
-  text,
-  hlStart,
-  hlEnd,
-  ...rest
-}: LegalHeaderProps) => {
+export const SharedHeader = ({ text, ...rest }: SharedHeaderProps) => {
   return (
     <header className={styles.stickyHeader} {...rest}>
       <StarBackground className={styles.adjustedStarBackground}>
@@ -30,9 +24,12 @@ export const LegalHeader = ({
             <Link to="/" className={styles.link}>
               Abstimmung
             </Link>
+            <div className={styles.optionsContainer}>
+              <OptionsPanel />
+            </div>
           </nav>
         </div>
-        <TypingHeading finalText={text} hlStart={hlStart} hlEnd={hlEnd} />
+        <TypingHeading finalText={text} />
       </StarBackground>
     </header>
   );

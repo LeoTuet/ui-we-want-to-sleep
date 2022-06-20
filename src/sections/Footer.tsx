@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+
 import { ExternalLink } from "../components/ExternalLink";
 import { OptionsPanel } from "../components/OptionsPanel";
 import { PointedTable } from "../components/PointedTable";
@@ -83,17 +84,21 @@ export const Footer = () => {
           ]}
         />
         <p className={styles.centered}>
-          <Link to="impressum" className={styles.link}>
+          <Link to="imprint" className={styles.link}>
             {t("footer.imprint")}
           </Link>
           <span>{" & "}</span>
-          <Link to="datenschutz" className={styles.link}>
+          <Link to="privacy" className={styles.link}>
             {t("footer.privacy")}
           </Link>
+          <span>{" & "}</span>
+          <Link to="sources" className={styles.link}>
+            {t("footer.sources")}
+          </Link>
         </p>
-        <p className={styles.centered}>
+        <span className={styles.centered}>
           <OptionsPanel />
-        </p>
+        </span>
       </div>
     </footer>
   );

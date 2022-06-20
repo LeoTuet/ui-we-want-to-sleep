@@ -1,8 +1,8 @@
-.legalBackground {
+.background {
   background-color: var(--background);
 }
 
-.legalContainer {
+.container {
   max-width: 960px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
@@ -13,4 +13,6 @@
 
 .list {
   word-break: break-word;
+  margin-top: 0px;
+  padding-left: 0px;
 }

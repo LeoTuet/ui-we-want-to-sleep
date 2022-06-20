@@ -8,6 +8,7 @@ vite-dev.config.ts
 .pnp.js
 
 /.idea
+/.vscode
 
 # testing
 /coverage
@@ -27,3 +28,5 @@ tsconfig.tsbuildinfo
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.vscode

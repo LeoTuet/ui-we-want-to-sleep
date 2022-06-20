@@ -11,6 +11,7 @@
     "header": "Prinzipien unserer Arbeit",
     "imprint": "Impressum",
     "privacy": "Datenschutz",
+    "sources": "Quellen",
     "firstPrivacy": {
       "header": "1. Datenschutz.",
       "content": "Diese Website speichert kaum Daten. Lediglich ein einziger Cookie wird dafür benötigt, das Captcha einzubinden."
@@ -69,9 +70,7 @@
     "SERVER_ERROR": {
       "header": "Kontaktiere uns bitte!",
       "content": "Wir haben scheinbar Probleme mit unserem Server :("
-    }
-  },
-  "voteResponse": {
+    },
     "SUCCESS": {
       "header": "Du hast abgestimmt :)",
       "content": "Dann entspann dich doch!"
@@ -84,5 +83,221 @@
   "cookieBanner": {
     "content": "Wir verwenden ausschließlich einen einzigen & essentiellen Cookie um die Funktionsweise des Captchas sicherzustellen",
     "acceptButtonText": "Akzeptieren"
+  },
+  "imprint": {
+    "header": "unser.impressum()",
+    "general": {
+      "header": "Angaben gemäß $5 TMG",
+      "owner": "Inhaber",
+      "contact": "Kontakt",
+      "responsibilities": "Verantwortungen",
+      "content": "Verantwortlicher für den Inhalt ist gemäß § 55 Abs. 2 Rundfunkstaatsvertrag (RStV)",
+      "sources": "Quellenangaben für die verwendeten Bilder und Grafiken"
+    },
+    "limitationOfLiability": {
+      "header": "Haftungsbeschränkung",
+      "content": "Die Inhalte dieser Website werden mit größtmöglicher Sorgfalt erstellt. Der Anbieter übernimmt jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte. Die Nutzung der Inhalte der Website erfolgt auf eigene Gefahr des Nutzers. Namentlich gekennzeichnete Beiträge geben die Meinung des jeweiligen Autors und nicht immer die Meinung des Anbieters wieder. Mit der reinen Nutzung der Website des Anbieters kommt keinerlei Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande."
+    },
+    "liabilityOfLinks": {
+      "header": "Haftung für Links",
+      "content": "Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen Rechteinhabers. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten in Datenbanken oder anderen elektronischen Medien und Systemen. Inhalte und Rechte Dritter sind dabei als solche gekennzeichnet. Die unerlaubte Vervielfältigung oder Weitergabe einzelner Inhalte oder kompletter Seiten ist nicht gestattet und strafbar. Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt. Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlaubnis zulässig."
+    },
+    "copyright": {
+      "header": "Urheber- und Leistungsschutzrechte",
+      "content": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen."
+    },
+    "termsOfUse": {
+      "header": "Besondere Nutzungsbedingungen",
+      "content": "Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen."
+    }
+  },
+  "privacy": {
+    "header": "unser.datenschutz()",
+    "intro": {
+      "header": "Einleitung",
+      "firstParagraph": "Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als „Daten“ bezeichnet) wir zu welchen Zwecken und in welchem Umfang im Rahmen der Bereitstellung unserer Applikation verarbeiten.",
+      "secondParagraph": "Die verwendeten Begriffe sind nicht geschlechtsspezifisch.",
+      "thridParagraph": "Stand: 10. April 2022"
+    },
+    "tableOfContents": "Inhaltsübersicht",
+    "responsibilities": {
+      "header": "Verantwortlicher",
+      "firstParagraph": "E-Mail-Adresse:",
+      "secondParagraph": "Impressum:"
+    },
+    "overviewOverProcesses": {
+      "header": "Übersicht der Verarbeitungen",
+      "firstParagraph": "Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.",
+      "secondParagraph": {
+        "header": "Arten der verarbeiteten Daten: ",
+        "content": "Kontaktdaten, Inhaltsdaten, Nutzungsdaten, Meta-/Kommunikationsdaten"
+      },
+      "thridParagraph": {
+        "header": "Kategorien betroffener Personen: ",
+        "content": "Kommunikationspartner, Nutzer, Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit."
+      }
+    },
+    "relevantLegalBases": {
+      "header": "Maßgebliche Rechtsgrundlagen",
+      "firstParagraph": "Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. Bitte nehmen Sie zur Kenntnis, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben in Ihrem bzw. unserem Wohn- oder Sitzland gelten können. Sollten ferner im Einzelfall speziellere Rechtsgrundlagen maßgeblich sein, teilen wir Ihnen diese in der Datenschutzerklärung mit.",
+      "secondParagraph": "Einwilligung (Art. 6 Abs. 1 S. 1 lit. a. DSGVO) - Die betroffene Person hat ihre Einwilligung in die Verarbeitung der sie betreffenden personenbezogenen Daten für einen spezifischen Zweck oder mehrere bestimmte Zwecke gegeben.",
+      "thirdParagraph": "Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO) - Die Verarbeitung ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten erforderlich, sofern nicht die Interessen oder Grundrechte und Grundfreiheiten der betroffenen Person, die den Schutz personenbezogener Daten erfordern, überwiegen.",
+      "fourthParagraph": "Zusätzlich zu den Datenschutzregelungen der Datenschutz-Grundverordnung gelten nationale Regelungen zum Datenschutz in Deutschland. Hierzu gehört insbesondere das Gesetz zum Schutz vor Missbrauch personenbezogener Daten bei der Datenverarbeitung (Bundesdatenschutzgesetz – BDSG). Das BDSG enthält insbesondere Spezialregelungen zum Recht auf Auskunft, zum Recht auf Löschung, zum Widerspruchsrecht, zur Verarbeitung besonderer Kategorien personenbezogener Daten, zur Verarbeitung für andere Zwecke und zur Übermittlung sowie automatisierten Entscheidungsfindung im Einzelfall einschließlich Profiling. Des Weiteren regelt es die Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses (§ 26 BDSG), insbesondere im Hinblick auf die Begründung, Durchführung oder Beendigung von Beschäftigungsverhältnissen sowie die Einwilligung von Beschäftigten. Ferner können Landesdatenschutzgesetze der einzelnen Bundesländer zur Anwendung gelangen."
+    },
+    "security": {
+      "header": "Sicherheitsmaßnahmen",
+      "firstParagraph": "Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der Technik, der Implementierungskosten und der Art, des Umfangs, der Umstände und der Zwecke der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeiten und des Ausmaßes der Bedrohung der Rechte und Freiheiten natürlicher Personen geeignete technische und organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.",
+      "secondParagraph": "Zu den Maßnahmen gehören insbesondere die Sicherung der Vertraulichkeit, Integrität und Verfügbarkeit von Daten durch Kontrolle des physischen und elektronischen Zugangs zu den Daten als auch des sie betreffenden Zugriffs, der Eingabe, der Weitergabe, der Sicherung der Verfügbarkeit und ihrer Trennung. Des Weiteren haben wir Verfahren eingerichtet, die eine Wahrnehmung von Betroffenenrechten, die Löschung von Daten und Reaktionen auf die Gefährdung der Daten gewährleisten. Ferner berücksichtigen wir den Schutz personenbezogener Daten bereits bei der Entwicklung bzw. Auswahl von Hardware, Software sowie Verfahren entsprechend dem Prinzip des Datenschutzes, durch Technikgestaltung und durch datenschutzfreundliche Voreinstellungen.",
+      "thirdParagraph": {
+        "header": "SSL-Verschlüsselung (https):",
+        "content": "Um Ihre via unserem Online-Angebot übermittelten Daten zu schützen, nutzen wir eine SSL-Verschlüsselung. Sie erkennen derart verschlüsselte Verbindungen an dem Präfix „https://“ in der Adresszeile Ihres Browsers."
+      }
+    },
+    "deletionOfData": {
+      "header": "Löschung von Daten",
+      "firstParagraph": "Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen Vorgaben gelöscht, sobald deren zur Verarbeitung erlaubten Einwilligungen widerrufen werden oder sonstige Erlaubnisse entfallen (z.B. wenn der Zweck der Verarbeitung dieser Daten entfallen ist oder sie für den Zweck nicht erforderlich sind).",
+      "secondParagraph": "Sofern die Daten nicht gelöscht werden, weil sie für andere und gesetzlich zulässige Zwecke erforderlich sind, wird deren Verarbeitung auf diese Zwecke beschränkt. D.h., die Daten werden gesperrt und nicht für andere Zwecke verarbeitet. Das gilt z.B. für Daten, die aus handels- oder steuerrechtlichen Gründen aufbewahrt werden müssen oder deren Speicherung zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder juristischen Person erforderlich ist.",
+      "thirdParagraph": "Unsere Datenschutzhinweise können ferner weitere Angaben zu der Aufbewahrung und Löschung von Daten beinhalten, die für die jeweiligen Verarbeitungen vorrangig gelten."
+    },
+    "useOfCookies": {
+      "header": "Einsatz von Cookies",
+      "firstParagraph": "Cookies sind kleine Textdateien, bzw. sonstige Speichervermerke, die Informationen auf Endgeräten speichern und Informationen aus den Endgeräten auslesen. Z.B. um den Login-Status in einem Nutzerkonto, einen Warenkorbinhalt in einem E-Shop, die aufgerufenen Inhalte oder verwendete Funktionen eines Onlineangebotes speichern. Cookies können ferner zu unterschiedlichen Zwecken eingesetzt werden, z.B. zu Zwecken der Funktionsfähigkeit, Sicherheit und Komfort von Onlineangeboten sowie der Erstellung von Analysen der Besucherströme.",
+      "secondParagraph": {
+        "header": "Hinweise zu datenschutzrechtlichen Rechtsgrundlagen: ",
+        "content": "Auf welcher datenschutzrechtlichen Rechtsgrundlage wir die personenbezogenen Daten der Nutzer mit Hilfe von Cookies verarbeiten, hängt davon ab, ob wir Nutzer um eine Einwilligung bitten. Falls die Nutzer einwilligen, ist die Rechtsgrundlage der Verarbeitung Ihrer Daten die erklärte Einwilligung. Andernfalls werden die mithilfe von Cookies verarbeiteten Daten auf Grundlage unserer berechtigten Interessen (z.B. an einem betriebswirtschaftlichen Betrieb unseres Onlineangebotes und Verbesserung seiner Nutzbarkeit) verarbeitet oder, wenn dies im Rahmen der Erfüllung unserer vertraglichen Pflichten erfolgt, wenn der Einsatz von Cookies erforderlich ist, um unsere vertraglichen Verpflichtungen zu erfüllen. Zu welchen Zwecken die Cookies von uns verarbeitet werden, darüber klären wir im Laufe dieser Datenschutzerklärung oder im Rahmen von unseren Einwilligungs- und Verarbeitungsprozessen auf."
+      },
+      "thirdParagraph": {
+        "header": "Speicherdauer:",
+        "content": "Im Hinblick auf die Speicherdauer werden die folgenden Arten von Cookies unterschieden:"
+      },
+      "fourthParagraph": {
+        "header": "Temporäre Cookies (auch: Session- oder Sitzungs-Cookies):",
+        "content": "Temporäre Cookies werden spätestens gelöscht, nachdem ein Nutzer ein Online-Angebot verlassen und sein Endgerät (z.B. Browser oder mobile Applikation) geschlossen hat."
+      },
+      "fifthParagraph": {
+        "header": "Permanente Cookies:",
+        "content": "Permanente Cookies bleiben auch nach dem Schließen des Endgerätes gespeichert. So können beispielsweise der Login-Status gespeichert oder bevorzugte Inhalte direkt angezeigt werden, wenn der Nutzer eine Website erneut besucht. Ebenso können die mit Hilfe von Cookies erhobenen Daten der Nutzer zur Reichweitenmessung verwendet werden. Sofern wir Nutzern keine expliziten Angaben zur Art und Speicherdauer von Cookies mitteilen (z. B. im Rahmen der Einholung der Einwilligung), sollten Nutzer davon ausgehen, dass Cookies permanent sind und die Speicherdauer bis zu zwei Jahre betragen kann."
+      }
+    },
+    "webhosting": {
+      "header": "Bereitstellung des Onlineangebotes und Webhosting",
+      "firstParagraph": "Um unser Onlineangebot sicher und effizient bereitstellen zu können, nehmen wir die Leistungen von einem oder mehreren Webhosting-Anbietern in Anspruch, von deren Servern (bzw. von ihnen verwalteten Servern) das Onlineangebot abgerufen werden kann. Zu diesen Zwecken können wir Infrastruktur- und Plattformdienstleistungen, Rechenkapazität, Speicherplatz und Datenbankdienste sowie Sicherheitsleistungen und technische Wartungsleistungen in Anspruch nehmen.",
+      "secondParagraph": "Zu den im Rahmen der Bereitstellung des Hostingangebotes verarbeiteten Daten können alle die Nutzer unseres Onlineangebotes betreffenden Angaben gehören, die im Rahmen der Nutzung und der Kommunikation anfallen. Hierzu gehören regelmäßig die IP-Adresse, die notwendig ist, um die Inhalte von Onlineangeboten an Browser ausliefern zu können, und alle innerhalb unseres Onlineangebotes oder von Webseiten getätigten Eingaben.",
+      "thirdParagraph": {
+        "header": "Verarbeitete Datenarten: ",
+        "content": "Inhaltsdaten (z.B. Eingaben in Onlineformularen); Nutzungsdaten (z.B. besuchte Webseiten, Interesse an Inhalten, Zugriffszeiten); Meta-/Kommunikationsdaten (z.B. Geräte-Informationen, IP-Adressen)."
+      },
+      "fourhtParagraph": {
+        "header": "Betroffene Personen: ",
+        "content": "Nutzer (z.B. Webseitenbesucher, Nutzer von Onlinediensten)."
+      },
+      "fifthParagraph": {
+        "header": "Zwecke der Verarbeitung:",
+        "content": "Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit."
+      },
+      "sixthParagraph": {
+        "header": "Rechtsgrundlagen:",
+        "content": "Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO)."
+      },
+      "subSection": {
+        "header": "Weitere Hinweise zu Verarbeitungsprozessen, Verfahren und Diensten",
+        "firstParagraph": {
+          "header": "Hetzner:",
+          "content": "Leistungen auf dem Gebiet der Bereitstellung von informationstechnischer Infrastruktur und verbundenen Dienstleistungen (z.B. Speicherplatz und/oder Rechenkapazitäten)."
+        },
+        "secondParagraph": {
+          "header": "Dienstanbieter:",
+          "content": "Hetzner Online GmbH, Industriestr. 25, 91710 Gunzenhausen, Deutschland"
+        },
+        "privacyStatement": "Datenschutzerklärung:",
+        "dataPrivacyFAQ": "Auftragsverarbeitungsvertrag:"
+      }
+    },
+    "votes": {
+      "header": "Umfragen und Befragungen",
+      "firstParagraph": "Die von uns durchgeführten Umfragen und Befragungen (nachfolgend „Befragungen“) werden anonym ausgewertet. Eine Verarbeitung personenbezogener Daten erfolgt nur insoweit, als dies zu Bereitstellung und technischen Durchführung der Umfragen erforderlich ist (z.B. Verarbeitung der IP-Adresse, um die Umfrage im Browser des Nutzers darzustellen oder mithilfe eines temporären Cookies (Session-Cookie) eine Wiederaufnahme der Umfrage zu ermöglichen) oder Nutzer eingewilligt haben.",
+      "secondParagraph": {
+        "header": "Hinweise zu Rechtsgrundlagen:",
+        "content": "Sofern wir die Teilnehmer um eine Einwilligung in die Verarbeitung ihrer Daten bitten, ist diese Rechtsgrundlage der Verarbeitung, ansonsten erfolgt die Verarbeitung der Daten der Teilnehmer auf Grundlage unserer berechtigten Interessen an der Durchführung einer objektiven Umfrage."
+      },
+      "thirdParagraph": {
+        "header": "Verarbeitete Datenarten:",
+        "content": "Kontaktdaten (z.B. E-Mail, Telefonnummern); Inhaltsdaten (z.B. Eingaben in Onlineformularen); Nutzungsdaten (z.B. besuchte Webseiten, Interesse an Inhalten, Zugriffszeiten); Meta-/Kommunikationsdaten (z.B. Geräte-Informationen, IP-Adressen)."
+      },
+      "fourthParagraph": {
+        "header": "Betroffene Personen:",
+        "content": "Kommunikationspartner."
+      },
+      "fifthParagraph": {
+        "header": "Zwecke der Verarbeitung:",
+        "content": "Kontaktanfragen und Kommunikation; Direktmarketing (z.B. per E-Mail oder postalisch)."
+      },
+      "sixthParagraph": {
+        "header": "Rechtsgrundlagen:",
+        "content": "Einwilligung (Art. 6 Abs. 1 S. 1 lit. a. DSGVO); Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO)."
+      }
+    },
+    "updates": {
+      "header": "Änderung und Aktualisierung der Datenschutzerklärung",
+      "firstParagraph": "Wir bitten Sie, sich regelmäßig über den Inhalt unserer Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung an, sobald die Änderungen der von uns durchgeführten Datenverarbeitungen dies erforderlich machen. Wir informieren Sie, sobald durch die Änderungen eine Mitwirkungshandlung Ihrerseits (z.B. Einwilligung) oder eine sonstige individuelle Benachrichtigung erforderlich wird.",
+      "secondParagraph": "Sofern wir in dieser Datenschutzerklärung Adressen und Kontaktinformationen von Unternehmen und Organisationen angeben, bitten wir zu beachten, dass die Adressen sich über die Zeit ändern können und bitten die Angaben vor Kontaktaufnahme zu prüfen."
+    },
+    "rights": {
+      "header": "Rechte der betroffenen Personen",
+      "firstParagraph": "Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:",
+      "secondParagraph": {
+        "header": "Widerspruchsrecht:",
+        "content": "Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling. Werden die Sie betreffenden personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten zum Zwecke derartiger Werbung einzulegen; dies gilt auch für das Profiling, soweit es mit solcher Direktwerbung in Verbindung steht."
+      },
+      "thirdParagraph": {
+        "header": "Widerrufsrecht bei Einwilligungen:",
+        "content": "Sie haben das Recht, erteilte Einwilligungen jederzeit zu widerrufen."
+      },
+      "fourthParagraph": {
+        "header": "Auskunftsrecht:",
+        "content": "Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob betreffende Daten verarbeitet werden und auf Auskunft über diese Daten sowie auf weitere Informationen und Kopie der Daten entsprechend den gesetzlichen Vorgaben."
+      },
+      "fifthParagraph": {
+        "header": "Recht auf Berichtigung:",
+        "content": "Sie haben entsprechend den gesetzlichen Vorgaben das Recht, die Vervollständigung der Sie betreffenden Daten oder die Berichtigung der Sie betreffenden unrichtigen Daten zu verlangen."
+      },
+      "sixthParagraph": {
+        "header": "Recht auf Löschung und Einschränkung der Verarbeitung:",
+        "content": "Sie haben nach Maßgabe der gesetzlichen Vorgaben das Recht, zu verlangen, dass Sie betreffende Daten unverzüglich gelöscht werden, bzw. alternativ nach Maßgabe der gesetzlichen Vorgaben eine Einschränkung der Verarbeitung der Daten zu verlangen."
+      },
+      "seventhParagraph": {
+        "header": "Recht auf Datenübertragbarkeit:",
+        "content": "Sie haben das Recht, Sie betreffende Daten, die Sie uns bereitgestellt haben, nach Maßgabe der gesetzlichen Vorgaben in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten oder deren Übermittlung an einen anderen Verantwortlichen zu fordern."
+      },
+      "eighthParagraph": {
+        "header": "Beschwerde bei Aufsichtsbehörde:",
+        "content": "Sie haben unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs das Recht auf Beschwerde bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen Aufenthaltsorts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes, wenn Sie der Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten gegen die Vorgaben der DSGVO verstößt."
+      }
+    },
+    "definitions": {
+      "header": "Begriffsdefinitionen",
+      "firstParagraph": "In diesem Abschnitt erhalten Sie eine Übersicht über die in dieser Datenschutzerklärung verwendeten Begrifflichkeiten. Viele der Begriffe sind dem Gesetz entnommen und vor allem im Art. 4 DSGVO definiert. Die gesetzlichen Definitionen sind verbindlich. Die nachfolgenden Erläuterungen sollen dagegen vor allem dem Verständnis dienen. Die Begriffe sind alphabetisch sortiert.",
+      "secondParagraph": {
+        "header": "Personenbezogene Daten:",
+        "content": "„Personenbezogene Daten“ sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person“) beziehen; als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung (z.B. Cookie) oder zu einem oder mehreren besonderen Merkmalen identifiziert werden kann, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind."
+      },
+      "thirdParagraph": {
+        "header": "Verantwortlicher:",
+        "content": "Als „Verantwortlicher“ wird die natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet, bezeichnet."
+      },
+      "fourthParagraph": {
+        "header": "Verarbeitung:",
+        "content": "„Verarbeitung“ ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten. Der Begriff reicht weit und umfasst praktisch jeden Umgang mit Daten, sei es das Erheben, das Auswerten, das Speichern, das Übermitteln oder das Löschen."
+      }
+    },
+    "external": {
+      "header": "Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken.",
+      "content": "Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke"
+    }
+  },
+  "sources": {
+    "header": "unsere.quellen()",
+    "videos": "Videos",
+    "article": "Artikel"
   }
 }

@@ -2,12 +2,12 @@ import {
   createAsyncThunk,
   createSelector,
   createSlice,
-  SerializedError
+  SerializedError,
 } from "@reduxjs/toolkit";
 
+import { selectBallot } from "./ballot";
 import { RootState, ThunkExtra } from "./rootStore";
 import { selectToken } from "./token";
-import { selectBallot } from "./ballot";
 
 export interface VoteState {
   voteError?: SerializedError;
@@ -23,10 +23,7 @@ export const initialState: VoteState = {
 
 export const recordVote = createAsyncThunk<void, string, ThunkExtra>(
   "vote/recordVote",
-  async (
-    identifier,
-    { getState, extra: { api }, dispatch, rejectWithValue }
-  ) => {
+  async (identifier, { getState, extra: { api } }) => {
     const { token, captchaToken } = selectToken(getState() as RootState);
     const { ballot } = selectBallot(getState() as RootState);
 
@@ -45,7 +42,7 @@ export const voteSlice = createSlice({
       state.voteError = undefined;
       state.voteLoading = true;
     });
-    builder.addCase(recordVote.fulfilled, (state, action) => {
+    builder.addCase(recordVote.fulfilled, (state) => {
       state.voteLoading = false;
       state.voteResult = "SUCCESS";
     });

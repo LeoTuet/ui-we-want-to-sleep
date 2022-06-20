@@ -1,12 +1,13 @@
-import styles from "./OptionsPanel.module.scss";
-import { Option, SelectSlider } from "./SelectSlider";
-import moon from "../assets/moon_outline.svg";
-import sun from "../assets/sun_outline.svg";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
+
+import moon from "../assets/moon_outline.svg";
+import sun from "../assets/sun_outline.svg";
 import { useTheme } from "../hooks/useTheme";
-import { actions } from "../stores/ui";
 import { Theme } from "../models";
+import { actions } from "../stores/ui";
+import styles from "./OptionsPanel.module.scss";
+import { Option, SelectSlider } from "./SelectSlider";
 
 /**
  * Component for selecting the language and theme
@@ -17,14 +18,14 @@ export function OptionsPanel() {
   const { theme } = useTheme();
 
   return (
-    <div className={styles.outer}>
+    <span className={styles.outer}>
       <SelectSlider
         name={t("ui.language")}
         options={[
           { name: "de-DE", node: "Deutsch" },
           { name: "en-US", node: "English" },
         ]}
-        value={i18n.language}
+        value={getLanguage(i18n.language)}
         onChange={i18n.changeLanguage}
       />
       <SelectSlider
@@ -36,7 +37,7 @@ export function OptionsPanel() {
         value={theme}
         onChange={(theme) => dispatch(actions.setTheme(theme))}
       />
-    </div>
+    </span>
   );
 }
 
@@ -53,4 +54,12 @@ function option(
     name,
     node: <img src={src} alt={alt} aria-label={label} title={label} />,
   };
+}
+
+function getLanguage(lang: string): "de-DE" | "en-US" {
+  if (lang === "en" || lang.startsWith("en-")) {
+    return "en-US";
+  } else {
+    return "de-DE";
+  }
 }

@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
+
 import styles from "./SelectSlider.module.scss";
 
 interface SelectProps<T extends string> {
@@ -27,7 +28,7 @@ export function SelectSlider<T extends string>({
   onChange,
 }: SelectProps<T>) {
   return (
-    <div className={styles.slider} title={name} aria-label={name}>
+    <span className={styles.slider} title={name} aria-label={name}>
       {options.map(({ name, node }) => (
         <button
           className={classNames({ [styles.selected]: name === value })}
@@ -41,6 +42,6 @@ export function SelectSlider<T extends string>({
           {node}
         </button>
       ))}
-    </div>
+    </span>
   );
 }

@@ -1,16 +1,13 @@
-export interface BallotResponse {
-  data: Ballot;
-}
-
 export interface Ballot {
   _id: string;
+  question: TranslatableText;
   running: boolean;
   options: VoteOption[];
 }
 
 export interface VoteOption {
   identifier: string;
-  label: string;
+  label: TranslatableText;
 }
 
 export interface TokenStatus {
@@ -19,5 +16,17 @@ export interface TokenStatus {
   used: boolean;
 }
 
-export type Theme = "light" | "dark";
 export type CookieConsent = "accepted" | undefined;
+export type Theme = "light" | "dark" | "default";
+
+export interface Jwt {
+  readonly encoded: string;
+  readonly username: string;
+  readonly iat: number;
+  readonly exp: number;
+}
+
+export interface TranslatableText {
+  de: string;
+  en: string;
+}

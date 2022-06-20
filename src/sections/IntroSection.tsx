@@ -1,12 +1,12 @@
-import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { OptionsPanel } from "../components/OptionsPanel";
 import { Sheep } from "../components/Sheep";
+import { StarBackground } from "../components/StarBackground";
 import { TypingHeading } from "../components/TypingHeading";
 import { Size, useWindowSize } from "../hooks/useWindowSize";
 import styles from "./IntroSection.module.scss";
-import { StarBackground } from "../components/StarBackground";
-import { useTranslation } from "react-i18next";
-import { OptionsPanel } from "../components/OptionsPanel";
 
 export const IntroSection = () => {
   const sheep = useRef<HTMLDivElement | null>(null);
@@ -30,11 +30,7 @@ export const IntroSection = () => {
           <OptionsPanel />
         </div>
         <div className={styles.innerSection}>
-          <TypingHeading
-            finalText={"we.wantToSleep()"}
-            hlStart={3}
-            hlEnd={14}
-          />
+          <TypingHeading finalText={"we.wantToSleep()"} />
           <p className={styles.description}>{t("intro.welcomeText")}</p>
         </div>
         <div className={styles.sheepContainer} ref={sheep}>

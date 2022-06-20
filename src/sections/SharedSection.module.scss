@@ -1,16 +1,29 @@
 @use "src/theme/mixin";
 
-.legalSubheader {
+.sharedSubheader {
   margin: 0;
   font-size: 1.4rem;
 }
 
+.sharedSection h2 {
+  margin-bottom: 1em;
+}
+
 @media (min-width: 992px) {
-  .legalSection {
+  .sharedSection {
     @include mixin.defaultGrid;
   }
+}
 
-  .legalSubheader {
+@media (min-width: $large) {
+  .sharedSection {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1rem;
+    display: grid;
+    align-items: flex-start;
+  }
+
+  .sharedSubheader {
     grid-column-start: 1;
     grid-column-end: 5;
     position: sticky;
@@ -19,7 +32,7 @@
   }
 }
 
-.legalText {
+.sharedText {
   grid-column-start: 6;
   grid-column-end: 13;
   & > h3:first-child {

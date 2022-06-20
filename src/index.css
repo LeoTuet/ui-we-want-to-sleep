@@ -7,6 +7,7 @@
   --footer-color: black;
 
   --background: white;
+  --input-background: #dddddd;
   --header-background: #282c34;
   --footer-background: #f4f4f4;
 
@@ -19,6 +20,7 @@
 
   --vote-button-background: #ffef3f;
   --vote-button-color: black;
+  --green-button-background: #50dd4b;
 
   --selection-background: var(--theme-color);
   --selection-text: #100522;
@@ -33,6 +35,7 @@
   --footer-color: white;
 
   --background: #111111;
+  --input-background: #333333;
   --header-background: #282c34;
   --footer-background: #09090a;
 
@@ -45,6 +48,7 @@
 
   --vote-button-background: #ffef3f;
   --vote-button-color: black;
+  --green-button-background: #058a00;
 
   --selection-background: var(--theme-color);
   --selection-text: #100522;
