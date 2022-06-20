@@ -3,13 +3,31 @@
   grid-template-columns: min-content 1fr;
   gap: 1rem;
   text-align: end;
+  max-width: 30rem;
+  width: 50vw;
 }
 
 .bar {
   background-color: var(--theme-color);
   color: var(--theme-background);
+  box-sizing: border-box;
   border-radius: 10px;
   font-weight: bold;
   text-align: start;
   padding: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .gridLayout {
+    grid-template-rows: min-content 1fr;
+    grid-template-columns: 1fr;
+    gap: 0;
+    text-align: start;
+    width: 100%;
+
+    & > p:not(:first-child) {
+      margin-top: 2rem
+    }
+
+  }
 }

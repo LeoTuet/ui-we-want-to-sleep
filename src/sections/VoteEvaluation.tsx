@@ -18,33 +18,39 @@ export const VoteEvaluation = ({
   interface PercentageBarProps {
     percentage: number | undefined;
     voteOption: string | undefined;
+    width: string | undefined;
   }
 
-  const PercentageBar = ({
-    percentage = 0,
-    voteOption = "",
-  }: PercentageBarProps) => {
-    return (
-      <>
-        <p>{voteOption}</p>
-        <div className={styles.bar} style={{ width: `${percentage / 3}vw` }}>
-          {percentage + "%"}
-        </div>
-      </>
-    );
-  };
-
   const prepareVoteResults = () => {
-    return voteResults.map((results) => {
+    const winningCount = Math.max(
+      ...voteResults.map((result) => result.amount)
+    );
+    return voteResults.map((result) => {
       const options = ballot.options.find(
-        (option) => option.identifier === results.questionIdentifier
+        (option) => option.identifier === result.questionIdentifier
       );
       if (!options) return;
       return {
         label: options.label,
-        percentage: Number(((results.amount / voteCount) * 100).toFixed(2)),
+        percentage: Number(((result.amount / voteCount) * 100).toFixed(2)),
+        width: `${((result.amount / winningCount) * 100).toFixed(2)}%`,
       };
     });
+  };
+
+  const PercentageBar = ({
+    percentage = 0,
+    voteOption = "",
+    width = "0%",
+  }: PercentageBarProps) => {
+    return (
+      <>
+        <p>{voteOption}</p>
+        <div className={styles.bar} style={{ width: width }}>
+          {percentage + "%"}
+        </div>
+      </>
+    );
   };
 
   return (
@@ -54,6 +60,7 @@ export const VoteEvaluation = ({
           key={result?.percentage}
           percentage={result?.percentage}
           voteOption={result?.label[language]}
+          width={result?.width}
         />
       ))}
     </section>

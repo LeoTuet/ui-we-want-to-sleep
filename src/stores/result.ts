@@ -8,7 +8,6 @@ import {
 import { TotalVoteCount } from "../models";
 import { VoteResult } from "./../models/index";
 import { selectAdminStore } from "./admin";
-import { selectBallot } from "./ballot";
 import { RootState, ThunkExtra } from "./rootStore";
 
 export interface ResultState {
@@ -33,10 +32,8 @@ export const fetchVoteResult = createAsyncThunk<
   VoteResult[] | undefined,
   string,
   ThunkExtra
->("result/fetchVoteResult", async (ballotID, { getState, extra: { api } }) => {
-  const admin = selectAdminStore(getState() as RootState);
-  if (!admin.decodedJwt) return;
-  return await api.ballotApi.getVoteResult(ballotID, admin.decodedJwt);
+>("result/fetchVoteResult", async (ballotID, { extra: { api } }) => {
+  return await api.ballotApi.getVoteResult(ballotID);
 });
 
 export const fetchTotalVoteCount = createAsyncThunk<

@@ -19,7 +19,6 @@ export const Result = () => {
   const ballot = useSelector(selectBallot);
   const result = useSelector(selectResult);
   const dispatch = useDispatch();
-  const { t } = useTranslation();
   const { language } = useCurrentLanguage();
 
   useEffect(() => {
@@ -47,10 +46,6 @@ export const Result = () => {
             />
           )}
         </div>
-        {/* <TypingHeader
-          className={styles.adjustedTypingHeader}
-          finalText="vote.results()"
-        /> */}
       </StarBackground>
     </>
   );
