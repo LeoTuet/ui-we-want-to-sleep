@@ -7,7 +7,6 @@ import {
 
 import { TotalVoteCount } from "../models";
 import { VoteResult } from "./../models/index";
-import { selectAdminStore } from "./admin";
 import { RootState, ThunkExtra } from "./rootStore";
 
 export interface ResultState {

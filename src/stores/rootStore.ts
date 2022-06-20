@@ -63,3 +63,5 @@ export const initialRootState: RootState = {
   admin: adminState,
   result: resultState,
 };
+
+export type AppDispatch = ReturnType<typeof createStore>["dispatch"];

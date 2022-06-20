@@ -8,23 +8,25 @@ import { Home } from "./pages/Home";
 import { Result } from "./pages/Result";
 import { Footer } from "./sections/Footer";
 import { fetchRunningBallot } from "./stores/ballot";
+import { AppDispatch } from "./stores/rootStore";
 import { fetchTokenStatus } from "./stores/token";
 
 function App() {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+
+  const asyncDispatch = useDispatch<AppDispatch>();
   useEffect(() => window.scrollTo(0, 0), [pathname]);
   useTheme();
 
   useEffect(() => {
-    // There is an issue with typing the dispatch correctly.
-    // Here is a link on how it should be: https://redux-toolkit.js.org/usage/usage-with-typescript#getting-the-dispatch-type
-    // Feel free to fix it - I wasn't able to
-    // totalHoursWasted: 1
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
-  }, [dispatch]);
+    const f = async () => {
+      await asyncDispatch(fetchRunningBallot());
+      dispatch(fetchTokenStatus());
+    };
+
+    f();
+  }, [asyncDispatch, dispatch]);
 
   return (
     <div className="App">
