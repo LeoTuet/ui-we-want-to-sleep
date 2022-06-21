@@ -6,8 +6,8 @@ import { ContentSection } from "../sections/ContentSection";
 import { IntroSection } from "../sections/IntroSection";
 import { NoVotingSection, NoVotingType } from "../sections/NoVotingSection";
 import { VotingSection } from "../sections/VotingSection";
-import { fetchRunningBallot, selectBallot } from "../stores/ballot";
-import { actions, fetchTokenStatus, selectToken } from "../stores/token";
+import { selectBallot } from "../stores/ballot";
+import { actions, selectToken } from "../stores/token";
 import { recordVote, selectVote } from "../stores/vote";
 import styles from "./Home.module.scss";
 

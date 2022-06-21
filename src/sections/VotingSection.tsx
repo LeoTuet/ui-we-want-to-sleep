@@ -5,10 +5,9 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import { WWTSButton } from "../components/Button";
-import { Ballot, TranslatableText } from "../models";
-import { selectUIStore } from "../stores/ui";
 import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
-
+import { Ballot } from "../models";
+import { selectUIStore } from "../stores/ui";
 import styles from "./VotingSection.module.scss";
 
 interface VotingSectionProps {

@@ -8,10 +8,10 @@ import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
 import { Result } from "./pages/Result";
 import { Footer } from "./sections/Footer";
-import { CookieBannerWidget } from "./widgets/CookieBannerWidget";
 import { fetchRunningBallot } from "./stores/ballot";
 import { AppDispatch } from "./stores/rootStore";
 import { fetchTokenStatus } from "./stores/token";
+import { CookieBannerWidget } from "./widgets/CookieBannerWidget";
 
 function App() {
   const { pathname } = useLocation();
