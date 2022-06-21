@@ -7,6 +7,11 @@ import {
   BallotState,
   initialState as ballotState,
 } from "./ballot";
+import {
+  initialState as resultState,
+  resultSlice,
+  ResultState,
+} from "./result";
 import { initialState as toastState, toastSlice, ToastState } from "./toasts";
 import { initialState as tokenState, tokenSlice, TokenState } from "./token";
 import { initialState as uiState, uiSlice, UIState } from "./ui";
@@ -19,6 +24,7 @@ export type RootState = {
   ui: UIState;
   admin: AdminState;
   toasts: ToastState;
+  result: ResultState;
 };
 
 export type ThunkExtra = {
@@ -36,6 +42,7 @@ export const createStore = (api: Api) =>
       ui: uiSlice.reducer,
       admin: adminSlice.reducer,
       toasts: toastSlice.reducer,
+      result: resultSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -54,4 +61,7 @@ export const initialRootState: RootState = {
   ui: uiState,
   toasts: toastState,
   admin: adminState,
+  result: resultState,
 };
+
+export type AppDispatch = ReturnType<typeof createStore>["dispatch"];

@@ -19,15 +19,6 @@ export const Home = () => {
 
   const { token } = useParams();
 
-  useEffect(() => {
-    // There is an issue with typing the dispatch correctly.
-    // Here is a link on how it should be: https://redux-toolkit.js.org/usage/usage-with-typescript#getting-the-dispatch-type
-    // Feel free to fix it - I wasn't able to
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dispatch(fetchRunningBallot()).then(() => dispatch(fetchTokenStatus()));
-  }, [dispatch]);
-
   const handleVote = useCallback(
     (identifier: string) => {
       dispatch(recordVote(identifier));

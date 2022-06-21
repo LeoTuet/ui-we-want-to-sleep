@@ -1,0 +1,29 @@
+.gridLayout {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  text-align: start;
+  width: 100%;
+  gap: 1.5rem 1rem;
+
+  & > p {
+    margin-bottom: -0.5rem;
+  }
+}
+
+.bar {
+  background-color: var(--theme-color);
+  color: var(--theme-background);
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: start;
+  padding: 1rem;
+}
+
+@media (min-width: 1000px) {
+  .gridLayout {
+    grid-template-columns: min-content 1fr;
+    max-width: 30rem;
+    width: 50vw;
+  }
+}

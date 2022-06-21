@@ -30,3 +30,15 @@ export interface TranslatableText {
   de: string;
   en: string;
 }
+
+export type TranslatableTextKeys = keyof TranslatableText;
+
+export interface VoteResult {
+  questionIdentifier: string;
+  questionLabel: TranslatableText;
+  amount: number;
+}
+
+export interface TotalVoteCount {
+  count: number;
+}

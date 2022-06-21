@@ -1,11 +1,16 @@
 {
+  "navigation": {
+    "landingPage": "Startseite",
+    "results": "Ergebnisse"
+  },
   "intro": {
     "welcomeText": "Es ist wissenschaftlich bewiesen, dass das Gehirn erst ab ca. 9 Uhr richtig leistungsfähig ist. Unsere Berufsschule startet um 7:30. Das geht besser."
   },
   "content": {
     "firstParagraph": "Gerade Schüler:innen mit langer Anfahrt beschweren sich immer wieder darüber, dass sie absurd früh aufstehen müssen. Selbst, wenn man in München wohnt und auf den öffentlichen Nahverkehr angewiesen ist (man will ja auch nicht bei der kleinsten Verzögerung der U-Bahn zu spät kommen), ist 7:30 wahnsinnig früh.",
     "secondParagraph": "Wir setzen uns dafür ein, dass die Schule zu einem späteren Zeitpunkt startet und so mehr dem von Wissenschaftler:innen empfohlenen Biorhythmus entspricht.",
-    "thirdParagraph": "Vor einigen Jahren gab es schon einmal eine Abstimmung, die die Uhrzeit bestätigt hat; wir wollen herausfinden ob es mittlerweile eine Mehrheit für einen späteren Schulstart gibt."
+    "thirdParagraph": "Vor einigen Jahren gab es schon einmal eine Abstimmung, die die Uhrzeit bestätigt hat; wir wollen herausfinden ob es mittlerweile eine Mehrheit für einen späteren Schulstart gibt.",
+    "disclaimer": "Aus einem verschobenen Schulbeginn resultiert natürlich auch ein verschobener Schulschluss. Realistisch ist ein Schulbeginn um 8.00 Uhr; in diesem Fall endet der Schultag eine halbe Stunde später."
   },
   "footer": {
     "header": "Prinzipien unserer Arbeit",
@@ -27,12 +32,6 @@
     "forNerds": {
       "header": "Für Nerds",
       "database": "Datenbank"
-    },
-    "links": {
-      "about": {
-        "header": "Über uns",
-        "ourStuff": "Unzer Zeug"
-      }
     }
   },
   "ui": {
@@ -42,7 +41,6 @@
     "language": "Sprache"
   },
   "voting": {
-    "question": "Welchen Unterrichtsbeginn wünscht du dir?",
     "description": "Du kannst nur einmal abstimmen und deine Wahl nicht mehr ändern. Wähle weise.",
     "error": "Das hier ist ein Error"
   },

@@ -1,19 +1,35 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import { Lazy } from "./components/Lazy";
 import { useCookieConsent } from "./hooks/useCookieConsent";
 import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
+import { Result } from "./pages/Result";
 import { Footer } from "./sections/Footer";
 import { CookieBannerWidget } from "./widgets/CookieBannerWidget";
+import { fetchRunningBallot } from "./stores/ballot";
+import { AppDispatch } from "./stores/rootStore";
+import { fetchTokenStatus } from "./stores/token";
 
 function App() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  const dispatch = useDispatch();
 
+  const asyncDispatch = useDispatch<AppDispatch>();
+  useEffect(() => window.scrollTo(0, 0), [pathname]);
   useTheme();
   useCookieConsent();
+
+  useEffect(() => {
+    const f = async () => {
+      await asyncDispatch(fetchRunningBallot());
+      dispatch(fetchTokenStatus());
+    };
+
+    f();
+  }, [asyncDispatch, dispatch]);
 
   return (
     <div className="App">
@@ -48,6 +64,7 @@ function App() {
             />
           }
         />
+        <Route path="result" element={<Result />} />
         <Route
           path="admin/*"
           element={
