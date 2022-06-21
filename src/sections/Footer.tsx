@@ -73,14 +73,6 @@ export const Footer = () => {
                 />
               ),
             },
-            {
-              title: t("footer.links.about.header"),
-              detail: (
-                <a className={styles.link}>
-                  {t("footer.links.about.ourStuff")}
-                </a>
-              ),
-            },
           ]}
         />
         <p className={styles.centered}>
