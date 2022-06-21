@@ -40,6 +40,13 @@ export const VotingSection = ({
   return (
     <section className={styles.container}>
       <div className={styles.votingSection}>
+        <div className={styles.disclaimer}>
+          <p>
+            <strong>Disclaimer:</strong> {t("content.disclaimerOne")}
+            <br /> <br />
+            {t("content.disclaimerTwo")}
+          </p>
+        </div>
         <h4 className={styles.question}>
           {ballot.ballot?.question[languageIdentifier]}
         </h4>
