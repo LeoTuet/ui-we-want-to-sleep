@@ -19,8 +19,9 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--btn-background-color);
+    outline: 3px solid var(--btn-background-color);
     outline-offset: 3px;
+    // TODO looks ass in lightmode
   }
 }
 

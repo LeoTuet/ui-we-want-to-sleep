@@ -54,7 +54,10 @@ export function BallotCrud() {
         <BallotForm onFormClose={() => setCreationFormVisible(false)} />
       ) : (
         <p>
-          <WWTSButton onClick={() => setCreationFormVisible(true)}>
+          <WWTSButton
+            variant="admin"
+            onClick={() => setCreationFormVisible(true)}
+          >
             Create new ballot
           </WWTSButton>
         </p>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { WWTSButton } from "../admin/components/Button";
+import { WWTSButton } from "../components/Button";
 import styles from "./BottomBanner.module.scss";
 
 interface BottomBannerProps {

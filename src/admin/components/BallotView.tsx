@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import { useCallback, useState } from "react";
 
+import { WWTSButton } from "../../components/Button";
 import { Ballot } from "../../models";
 import { BallotForm } from "../sections/BallotForm";
 import styles from "./BallotView.module.scss";
-import { WWTSButton } from "./Button";
 
 interface BallotProps {
   ballot: Ballot;
@@ -68,12 +68,14 @@ function BallotView({ ballot, onDelete, onStatusChange }: BallotProps) {
           onFormClose={() => setUpdateFormVisible(false)}
         />
       ) : (
-        <WWTSButton onClick={() => setUpdateFormVisible(true)}>
+        <WWTSButton variant="admin" onClick={() => setUpdateFormVisible(true)}>
           Update
         </WWTSButton>
       )}
-      <WWTSButton onClick={handleBallotDelte}>Delete</WWTSButton>
-      <WWTSButton onClick={toggleRunning}>
+      <WWTSButton variant="admin" onClick={handleBallotDelte}>
+        Delete
+      </WWTSButton>
+      <WWTSButton variant="admin" onClick={toggleRunning}>
         {ballot.running ? "Pause" : "Start"}
       </WWTSButton>
     </div>

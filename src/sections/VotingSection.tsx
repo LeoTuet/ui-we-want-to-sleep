@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
-import { WWTSButton } from "../admin/components/Button";
+import { WWTSButton } from "../components/Button";
 import { Ballot, TranslatableText } from "../models";
 import { selectUIStore } from "../stores/ui";
 import styles from "./VotingSection.module.scss";
@@ -61,18 +61,18 @@ export const VotingSection = ({
           </div>
         )}
 
-        {captchaSaved && (
-          <div className={styles.buttonContainer}>
-            {ballot.ballot?.options.map((option) => (
-              <WWTSButton
-                key={option.identifier}
-                onClick={() => onVote(option.identifier)}
-              >
-                {option.label[language]}
-              </WWTSButton>
-            ))}
-          </div>
-        )}
+        {/* {captchaSaved && ( */}
+        <div className={styles.buttonContainer}>
+          {ballot.ballot?.options.map((option) => (
+            <WWTSButton
+              key={option.identifier}
+              onClick={() => onVote(option.identifier)}
+            >
+              {option.label[language]}
+            </WWTSButton>
+          ))}
+        </div>
+        {/* )} */}
         {ballot.ballotError && <p>{t("voting.error")}</p>}
       </div>
     </section>
