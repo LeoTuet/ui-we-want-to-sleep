@@ -78,6 +78,10 @@
       "content": "Your captcha was invalid!"
     }
   },
+  "cookieBanner": {
+    "content": "We are only using a single essential cookie to ensure the functionality of the captcha",
+    "acceptButtonText": "Accept"
+  },
   "imprint": {
     "header": "our.imprint()",
     "general": {

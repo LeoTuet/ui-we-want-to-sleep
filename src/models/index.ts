@@ -16,6 +16,7 @@ export interface TokenStatus {
   used: boolean;
 }
 
+export type CookieConsent = "accepted" | undefined;
 export type Theme = "light" | "dark" | "default";
 
 export interface Jwt {

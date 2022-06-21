@@ -1,0 +1,45 @@
+@use "src/theme/mixin";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.bannerBackground {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 2.25em 1.25em;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+}
+
+.bannerContent {
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 1.5rem;
+}
+
+@media (min-width: 630px) {
+  .bannerContent {
+    @include mixin.defaultGrid;
+  }
+
+  .bannerText {
+    grid-column: 1 / 9;
+  }
+
+  .bannerButton {
+    grid-column: 10 / 13;
+    align-self: center;
+    max-height: 4em;
+  }
+}

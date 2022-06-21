@@ -1,4 +1,4 @@
-$medium: 768px;
+@use "src/theme/mixin";
 $large: 992px;
 
 .sharedSubheader {
@@ -8,6 +8,12 @@ $large: 992px;
 
 .sharedSection h2 {
   margin-bottom: 1em;
+}
+
+@media (min-width: $large) {
+  .sharedSection {
+    @include mixin.defaultGrid;
+  }
 }
 
 @media (min-width: $large) {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { WWTSButton } from "../../components/Button";
 import { Ballot } from "../../models";
 import {
   deleteBallot,
@@ -9,7 +10,6 @@ import {
   updateBallot,
 } from "../../stores/admin";
 import BallotView from "../components/BallotView";
-import { WWTSButton } from "../components/Button";
 import { BallotForm } from "./BallotForm";
 
 export function BallotCrud() {
@@ -54,7 +54,10 @@ export function BallotCrud() {
         <BallotForm onFormClose={() => setCreationFormVisible(false)} />
       ) : (
         <p>
-          <WWTSButton onClick={() => setCreationFormVisible(true)}>
+          <WWTSButton
+            variant="admin"
+            onClick={() => setCreationFormVisible(true)}
+          >
             Create new ballot
           </WWTSButton>
         </p>

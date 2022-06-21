@@ -66,6 +66,12 @@ body {
   background-color: var(--background);
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 ::selection {
   background: var(--selection-background);
   color: var(--selection-text);
