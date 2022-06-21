@@ -1,6 +1,6 @@
 import { HTMLAttributes, useMemo } from "react";
 
-import { WWTSAnchor } from "./Button";
+import { WWTSAnchor } from "../../components/Button";
 
 interface Props extends Omit<HTMLAttributes<HTMLAnchorElement>, "href"> {
   download: string;

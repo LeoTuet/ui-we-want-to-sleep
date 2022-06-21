@@ -2,10 +2,10 @@ import { FormEvent, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
+import { WWTSButton, WWTSInput } from "../../components/Button";
 import { Ballot, VoteOption } from "../../models";
 import { CreationBallot } from "../../network/ballotApi";
 import { createBallot, updateBallot } from "../../stores/admin";
-import { WWTSButton, WWTSInput } from "../components/Button";
 import VoteOptionView from "../components/VoteOption";
 import styles from "./BallotForm.module.scss";
 
@@ -176,7 +176,11 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
             onlyEdit={!!payload}
           />
         ))}
-        <WWTSButton className={styles.addVoteOption} onClick={addVoteOption}>
+        <WWTSButton
+          variant="admin"
+          className={styles.addVoteOption}
+          onClick={addVoteOption}
+        >
           +
         </WWTSButton>
 
@@ -187,7 +191,11 @@ export function BallotForm({ payload, onFormClose }: BallotProps) {
             value="Submit"
             disabled={!isDirty || !isValid}
           />
-          <WWTSButton className={styles.cancel} onClick={onFormClose}>
+          <WWTSButton
+            variant="admin"
+            className={styles.cancel}
+            onClick={onFormClose}
+          >
             Cancel
           </WWTSButton>
         </div>

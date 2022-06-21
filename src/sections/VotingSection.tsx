@@ -2,9 +2,12 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { SerializedError } from "@reduxjs/toolkit";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
+import { WWTSButton } from "../components/Button";
 import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
 import { Ballot } from "../models";
+import { selectUIStore } from "../stores/ui";
 import styles from "./VotingSection.module.scss";
 
 interface VotingSectionProps {
@@ -24,6 +27,7 @@ export const VotingSection = ({
 }: VotingSectionProps) => {
   const languageIdentifier = useCurrentLanguage();
   const [captchaSaved, setCaptchaSaved] = useState(false);
+  const { cookieConsent } = useSelector(selectUIStore);
   const { t } = useTranslation();
 
   const handleTokenReceive = useCallback(
@@ -51,7 +55,7 @@ export const VotingSection = ({
           {ballot.ballot?.question[languageIdentifier]}
         </h4>
         <p className={styles.description}>{t("voting.description")}</p>
-        {!captchaSaved && (
+        {!captchaSaved && cookieConsent == "accepted" && (
           <div className={styles.captchaContainer}>
             <div style={{ marginBottom: "-7px" }}>
               {/* for vertical alignment */}
@@ -66,13 +70,13 @@ export const VotingSection = ({
         {captchaSaved && (
           <div className={styles.buttonContainer}>
             {ballot.ballot?.options.map((option) => (
-              <button
+              <WWTSButton
                 key={option.identifier}
                 className={styles.voteButton}
                 onClick={() => onVote(option.identifier)}
               >
                 {option.label[languageIdentifier]}
-              </button>
+              </WWTSButton>
             ))}
           </div>
         )}

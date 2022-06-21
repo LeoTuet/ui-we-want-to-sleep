@@ -1,4 +1,3 @@
-@import "src/theme/mixin";
 
 .container {
   margin: 0;
@@ -21,24 +20,6 @@
   grid-template-columns: 1fr;
   grid-auto-rows: auto auto;
   row-gap: 0.5rem;
-}
-
-.voteButton {
-  @include noSelect;
-  background-color: var(--vote-button-background);
-  color: var(--vote-button-color);
-  border-radius: 12px;
-  font: inherit;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  padding: 1rem;
-  cursor: pointer;
-  transition: 0.2s ease-out;
-
-  &:active {
-    transform: scale(0.97);
-  }
 }
 
 .captchaContainer {

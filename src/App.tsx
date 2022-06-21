@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import { Lazy } from "./components/Lazy";
+import { useCookieConsent } from "./hooks/useCookieConsent";
 import { useTheme } from "./hooks/useTheme";
 import { Home } from "./pages/Home";
 import { Result } from "./pages/Result";
@@ -10,6 +11,7 @@ import { Footer } from "./sections/Footer";
 import { fetchRunningBallot } from "./stores/ballot";
 import { AppDispatch } from "./stores/rootStore";
 import { fetchTokenStatus } from "./stores/token";
+import { CookieBannerWidget } from "./widgets/CookieBannerWidget";
 
 function App() {
   const { pathname } = useLocation();
@@ -18,6 +20,7 @@ function App() {
   const asyncDispatch = useDispatch<AppDispatch>();
   useEffect(() => window.scrollTo(0, 0), [pathname]);
   useTheme();
+  useCookieConsent();
 
   useEffect(() => {
     const f = async () => {
@@ -30,6 +33,7 @@ function App() {
 
   return (
     <div className="App">
+      <CookieBannerWidget />
       <Routes>
         <Route path="/:token" element={<Home />} />
         <Route
