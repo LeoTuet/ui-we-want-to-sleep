@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { OptionsPanel } from "../components/OptionsPanel";
 import { Sheep } from "../components/Sheep";
@@ -31,7 +32,11 @@ export const IntroSection = () => {
         </div>
         <div className={styles.innerSection}>
           <TypingHeader finalText={"we.wantToSleep()"} />
-          <p className={styles.description}>{t("intro.welcomeText")}</p>
+          <p className={styles.description}>
+            <Trans i18nKey="intro.welcomeText">
+              It is <Link to="/sources">scientifically proven</Link> that the...
+            </Trans>
+          </p>
         </div>
         <div className={styles.sheepContainer} ref={sheep}>
           <Sheep className={styles.sheepCanvas} size={sheepContainerSize} />
