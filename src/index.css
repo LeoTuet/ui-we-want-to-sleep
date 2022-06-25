@@ -12,7 +12,7 @@
   --footer-background: #f4f4f4;
 
   --link: black;
-  --header-link: white;
+  --header-link: var(--theme-color);
   --footer-link: black;
 
   --captcha-background: #f4f4f4;
@@ -40,7 +40,7 @@
   --footer-background: #09090a;
 
   --link: white;
-  --header-link: white;
+  --header-link: var(--theme-color);
   --footer-link: white;
 
   --captcha-background: #282c34;
