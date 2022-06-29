@@ -7,14 +7,20 @@ import {
 
 import styles from "./Button.module.scss";
 
-const buttonVariants = {
+const variants = {
   default: styles.btnDefault,
   admin: styles.btnAdmin,
 };
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: keyof typeof buttonVariants;
+type VariantType = {
+  variant?: keyof typeof variants;
 };
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & VariantType;
+
+type InputProps = InputHTMLAttributes<HTMLInputElement> & VariantType;
+
+type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & VariantType;
 
 export function WWTSButton({
   className,
@@ -24,7 +30,7 @@ export function WWTSButton({
 }: ButtonProps) {
   return (
     <button
-      className={classNames(styles.btnBase, buttonVariants[variant], className)}
+      className={classNames(styles.btnBase, variants[variant], className)}
       {...rest}
     >
       {children}
@@ -35,10 +41,14 @@ export function WWTSButton({
 export function WWTSInput({
   className,
   children,
+  variant = "admin",
   ...rest
-}: InputHTMLAttributes<HTMLInputElement>) {
+}: InputProps) {
   return (
-    <input className={classNames(styles.button, className)} {...rest}>
+    <input
+      className={classNames(styles.btnBase, variants[variant], className)}
+      {...rest}
+    >
       {children}
     </input>
   );
@@ -47,10 +57,14 @@ export function WWTSInput({
 export function WWTSAnchor({
   className,
   children,
+  variant = "admin",
   ...rest
-}: AnchorHTMLAttributes<HTMLAnchorElement>) {
+}: AnchorProps) {
   return (
-    <a className={classNames(styles.button, className)} {...rest}>
+    <a
+      className={classNames(styles.btnBase, variants[variant], className)}
+      {...rest}
+    >
       {children}
     </a>
   );
