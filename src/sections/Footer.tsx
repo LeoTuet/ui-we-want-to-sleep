@@ -87,6 +87,10 @@ export const Footer = () => {
           <Link to="sources" className={styles.link}>
             {t("footer.sources")}
           </Link>
+          <span>{" & "}</span>
+          <Link to="about" className={styles.link}>
+            About
+          </Link>
         </p>
         <span className={styles.centered}>
           <OptionsPanel />

@@ -1,0 +1,51 @@
+.profileView {
+  display: flex;
+  flex-flow: column;
+}
+
+.adjustedStarBackground {
+  height: 5rem;
+}
+
+.profileGrid {
+  background: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5rem;
+
+  --gap: 5rem;
+  gap: var(--gap);
+}
+
+.profileCardContainer {
+  // limits the max cards per row to 3
+  flex-basis: calc(33.33% - var(--gap));
+  display: flex;
+  justify-content: center;
+}
+
+.profileCard {
+  --size: 250px;
+  width: var(--size);
+
+  & .profileImage {
+    width: var(--size);
+    height: var(--size);
+    object-fit: cover;
+    background: gray;
+  }
+
+  & > p {
+    margin: 0;
+    line-height: 1rem;
+
+    &.name {
+      font-weight: bold;
+    }
+
+    &.projectRole {
+      font-size: 13px;
+    }
+  }
+}
