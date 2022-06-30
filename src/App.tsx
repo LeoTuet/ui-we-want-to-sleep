@@ -64,6 +64,14 @@ function App() {
             />
           }
         />
+        <Route
+          path="about"
+          element={
+            <Lazy
+              init={() => import("./pages/About").then((mod) => mod.AboutUs)}
+            />
+          }
+        />
         <Route path="result" element={<Result />} />
         <Route
           path="admin/*"
