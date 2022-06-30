@@ -2,7 +2,6 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { CouchPanel } from "../components/CouchPanel";
-import styles from "./NoVotingSection.module.scss";
 
 export interface NoVotingSectionProps {
   type?: NoVotingType;
@@ -36,10 +35,7 @@ export const NoVotingSection = ({
   }, [type]);
 
   return (
-    <section
-      id={type === "SUCCESS" ? "afterVote" : ""}
-      className={styles.section}
-    >
+    <section id={type === "SUCCESS" ? "afterVote" : ""}>
       <CouchPanel
         mainText={getMainText()}
         subText={getSubText()}

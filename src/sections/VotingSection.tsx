@@ -86,7 +86,7 @@ export const VotingSection = ({
           </div>
         )}
 
-        {(captchaSaved || true) && (
+        {captchaSaved && (
           <div className={styles.buttonContainer}>
             {ballot.ballot?.options.map((option) => (
               <WWTSButton
