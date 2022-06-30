@@ -1,0 +1,28 @@
+@import "../theme/mixin.scss";
+
+.voteHere {
+  @include noSelect;
+  background-color: var(--vote-button-background);
+  padding: 1rem 1.5rem;
+  height: 50px;
+  min-width: 250px;
+  border-radius: 25px;
+  display: flex;
+  width: max-content;
+  margin: 0 auto;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  column-gap: 2rem;
+}
+
+.label {
+  //flex-grow: 1;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  line-height: 1;
+}

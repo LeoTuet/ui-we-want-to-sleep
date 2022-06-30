@@ -7,6 +7,7 @@ import { IntroSection } from "../sections/IntroSection";
 import { NoVotingSection, NoVotingType } from "../sections/NoVotingSection";
 import { VotingSection } from "../sections/VotingSection";
 import { selectBallot } from "../stores/ballot";
+import { AppDispatch } from "../stores/rootStore";
 import { actions, selectToken } from "../stores/token";
 import { recordVote, selectVote } from "../stores/vote";
 import styles from "./Home.module.scss";
@@ -16,14 +17,15 @@ export const Home = () => {
   const vote = useSelector(selectVote);
   const tokenStore = useSelector(selectToken);
   const dispatch = useDispatch();
+  const asyncDispatch = useDispatch<AppDispatch>();
 
   const { token } = useParams();
 
   const handleVote = useCallback(
-    (identifier: string) => {
-      dispatch(recordVote(identifier));
+    async (identifier: string) => {
+      await asyncDispatch(recordVote(identifier));
     },
-    [dispatch]
+    [asyncDispatch]
   );
 
   const handleCaptchaTokenReceive = useCallback(
