@@ -39,7 +39,8 @@
     "theme": "Theme",
     "lightTheme": "Light theme",
     "darkTheme": "Dark theme",
-    "language": "Language"
+    "language": "Language",
+    "voteHere": "Vote here"
   },
   "voting": {
     "description": "You can only vote once and cannot change your choice. Choose wisely.",

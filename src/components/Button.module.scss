@@ -31,6 +31,10 @@
   border-radius: 12px;
   font-weight: bold;
   padding: 1rem;
+
+  &:hover {
+    background-color: var(--vote-button-background-hover);
+  }
 }
 
 .btnAdmin {
