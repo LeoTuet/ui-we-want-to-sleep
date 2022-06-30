@@ -14,10 +14,6 @@
 
   transition: transform 0.07s ease-out, outline 0.03s ease-out;
 
-  &:hover {
-    background-color: var(--vote-button-background-hover);
-  }
-
   &:active {
     transform: scale(0.97);
   }
@@ -35,6 +31,10 @@
   border-radius: 12px;
   font-weight: bold;
   padding: 1rem;
+
+  &:hover {
+    background-color: var(--vote-button-background-hover);
+  }
 }
 
 .btnAdmin {
