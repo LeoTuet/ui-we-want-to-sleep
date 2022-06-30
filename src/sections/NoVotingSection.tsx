@@ -35,7 +35,7 @@ export const NoVotingSection = ({
   }, [type]);
 
   return (
-    <section>
+    <section id={type === "SUCCESS" ? "afterVote" : ""}>
       <CouchPanel
         mainText={getMainText()}
         subText={getSubText()}

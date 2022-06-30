@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 import { WWTSButton } from "../components/Button";
+import { VoteHere } from "../components/VoteHere";
 import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
 import { Ballot } from "../models";
 import { selectUIStore } from "../stores/ui";
@@ -17,7 +18,7 @@ interface VotingSectionProps {
     ballotLoading: boolean | undefined;
     ballotError: SerializedError | undefined;
   };
-  onVote: (identifier: string) => void;
+  onVote: (identifier: string) => Promise<void>;
 }
 
 export const VotingSection = ({
@@ -29,6 +30,23 @@ export const VotingSection = ({
   const [captchaSaved, setCaptchaSaved] = useState(false);
   const { cookieConsent } = useSelector(selectUIStore);
   const { t } = useTranslation();
+
+  const handleVote = useCallback(
+    async (...args: Parameters<typeof onVote>) => {
+      await onVote?.(...args);
+      const element = document.getElementById("afterVote");
+
+      const scroll =
+        (element?.getBoundingClientRect().top ?? 0) +
+        document.documentElement.scrollTop -
+        200;
+      window.scrollTo({
+        behavior: "auto",
+        top: scroll,
+      });
+    },
+    [onVote]
+  );
 
   const handleTokenReceive = useCallback(
     (token: string) => {
@@ -51,6 +69,7 @@ export const VotingSection = ({
             {t("content.disclaimerTwo")}
           </p>
         </div>
+        {<VoteHere />}
         <h4 className={styles.question}>
           {ballot.ballot?.question[languageIdentifier]}
         </h4>
@@ -73,7 +92,7 @@ export const VotingSection = ({
               <WWTSButton
                 key={option.identifier}
                 className={styles.voteButton}
-                onClick={() => onVote(option.identifier)}
+                onClick={() => handleVote(option.identifier)}
               >
                 {option.label[languageIdentifier]}
               </WWTSButton>
