@@ -20,14 +20,9 @@ export const Result = () => {
   const languageIdentifier = useCurrentLanguage();
 
   useEffect(() => {
-    // TODO remove this
-    // this is only a work around since we have no possibility to display results and stop the ballot...
-    const id = "62bd4b1d42d4c8b42ed975e6";
-    dispatch(fetchVoteResult(id));
-    dispatch(fetchTotalVoteCount(id));
-    // if (!ballot.ballot) return;
-    // dispatch(fetchVoteResult(ballot.ballot._id));
-    // dispatch(fetchTotalVoteCount(ballot.ballot._id));
+    if (!ballot.ballot) return;
+    dispatch(fetchVoteResult(ballot.ballot._id));
+    dispatch(fetchTotalVoteCount(ballot.ballot._id));
   }, [dispatch, ballot]);
 
   return (
