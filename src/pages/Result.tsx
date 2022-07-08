@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { NavigationBar } from "../components/NavigationBar";
 import { StarBackground } from "../components/StarBackground";
 import { useCurrentLanguage } from "../hooks/useCurrentLanguage";
+import { Ballot } from "../models";
 import { VoteEvaluation } from "../sections/VoteEvaluation";
-import { selectBallot } from "../stores/ballot";
+import { fetchAllBallots, selectBallots } from "../stores/admin";
+// import { selectBallot } from "../stores/ballot";
 import {
   fetchTotalVoteCount,
   fetchVoteResult,
@@ -14,16 +16,26 @@ import {
 import styles from "./Result.module.scss";
 
 export const Result = () => {
-  const ballot = useSelector(selectBallot);
+  // const ballot = useSelector(selectBallot);
+  const [resultBallot, setResultBallot] = useState<Ballot>();
+  const ballots = useSelector(selectBallots);
   const result = useSelector(selectResult);
   const dispatch = useDispatch();
   const languageIdentifier = useCurrentLanguage();
 
   useEffect(() => {
-    if (!ballot.ballot) return;
-    dispatch(fetchVoteResult(ballot.ballot._id));
-    dispatch(fetchTotalVoteCount(ballot.ballot._id));
-  }, [dispatch, ballot]);
+    dispatch(fetchAllBallots());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const ballot = ballots.ballots.find(
+      (b) => b._id === "62bd4b1d42d4c8b42ed975e6"
+    );
+    if (!ballot) return;
+    setResultBallot(ballot);
+    dispatch(fetchVoteResult(ballot._id));
+    dispatch(fetchTotalVoteCount(ballot._id));
+  }, [dispatch, resultBallot, ballots]);
 
   return (
     <>
@@ -31,14 +43,14 @@ export const Result = () => {
         <NavigationBar />
         <div>
           <h2 className={styles.question}>
-            {ballot.ballot?.question[languageIdentifier]}
+            {resultBallot?.question[languageIdentifier]}
           </h2>
           {result.voteResultError && result.totalVoteCount && (
             <p>{`${result.totalVoteCount} People voted`}</p>
           )}
-          {result.voteResult && result.totalVoteCount && ballot.ballot && (
+          {result.voteResult && result.totalVoteCount && resultBallot && (
             <VoteEvaluation
-              ballot={ballot.ballot}
+              ballot={resultBallot}
               voteCount={result.totalVoteCount}
               voteResults={result.voteResult}
             />
