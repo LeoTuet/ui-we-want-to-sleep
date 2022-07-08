@@ -17,6 +17,7 @@ export const VoteEvaluation = ({
 
   interface PercentageBarProps {
     percentage: number | undefined;
+    amount: number | undefined;
     voteOption: string | undefined;
     width: string | undefined;
   }
@@ -34,12 +35,14 @@ export const VoteEvaluation = ({
         label: options.label,
         percentage: Number(((result.amount / voteCount) * 100).toFixed(2)),
         width: `${((result.amount / winningCount) * 100).toFixed(2)}%`,
+        amount: result.amount,
       };
     });
   };
 
   const PercentageBar = ({
     percentage = 0,
+    amount = 0,
     voteOption = "",
     width = "0%",
   }: PercentageBarProps) => {
@@ -47,7 +50,10 @@ export const VoteEvaluation = ({
       <>
         <p>{voteOption}</p>
         <div className={styles.bar} style={{ width: width }}>
-          {percentage + "%"}
+          <div className={styles.valueContainer}>
+            <div>{percentage + "%"}</div>
+            <div className={styles.amount}>{amount}</div>
+          </div>
         </div>
       </>
     );
@@ -58,6 +64,7 @@ export const VoteEvaluation = ({
       {prepareVoteResults().map((result) => (
         <PercentageBar
           key={result?.percentage}
+          amount={result?.amount}
           percentage={result?.percentage}
           voteOption={result?.label[languageIdentifier]}
           width={result?.width}

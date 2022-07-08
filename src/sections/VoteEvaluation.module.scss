@@ -17,7 +17,15 @@
   border-radius: 10px;
   font-weight: bold;
   text-align: start;
-  padding: 1rem;
+  padding: 0.75rem;
+}
+
+.valueContainer {
+  line-height: 1rem;
+}
+
+.amount {
+  font-size: smaller
 }
 
 @media (min-width: 1000px) {
